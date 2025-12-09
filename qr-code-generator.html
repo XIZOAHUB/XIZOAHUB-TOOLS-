@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>QR Code Generator - Create Free Custom QR Codes Online</title>
+  
+  <meta name="description" content="Generate free QR codes for URLs, text, Wi-Fi, and more instantly. Download high-quality PNG QR codes. No sign-up required. Fast & Secure.">
+  
+  <meta name="keywords" content="qr code generator, create qr code, free qr code maker, online qr generator, url to qr code, qr code for website, download qr code png, xizoa tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Free QR Code Generator - XIZOA Hub">
+  <meta property="og:description" content="Create instant QR Codes for any link or text. Download for free.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    /* --- THEME: DIGITAL PULSE (Cyan & Purple) --- */
+    :root {
+      --primary: #00e5ff; /* Cyan */
+      --secondary: #9d00ff; /* Purple */
+      --bg-dark: #0a0f1a;
+      --card-bg: rgba(20, 20, 40, 0.8);
+      --glass-border: 1px solid rgba(0, 229, 255, 0.2);
+      --text-main: #e5e5e5;
+      --text-muted: #a0aec0;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Digital grid background */
+      background-image: linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(157, 0, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    h1 span {
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.4));
+    }
+    
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- INPUT BOX --- */
+    .generator-box {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 20px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+
+    button.btn-gen {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      border: none;
+      padding: 16px 30px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+    button.btn-gen:hover { box-shadow: 0 0 25px rgba(0, 229, 255, 0.5); transform: translateY(-2px); }
+
+    /* --- RESULT AREA --- */
+    .qr-result {
+      display: none; /* Hidden initially */
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 20px;
+      padding: 30px;
+      margin-top: 30px;
+      animation: fadeIn 0.5s ease;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .qr-frame {
+        background: #fff;
+        padding: 20px;
+        border-radius: 15px;
+        display: inline-block;
+        box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+    }
+    
+    /* Target the generated image inside the div */
+    #qrcode img { display: block; margin: 0 auto; }
+
+    .btn-download {
+      display: inline-block;
+      margin-top: 25px;
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn-download:hover { background: var(--primary); color: #000; box-shadow: 0 0 15px var(--primary); }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '📱'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #05080f; border-top: 1px solid #1d2f49; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 600px) { .input-group { flex-direction: column; } h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>QR Code <span>Generator</span></h1>
+    <p class="subtitle">Create instant QR Codes for URLs, Text, or Wi-Fi</p>
+  </header>
+
+  <main>
+    
+    <div class="generator-box">
+      <div class="input-group">
+        <input type="text" id="qrText" placeholder="Enter link or text here (e.g., https://yourwebsite.com)" aria-label="QR Content">
+        <button class="btn-gen" id="btnGen"><i class="fas fa-qrcode"></i> Generate QR</button>
+      </div>
+      
+      <div class="qr-result" id="qrResult">
+        <div class="qr-frame">
+            <div id="qrcode"></div>
+        </div>
+        <br>
+        <a href="#" class="btn-download" id="btnDownload" download="qrcode.png"><i class="fas fa-download"></i> Download PNG</a>
+      </div>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>Create Custom QR Codes for Free</h2>
+        <p>
+          Need a quick way to share a link, contact info, or text? Our **Online QR Code Generator** creates high-quality QR codes instantly. Just paste your content and get a scannable code.
+        </p>
+        <p>
+          Apni website, dukaan ya kisi bhi text ke liye free mein QR Code banayein. Ise download karke print karein ya digital share karein.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Features</h3>
+        <ul>
+          <li><strong>Instant Creation:</strong> Generates QR code in milliseconds.</li>
+          <li><strong>High Resolution:</strong> Clear output perfect for printing.</li>
+          <li><strong>No Limits:</strong> Create unlimited codes for free.</li>
+          <li><strong>Privacy Focused:</strong> Data is processed locally in your browser.</li>
+        </ul>
+      </div>
+
+      <div class="seo-card">
+        <h3>❓ FAQ</h3>
+        <p><strong>Q: Will these QR codes expire?</strong><br>
+        A: No, they are static codes and will work forever.</p>
+        <p><strong>Q: Can I use it for commercial purposes?</strong><br>
+        A: Yes, absolutely free for any use.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>QR Code Generator is a simple utility to create scannable codes for digital and print media instantly.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="hashtag-generator.html"><i class="fas fa-hashtag"></i> Hashtag Gen</a>
+        <a href="link-scanner.html"><i class="fas fa-shield-virus"></i> Link Scanner</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnGen = document.getElementById('btnGen');
+    const qrText = document.getElementById('qrText');
+    const qrResult = document.getElementById('qrResult');
+    const qrcodeContainer = document.getElementById('qrcode');
+    const btnDownload = document.getElementById('btnDownload');
+
+    btnGen.addEventListener('click', () => {
+      const text = qrText.value.trim();
+      
+      if(!text) {
+        alert("Please enter some text or URL first!");
+        return;
+      }
+
+      // Clear previous QR code
+      qrcodeContainer.innerHTML = "";
+
+      // Generate new QR code
+      new QRCode(qrcodeContainer, {
+        text: text,
+        width: 200,
+        height: 200,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+
+      // Show result container
+      qrResult.style.display = 'block';
+
+      // Setup Download Link (Wait for image to generate)
+      setTimeout(() => {
+          const qrImage = qrcodeContainer.querySelector('img');
+          if(qrImage) {
+              btnDownload.href = qrImage.src;
+          }
+      }, 100);
+
+    });
+
+    // Enter Key Support
+    qrText.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') btnGen.click();
+    });
+  </script>
+</body>
+</html>
