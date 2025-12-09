@@ -3,534 +3,502 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XIZOA Tools Directory | All Free Online Tools</title>
-<meta name="description" content="All Free Online PDF, Image, Social, Converter & Security Tools by XIZOA Hub. Fast, No Login, No Ads.">
+<title>XIZOA TOOLS HUB | Free Online Tools</title>
 <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
   :root {
     --primary: #00f7ff;
-    --secondary: #007bff;
     --bg-dark: #0a0f1a;
     --card-bg: rgba(23, 33, 54, 0.6);
     --glass-border: 1px solid rgba(255, 255, 255, 0.1);
     --text-main: #e5e5e5;
     --text-muted: #a0aec0;
+    --nav-bg: rgba(5, 8, 15, 0.95);
   }
 
-  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; -webkit-tap-highlight-color: transparent; }
   
   body {
     background-color: var(--bg-dark);
     background-image: radial-gradient(circle at 15% 50%, rgba(0, 247, 255, 0.08), transparent 25%), 
                       radial-gradient(circle at 85% 30%, rgba(0, 123, 255, 0.08), transparent 25%);
     color: var(--text-main);
-    padding-top: 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    padding-top: 80px;
   }
 
-  /* --- Header & Search (Same as before) --- */
-  header { text-align: center; padding: 40px 20px 30px; }
+  /* --- NAVBAR --- */
+  .navbar {
+    position: fixed; top: 0; left: 0; width: 100%;
+    background: var(--nav-bg); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; 
+    z-index: 2000;
+  }
+  .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-icon { font-size: 1.8rem; color: #fff; }
+  .logo-text { font-size: 1.8rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1; }
+  .text-white { color: #fff; } .text-cyan { color: var(--primary); }
   
-  h1 {
-    font-size: 2.8rem;
-    background: linear-gradient(to right, #fff, var(--primary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.3));
+  /* Menu Button */
+  .menu-btn { 
+    font-size: 1.6rem; color: #fff; cursor: pointer; padding: 5px 10px;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
   }
 
-  header p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    background: rgba(255,255,255,0.05);
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 20px;
-    border: var(--glass-border);
+  /* --- SIDEBAR --- */
+  .sidebar {
+    position: fixed; top: 0; right: -300px; width: 280px; height: 100vh;
+    background: #0f172a; border-left: 1px solid var(--primary); 
+    padding: 90px 20px 20px; transition: right 0.3s ease; 
+    z-index: 1999; box-shadow: -10px 0 30px rgba(0,0,0,0.8); overflow-y: auto;
   }
+  .sidebar.active { right: 0; }
+  
+  .sidebar h3 { color: var(--primary); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+  
+  .nav-link {
+    display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 15px; margin-bottom: 8px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); 
+    color: #ccc; border-radius: 8px; text-decoration: none;
+  }
+  .overlay { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.8); z-index: 1998; display: none; backdrop-filter: blur(4px); 
+  }
+  .overlay.active { display: block; }
 
-  .search-container {
-    max-width: 600px;
-    margin: 0 auto 30px;
-    position: relative;
-    padding: 0 20px;
+  /* --- SEARCH & TAGS --- */
+  .search-section { text-align: center; padding: 30px 20px 20px; }
+  .search-container { max-width: 600px; margin: 0 auto; position: relative; }
+  .search-container i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--primary); }
+  #search { width: 100%; background: rgba(13, 20, 36, 0.8); border: 1px solid #2d3748; padding: 16px 20px 16px 50px; font-size: 16px; border-radius: 50px; outline: none; color: #fff; }
+
+  .tag-box { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0 40px; padding: 0 10px; }
+  .tag { padding: 8px 18px; background: rgba(255,255,255,0.03); border: 1px solid #2d3748; color: var(--text-muted); border-radius: 50px; font-size: 13px; cursor: pointer; }
+  .tag.active { background: var(--primary); color: #000; font-weight: 600; border-color: var(--primary); }
+
+  /* --- GRID --- */
+  .tools-grid { 
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+    gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px 20px; width: 100%; 
   }
   
-  .search-container i {
-    position: absolute;
-    left: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--primary);
+  .tool-card { 
+    background: var(--card-bg); border: var(--glass-border); padding: 25px; border-radius: 16px; 
+    cursor: pointer; text-decoration: none; display: flex; flex-direction: column; position: relative; overflow: hidden;
+    /* Animation */
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-
-  #search {
-    width: 100%;
-    background: rgba(13, 20, 36, 0.8);
-    border: 1px solid #2d3748;
-    padding: 16px 20px 16px 50px;
-    font-size: 16px;
-    border-radius: 12px;
-    outline: none;
-    color: #fff;
-    transition: 0.3s;
-    backdrop-filter: blur(10px);
-  }
-
-  #search:focus { border-color: var(--primary); box-shadow: 0 0 20px rgba(0, 247, 255, 0.15); }
-
-  /* --- Tags --- */
-  .tag-box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 40px;
-    padding: 0 10px;
-  }
-
-  .tag {
-    padding: 8px 18px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid #2d3748;
-    color: var(--text-muted);
-    border-radius: 50px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-
-  .tag:hover, .tag.active {
-    background: var(--primary);
-    color: #000;
-    font-weight: 600;
-    border-color: var(--primary);
-    box-shadow: 0 0 15px rgba(0, 247, 255, 0.4);
-  }
-
-  /* --- Grid & Cards --- */
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-  }
-
-  .tool-card {
-    background: var(--card-bg);
-    border: var(--glass-border);
-    padding: 25px;
-    border-radius: 20px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-    /* Initially visible, JS handles hiding */
-    display: flex; 
-  }
-
-  .tool-card:hover {
-    transform: translateY(-8px);
-    background: rgba(30, 41, 59, 0.8);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    border-color: rgba(0, 247, 255, 0.3);
-  }
-
-  .card-icon {
-    font-size: 2rem; margin-bottom: 15px; color: var(--primary);
-    background: rgba(0, 247, 255, 0.1); width: 50px; height: 50px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 12px; transition: 0.3s;
-  }
-
-  .tool-card:hover .card-icon { background: var(--primary); color: #000; transform: rotate(5deg); }
-  .tool-card h3 { font-size: 1.2rem; color: #fff; margin-bottom: 8px; font-weight: 600; }
-  .tool-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+  .tool-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 5px 20px rgba(0, 247, 255, 0.15); }
+  .tool-card:active { transform: scale(0.96); background: rgba(0, 247, 255, 0.05); } 
   
-  .arrow-icon {
-    position: absolute; bottom: 25px; right: 25px; color: var(--primary);
-    opacity: 0; transform: translateX(-10px); transition: 0.3s;
-  }
-  .tool-card:hover .arrow-icon { opacity: 1; transform: translateX(0); }
+  .card-icon { font-size: 2rem; margin-bottom: 15px; color: var(--primary); background: rgba(0, 247, 255, 0.1); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+  .tool-card h3 { font-size: 1.1rem; color: #fff; margin-bottom: 5px; font-weight: 600; }
+  .tool-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
 
-  /* --- Load More Button --- */
-  .load-more-container {
-    text-align: center;
-    margin: 40px 0;
-  }
-  .load-btn {
-    background: transparent;
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: 600;
-  }
-  .load-btn:hover {
-    background: var(--primary);
-    color: #000;
-    box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
-  }
+  .load-more-container { text-align: center; margin-bottom: 60px; margin-top: 30px; }
+  .load-btn { background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 12px 35px; border-radius: 30px; font-size: 16px; cursor: pointer; font-weight: 600; }
 
-  /* --- NEW PROFESSIONAL FOOTER --- */
-  footer {
-    background: #05080f;
-    border-top: 1px solid #1d2f49;
-    margin-top: auto; /* Pushes footer to bottom */
-    padding: 60px 20px 20px;
-    color: #a0aec0;
-  }
+  /* --- FOOTER (FIXED) --- */
+  footer { background: #020305; border-top: 1px solid #1a202c; margin-top: auto; padding: 60px 20px 20px; }
+  .footer-container { max-width: 1200px; margin: 0 auto; }
 
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-bottom: 40px;
-  }
+  /* 1. Tools List */
+  .tools-directory { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .dir-col h5 { color: var(--primary); font-size: 0.95rem; margin-bottom: 15px; text-transform: uppercase; font-weight: 700; }
+  .dir-col ul { list-style: none; padding: 0; }
+  .dir-col li { margin-bottom: 6px; }
+  .dir-col a { color: #8899a6; text-decoration: none; font-size: 0.85rem; }
 
-  .footer-col h4 {
-    color: #fff;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
-  }
+  /* 2. About & Connect */
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+  .info-col h4 { color: #fff; font-size: 1.2rem; margin-bottom: 20px; }
+  .info-col p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+  .info-col a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; font-size: 0.95rem; }
+  .social-icons { display: flex; gap: 15px; margin-top: 15px; }
+  .social-icons a { color: #fff; font-size: 1.3rem; }
 
-  .footer-col h4::after {
-    content: '';
-    position: absolute;
-    left: 0; bottom: 0; width: 40px; height: 2px;
-    background: var(--primary);
-  }
-
-  .footer-col p { font-size: 0.9rem; line-height: 1.6; }
+  .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #666; font-size: 0.85rem; margin-top: 40px; }
   
-  .footer-links a {
-    display: block;
-    color: #a0aec0;
-    text-decoration: none;
-    margin-bottom: 10px;
-    transition: 0.3s;
-    font-size: 0.95rem;
-  }
+  @media (max-width: 600px) { .tools-grid, .info-grid { grid-template-columns: 1fr; } }
 
-  .footer-links a:hover {
-    color: var(--primary);
-    transform: translateX(5px);
-  }
+/* --- IS CODE KO STYLE TAG KE ANDAR SABSE NEECHE PASTE KARO --- */
 
-  .social-icons { margin-top: 15px; }
-  .social-icons a {
-    color: #fff; font-size: 1.2rem; margin-right: 15px; transition: 0.3s;
-  }
-  .social-icons a:hover { color: var(--primary); }
+.tool-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  z-index: 1;
+}
 
-  .copyright {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    font-size: 0.85rem;
-  }
+/* Hover Effect (Desktop): Upar uthega aur Neon Glow karega */
+.tool-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px -5px rgba(0, 247, 255, 0.4); /* Strong Cyan Glow */
+  border-color: var(--primary);
+}
 
-  @media (max-width: 600px) {
-    h1 { font-size: 2rem; }
-    .tools-grid { grid-template-columns: 1fr; }
-  }
+/* Touch Effect (Mobile): Click karne par pichkega */
+.tool-card:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
+  transition: 0.1s;
+}
+
+/* Icon Glow */
+.tool-card:hover .card-icon {
+  background: var(--primary);
+  color: #000;
+  box-shadow: 0 0 15px var(--primary); /* Icon bhi chamkega */
+  transform: rotate(5deg) scale(1.1);
+}
+
 </style>
+
+
 </head>
 
 <body>
 
-<header>
-  <h1>XIZOA TOOLS HUB</h1>
-  <p>Free Online Tools • No Ads • No Login</p>
-</header>
+<nav class="navbar">
+  <a href="index.html" class="logo-container">
+    <i class="fas fa-cube logo-icon"></i>
+    <div class="logo-text"><span class="text-white">XIZOA</span> <span class="text-cyan">HUB</span></div>
+  </a>
+  <div class="menu-btn" id="menuBtn">
+    <i class="fas fa-bars"></i>
+  </div>
+</nav>
 
-<div class="search-container">
-  <i class="fas fa-search"></i>
-  <input type="text" id="search" placeholder="Search tools... (e.g. PDF, Instagram, Password)">
+<div class="overlay" id="overlay"></div>
+<div class="sidebar" id="sidebar">
+  <h3>Important Pages</h3>
+  <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+  <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
+  <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact Us</a>
+  <a href="privacy.html" class="nav-link"><i class="fas fa-user-shield"></i> Privacy Policy</a>
+  <a href="terms.html" class="nav-link"><i class="fas fa-file-contract"></i> Terms of Use</a>
+  <a href="disclaimer.html" class="nav-link"><i class="fas fa-exclamation-triangle"></i> Disclaimer</a>
 </div>
-  
+
+<div class="search-section">
+  <div class="search-container">
+    <i class="fas fa-search"></i>
+    <input type="text" id="search" placeholder="Search for tools... (e.g. YouTube, PDF, WiFi)">
+  </div>
+</div>
+
 <div class="tag-box">
-  <div class="tag active" onclick="filterTag('all', this)">All Tools</div>
-  <div class="tag" onclick="filterTag('pdf', this)">PDF</div>
-  <div class="tag" onclick="filterTag('image', this)">Image</div>
+  <div class="tag active" onclick="filterTag('all', this)">All</div>
   <div class="tag" onclick="filterTag('social', this)">Social</div>
-  <div class="tag" onclick="filterTag('converter', this)">Converter</div>
+  <div class="tag" onclick="filterTag('gaming', this)">Gaming</div>
+  <div class="tag" onclick="filterTag('image', this)">Image</div>
+  <div class="tag" onclick="filterTag('pdf', this)">PDF</div>
   <div class="tag" onclick="filterTag('security', this)">Security</div>
+  <div class="tag" onclick="filterTag('converter', this)">Converter</div>
+  <div class="tag" onclick="filterTag('utility', this)">Utility</div>
 </div>
 
 <div class="tools-grid" id="grid">
-
-  <a href="jpg-to-png.html" class="tool-card" data-cat="image converter">
-  <div class="card-icon"><i class="fas fa-images"></i></div>
-  <h3>JPG to PNG</h3>
-  <p>Convert JPG images to PNG format effortlessly.</p>
-  <i class="fas fa-arrow-right arrow-icon"></i>
-</a>
-
-  <a href="image-compressor.html" class="tool-card" data-cat="image">
-  <div class="card-icon"><i class="fas fa-compress-arrows-alt"></i></div>
-  <h3>Image Compressor</h3>
-  <p>Reduce image file size significantly while maintaining quality.</p>
-  <i class="fas fa-arrow-right arrow-icon"></i>
-</a>
-
-
-  <a href="pdf-light-mode.html" class="tool-card" data-cat="pdf">
-    <div class="card-icon"><i class="fas fa-file-pdf"></i></div>
-    <h3>PDF Light Mode</h3>
-    <p>Remove dark backgrounds in PDFs for easier printing.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
-  </a>
-
-      <a href="YouTube-thumbnail-downloader.html" class="tool-card" data-cat="social converter">
+  <a href="YouTube-thumbnail-downloader.html" class="tool-card" data-cat="social image">
     <div class="card-icon"><i class="fab fa-youtube"></i></div>
-    <h3>YouTube Thumbnail Downloader</h3>
-    <p>Download YouTube thumbnails in HD/4K instantly.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
+    <h3>YT Thumb Downloader</h3>
+    <p>Download HD Thumbnails.</p>
   </a>
-
-  <a href="Instagram-saver.html" class="tool-card" data-cat="social">
-    <div class="card-icon"><i class="fab fa-instagram"></i></div>
-    <h3>Insta Video Saver</h3>
-    <p>Download Instagram reels and videos with one click.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
+  <a href="youtubeshorts.html" class="tool-card" data-cat="social image">
+    <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+    <h3>Shorts Cover</h3>
+    <p>Save YouTube Shorts covers.</p>
   </a>
-
-
-
-  <a href="#" class="tool-card" data-cat="security">
-    <div class="card-icon"><i class="fas fa-key"></i></div>
-    <h3>Password Generator</h3>
-    <p>Create strong, encrypted passwords easily.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
-  </a>
-
-  <a href="#" class="tool-card" data-cat="security">
-    <div class="card-icon"><i class="fas fa-globe-asia"></i></div>
-    <h3>IP Address Checker</h3>
-    <p>Track your current IP details and location info.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
-  </a>
-
-  <a href="#" class="tool-card" data-cat="converter">
-    <div class="card-icon"><i class="fas fa-file-word"></i></div>
-    <h3>PDF to Word</h3>
-    <p>Convert PDF documents to editable Word files.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
-  </a>
-
-  <a href="image-resizer.html" class="tool-card" data-cat="image">
-  <div class="card-icon"><i class="fas fa-expand-arrows-alt"></i></div>
-  <h3>Image Resizer</h3>
-  <p>Change width and height of images pixels instantly.</p>
-  <i class="fas fa-arrow-right arrow-icon"></i>
-</a>
-
-<a href="youtubeshorts.html" class="tool-card" data-cat="social image">
-  <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
-  <h3>YouTube Shorts Thumbnail</h3>
-  <p>Download YouTube Shorts cover images & thumbnails in HD.</p>
-  <i class="fas fa-arrow-right arrow-icon"></i>
-</a>
-
-
-  <a href="#" class="tool-card" data-cat="social">
+  <a href="tiktok-downloader.html" class="tool-card" data-cat="social">
     <div class="card-icon"><i class="fab fa-tiktok"></i></div>
     <h3>TikTok Downloader</h3>
-    <p>Download TikTok videos without watermark.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
+    <p>No watermark video saver.</p>
   </a>
-
-  <a href="pdf-merger.html" class="tool-card" data-cat="pdf">
-  <div class="card-icon"><i class="fas fa-file-invoice"></i></div>
-  <h3>PDF Merger</h3>
-  <p>Combine multiple PDF documents into one file.</p>
-  <i class="fas fa-arrow-right arrow-icon"></i>
-</a>
-
-  <a href="#" class="tool-card" data-cat="security">
-    <div class="card-icon"><i class="fas fa-shield-virus"></i></div>
-    <h3>Link Scanner</h3>
-    <p>Scan URLs for potential viruses or malware.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
+  <a href="insta-video-saver.html" class="tool-card" data-cat="social">
+    <div class="card-icon"><i class="fab fa-instagram"></i></div>
+    <h3>Insta Video Saver</h3>
+    <p>Download Reels & Videos.</p>
   </a>
-
-  <a href="#" class="tool-card" data-cat="image">
-    <div class="card-icon"><i class="fas fa-palette"></i></div>
-    <h3>Color Picker</h3>
-    <p>Extract HEX/RGB color codes from images.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
-  </a>
-
-  <a href="#" class="tool-card" data-cat="converter">
-    <div class="card-icon"><i class="fas fa-calculator"></i></div>
-    <h3>Age Calculator</h3>
-    <p>Calculate your exact age in years, months, days.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
-  </a>
-
-  <a href="#" class="tool-card" data-cat="social">
+  <a href="hashtag-generator.html" class="tool-card" data-cat="social">
     <div class="card-icon"><i class="fas fa-hashtag"></i></div>
     <h3>Hashtag Gen</h3>
-    <p>Generate trending hashtags for social media.</p>
+    <p>Get viral tags for Insta.</p>
+  </a>
+  <a href="youtube-tag-extractor.html" class="tool-card" data-cat="social">
+    <div class="card-icon"><i class="fas fa-tags"></i></div>
+    <h3>YT Tag Extractor</h3>
+    <p>Spy on video keywords.</p>
+  </a>
+  <a href="invisible-text.html" class="tool-card" data-cat="social utility">
+    <div class="card-icon"><i class="fas fa-ghost"></i></div>
+    <h3>Invisible Text</h3>
+    <p>Send blank messages.</p>
+  </a>
+  <a href="glitch-text-generator.html" class="tool-card" data-cat="social utility">
+    <div class="card-icon"><i class="fas fa-bug"></i></div>
+    <h3>Glitch Text</h3>
+    <p>Create Zalgo/Hacked text.</p>
+  </a>
+  <a href="reaction-time-test.html" class="tool-card" data-cat="gaming utility">
+    <div class="card-icon"><i class="fas fa-bolt"></i></div>
+    <h3>Reaction Test</h3>
+    <p>Test gamer reflexes.</p>
+  </a>
+  <a href="mouse-polling-rate.html" class="tool-card" data-cat="gaming utility">
+    <div class="card-icon"><i class="fas fa-mouse"></i></div>
+    <h3>Mouse Hz Test</h3>
+    <p>Check polling rate.</p>
+  </a>
+  <a href="keyboard-tester.html" class="tool-card" data-cat="gaming utility">
+    <div class="card-icon"><i class="fas fa-keyboard"></i></div>
+    <h3>Keyboard Test</h3>
+    <p>Check broken keys.</p>
+  </a>
+  <a href="dead-pixel-fixer.html" class="tool-card" data-cat="utility image">
+    <div class="card-icon"><i class="fas fa-desktop"></i></div>
+    <h3>Dead Pixel Fixer</h3>
+    <p>Repair screen pixels.</p>
+  </a>
+  <a href="image-resizer.html" class="tool-card" data-cat="image utility">
+    <div class="card-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+    <h3>Image Resizer</h3>
+    <p>Resize width/height.</p>
+  </a>
+  <a href="jpg-to-png.html" class="tool-card" data-cat="image converter">
+    <div class="card-icon"><i class="fas fa-images"></i></div>
+    <h3>JPG to PNG</h3>
+    <p>Convert format losslessly.</p>
+  </a>
+  <a href="color-picker.html" class="tool-card" data-cat="image utility">
+    <div class="card-icon"><i class="fas fa-palette"></i></div>
+    <h3>Color Picker</h3>
+    <p>Get HEX & RGB codes.</p>
+  </a>
+  <a href="exif-remover.html" class="tool-card" data-cat="image security">
+    <div class="card-icon"><i class="fas fa-file-shield"></i></div>
+    <h3>Exif Remover</h3>
+    <p>Clean GPS from photos.</p>
+  </a>
+  <a href="text-to-handwriting.html" class="tool-card" data-cat="converter utility">
+    <div class="card-icon"><i class="fas fa-pen-fancy"></i></div>
+    <h3>Assignment Maker</h3>
+    <p>Text to Handwriting.</p>
+  </a>
+  <a href="pdf-merger.html" class="tool-card" data-cat="pdf utility">
+    <div class="card-icon"><i class="fas fa-file-invoice"></i></div>
+    <h3>PDF Merger</h3>
+    <p>Combine multiple PDFs.</p>
+  </a>
+  <a href="pdf-to-word.html" class="tool-card" data-cat="pdf converter">
+    <div class="card-icon"><i class="fas fa-file-word"></i></div>
+    <h3>PDF to Word</h3>
+    <p>Convert to Editable Doc.</p>
+  </a>
+  <a href="pdf-light-mode.html" class="tool-card" data-cat="pdf utility">
+    <div class="card-icon"><i class="fas fa-moon"></i></div>
+    <h3>PDF Light Mode</h3>
+    <p>Invert colors for print.</p>
+  </a>
+  <a href="diff-checker.html" class="tool-card" data-cat="utility converter">
+    <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+    <h3>Diff Checker</h3>
+    <p>Compare text differences.</p>
+  </a>
+  <a href="speed-test.html" class="tool-card" data-cat="security utility">
+    <div class="card-icon"><i class="fas fa-wifi"></i></div>
+    <h3>Speed Test</h3>
+    <p>Check internet speed.</p>
+  </a>
+  <a href="ip-checker.html" class="tool-card" data-cat="security utility">
+    <div class="card-icon"><i class="fas fa-globe-asia"></i></div>
+    <h3>IP Checker</h3>
+    <p>Check IP & Location.</p>
+  </a>
+  <a href="password-generator.html" class="tool-card" data-cat="security utility">
+    <div class="card-icon"><i class="fas fa-key"></i></div>
+    <h3>Pass Generator</h3>
+    <p>Create secure passwords.</p>
+  </a>
+  <a href="link-scanner.html" class="tool-card" data-cat="security utility">
+    <div class="card-icon"><i class="fas fa-shield-virus"></i></div>
+    <h3>Link Scanner</h3>
+    <p>Check URLs for virus.</p>
+  </a>
+  <a href="text-to-speech.html" class="tool-card" data-cat="converter utility">
+    <div class="card-icon"><i class="fas fa-microphone-alt"></i></div>
+    <h3>Text to Speech</h3>
+    <p>AI Voice Generator.</p>
+  </a>
+  <a href="tone-generator.html" class="tool-card" data-cat="utility">
+    <div class="card-icon"><i class="fas fa-wave-square"></i></div>
+    <h3>Speaker Cleaner</h3>
+    <p>Remove water sound.</p>
+  </a>
+  <a href="morse-converter.html" class="tool-card" data-cat="converter utility">
+    <div class="card-icon"><i class="fas fa-broadcast-tower"></i></div>
+    <h3>Morse Code</h3>
+    <p>Text to Morse Audio.</p>
     <i class="fas fa-arrow-right arrow-icon"></i>
   </a>
-
-  <a href="#" class="tool-card" data-cat="text">
-    <div class="card-icon"><i class="fas fa-align-left"></i></div>
-    <h3>Word Counter</h3>
-    <p>Count words and characters in your text.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
-  </a>
-
-  <a href="#" class="tool-card" data-cat="converter">
+  <a href="qr-code-generator.html" class="tool-card" data-cat="utility converter">
     <div class="card-icon"><i class="fas fa-qrcode"></i></div>
-    <h3>QR Code Generator</h3>
-    <p>Create QR codes for any link or text.</p>
-    <i class="fas fa-arrow-right arrow-icon"></i>
+    <h3>QR Generator</h3>
+    <p>Create custom QR.</p>
   </a>
-
+  <a href="age-calculator.html" class="tool-card" data-cat="utility converter">
+    <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+    <h3>Age Calculator</h3>
+    <p>Exact age finder.</p>
+  </a>
 </div>
 
 <div class="load-more-container">
-  <button class="load-btn" id="loadBtn" onclick="loadMore()">Load More Tools <i class="fas fa-chevron-down"></i></button>
+  <button class="load-btn" id="loadBtn">Load More Tools <i class="fas fa-chevron-down"></i></button>
 </div>
 
 <footer>
-  <div class="footer-content">
+  <div class="footer-container">
     
-    <div class="footer-col">
-      <h4>About XIZOA Hub</h4>
-      <p>XIZOA Hub provides high-quality, free online tools for developers, students, and creators. Our mission is to make digital tasks easier without ads or logins.</p>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-telegram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
+    <div class="tools-directory">
+      <div class="dir-col">
+        <h5>Social</h5>
+        <ul>
+          <li><a href="YouTube-thumbnail-downloader.html">YT Thumbnail</a></li>
+          <li><a href="youtubeshorts.html">YT Shorts</a></li>
+          <li><a href="tiktok-downloader.html">TikTok Saver</a></li>
+          <li><a href="insta-video-saver.html">Insta Saver</a></li>
+        </ul>
+      </div>
+      <div class="dir-col">
+        <h5>Gaming</h5>
+        <ul>
+          <li><a href="reaction-time-test.html">Reaction Time</a></li>
+          <li><a href="mouse-polling-rate.html">Mouse Hz</a></li>
+          <li><a href="keyboard-tester.html">Keyboard Test</a></li>
+          <li><a href="dead-pixel-fixer.html">Pixel Fixer</a></li>
+        </ul>
+      </div>
+      <div class="dir-col">
+        <h5>Image</h5>
+        <ul>
+          <li><a href="image-resizer.html">Image Resizer</a></li>
+          <li><a href="jpg-to-png.html">JPG to PNG</a></li>
+          <li><a href="exif-remover.html">Exif Remover</a></li>
+          <li><a href="color-picker.html">Color Picker</a></li>
+        </ul>
+      </div>
+      <div class="dir-col">
+        <h5>Security</h5>
+        <ul>
+          <li><a href="speed-test.html">Speed Test</a></li>
+          <li><a href="password-generator.html">Pass Gen</a></li>
+          <li><a href="link-scanner.html">Link Scanner</a></li>
+          <li><a href="ip-checker.html">IP Checker</a></li>
+        </ul>
       </div>
     </div>
 
-    <div class="footer-col footer-links">
-      <h4>Quick Links</h4>
-      <a href="/p/about.html"><i class="fas fa-angle-right"></i> About Us</a>
-      <a href="/p/contact.html"><i class="fas fa-angle-right"></i> Contact Us</a>
-      <a href="/p/privacy.html"><i class="fas fa-angle-right"></i> Privacy Policy</a>
-      <a href="/p/terms.html"><i class="fas fa-angle-right"></i> Terms of Use</a>
-    </div>
-
-    <div class="footer-col footer-links">
-      <h4>Popular Categories</h4>
-      <a href="#" onclick="filterTag('pdf', document.querySelectorAll('.tag')[1])"><i class="fas fa-angle-right"></i> PDF Tools</a>
-      <a href="#" onclick="filterTag('image', document.querySelectorAll('.tag')[2])"><i class="fas fa-angle-right"></i> Image Tools</a>
-      <a href="#" onclick="filterTag('security', document.querySelectorAll('.tag')[5])"><i class="fas fa-angle-right"></i> Security</a>
-      <a href="#"><i class="fas fa-angle-right"></i> New Tools</a>
+    <div class="info-grid">
+      <div class="info-col">
+        <h4>About Us</h4>
+        <p>XIZOA HUB is your one-stop destination for 30+ premium online tools. Free, secure, and fast.</p>
+      </div>
+      <div class="info-col">
+        <h4>Legal</h4>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <div class="info-col">
+        <h4>Connect Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
     </div>
 
   </div>
-
-  <div class="copyright">
-    © 2025 XIZOAHUB TOOLS <i class="fas fa-heart" style="color:var(--primary)"></i>
-  </div>
+  <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
 </footer>
 
 <script>
-  const search = document.getElementById('search');
+  // 1. Sidebar JS
+  const menuBtn = document.getElementById('menuBtn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  function toggleMenu() {
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+  }
+
+  // Event Listeners for Menu
+  menuBtn.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  // 2. Load More JS (Strict 12 Limit)
   const cards = document.querySelectorAll('.tool-card');
-  const tags = document.querySelectorAll('.tag');
   const loadBtn = document.getElementById('loadBtn');
+  const tags = document.querySelectorAll('.tag');
   
-  let itemsToShow = 15; // Starting number
-  const itemIncrement = 15; // How many to add on click
+  let itemsToShow = 12; // Start with 12
+  const increment = 12;
 
-  // Initialize: Hide items beyond 15
-  function initList() {
-    cards.forEach((card, index) => {
-      if (index < itemsToShow) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-    // Hide button if total tools are less than 15
-    if (cards.length <= itemsToShow) {
-      loadBtn.style.display = 'none';
-    } else {
-      loadBtn.style.display = 'inline-block';
-    }
-  }
-
-  // Load More Function
-  function loadMore() {
-    itemsToShow += itemIncrement;
-    cards.forEach((card, index) => {
-      if (index < itemsToShow) {
-        card.style.display = 'flex';
-      }
-    });
-    // Hide button if all tools are shown
-    if (itemsToShow >= cards.length) {
-      loadBtn.style.display = 'none';
-    }
-  }
-
-  // Run initialization
-  initList();
-
-  // Search Function
-  search.addEventListener('keyup', () => {
-    let q = search.value.toLowerCase();
+  function updateList() {
+    let visibleCount = 0;
     
-    if(q.length > 0){
-        loadBtn.style.display = 'none'; // Hide "Load More" while searching
-        cards.forEach(card => {
-            let title = card.querySelector('h3').innerText.toLowerCase();
-            let desc = card.querySelector('p').innerText.toLowerCase();
-            card.style.display = (title.includes(q) || desc.includes(q)) ? "flex" : "none";
-        });
-    } else {
-        // Reset if search is empty
-        itemsToShow = 15;
-        initList();
+    // Simple Loop logic
+    for(let i=0; i<cards.length; i++) {
+        if(i < itemsToShow) {
+            cards[i].style.display = 'flex';
+        } else {
+            cards[i].style.display = 'none';
+        }
     }
+
+    // Toggle Button
+    if(itemsToShow >= cards.length) {
+        loadBtn.style.display = 'none';
+    } else {
+        loadBtn.style.display = 'inline-block';
+    }
+  }
+
+  updateList(); // Run on Load
+
+  loadBtn.addEventListener('click', () => {
+    itemsToShow += increment;
+    updateList();
   });
 
-  // Tag Filter Function
-  function filterTag(category, element) {
+  // 3. Filter JS
+  window.filterTag = function(cat, el) {
     tags.forEach(t => t.classList.remove('active'));
-    element.classList.add('active');
+    el.classList.add('active');
 
-    if (category === 'all') {
-      itemsToShow = 15;
-      initList(); // Reset to "Load More" view
+    if(cat === 'all') {
+        itemsToShow = 12;
+        updateList();
+        loadBtn.style.display = 'inline-block';
     } else {
-      loadBtn.style.display = 'none'; // Hide button on filter
-      cards.forEach(card => {
-        card.style.display = card.dataset.cat.includes(category) ? "flex" : "none";
-      });
+        loadBtn.style.display = 'none'; // Hide button in filter mode
+        cards.forEach(card => {
+            if(card.dataset.cat.includes(cat)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
     }
-  }
+  };
 </script>
 
 </body>
