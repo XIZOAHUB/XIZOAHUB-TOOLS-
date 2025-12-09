@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Text to Speech Converter - AI Voice Generator (Free)</title>
+  
+  <meta name="description" content="Convert text into natural-sounding speech instantly. Choose from multiple AI voices, adjust speed and pitch. Free online TTS tool for creators with audio download.">
+  
+  <meta name="keywords" content="text to speech, tts converter, ai voice generator, text reader online, free voiceover tool, download text to speech mp3, narrator voice generator, xizoa tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="AI Text to Speech - Free Voice Generator">
+  <meta property="og:description" content="Convert text to lifelike speech for videos and reels.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- THEME: CYBER STUDIO (Purple & Cyan) --- */
+    :root {
+      --primary: #8a2be2; /* Studio Purple */
+      --secondary: #00f7ff; /* Neon Cyan */
+      --bg-dark: #0a0a12;
+      --card-bg: rgba(20, 20, 30, 0.9);
+      --glass-border: 1px solid rgba(138, 43, 226, 0.3);
+      --text-main: #e5e5e5;
+      --text-muted: #908ca0;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Sound Wave Pattern Background */
+      background-image: repeating-linear-gradient(90deg, 
+          var(--bg-dark), var(--bg-dark) 10px,
+          rgba(138, 43, 226, 0.05) 10px, rgba(138, 43, 226, 0.05) 20px
+      );
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--secondary); text-shadow: 0 0 10px var(--secondary); }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    h1 span {
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- STUDIO BOX --- */
+    .studio-box {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(138, 43, 226, 0.2);
+      margin-bottom: 30px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1.1rem;
+      resize: vertical;
+      margin-bottom: 25px;
+    }
+    textarea:focus { border-color: var(--secondary); box-shadow: 0 0 15px rgba(0, 247, 255, 0.2); }
+
+    /* Controls Area */
+    .controls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+      background: rgba(255,255,255,0.03);
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .control-group label { display: flex; justify-content: space-between; color: var(--text-muted); margin-bottom: 8px; font-size: 0.9rem; }
+    
+    select {
+      width: 100%;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 12px;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* Action Buttons */
+    .btn-row { display: flex; gap: 15px; flex-wrap: wrap; }
+
+    button.btn-action {
+      flex: 1;
+      min-width: 150px;
+      padding: 15px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-play { background: linear-gradient(135deg, var(--primary), #d900ff); color: #fff; }
+    .btn-play:hover { box-shadow: 0 0 20px var(--primary); }
+    .btn-play.speaking { background: #ff0055; animation: pulse 1.5s infinite; }
+
+    .btn-download { background: transparent; border: 2px solid var(--secondary); color: var(--secondary); }
+    .btn-download:hover { background: var(--secondary); color: #000; box-shadow: 0 0 20px var(--secondary); }
+    .btn-download.recording { background: #ff0055; border-color: #ff0055; color: #fff; }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(20, 20, 30, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '🎙️'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #05050c; border-top: 1px solid #1a1a2e; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+    @media (max-width: 600px) { h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Text to <span>Speech</span></h1>
+    <p class="subtitle">Convert Text into Human-like AI Voice for Videos & Reels</p>
+  </header>
+
+  <main>
+    
+    <div class="studio-box">
+      
+      <textarea id="textInput" placeholder="Type or paste your text here to convert into speech..."></textarea>
+
+      <div class="controls-grid">
+        <div class="control-group" style="grid-column: span 2;">
+          <label><i class="fas fa-microphone"></i> Select Voice</label>
+          <select id="voiceSelect">
+            <option value="">Loading voices...</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label>
+            <span><i class="fas fa-tachometer-alt"></i> Speed</span>
+            <span id="rateVal">1.0x</span>
+          </label>
+          <input type="range" id="rate" min="0.5" max="2" value="1" step="0.1">
+        </div>
+
+        <div class="control-group">
+          <label>
+            <span><i class="fas fa-music"></i> Pitch</span>
+            <span id="pitchVal">1.0</span>
+          </label>
+          <input type="range" id="pitch" min="0.5" max="2" value="1" step="0.1">
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-action btn-play" id="btnPlay"><i class="fas fa-play"></i> Play Voice</button>
+        <button class="btn-action btn-download" id="btnDownload" title="Requires Tab Audio permission"><i class="fas fa-download"></i> Record & Download</button>
+      </div>
+      <p style="text-align:center; margin-top:10px; font-size:0.85rem; color:var(--text-muted);">
+        *For download, you will be asked to share "Tab Audio" to capture the voice.
+      </p>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>Free AI Voice Generator for Creators</h2>
+        <p>
+          Need a voiceover for your YouTube Short, Instagram Reel, or TikTok? Our **Text to Speech Converter** uses advanced browser-based AI voices to bring your script to life.
+        </p>
+        <p>
+          Apne text ko aawaaz mein badlein. Speed aur Pitch control karke unique voice banayein aur apne videos ke liye use karein.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Features</h3>
+        <ul>
+          <li><strong>Multiple Voices:</strong> Detects all available voices on your device (male/female, different accents).</li>
+          <li><strong>Custom Control:</strong> Adjust speed (fast/slow) and pitch (deep/high voice).</li>
+          <li><strong>Audio Download:</strong> Record the generated speech and save it as an audio file.</li>
+          <li><strong>Unlimited Use:</strong> No character limits, completely free.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Text to Speech Converter is a powerful utility for content creators to generate voiceovers directly in the browser without expensive software.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="tone-generator.html"><i class="fas fa-wave-square"></i> Tone Generator</a>
+        <a href="reaction-time-test.html"><i class="fas fa-bolt"></i> Reflex Test</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const synth = window.speechSynthesis;
+    const textInput = document.getElementById('textInput');
+    const voiceSelect = document.getElementById('voiceSelect');
+    const rateInput = document.getElementById('rate');
+    const pitchInput = document.getElementById('pitch');
+    const rateVal = document.getElementById('rateVal');
+    const pitchVal = document.getElementById('pitchVal');
+    const btnPlay = document.getElementById('btnPlay');
+    const btnDownload = document.getElementById('btnDownload');
+
+    let voices = [];
+    let isRecording = false;
+    let mediaRecorder;
+    let audioChunks = [];
+
+    // Load Voices
+    function populateVoices() {
+      voices = synth.getVoices();
+      voiceSelect.innerHTML = '';
+      
+      // Filter for English/Hindi initially or list all (Listing all for max options)
+      voices.forEach((voice, index) => {
+        const option = document.createElement('option');
+        option.textContent = `${voice.name} (${voice.lang})`;
+        option.value = index;
+        
+        // Try to set a default nice English voice if available
+        if (voice.default || (voice.lang.includes('en') && voice.name.includes('Google'))) {
+            option.selected = true;
+        }
+        voiceSelect.appendChild(option);
+      });
+
+      if (voices.length === 0) {
+          voiceSelect.innerHTML = '<option>No voices found on this device</option>';
+      }
+    }
+
+    populateVoices();
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = populateVoices;
+    }
+
+    // Update Slider Labels
+    rateInput.addEventListener('input', () => rateVal.innerText = rateInput.value + 'x');
+    pitchInput.addEventListener('input', () => pitchVal.innerText = pitchInput.value);
+
+    // Speak Function
+    function speak(callback) {
+      if (synth.speaking) {
+        console.error('Already speaking...');
+        return;
+      }
+      if (textInput.value === '') {
+        alert("Please enter some text.");
+        return;
+      }
+
+      const utterThis = new SpeechSynthesisUtterance(textInput.value);
+      
+      utterThis.onstart = () => {
+        btnPlay.innerHTML = '<i class="fas fa-stop"></i> Stop';
+        btnPlay.classList.add('speaking');
+      };
+
+      utterThis.onend = () => {
+        btnPlay.innerHTML = '<i class="fas fa-play"></i> Play Voice';
+        btnPlay.classList.remove('speaking');
+        if (callback) callback();
+      };
+
+      utterThis.onerror = (e) => {
+        console.error('Speech error:', e);
+        btnPlay.innerHTML = '<i class="fas fa-play"></i> Play Voice';
+        btnPlay.classList.remove('speaking');
+      };
+
+      const selectedVoiceIndex = voiceSelect.value;
+      if (voices[selectedVoiceIndex]) {
+          utterThis.voice = voices[selectedVoiceIndex];
+      }
+      
+      utterThis.pitch = pitchInput.value;
+      utterThis.rate = rateInput.value;
+      synth.speak(utterThis);
+    }
+
+    // Play Button Handler
+    btnPlay.addEventListener('click', () => {
+      if (synth.speaking) {
+        synth.cancel();
+      } else {
+        speak();
+      }
+    });
+
+    // Download (Record) Button Handler
+    btnDownload.addEventListener('click', async () => {
+        if (textInput.value === '') { alert("Please enter some text first."); return; }
+        
+        if(isRecording) {
+            // If already recording, just stop
+            synth.cancel();
+            if(mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+            return;
+        }
+
+        try {
+            alert("To download audio, please select 'Tab Audio' in the sharing prompt that appears next.");
+            
+            // 1. Capture System/Tab Audio
+            const stream = await navigator.mediaDevices.getDisplayMedia({
+                video: { width: 1, height: 1 }, // Minimal video request
+                audio: true, // We need audio
+                preferCurrentTab: true // Hint browser to prefer current tab
+            });
+
+            // Check if user shared audio
+            if(stream.getAudioTracks().length === 0) {
+                alert("Audio was not shared. Please try again and ensure 'Share tab audio' is checked.");
+                stream.getTracks().forEach(track => track.stop());
+                return;
+            }
+
+            // 2. Setup Recorder
+            mediaRecorder = new MediaRecorder(stream);
+            audioChunks = [];
+            isRecording = true;
+            btnDownload.innerHTML = '<i class="fas fa-stop"></i> Stop Recording';
+            btnDownload.classList.add('recording');
+
+            mediaRecorder.ondataavailable = (e) => {
+                if (e.data.size > 0) audioChunks.push(e.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                // Stop all tracks to stop sharing icon
+                stream.getTracks().forEach(track => track.stop());
+                
+                // Create Download Link
+                const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                const link = document.createElement('a');
+                link.href = audioUrl;
+                link.download = 'xizoa-voiceover.webm';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Reset UI
+                isRecording = false;
+                btnDownload.innerHTML = '<i class="fas fa-download"></i> Record & Download';
+                btnDownload.classList.remove('recording');
+            };
+
+            // 3. Start Recording & Speaking together
+            mediaRecorder.start();
+            speak(() => {
+                 // Stop recording when speech ends
+                if(mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+            });
+
+        } catch (err) {
+            console.error("Error capturing audio:", err);
+            alert("Could not start recording. Permission denied or cancelled.");
+            isRecording = false;
+            btnDownload.innerHTML = '<i class="fas fa-download"></i> Record & Download';
+            btnDownload.classList.remove('recording');
+        }
+    });
+
+  </script>
+</body>
+</html>
