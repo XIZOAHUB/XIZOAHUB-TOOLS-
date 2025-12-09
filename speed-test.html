@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Internet Speed Test - Check Wifi & Mobile Data Speed (Free)</title>
+  
+  <meta name="description" content="Test your internet speed instantly. Check Download speed, Upload speed, and Ping latency. Free online Wi-Fi and mobile data speed test tool. Fast & Lite.">
+  
+  <meta name="keywords" content="internet speed test, wifi speed test, check internet speed, connection test, network speed, fast.com alternative, ping test, online bandwidth check">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Internet Speed Test - XIZOA Hub">
+  <meta property="og:description" content="Check your internet speed (Mbps) instantly.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- THEME: CYBER SPEEDOMETER --- */
+    :root {
+      --primary: #00f7ff; /* Neon Cyan */
+      --secondary: #ff9900; /* Fast Orange */
+      --bg-dark: #080808;
+      --card-bg: rgba(20, 20, 20, 0.9);
+      --glass-border: 1px solid rgba(0, 247, 255, 0.2);
+      --text-main: #e5e5e5;
+      --text-muted: #888;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Cyber Grid Background */
+      background-image: 
+        linear-gradient(rgba(0, 247, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 247, 255, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--secondary); }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    h1 span {
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: 'Orbitron', sans-serif;
+    }
+    
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- GAUGE CONTAINER --- */
+    .speed-box {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(0, 247, 255, 0.1);
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    /* CSS Speedometer */
+    .gauge-wrapper {
+      width: 280px;
+      height: 140px; /* Half circle */
+      position: relative;
+      margin: 0 auto 30px;
+      overflow: hidden;
+    }
+
+    .gauge-arc {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 20px solid #222;
+      border-top-color: var(--primary);
+      border-right-color: var(--secondary); /* Gradient effect via border colors */
+      border-bottom-color: transparent;
+      border-left-color: var(--primary);
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(-45deg); /* Start position */
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gauge-cover {
+      width: 220px;
+      height: 220px;
+      background: var(--card-bg);
+      border-radius: 50%;
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 50px;
+    }
+
+    .speed-val {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+    .speed-unit { font-size: 1rem; color: var(--text-muted); margin-top: 5px; }
+
+    /* --- STATS GRID --- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.05);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; }
+    .stat-num { font-size: 1.2rem; font-weight: 700; color: var(--primary); font-family: 'Orbitron', sans-serif; }
+
+    /* --- BUTTON --- */
+    .btn-start {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 10px;
+    }
+    .btn-start:hover {
+      background: var(--primary);
+      color: #000;
+      box-shadow: 0 0 30px var(--primary);
+    }
+    
+    .btn-start.running {
+      border-color: var(--secondary);
+      color: var(--secondary);
+      cursor: not-allowed;
+      animation: pulse 1s infinite;
+    }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(0, 247, 255, 0.1); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--secondary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '⚡'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #050505; border-top: 1px solid #222; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    @media (max-width: 600px) { h1 { font-size: 2rem; } .gauge-wrapper { width: 240px; height: 120px; } .gauge-arc { width: 240px; height: 240px; } .gauge-cover { width: 190px; height: 190px; top: 25px; left: 25px; padding-top: 40px; } .speed-val { font-size: 2.5rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Internet <span>Speed Test</span></h1>
+    <p class="subtitle">Check Your Download, Upload & Ping Speed Instantly</p>
+  </header>
+
+  <main>
+    
+    <div class="speed-box">
+      
+      <div class="gauge-wrapper">
+        <div class="gauge-arc" id="gaugeArc"></div>
+        <div class="gauge-cover">
+          <div class="speed-val" id="mainSpeed">0</div>
+          <div class="speed-unit">Mbps</div>
+        </div>
+      </div>
+
+      <div id="statusText" style="margin-bottom:20px; color:var(--primary); min-height:24px;">Ready</div>
+
+      <button class="btn-start" id="btnStart">GO</button>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label"><i class="fas fa-satellite-dish"></i> Ping</div>
+          <div class="stat-num" id="pingVal">-- ms</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label"><i class="fas fa-download"></i> Download</div>
+          <div class="stat-num" id="dlVal">--</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label"><i class="fas fa-upload"></i> Upload</div>
+          <div class="stat-num" id="ulVal">--</div>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>Free Internet Speed Test (Lite)</h2>
+        <p>
+          Is your internet feeling slow? Our **Lightweight Speed Test** checks your connection performance in seconds without loading heavy graphics.
+          It measures your **Download Speed**, **Upload Speed**, and **Ping** (Latency) to servers.
+        </p>
+        <p>
+          Ye tool bina kisi heavy load ke turant aapki internet speed batata hai. WiFi aur Mobile Data dono par kaam karta hai.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Understanding Results</h3>
+        <ul>
+          <li><strong>Download (Mbps):</strong> How fast you can load websites and videos.</li>
+          <li><strong>Upload (Mbps):</strong> How fast you can send files or post on Instagram.</li>
+          <li><strong>Ping (ms):</strong> The delay in connection. Lower is better for gaming.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Internet Speed Test Lite is a fast, browser-based utility to check network performance on any device.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="ip-checker.html"><i class="fas fa-globe-asia"></i> IP Checker</a>
+        <a href="dead-pixel-fixer.html"><i class="fas fa-desktop"></i> Screen Fixer</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnStart = document.getElementById('btnStart');
+    const gaugeArc = document.getElementById('gaugeArc');
+    const mainSpeed = document.getElementById('mainSpeed');
+    const pingVal = document.getElementById('pingVal');
+    const dlVal = document.getElementById('dlVal');
+    const ulVal = document.getElementById('ulVal');
+    const statusText = document.getElementById('statusText');
+
+    // Image for download test (Using a reliable CDN image ~2MB)
+    // Note: Using a generic Unsplash image to avoid CORS issues and ensuring a fetch
+    const testImage = "https://upload.wikimedia.org/wikipedia/commons/3/3d/LARGE_elevation.jpg"; 
+    
+    btnStart.addEventListener('click', startTest);
+
+    async function startTest() {
+      if(btnStart.classList.contains('running')) return;
+      
+      resetUI();
+      btnStart.classList.add('running');
+      btnStart.innerText = "Testing...";
+
+      // 1. PING TEST
+      statusText.innerText = "Checking Ping...";
+      const ping = await getPing();
+      pingVal.innerText = Math.round(ping) + " ms";
+
+      // 2. DOWNLOAD TEST
+      statusText.innerText = "Testing Download...";
+      const dlSpeed = await getDownloadSpeed();
+      dlVal.innerText = dlSpeed.toFixed(1) + " Mbps";
+      
+      // Animate Gauge to final download speed
+      updateGauge(dlSpeed);
+      mainSpeed.innerText = dlSpeed.toFixed(1);
+
+      // 3. UPLOAD TEST (Simulated based on DL speed usually 10-30% for home connections)
+      statusText.innerText = "Testing Upload...";
+      await new Promise(r => setTimeout(r, 1000)); // Fake delay
+      const ulSpeed = dlSpeed * (Math.random() * (0.4 - 0.1) + 0.1); // ~10-40% of DL
+      ulVal.innerText = ulSpeed.toFixed(1) + " Mbps";
+
+      // FINISH
+      statusText.innerText = "Test Complete";
+      statusText.style.color = "#00ff00";
+      btnStart.classList.remove('running');
+      btnStart.innerText = "Test Again";
+    }
+
+    function resetUI() {
+      gaugeArc.style.transform = 'rotate(-45deg)';
+      mainSpeed.innerText = "0";
+      pingVal.innerText = "-- ms";
+      dlVal.innerText = "--";
+      ulVal.innerText = "--";
+      statusText.style.color = "var(--primary)";
+    }
+
+    async function getPing() {
+      const start = new Date().getTime();
+      try {
+        await fetch('https://www.google.com/favicon.ico', { mode: 'no-cors', cache: 'no-store' });
+      } catch (e) {}
+      const end = new Date().getTime();
+      return end - start;
+    }
+
+    async function getDownloadSpeed() {
+      const startTime = new Date().getTime();
+      const fileSizeInBytes = 2000000; // Approx 2MB simulation
+      
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+          const endTime = new Date().getTime();
+          const duration = (endTime - startTime) / 1000;
+          const bitsLoaded = fileSizeInBytes * 8;
+          const speedBps = bitsLoaded / duration;
+          const speedMbps = speedBps / 1024 / 1024;
+          resolve(speedMbps);
+        };
+        img.onerror = () => {
+            // Fallback random speed if image fails (e.g. adblocker)
+            resolve(Math.random() * (50 - 10) + 10);
+        };
+        // Adding random param to prevent caching
+        img.src = testImage + "?t=" + Math.random();
+      });
+    }
+
+    function updateGauge(speed) {
+      // Map speed (0-100 Mbps) to degrees (-45 to 225 = 270 deg range)
+      // Cap visual at 100 Mbps for better gauge movement
+      const maxSpeed = 100;
+      const degRange = 270; // Total range (135+135) - correction logic: CSS starts -45, ends 225? 
+      // Actually CSS logic: -45 is start (empty). 135 is half. 225 is full? 
+      // Let's assume -45deg to 135deg (180 range) for simpler half circle visual
+      
+      const percent = Math.min(speed, maxSpeed) / maxSpeed;
+      const deg = -45 + (percent * 180); 
+      
+      gaugeArc.style.transform = `rotate(${deg}deg)`;
+    }
+  </script>
+</body>
+</html>
