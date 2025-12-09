@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Online Image Compressor - Reduce Photo Size KB/MB (Free)</title>
+  
+  <meta name="description" content="Compress JPG, PNG, and WebP images online for free. Reduce image file size by up to 90% without losing visible quality. Fast & Secure client-side compression.">
+  
+  <meta name="keywords" content="image compressor, compress image online, reduce photo size, image optimizer, compress jpg, compress png, reduce image kb, free photo compressor, online image size reducer">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Image Compressor - Reduce File Size Free">
+  <meta property="og:description" content="Optimize and compress your images instantly. Slider-based control for perfect balance.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- SAME THEME CSS --- */
+    :root {
+      --primary: #00f7ff;
+      --secondary: #007bff;
+      --bg-dark: #0a0f1a;
+      --card-bg: rgba(23, 33, 54, 0.6);
+      --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+      --text-main: #e5e5e5;
+      --text-muted: #a0aec0;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      background-image: radial-gradient(circle at 15% 50), rgba(0, 247, 255, 0.08), transparent 25%), 
+                        radial-gradient(circle at 85% 30%, rgba(0, 123, 255, 0.08), transparent 25%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 2.5rem; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.3)); }
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; }
+
+    /* --- UPLOAD BOX --- */
+    .upload-box {
+      background: var(--card-bg);
+      border: 2px dashed rgba(0, 247, 255, 0.3);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 30px;
+    }
+    .upload-box:hover { border-color: var(--primary); background: rgba(0, 247, 255, 0.05); }
+    .upload-icon { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
+    .upload-text { font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
+    .upload-hint { color: var(--text-muted); font-size: 0.9rem; }
+    #fileInput { display: none; }
+
+    /* --- EDITOR PANEL --- */
+    .editor-panel { display: none; background: var(--card-bg); border: var(--glass-border); padding: 30px; border-radius: 20px; margin-bottom: 30px; }
+    
+    .img-preview-container {
+        text-align: center; margin-bottom: 25px;
+    }
+    .img-preview { 
+        max-width: 100%; height: auto; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); 
+        max-height: 300px; object-fit: contain;
+    }
+    
+    /* Compression Controls */
+    .controls-container {
+        background: rgba(0,0,0,0.2); padding: 20px; border-radius: 15px;
+    }
+
+    .slider-group { margin-bottom: 20px; }
+    .slider-labels { display: flex; justify-content: space-between; color: #fff; margin-bottom: 10px; font-weight: 600; }
+    
+    /* Custom Range Slider Style */
+    input[type=range] {
+      width: 100%; -webkit-appearance: none; height: 8px; background: rgba(255,255,255,0.1); border-radius: 5px; outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: var(--primary); border-radius: 50%; cursor: pointer; box-shadow: 0 0 10px var(--primary);
+    }
+
+    .size-comparison {
+        display: flex; justify-content: space-around; margin-bottom: 25px; text-align: center;
+    }
+    .size-box h4 { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px; }
+    .size-box .size-val { color: #fff; font-size: 1.2rem; font-weight: 700; }
+    .size-box .size-val.new { color: var(--primary); }
+
+    .btn-main {
+      width: 100%; background: linear-gradient(135deg, var(--secondary), var(--primary)); color: #000; border: none; padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none;
+    }
+    .btn-main:hover { box-shadow: 0 0 20px rgba(0, 247, 255, 0.4); transform: translateY(-2px); }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '✔'; color: var(--primary); position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #05080f; border-top: 1px solid #1d2f49; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+
+    @media (max-width: 600px) { h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Online Image Compressor</h1>
+    <p class="subtitle">Reduce Image File Size significantly without losing quality • Fast & Free</p>
+  </header>
+
+  <main>
+    
+    <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+      <div class="upload-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+      <div class="upload-text">Upload Image to Compress</div>
+      <div class="upload-hint">Supports JPG, PNG, WEBP</div>
+      <input type="file" id="fileInput" accept="image/*">
+    </div>
+
+    <div class="editor-panel" id="editorPanel">
+      
+      <div class="img-preview-container">
+        <img id="previewImg" class="img-preview" src="" alt="Preview">
+      </div>
+
+      <div class="controls-container">
+        <div class="slider-group">
+            <div class="slider-labels">
+                <span>Compression Level</span>
+                <span id="qualityValue">80%</span>
+            </div>
+            <input type="range" id="qualitySlider" min="10" max="100" value="80" step="5">
+        </div>
+
+        <div class="size-comparison">
+            <div class="size-box">
+                <h4>Original Size</h4>
+                <div class="size-val" id="originalSize">0 KB</div>
+            </div>
+            <div class="size-box">
+                <h4>New Size (Approx.)</h4>
+                <div class="size-val new" id="newSize">0 KB</div>
+            </div>
+        </div>
+
+        <a id="downloadBtn" class="btn-main" download="compressed-image-xizoa.jpg">
+            <i class="fas fa-download"></i> Download Compressed Image
+        </a>
+      </div>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>Free Online Image Compressor</h2>
+        <p>
+          Is your image file size too large for websites or email? Our **Image Compressor** reduces the file size of JPG, PNG, and WebP images by optimizing data without noticeable quality loss.
+        </p>
+        <p>
+          Photo ka size kam karein bina quality kharab kiye. Slider ka use karke decide karein ki kitna compress karna hai.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Features</h3>
+        <ul>
+          <li><strong>Adjustable Quality:</strong> Use the slider to find the perfect balance between size and quality.</li>
+          <li><strong>High Compression Ratio:</strong> Reduce size by up to 80-90%.</li>
+          <li><strong>Secure & Private:</strong> Compression happens in your browser. Images never leave your device.</li>
+          <li><strong>Fast:</strong> Instant results, no server uploading/downloading time.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>This Image Compressor helps optimize your photos for the web, saving storage space and improving website loading speed.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="image-resizer.html"><i class="fas fa-expand-arrows-alt"></i> Image Resizer</a>
+        <a href="jpg-to-png.html"><i class="fas fa-images"></i> JPG to PNG</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const editorPanel = document.getElementById('editorPanel');
+    const previewImg = document.getElementById('previewImg');
+    const qualitySlider = document.getElementById('qualitySlider');
+    const qualityValue = document.getElementById('qualityValue');
+    const originalSizeTxt = document.getElementById('originalSize');
+    const newSizeTxt = document.getElementById('newSize');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    let originalImage = null;
+    let originalFileSize = 0;
+
+    // Helper to format file size
+    function formatSize(bytes) {
+        if (bytes === 0) return '0 KB';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // Handle File Upload
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      originalFileSize = file.size;
+      originalSizeTxt.innerText = formatSize(originalFileSize);
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          originalImage = img;
+          previewImg.src = img.src;
+          
+          // Show editor and trigger first compression estimate
+          editorPanel.style.display = 'block';
+          editorPanel.scrollIntoView({behavior: "smooth"});
+          compressImage(); 
+        }
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Update Slider Text & Trigger Compression
+    qualitySlider.addEventListener('input', () => {
+        qualityValue.innerText = qualitySlider.value + '%';
+        compressImage();
+    });
+
+    // Compression Logic
+    function compressImage() {
+        if (!originalImage) return;
+
+        const canvas = document.createElement('canvas');
+        canvas.width = originalImage.width;
+        canvas.height = originalImage.height;
+        const ctx = canvas.getContext('2d');
+
+        // Draw original image
+        ctx.drawImage(originalImage, 0, 0);
+
+        // Compress (Quality is 0.1 to 1.0)
+        const quality = qualitySlider.value / 100;
+        
+        // Output as JPEG for best compression
+        const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+
+        // Calculate approx new size base64 length
+        const head = 'data:image/jpeg;base64,';
+        const imgFileSize = Math.round((compressedDataUrl.length - head.length) * 3 / 4);
+        newSizeTxt.innerText = formatSize(imgFileSize);
+
+        // Update download link
+        downloadBtn.href = compressedDataUrl;
+    }
+  </script>
+</body>
+</html>
