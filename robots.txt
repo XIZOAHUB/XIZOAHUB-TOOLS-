@@ -1,4 +1,20 @@
+# Content Signals for AI permissions
+Content-signal: search=yes,ai-train=no
+
+# Block Specific AI Bots & Scrapers
+User-agent: Amazonbot
+User-agent: Applebot-Extended
+User-agent: Bytespider
+User-agent: CCBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: GPTBot
+User-agent: meta-externalagent
+Disallow: /
+
+# Allow all other bots (Google Search, Bing, etc.)
 User-agent: *
 Allow: /
 
+# Sitemap Location
 Sitemap: https://tools.xizoa.com/sitemap.xml
