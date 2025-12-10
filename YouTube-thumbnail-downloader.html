@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>YouTube Thumbnail Downloader - Download 4K, HD & HQ Images (Free)</title>
+  <title>YouTube Thumbnail Downloader - Save HD & 4K Images (Free)</title>
   
-  <meta name="description" content="Download YouTube thumbnails in 4K, 1080p, HD & HQ instantly. Free online tool to save YT video cover images, banners, and backgrounds. No login required. Mobile friendly.">
+  <meta name="description" content="Download YouTube thumbnails in 4K, HD, and SD quality. Extract cover images from YouTube videos and Shorts instantly. Free online thumbnail grabber tool.">
   
-  <meta name="keywords" content="youtube thumbnail downloader, yt thumbnail saver, download youtube thumbnail 4k, save youtube cover image, youtube video thumbnail grabber, get youtube thumbnail, hd thumbnail downloader, youtube thumbnail download online, yt image saver, youtube thumbnail kaise download kare, youtube video ka photo kaise nikale, youtube thumbnail saver online free, 1080p thumbnail downloader, youtube banner downloader, 4k yt thumbnail">
+  <meta name="keywords" content="youtube thumbnail downloader, yt thumbnail saver, download youtube cover, get youtube thumbnail, save yt shorts thumbnail, 4k thumbnail downloader, hd thumbnail grabber">
   
   <meta name="robots" content="index, follow">
-  
-  <meta property="og:title" content="YouTube Thumbnail Downloader - Download 4K Images Free">
-  <meta property="og:description" content="One-click tool to download YouTube Thumbnails in Ultra HD (4K). Fast, Free & No Ads.">
+  <meta property="og:title" content="YouTube Thumbnail Downloader - 4K Support">
+  <meta property="og:description" content="Download YouTube Video & Shorts Thumbnails instantly in HD.">
   <meta property="og:type" content="website">
 
   <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
@@ -22,22 +21,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* --- THEME: YOUTUBE RED & DARK --- */
     :root {
-      --primary: #00f7ff;
-      --secondary: #007bff;
-      --bg-dark: #0a0f1a;
-      --card-bg: rgba(23, 33, 54, 0.6);
+      --primary: #ff0000; /* YouTube Red */
+      --secondary: #282828; /* YT Dark Grey */
+      --accent: #fff;
+      --bg-dark: #0f0f0f;
+      --card-bg: rgba(33, 33, 33, 0.9);
       --glass-border: 1px solid rgba(255, 255, 255, 0.1);
       --text-main: #e5e5e5;
-      --text-muted: #a0aec0;
+      --text-muted: #aaaaaa;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
     
     body {
       background-color: var(--bg-dark);
-      background-image: radial-gradient(circle at 15% 50%, rgba(0, 247, 255, 0.08), transparent 25%), 
-                        radial-gradient(circle at 85% 30%, rgba(0, 123, 255, 0.08), transparent 25%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
@@ -45,80 +44,44 @@
       overflow-x: hidden;
     }
 
-    /* --- HEADER --- */
-    header {
-      text-align: center;
-      padding: 40px 20px;
-    }
-    
-    .brand-logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
     .brand-logo span { color: var(--primary); }
-
-    h1 {
-      font-size: 2.5rem;
-      background: linear-gradient(to right, #fff, var(--primary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-      filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.3));
-    }
-
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    h1 span { color: var(--primary); }
+    
     .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
 
-    /* --- MAIN CONTENT --- */
-    main {
-      flex: 1;
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
 
-    /* --- INPUT AREA --- */
+    /* --- INPUT BOX --- */
     .input-box {
       background: var(--card-bg);
       border: var(--glass-border);
       padding: 30px;
       border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-      position: relative;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      margin-bottom: 30px;
     }
 
-    .input-group {
-      display: flex;
-      gap: 15px;
-      position: relative;
-    }
+    .input-group { display: flex; gap: 15px; position: relative; }
 
     input[type="text"] {
       flex: 1;
-      background: rgba(13, 20, 36, 0.8);
-      border: 1px solid #2d3748;
+      background: #121212;
+      border: 1px solid #333;
       padding: 16px 20px;
       border-radius: 12px;
       color: #fff;
       font-size: 1rem;
       transition: 0.3s;
     }
-
-    input[type="text"]:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(0, 247, 255, 0.15);
-    }
+    input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255, 0, 0, 0.2); }
 
     button.btn-main {
-      background: linear-gradient(135deg, var(--secondary), var(--primary));
-      color: #000;
+      background: var(--primary);
+      color: #fff;
       border: none;
       padding: 16px 30px;
       border-radius: 12px;
@@ -128,203 +91,72 @@
       white-space: nowrap;
       transition: 0.3s;
     }
+    button.btn-main:hover { background: #cc0000; box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
 
-    button.btn-main:hover {
-      box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
-      transform: translateY(-2px);
-    }
+    @media (max-width: 600px) { .input-group { flex-direction: column; } button.btn-main { width: 100%; } h1 { font-size: 2rem; } }
 
-    @media (max-width: 600px) {
-      .input-group { flex-direction: column; }
-      button.btn-main { width: 100%; }
-      h1 { font-size: 1.8rem; }
-    }
-
-    /* --- STATUS & RESULTS --- */
-    #status { margin: 20px 0; font-size: 0.95rem; text-align: center; min-height: 20px; }
-
-    .thumbs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-
-    .thumb-item {
+    /* --- PREVIEW AREA --- */
+    .preview-container {
+      display: none;
       background: var(--card-bg);
       border: var(--glass-border);
-      border-radius: 15px;
-      overflow: hidden;
-      transition: 0.3s;
+      padding: 25px;
+      border-radius: 20px;
       animation: fadeIn 0.5s ease;
     }
 
-    .thumb-item:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-      box-shadow: 0 5px 20px rgba(0, 247, 255, 0.1);
-    }
-
-    .thumb-item img {
+    .thumb-img {
       width: 100%;
-      display: block;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .thumb-actions { padding: 20px; text-align: center; }
-
-    .quality-tag {
-      display: inline-block;
-      background: rgba(0, 247, 255, 0.1);
-      color: var(--primary);
-      padding: 4px 10px;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 15px;
-      border: 1px solid rgba(0, 247, 255, 0.2);
-    }
-
-    .btn-dl {
-      display: block;
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-      padding: 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border: 1px solid transparent;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    .btn-dl:hover {
-      background: var(--primary);
-      color: #000;
-      box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
-    }
-
-    /* --- SEO CONTENT SECTION (Stylized) --- */
-    .seo-content {
-      margin-top: 80px;
-    }
-    
-    .seo-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 30px;
       border-radius: 15px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+      border: 1px solid #333;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    .seo-content h2 {
-      font-size: 1.8rem;
-      color: #fff;
-      margin-bottom: 15px;
-      border-left: 4px solid var(--primary);
-      padding-left: 15px;
-    }
-
-    .seo-content h3 {
-      font-size: 1.3rem;
-      color: var(--text-main);
-      margin-top: 25px;
-      margin-bottom: 10px;
-    }
-
-    .seo-content p {
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 15px;
-    }
-
-    .seo-content ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .seo-content li {
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      padding-left: 20px;
-      position: relative;
-    }
-
-    .seo-content li::before {
-      content: '✔';
-      color: var(--primary);
-      position: absolute;
-      left: 0;
-    }
-
-    /* --- NEW FOOTER STYLES --- */
-    footer {
-      background: #05080f;
-      border-top: 1px solid #1d2f49;
-      padding: 50px 20px 20px;
-      margin-top: auto;
-      text-align: left; /* Pehle center tha, ab left kar diya */
-    }
-
-    .footer-content {
-      max-width: 1000px;
-      margin: 0 auto;
+    .download-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
     }
 
-    .footer-col h3 {
-      color: #fff;
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      position: relative;
-      display: inline-block;
-    }
-    
-    /* Neon underline for headings */
-    .footer-col h3::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -5px;
-      width: 40px; height: 2px;
-      background: var(--primary);
-      box-shadow: 0 0 10px var(--primary);
-    }
-
-    .footer-col p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .footer-links a {
-      display: block;
-      color: var(--text-muted);
+    .dl-btn {
+      background: #181818;
+      border: 1px solid #333;
+      padding: 15px;
+      border-radius: 10px;
       text-decoration: none;
-      margin-bottom: 10px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       transition: 0.3s;
-      font-size: 0.9rem;
     }
-
-    .footer-links a:hover {
-      color: var(--primary);
-      padding-left: 5px;
-    }
-
-    .copyright {
-      text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      color: #555;
-      font-size: 0.85rem;
-    }
+    .dl-btn:hover { border-color: var(--primary); background: #222; transform: translateY(-3px); }
     
+    .dl-info h4 { font-size: 1rem; margin-bottom: 3px; }
+    .dl-info span { font-size: 0.8rem; color: #888; }
+    .dl-icon { color: var(--primary); font-size: 1.2rem; }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(33, 33, 33, 0.5); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '📺'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #050505; border-top: 1px solid #222; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid #222; color: #555; font-size: 0.85rem; }
+
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
@@ -332,190 +164,164 @@
 
   <header>
     <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
-    <h1>YouTube Thumbnail Downloader</h1>
-    <p class="subtitle">Get High-Quality Thumbnails from any YouTube Video instantly. 4K, HD, and HQ supported.</p>
+    <h1>YT Thumbnail <span>Downloader</span></h1>
+    <p class="subtitle">Download 4K, HD, & SD Thumbnails from Videos & Shorts</p>
   </header>
 
   <main>
+    
     <div class="input-box">
       <div class="input-group">
-        <input type="text" id="inputUrl" placeholder="Paste YouTube Video Link here... (e.g., https://youtu.be/...)" aria-label="YouTube URL">
-        <button class="btn-main" id="btnFetch"><i class="fas fa-bolt"></i> Get Thumbnails</button>
+        <input type="text" id="inputUrl" placeholder="Paste YouTube Video or Shorts Link..." aria-label="YouTube URL">
+        <button class="btn-main" id="btnFetch"><i class="fas fa-search"></i> Get Thumbnail</button>
       </div>
-      <div id="status"></div>
+      <div id="errorMsg" style="color:#ff3333; margin-top:15px; font-size:0.9rem; display:none;"></div>
     </div>
 
-    <div id="thumbs" class="thumbs-grid"></div>
+    <div class="preview-container" id="previewArea">
+      
+      <img src="" id="thumbPreview" class="thumb-img" alt="Thumbnail Preview">
+      
+      <h3 style="color:#fff; margin-bottom:20px; text-align:center;">Download Options</h3>
+      
+      <div class="download-grid">
+        <a href="#" class="dl-btn" id="btnMax" target="_blank">
+          <div class="dl-info">
+            <h4>Max (4K)</h4>
+            <span>1920 x 1080 +</span>
+          </div>
+          <div class="dl-icon"><i class="fas fa-download"></i></div>
+        </a>
+
+        <a href="#" class="dl-btn" id="btnSd" target="_blank">
+          <div class="dl-info">
+            <h4>Standard (HD)</h4>
+            <span>640 x 480</span>
+          </div>
+          <div class="dl-icon"><i class="fas fa-download"></i></div>
+        </a>
+
+        <a href="#" class="dl-btn" id="btnHq" target="_blank">
+          <div class="dl-info">
+            <h4>High Quality</h4>
+            <span>480 x 360</span>
+          </div>
+          <div class="dl-icon"><i class="fas fa-download"></i></div>
+        </a>
+
+        <a href="#" class="dl-btn" id="btnMq" target="_blank">
+          <div class="dl-info">
+            <h4>Medium</h4>
+            <span>320 x 180</span>
+          </div>
+          <div class="dl-icon"><i class="fas fa-download"></i></div>
+        </a>
+      </div>
+
+    </div>
 
     <section class="seo-content">
-      
       <div class="seo-card">
-        <h2>YouTube Thumbnail Downloader - Free 4K & HD Saver</h2>
+        <h2>Free YouTube Thumbnail Grabber</h2>
         <p>
-          Welcome to the fastest way to download YouTube thumbnails. Whether you need a <strong>4K background</strong> for your project or a <strong>standard HQ image</strong> for reference, our tool extracts them directly from YouTube servers instantly.
+          Need to save a thumbnail from a YouTube video for your project or inspiration? Our **YouTube Thumbnail Downloader** extracts high-quality cover images from any Video or Shorts link instantly.
         </p>
         <p>
-          Is tool ki madad se aap kisi bhi YouTube video ka thumbnail asani se download kar sakte hain. Bas video ka URL paste karein aur HD photo save karein.
+          Video ka link paste karein aur thumbnail download karein. Hum 4K, HD aur Standard quality support karte hain.
         </p>
       </div>
 
       <div class="seo-card">
-        <h3>🚀 Features of XIZOA Thumbnail Grabber</h3>
+        <h3>🚀 Features</h3>
         <ul>
-          <li><strong>Ultra HD 4K Support:</strong> Get the highest resolution available (Maximum Resolution).</li>
-          <li><strong>No Login Required:</strong> Direct download without signing up.</li>
-          <li><strong>Completely Free:</strong> No hidden charges, unlimited downloads.</li>
-          <li><strong>Mobile Friendly:</strong> Works perfectly on Android, iPhone, and PC.</li>
-          <li><strong>Fast & Secure:</strong> We process links locally; no data is stored on our servers.</li>
+          <li><strong>4K Quality:</strong> Get the highest resolution available (MaxRes).</li>
+          <li><strong>Shorts Support:</strong> Works perfectly with YouTube Shorts links.</li>
+          <li><strong>Fast & Free:</strong> No captcha, no ads, instant download.</li>
         </ul>
       </div>
-
-      <div class="seo-card">
-        <h3>❓ Frequently Asked Questions (FAQ)</h3>
-        
-        <p><strong>Q: Is it free to download YouTube thumbnails?</strong><br>
-        A: Yes, this tool is 100% free forever.</p>
-
-        <p><strong>Q: Kaise download kare thumbnail?</strong><br>
-        A: Video ka link copy karein, upar box me paste karein, aur "Get Thumbnails" button dabayein.</p>
-
-        <p><strong>Q: Does it support YouTube Shorts?</strong><br>
-        A: Yes! Simply paste the YouTube Shorts link to grab the cover image.</p>
-      </div>
-
     </section>
+
   </main>
 
   <footer>
     <div class="footer-content">
-      
       <div class="footer-col">
-        <h3>About This Tool</h3>
-        <p>
-          This YouTube Thumbnail Downloader helps creators save HD, HQ, and 4K thumbnails instantly. 
-          It's a free utility built for speed, privacy, and ease of use without any ads.
-        </p>
+        <h3>About Tool</h3>
+        <p>This tool helps creators download thumbnails for reference, SEO analysis, and archival purposes securely.</p>
       </div>
-
       <div class="footer-col">
         <h3>About XIZOA Hub</h3>
-        <p>
-          XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. 
-          Our mission is to provide fast, secure, and developer-friendly tools for everyone.
-        </p>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
       </div>
-
       <div class="footer-col footer-links">
-        <h3>Explore More Tools</h3>
-        <a href="index.html"><i class="fas fa-home"></i> Home Page</a>
-        <a href="image-compressor.html"><i class="fas fa-image"></i> Image Compressor</a>
-        <a href="pdf.html"><i class="fas fa-file-pdf"></i> PDF Tools</a>
-        <a href="Password.html"><i class="fas fa-shield-alt"></i> Password Generator</a>
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="youtubeshorts.html"><i class="fas fa-mobile-alt"></i> Shorts Downloader</a>
+        <a href="youtube-tag-extractor.html"><i class="fas fa-tags"></i> Tag Extractor</a>
       </div>
-
     </div>
-
-    <div class="copyright">
-      © 2025 XIZOA Hub • Developed by Priyanshu
-    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
   </footer>
 
-
   <script>
-    // --- CORE LOGIC ---
+    const btnFetch = document.getElementById('btnFetch');
+    const inputUrl = document.getElementById('inputUrl');
+    const errorMsg = document.getElementById('errorMsg');
+    const previewArea = document.getElementById('previewArea');
+    const thumbPreview = document.getElementById('thumbPreview');
+    
+    // Buttons
+    const btnMax = document.getElementById('btnMax');
+    const btnSd = document.getElementById('btnSd');
+    const btnHq = document.getElementById('btnHq');
+    const btnMq = document.getElementById('btnMq');
 
-    function extractVideoID(url) {
-      if(!url) return null;
+    function getVideoID(url) {
       const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\\w\/)|(embed\/)|(watch\\?))\\??v?=?([^#&?]*).*/;
       const match = url.match(regExp);
-      return (match && match[7] && match[7].length == 11) ? match[7] : null;
+      return (match && match[7].length == 11) ? match[7] : false;
     }
 
-    function checkImage(url) {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = url;
-      });
-    }
-
-    async function downloadImage(url, filename) {
-      try {
-        const response = await fetch(url);
-        const blob = await response.blob();
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        setTimeout(() => URL.revokeObjectURL(link.href), 100);
-      } catch (error) {
-        window.open(url, '_blank');
-      }
-    }
-
-    document.getElementById('btnFetch').addEventListener('click', async () => {
-      const input = document.getElementById('inputUrl');
-      const status = document.getElementById('status');
-      const container = document.getElementById('thumbs');
-      const btn = document.getElementById('btnFetch');
-
-      const videoId = extractVideoID(input.value.trim());
-
-      container.innerHTML = ''; 
+    btnFetch.addEventListener('click', () => {
+      const url = inputUrl.value.trim();
+      const videoId = getVideoID(url);
 
       if (!videoId) {
-        status.innerHTML = '<span style="color:#ef4444"><i class="fas fa-times-circle"></i> Invalid URL. Please paste a valid YouTube link.</span>';
+        errorMsg.style.display = 'block';
+        errorMsg.innerText = 'Invalid YouTube URL. Please check the link.';
+        previewArea.style.display = 'none';
         return;
       }
 
-      // Loading State
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-      status.innerHTML = '<span style="color:var(--primary)">Scanning available resolutions...</span>';
+      errorMsg.style.display = 'none';
+      btnFetch.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
-      const qualities = [
-        { code: 'maxresdefault', label: 'Max HD (1920x1080)' },
-        { code: 'sddefault', label: 'Standard (640x480)' },
-        { code: 'hqdefault', label: 'High Quality (480x360)' },
-        { code: 'mqdefault', label: 'Medium (320x180)' }
-      ];
+      // Construct Image URLs
+      const maxRes = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+      const sdRes = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+      const hqRes = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+      const mqRes = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
 
-      let foundCount = 0;
-      for (const q of qualities) {
-        const imgUrl = `https://img.youtube.com/vi/${videoId}/${q.code}.jpg`;
-        const exists = await checkImage(imgUrl);
-        
-        if (exists) {
-          foundCount++;
-          const card = document.createElement('div');
-          card.className = 'thumb-item';
-          card.innerHTML = `
-            <img src="${imgUrl}" alt="${q.label}">
-            <div class="thumb-actions">
-              <div class="quality-tag">${q.label}</div>
-              <button class="btn-dl" onclick="downloadImage('${imgUrl}', 'thumbnail_${videoId}_${q.code}.jpg')">
-                <i class="fas fa-download"></i> Download Image
-              </button>
-            </div>
-          `;
-          container.appendChild(card);
-        }
-      }
+      // Set Preview (Use MaxRes, fallback logic can be complex in pure frontend, but Max usually works for HD videos)
+      thumbPreview.src = maxRes;
 
-      // Reset Button
-      btn.innerHTML = '<i class="fas fa-bolt"></i> Get Thumbnails';
+      // Set Download Links
+      // Note: We use target="_blank" because direct download needs backend proxy for cross-origin images
+      btnMax.href = maxRes;
+      btnSd.href = sdRes;
+      btnHq.href = hqRes;
+      btnMq.href = mqRes;
 
-      if (foundCount > 0) {
-        status.innerHTML = `<span style="color:#00f7ff"><i class="fas fa-check-circle"></i> Success! Found ${foundCount} thumbnails.</span>`;
-      } else {
-        status.innerHTML = '<span style="color:#ef4444">No thumbnails found. Video might be private.</span>';
-      }
+      setTimeout(() => {
+        previewArea.style.display = 'block';
+        btnFetch.innerHTML = '<i class="fas fa-search"></i> Get Thumbnail';
+        previewArea.scrollIntoView({behavior: "smooth"});
+      }, 500);
     });
 
-    document.getElementById('inputUrl').addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') document.getElementById('btnFetch').click();
+    // Enter Key Support
+    inputUrl.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') btnFetch.click();
     });
   </script>
 </body>
