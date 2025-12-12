@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Builder - XIZOA HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Xizoa UI Colors */
+            --bg-body: #050b14;
+            --bg-panel: #0f172a;
+            --input-bg: #1e293b;
+            --accent-cyan: #06b6d4;
+            --text-white: #ffffff;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- UI ELEMENTS (Do not print) --- */
+        .no-print-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(5, 11, 20, 0.95);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+
+        .btn-action {
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .btn-action:hover { box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .btn-secondary:hover { color: white; border-color: white; }
+
+        /* --- MAIN LAYOUT --- */
+        .builder-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Split Screen */
+            gap: 0;
+            height: calc(100vh - 80px);
+            overflow: hidden;
+        }
+
+        /* LEFT: EDITOR PANEL */
+        .editor-panel {
+            background: var(--bg-body);
+            padding: 30px;
+            overflow-y: auto;
+            border-right: 1px solid var(--border);
+        }
+
+        .form-section { margin-bottom: 30px; }
+        .section-title {
+            color: var(--accent-cyan);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        label { display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px; }
+        
+        input, textarea {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        input:focus, textarea:focus { border-color: var(--accent-cyan); }
+        textarea { resize: vertical; min-height: 80px; }
+        
+        .row { display: flex; gap: 15px; }
+        .col { flex: 1; }
+
+        /* RIGHT: PREVIEW PANEL */
+        .preview-panel {
+            background: #525659; /* Grey background for contrast */
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* --- THE RESUME PAPER (A4) --- */
+        .resume-paper {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 10mm 15mm; /* Margins */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Resume Content Styles */
+        .cv-header { border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 20px; }
+        .cv-name { font-size: 2.5rem; font-weight: 800; color: #000; text-transform: uppercase; line-height: 1; }
+        .cv-role { font-size: 1.2rem; color: #666; margin-top: 5px; font-weight: 500; }
+        
+        .cv-contact { 
+            display: flex; gap: 15px; font-size: 0.9rem; color: #555; margin-top: 10px; 
+            flex-wrap: wrap;
+        }
+        .cv-contact span { display: flex; align-items: center; gap: 5px; }
+
+        .cv-section { margin-bottom: 20px; }
+        .cv-sec-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #000;
+            text-transform: uppercase;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .cv-item { margin-bottom: 15px; }
+        .cv-item-head { display: flex; justify-content: space-between; font-weight: 700; font-size: 1rem; }
+        .cv-item-sub { font-style: italic; color: #666; font-size: 0.9rem; margin-bottom: 5px; }
+        .cv-list { padding-left: 20px; font-size: 0.95rem; line-height: 1.5; color: #444; }
+
+        /* --- PRINT MEDIA QUERY (The Magic) --- */
+        @media print {
+            body { background: white; }
+            .no-print-nav, .editor-panel { display: none !important; }
+            .builder-container { display: block; height: auto; overflow: visible; }
+            .preview-panel { background: white; padding: 0; margin: 0; display: block; }
+            .resume-paper { 
+                box-shadow: none; 
+                width: 100%; 
+                margin: 0; 
+                padding: 0; 
+                page-break-after: avoid; 
+            }
+            @page { margin: 1cm; size: A4; }
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .builder-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
+            .resume-paper { width: 100%; min-height: auto; }
+            .no-print-nav { position: relative; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="no-print-nav">
+        <div class="logo">
+            <i class="fa-solid fa-file-signature"></i> XIZOA <span style="color:var(--accent-cyan)">CV</span>
+        </div>
+        <div style="display:flex; gap:10px;">
+            <button class="btn-secondary" onclick="autoFill()">
+                <i class="fa-solid fa-magic-wand-sparkles"></i> Auto Fill
+            </button>
+            <button class="btn-action" onclick="window.print()">
+                <i class="fa-solid fa-download"></i> Download PDF
+            </button>
+        </div>
+    </nav>
+
+    <div class="builder-container">
+        
+        <div class="editor-panel">
+            
+            <div class="form-section">
+                <div class="section-title"><i class="fa-regular fa-user"></i> Personal Details</div>
+                <div class="row">
+                    <div class="col">
+                        <label>Full Name</label>
+                        <input type="text" id="inName" placeholder="e.g. John Doe" oninput="updateCV()">
+                    </div>
+                    <div class="col">
+                        <label>Job Title</label>
+                        <input type="text" id="inRole" placeholder="e.g. Graphic Designer" oninput="updateCV()">
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col">
+                        <label>Email</label>
+                        <input type="text" id="inEmail" placeholder="john@example.com" oninput="updateCV()">
+                    </div>
+                    <div class="col">
+                        <label>Phone</label>
+                        <input type="text" id="inPhone" placeholder="+1 234 567 890" oninput="updateCV()">
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <label>Location</label>
+                    <input type="text" id="inLoc" placeholder="New York, USA" oninput="updateCV()">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title"><i class="fa-solid fa-align-left"></i> Professional Summary</div>
+                <textarea id="inSummary" placeholder="Briefly describe your career highlights..." oninput="updateCV()"></textarea>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title"><i class="fa-solid fa-bolt"></i> Skills</div>
+                <label>Separate by comma</label>
+                <textarea id="inSkills" placeholder="e.g. Photoshop, Figma, HTML, CSS" oninput="updateCV()"></textarea>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title"><i class="fa-solid fa-briefcase"></i> Experience (Latest)</div>
+                <div class="input-group">
+                    <label>Company & Date</label>
+                    <input type="text" id="inExp1Head" placeholder="Google | 2020 - Present" oninput="updateCV()">
+                </div>
+                <div class="input-group">
+                    <label>Job Title</label>
+                    <input type="text" id="inExp1Sub" placeholder="Senior Designer" oninput="updateCV()">
+                </div>
+                <label>Achievements (Use Enter for bullets)</label>
+                <textarea id="inExp1Desc" oninput="updateCV()"></textarea>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+                <div class="input-group">
+                    <label>University & Date</label>
+                    <input type="text" id="inEduHead" placeholder="Harvard University | 2016-2020" oninput="updateCV()">
+                </div>
+                <div class="input-group">
+                    <label>Degree</label>
+                    <input type="text" id="inEduSub" placeholder="B.Sc. Computer Science" oninput="updateCV()">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="preview-panel">
+            <div class="resume-paper" id="cvContent">
+                
+                <div class="cv-header">
+                    <div class="cv-name" id="outName">YOUR NAME</div>
+                    <div class="cv-role" id="outRole">Job Title</div>
+                    <div class="cv-contact">
+                        <span id="cEmail"><i class="fa-solid fa-envelope"></i> <span id="outEmail">email@example.com</span></span>
+                        <span id="cPhone"><i class="fa-solid fa-phone"></i> <span id="outPhone">123-456-7890</span></span>
+                        <span id="cLoc"><i class="fa-solid fa-location-dot"></i> <span id="outLoc">City, Country</span></span>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <div class="cv-sec-title">Profile</div>
+                    <div class="cv-list" style="list-style:none; padding:0;" id="outSummary">
+                        Write a short professional summary about yourself here...
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <div class="cv-sec-title">Experience</div>
+                    
+                    <div class="cv-item">
+                        <div class="cv-item-head" id="outExp1Head">Company Name | Date</div>
+                        <div class="cv-item-sub" id="outExp1Sub">Job Position</div>
+                        <ul class="cv-list" id="outExp1Desc">
+                            <li>Describe your responsibilities here...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <div class="cv-sec-title">Skills</div>
+                    <div class="cv-list" style="list-style:none; padding:0;" id="outSkills">
+                        Skill 1, Skill 2, Skill 3
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <div class="cv-sec-title">Education</div>
+                    <div class="cv-item">
+                        <div class="cv-item-head" id="outEduHead">University Name | Date</div>
+                        <div class="cv-item-sub" id="outEduSub">Degree Name</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCV() {
+            // Text Mappers
+            mapText('inName', 'outName', 'YOUR NAME');
+            mapText('inRole', 'outRole', 'Job Title');
+            mapText('inEmail', 'outEmail', 'email@example.com');
+            mapText('inPhone', 'outPhone', '123-456-7890');
+            mapText('inLoc', 'outLoc', 'City, Country');
+            
+            mapText('inSummary', 'outSummary', 'Summary goes here...');
+            mapText('inSkills', 'outSkills', 'List your skills here...');
+            
+            mapText('inExp1Head', 'outExp1Head', 'Company | Date');
+            mapText('inExp1Sub', 'outExp1Sub', 'Job Title');
+            
+            mapText('inEduHead', 'outEduHead', 'University | Date');
+            mapText('inEduSub', 'outEduSub', 'Degree');
+
+            // Bullet Mapper for Experience
+            const expText = document.getElementById('inExp1Desc').value;
+            const expList = document.getElementById('outExp1Desc');
+            if(expText) {
+                // Split by new line and wrap in <li>
+                const items = expText.split('\n').filter(item => item.trim() !== '');
+                expList.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+            } else {
+                expList.innerHTML = '<li>Describe your responsibilities here...</li>';
+            }
+        }
+
+        function mapText(inputId, outputId, placeholder) {
+            const val = document.getElementById(inputId).value;
+            document.getElementById(outputId).innerText = val ? val : placeholder;
+        }
+
+        function autoFill() {
+            // Populate Input Fields
+            document.getElementById('inName').value = "Priyanshu Developer";
+            document.getElementById('inRole').value = "Senior Frontend Engineer";
+            document.getElementById('inEmail').value = "contact@xizoa.com";
+            document.getElementById('inPhone').value = "+91 98765 43210";
+            document.getElementById('inLoc').value = "Mumbai, India";
+            
+            document.getElementById('inSummary').value = "Passionate developer with 5+ years of experience in building scalable web applications. Expert in UI/UX design and modern JavaScript frameworks.";
+            
+            document.getElementById('inSkills').value = "JavaScript, React, Node.js, CSS3, Python, UI Design, Git";
+            
+            document.getElementById('inExp1Head').value = "Tech Solutions Ltd. | 2021 - Present";
+            document.getElementById('inExp1Sub').value = "Lead Developer";
+            document.getElementById('inExp1Desc').value = "Led a team of 5 developers to build the core product.\nImproved site performance by 40% using lazy loading.\nDesigned the new responsive dashboard UI.";
+            
+            document.getElementById('inEduHead').value = "IIT Bombay | 2017 - 2021";
+            document.getElementById('inEduSub').value = "B.Tech Computer Science";
+
+            // Trigger Update
+            updateCV();
+        }
+    </script>
+</body>
+</html>
