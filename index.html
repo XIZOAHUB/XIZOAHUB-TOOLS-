@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XIZOA TOOLS HUB | Free Online Tools</title>
+  <title>XIZOA TOOLS HUB</title>
   <meta name="description" content="Access 45+ Free Online Tools: AI Writers, Video Downloaders, PDF Tools, Gaming Tests, Converters & Security Tools. Fast, No Login.">
   <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
 
@@ -18,8 +18,8 @@
   {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "WebSite", "name": "XIZOA TOOLS HUB", "url": "https://xizoa.com" },
-      { "@type": "Person", "name": "Priyanshu", "jobTitle": "Full Stack Developer", "worksFor": { "@type": "Organization", "name": "XIZOA Hub" } }
+      { "@type": "WebSite", "name": "XIZOA TOOLS HUB", "url": "https://tools.xizoa.com" },
+      { "@type": "Person", "name": "Priyanshu", "jobTitle": "Full Stack Developer", "worksFor": { "@type": "Organization", "name": "XIZOAHUB" } }
     ]
   }
   </script>
@@ -142,11 +142,27 @@
     .dir-col a:hover { color: #fff; transform: translateX(3px); }
 
     .footer-bottom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; border-top: 1px solid #1a1a1a; padding-top: 40px; }
+    
     .info-col h4 { color: #fff; font-size: 1rem; margin-bottom: 20px; font-weight: 700; }
     .info-col p { color: #666; font-size: 0.9rem; line-height: 1.6; }
+    
+    /* --- FIX FOR LEGAL LINKS (STYLE) --- */
+    .info-col a {
+        display: block; 
+        color: #a0aec0; /* Grey Color */
+        text-decoration: none; 
+        margin-bottom: 10px; 
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+    .info-col a:hover {
+        color: var(--primary); /* Neon Blue on Hover */
+        transform: translateX(5px);
+    }
+
     .social-icons { display: flex; gap: 15px; margin-top: 15px; }
-    .social-icons a { color: #fff; font-size: 1.2rem; transition: 0.3s; }
-    .social-icons a:hover { color: var(--primary); }
+    .social-icons a { color: #fff; font-size: 1.2rem; transition: 0.3s; display: inline-block; width: auto; margin-bottom: 0;}
+    .social-icons a:hover { color: var(--primary); transform: translateY(-3px); }
     
     .copyright { text-align: center; padding-top: 40px; color: #444; font-size: 0.8rem; }
     
@@ -154,21 +170,6 @@
       .tools-directory { grid-template-columns: 1fr 1fr; }
       .tools-grid { grid-template-columns: 1fr; }
     }
-    /* --- FIX FOR LEGAL LINKS --- */
-.info-col a {
-    display: block !important;       /* Har link nayi line mein aayega */
-    color: #a0aec0 !important;       /* Color Grey/White karega (Blue hatayega) */
-    text-decoration: none !important; /* Underline hatayega */
-    margin-bottom: 10px;             /* Beech mein gap dega */
-    font-size: 0.95rem;
-    transition: 0.3s;
-}
-
-.info-col a:hover {
-    color: #00f7ff !important;       /* Hover karne par Neon Blue glow karega */
-    transform: translateX(5px);      /* Thoda right move karega */
-}
-
   </style>
 </head>
 
@@ -215,274 +216,250 @@
 
 <div class="tools-grid" id="grid">
   
-  <a href="yt-downloader.html" class="tool-card" data-cat="social media">
+  <a href="YouTube-thumbnail-downloader.html" class="tool-card" data-cat="social image">
     <div class="card-icon" style="color:#ff0000; background:rgba(255,0,0,0.1);"><i class="fab fa-youtube"></i></div>
     <h3>YT Thumb Downloader</h3>
     <p>Download HD Thumbnails.</p>
   </a>
 
-  <a href="insta-saver.html" class="tool-card" data-cat="social media">
+  <a href="insta-video-saver.html" class="tool-card" data-cat="social">
     <div class="card-icon" style="color:#e1306c; background:rgba(225,48,108,0.1);"><i class="fab fa-instagram"></i></div>
     <h3>Insta Video Saver</h3>
     <p>Download Reels & Videos.</p>
   </a>
 
-  <a href="ai-paraphraser.html" class="tool-card" data-cat="text utility">
+  <a href="AI-Paraphraser.html" class="tool-card" data-cat="utility converter">
     <div class="card-icon" style="color:#8a2be2; background:rgba(138,43,226,0.1);"><i class="fas fa-robot"></i></div>
     <h3>AI Paraphraser</h3>
     <p>Rewrite text intelligently.</p>
   </a>
 
-  <a href="img-compressor.html" class="tool-card" data-cat="media utility">
+  <a href="image-compressor.html" class="tool-card" data-cat="image utility">
     <div class="card-icon" style="color:#ff9800; background:rgba(255,152,0,0.1);"><i class="fas fa-compress-arrows-alt"></i></div>
     <h3>Image Compressor</h3>
     <p>Reduce file size fast.</p>
   </a>
 
-  <a href="pdf-word.html" class="tool-card" data-cat="text utility">
+  <a href="pdf-to-word.html" class="tool-card" data-cat="pdf converter">
     <div class="card-icon" style="color:#2b579a; background:rgba(43,87,154,0.1);"><i class="fas fa-file-word"></i></div>
     <h3>PDF to Word</h3>
-    <p>Convert PDF to Editable.</p>
+    <p>Convert to Editable Doc.</p>
   </a>
 
-  <a href="speed-test.html" class="tool-card" data-cat="utility">
+  <a href="speed-test.html" class="tool-card" data-cat="security utility">
     <div class="card-icon" style="color:#00e676; background:rgba(0,230,118,0.1);"><i class="fas fa-wifi"></i></div>
     <h3>Speed Test</h3>
     <p>Check internet speed.</p>
   </a>
 
-  <a href="qr-gen.html" class="tool-card" data-cat="utility">
-    <div class="card-icon" style="color:#fff; background:rgba(255,255,255,0.1);"><i class="fas fa-qrcode"></i></div>
+  <a href="qr-code-generator.html" class="tool-card" data-cat="utility converter">
+    <div class="card-icon" style="color:#ffffff; background:rgba(255,255,255,0.1);"><i class="fas fa-qrcode"></i></div>
     <h3>QR Generator</h3>
     <p>Create custom QR Codes.</p>
   </a>
 
-  <a href="pass-gen.html" class="tool-card" data-cat="utility">
+  <a href="password-generator.html" class="tool-card" data-cat="security utility">
     <div class="card-icon" style="color:#ffd700; background:rgba(255,215,0,0.1);"><i class="fas fa-key"></i></div>
     <h3>Pass Generator</h3>
     <p>Create secure passwords.</p>
   </a>
 
-  <a href="mouse-hz.html" class="tool-card" data-cat="gaming">
+  <a href="mouse-polling-rate.html" class="tool-card" data-cat="gaming utility">
     <div class="card-icon" style="color:#00ff00; background:rgba(0,255,0,0.1);"><i class="fas fa-mouse"></i></div>
     <h3>Mouse Hz Test</h3>
     <p>Check polling rate.</p>
   </a>
 
-  <a href="reaction-test.html" class="tool-card" data-cat="gaming">
+  <a href="reaction-time-test.html" class="tool-card" data-cat="gaming utility">
     <div class="card-icon" style="color:#ffcc00; background:rgba(255,204,0,0.1);"><i class="fas fa-bolt"></i></div>
     <h3>Reaction Test</h3>
     <p>Test gamer reflexes.</p>
   </a>
 
-  <a href="invisible-text.html" class="tool-card" data-cat="social text">
+  <a href="invisible-text.html" class="tool-card" data-cat="social utility">
     <div class="card-icon" style="color:#9e9e9e; background:rgba(158,158,158,0.1);"><i class="fas fa-ghost"></i></div>
     <h3>Invisible Text</h3>
     <p>Send blank messages.</p>
   </a>
 
-  <a href="assignment-maker.html" class="tool-card" data-cat="text utility">
+  <a href="text-to-handwriting.html" class="tool-card" data-cat="converter utility">
     <div class="card-icon" style="color:#4285f4; background:rgba(66,133,244,0.1);"><i class="fas fa-pen-fancy"></i></div>
     <h3>Assignment Maker</h3>
     <p>Text to Handwriting.</p>
   </a>
 
-  <a href="shorts-downloader.html" class="tool-card" data-cat="social media">
+  <a href="youtubeshorts.html" class="tool-card" data-cat="social image">
     <div class="card-icon" style="color:#ff0000; background:rgba(255,0,0,0.1);"><i class="fas fa-mobile-alt"></i></div>
     <h3>Shorts Cover</h3>
     <p>Save YouTube Shorts covers.</p>
   </a>
 
-  <a href="tiktok.html" class="tool-card" data-cat="social media">
+  <a href="tiktok-downloader.html" class="tool-card" data-cat="social">
     <div class="card-icon" style="color:#00f2ea; background:rgba(0,242,234,0.1);"><i class="fab fa-tiktok"></i></div>
     <h3>TikTok Downloader</h3>
     <p>No watermark video saver.</p>
   </a>
 
-  <a href="hashtag.html" class="tool-card" data-cat="social">
+  <a href="hashtag-generator.html" class="tool-card" data-cat="social">
     <div class="card-icon" style="color:#c13584; background:rgba(193,53,132,0.1);"><i class="fas fa-hashtag"></i></div>
     <h3>Hashtag Gen</h3>
     <p>Get viral tags for Insta.</p>
   </a>
 
-  <a href="caption.html" class="tool-card" data-cat="social text">
+  <a href="social-media-caption.html" class="tool-card" data-cat="social">
     <div class="card-icon" style="color:#1da1f2; background:rgba(29,161,242,0.1);"><i class="fas fa-quote-right"></i></div>
-    <h3>Caption Gen</h3>
+    <h3>Caption Generator</h3>
     <p>Creative social captions.</p>
   </a>
 
-  <a href="yt-tags.html" class="tool-card" data-cat="social">
+  <a href="youtube-tag-extractor.html" class="tool-card" data-cat="social">
     <div class="card-icon" style="color:#ff0000; background:rgba(255,0,0,0.1);"><i class="fas fa-tags"></i></div>
     <h3>YT Tag Extractor</h3>
     <p>Spy on video keywords.</p>
   </a>
 
-  <a href="blog-title.html" class="tool-card" data-cat="text">
+  <a href="blog-title-generator.html" class="tool-card" data-cat="social utility">
     <div class="card-icon" style="color:#f57c00; background:rgba(245,124,0,0.1);"><i class="fas fa-heading"></i></div>
     <h3>Blog Title Gen</h3>
     <p>Catchy headline ideas.</p>
   </a>
 
-  <a href="seo-meta.html" class="tool-card" data-cat="text">
+  <a href="SEO-Meta-Description-Generator.html" class="tool-card" data-cat="social utility">
     <div class="card-icon" style="color:#4caf50; background:rgba(76,175,80,0.1);"><i class="fas fa-search-plus"></i></div>
     <h3>SEO Meta Gen</h3>
     <p>Boost SEO ranking.</p>
   </a>
 
-  <a href="keyword-finder.html" class="tool-card" data-cat="text">
+  <a href="keywords-finder.html" class="tool-card" data-cat="social utility">
     <div class="card-icon" style="color:#fbc02d; background:rgba(251,192,45,0.1);"><i class="fas fa-search-dollar"></i></div>
     <h3>Keyword Finder</h3>
     <p>Find high volume keywords.</p>
   </a>
 
-  <a href="email-writer.html" class="tool-card" data-cat="text">
+  <a href="AI-Smart-Email-Writer.html" class="tool-card" data-cat="utility">
     <div class="card-icon" style="color:#ea4335; background:rgba(234,67,53,0.1);"><i class="fas fa-envelope-open-text"></i></div>
     <h3>AI Email Writer</h3>
     <p>Write professional emails.</p>
   </a>
 
-  <a href="grammar.html" class="tool-card" data-cat="text">
+  <a href="ai-grammar-fixer.html" class="tool-card" data-cat="utility">
     <div class="card-icon" style="color:#2979ff; background:rgba(41,121,255,0.1);"><i class="fas fa-spell-check"></i></div>
     <h3>AI Grammar Fixer</h3>
     <p>Correct sentences fast.</p>
   </a>
 
-  <a href="summarizer.html" class="tool-card" data-cat="text">
+  <a href="ai-text-summarise.html" class="tool-card" data-cat="utility">
     <div class="card-icon" style="color:#009688; background:rgba(0,150,136,0.1);"><i class="fas fa-file-alt"></i></div>
     <h3>AI Summarizer</h3>
     <p>Shorten long texts.</p>
   </a>
 
-  <a href="keyboard.html" class="tool-card" data-cat="gaming">
+  <a href="keyboard-tester.html" class="tool-card" data-cat="gaming utility">
     <div class="card-icon" style="color:#cfd8dc; background:rgba(207,216,220,0.1);"><i class="fas fa-keyboard"></i></div>
     <h3>Keyboard Test</h3>
     <p>Check broken keys.</p>
   </a>
 
-  <a href="dead-pixel.html" class="tool-card" data-cat="utility">
+  <a href="dead-pixel-fixer.html" class="tool-card" data-cat="utility image">
     <div class="card-icon" style="color:#d32f2f; background:rgba(211,47,47,0.1);"><i class="fas fa-desktop"></i></div>
     <h3>Dead Pixel Fixer</h3>
     <p>Repair screen pixels.</p>
   </a>
 
-  <a href="img-resizer.html" class="tool-card" data-cat="media">
+  <a href="image-resizer.html" class="tool-card" data-cat="image utility">
     <div class="card-icon" style="color:#3f51b5; background:rgba(63,81,181,0.1);"><i class="fas fa-expand-arrows-alt"></i></div>
     <h3>Image Resizer</h3>
     <p>Resize width/height.</p>
   </a>
 
-  <a href="jpg-png.html" class="tool-card" data-cat="media">
+  <a href="jpg-to-png.html" class="tool-card" data-cat="image converter">
     <div class="card-icon" style="color:#7b1fa2; background:rgba(123,31,162,0.1);"><i class="fas fa-images"></i></div>
     <h3>JPG to PNG</h3>
     <p>Convert format losslessly.</p>
   </a>
 
-  <a href="color-picker.html" class="tool-card" data-cat="media">
+  <a href="color-picker.html" class="tool-card" data-cat="image utility">
     <div class="card-icon" style="color:#e91e63; background:rgba(233,30,99,0.1);"><i class="fas fa-palette"></i></div>
     <h3>Color Picker</h3>
     <p>Get HEX & RGB codes.</p>
   </a>
 
-  <a href="exif.html" class="tool-card" data-cat="media utility">
+  <a href="exif-remover.html" class="tool-card" data-cat="image security">
     <div class="card-icon" style="color:#4caf50; background:rgba(76,175,80,0.1);"><i class="fas fa-file-shield"></i></div>
     <h3>Exif Remover</h3>
     <p>Clean GPS from photos.</p>
   </a>
 
-  <a href="resume.html" class="tool-card" data-cat="text utility">
+  <a href="CV-Resume-Builder.html" class="tool-card" data-cat="pdf utility">
     <div class="card-icon" style="color:#536dfe; background:rgba(83,109,254,0.1);"><i class="fas fa-file-user"></i></div>
     <h3>CV Builder</h3>
     <p>Create Professional Resume.</p>
   </a>
 
-  <a href="pdf-merger.html" class="tool-card" data-cat="utility">
+  <a href="pdf-merger.html" class="tool-card" data-cat="pdf utility">
     <div class="card-icon" style="color:#ff1744; background:rgba(255,23,68,0.1);"><i class="fas fa-file-invoice"></i></div>
     <h3>PDF Merger</h3>
     <p>Combine multiple PDFs.</p>
   </a>
 
-  <a href="pdf-light.html" class="tool-card" data-cat="utility">
+  <a href="pdf-light-mode.html" class="tool-card" data-cat="pdf utility">
     <div class="card-icon" style="color:#ffff00; background:rgba(255,255,0,0.1);"><i class="fas fa-moon"></i></div>
     <h3>PDF Light Mode</h3>
     <p>Invert colors for print.</p>
   </a>
 
-  <a href="glitch.html" class="tool-card" data-cat="text">
+  <a href="glitch-text-generator.html" class="tool-card" data-cat="social utility">
     <div class="card-icon" style="color:#00ff00; background:rgba(0,255,0,0.1);"><i class="fas fa-bug"></i></div>
     <h3>Glitch Text</h3>
     <p>Create Zalgo/Hacked text.</p>
   </a>
 
-  <a href="diff.html" class="tool-card" data-cat="text">
+  <a href="diff-checker.html" class="tool-card" data-cat="utility converter">
     <div class="card-icon" style="color:#00897b; background:rgba(0,137,123,0.1);"><i class="fas fa-exchange-alt"></i></div>
     <h3>Diff Checker</h3>
     <p>Compare text differences.</p>
   </a>
 
-  <a href="ip.html" class="tool-card" data-cat="utility">
+  <a href="ip-checker.html" class="tool-card" data-cat="security utility">
     <div class="card-icon" style="color:#0288d1; background:rgba(2,136,209,0.1);"><i class="fas fa-globe-asia"></i></div>
     <h3>IP Checker</h3>
     <p>Check IP & Location.</p>
   </a>
 
-  <a href="link.html" class="tool-card" data-cat="utility">
+  <a href="link-scanner.html" class="tool-card" data-cat="security utility">
     <div class="card-icon" style="color:#00c853; background:rgba(0,200,83,0.1);"><i class="fas fa-shield-virus"></i></div>
     <h3>Link Scanner</h3>
     <p>Check URLs for virus.</p>
   </a>
 
-  <a href="tts.html" class="tool-card" data-cat="text">
+  <a href="text-to-speech.html" class="tool-card" data-cat="converter utility">
     <div class="card-icon" style="color:#ff6f00; background:rgba(255,111,0,0.1);"><i class="fas fa-microphone-alt"></i></div>
     <h3>Text to Speech</h3>
     <p>AI Voice Generator.</p>
   </a>
 
-  <a href="speaker.html" class="tool-card" data-cat="utility">
+  <a href="tone-generator.html" class="tool-card" data-cat="utility">
     <div class="card-icon" style="color:#00b0ff; background:rgba(0,176,255,0.1);"><i class="fas fa-wave-square"></i></div>
     <h3>Speaker Cleaner</h3>
     <p>Remove water sound.</p>
   </a>
 
-  <a href="morse.html" class="tool-card" data-cat="text">
+  <a href="morse-converter.html" class="tool-card" data-cat="converter utility">
     <div class="card-icon" style="color:#a1887f; background:rgba(161,136,127,0.1);"><i class="fas fa-broadcast-tower"></i></div>
     <h3>Morse Code</h3>
     <p>Text to Morse Audio.</p>
   </a>
 
-  <a href="age.html" class="tool-card" data-cat="utility">
+  <a href="age-calculator.html" class="tool-card" data-cat="utility converter">
     <div class="card-icon" style="color:#f06292; background:rgba(240,98,146,0.1);"><i class="fas fa-calendar-alt"></i></div>
     <h3>Age Calculator</h3>
     <p>Exact age finder.</p>
   </a>
-
-  <a href="hq-pdf.html" class="tool-card" data-cat="utility">
+  
+  <a href="High-quality-PDF-smart-tool.html" class="tool-card" data-cat="pdf utility">
     <div class="card-icon" style="color:#d50000; background:rgba(213,0,0,0.1);"><i class="fas fa-file-pdf"></i></div>
     <h3>HQ PDF Tool</h3>
     <p>Smart PDF Processing.</p>
-  </a>
-  
-   <a href="love-calc.html" class="tool-card" data-cat="utility">
-    <div class="card-icon" style="color:#ff4081; background:rgba(255,64,129,0.1);"><i class="fas fa-heart"></i></div>
-    <h3>Love Calculator</h3>
-    <p>Fun relationship test.</p>
-  </a>
-  
-  <a href="html-editor.html" class="tool-card" data-cat="text">
-    <div class="card-icon" style="color:#e65100; background:rgba(230,81,0,0.1);"><i class="fas fa-code"></i></div>
-    <h3>HTML Editor</h3>
-    <p>Live Code Compiler.</p>
-  </a>
-  
-   <a href="case-converter.html" class="tool-card" data-cat="text">
-    <div class="card-icon" style="color:#607d8b; background:rgba(96,125,139,0.1);"><i class="fas fa-font"></i></div>
-    <h3>Case Converter</h3>
-    <p>UPPER / lower case.</p>
-  </a>
-  
-   <a href="word-counter.html" class="tool-card" data-cat="text">
-    <div class="card-icon" style="color:#795548; background:rgba(121,85,72,0.1);"><i class="fas fa-list-ol"></i></div>
-    <h3>Word Counter</h3>
-    <p>Count words & chars.</p>
   </a>
 
 </div>
@@ -499,16 +476,15 @@
       <div class="dir-col">
         <h5>Social & Media</h5>
         <ul>
-          <li><a href="yt-downloader.html">YT Thumbnail</a></li>
-          <li><a href="shorts-downloader.html">Shorts Saver</a></li>
-          <li><a href="insta-saver.html">Instagram Saver</a></li>
-          <li><a href="tiktok.html">TikTok Downloader</a></li>
-          <li><a href="yt-tags.html">Tag Extractor</a></li>
-          <li><a href="hashtag.html">Hashtag Gen</a></li>
-          <li><a href="img-resizer.html">Image Resizer</a></li>
-          <li><a href="img-compressor.html">Image Compressor</a></li>
-          <li><a href="jpg-png.html">JPG to PNG</a></li>
-          <li><a href="exif.html">Exif Remover</a></li>
+          <li><a href="YouTube-thumbnail-downloader.html">YT Thumbnail</a></li>
+          <li><a href="insta-video-saver.html">Instagram Saver</a></li>
+          <li><a href="tiktok-downloader.html">TikTok Downloader</a></li>
+          <li><a href="youtube-tag-extractor.html">Tag Extractor</a></li>
+          <li><a href="hashtag-generator.html">Hashtag Gen</a></li>
+          <li><a href="image-resizer.html">Image Resizer</a></li>
+          <li><a href="image-compressor.html">Image Compressor</a></li>
+          <li><a href="jpg-to-png.html">JPG to PNG</a></li>
+          <li><a href="exif-remover.html">Exif Remover</a></li>
           <li><a href="color-picker.html">Color Picker</a></li>
         </ul>
       </div>
@@ -516,51 +492,47 @@
       <div class="dir-col">
         <h5>Text & AI Tools</h5>
         <ul>
-          <li><a href="ai-paraphraser.html">AI Paraphraser</a></li>
-          <li><a href="email-writer.html">AI Email Writer</a></li>
-          <li><a href="grammar.html">Grammar Fixer</a></li>
-          <li><a href="summarizer.html">AI Summarizer</a></li>
-          <li><a href="blog-title.html">Blog Title Gen</a></li>
-          <li><a href="seo-meta.html">SEO Meta Gen</a></li>
-          <li><a href="keyword-finder.html">Keyword Finder</a></li>
-          <li><a href="caption.html">Caption Gen</a></li>
-          <li><a href="tts.html">Text to Speech</a></li>
-          <li><a href="word-counter.html">Word Counter</a></li>
-          <li><a href="case-converter.html">Case Converter</a></li>
+          <li><a href="AI-Paraphraser.html">AI Paraphraser</a></li>
+          <li><a href="AI-Smart-Email-Writer.html">AI Email Writer</a></li>
+          <li><a href="ai-grammar-fixer.html">Grammar Fixer</a></li>
+          <li><a href="ai-text-summarise.html">AI Summarizer</a></li>
+          <li><a href="blog-title-generator.html">Blog Title Gen</a></li>
+          <li><a href="SEO-Meta-Description-Generator.html">SEO Meta Gen</a></li>
+          <li><a href="keywords-finder.html">Keyword Finder</a></li>
+          <li><a href="social-media-caption.html">Caption Gen</a></li>
+          <li><a href="text-to-speech.html">Text to Speech</a></li>
         </ul>
       </div>
 
       <div class="dir-col">
         <h5>Gaming & Utils</h5>
         <ul>
-          <li><a href="reaction-test.html">Reaction Time</a></li>
-          <li><a href="mouse-hz.html">Mouse Hz Test</a></li>
-          <li><a href="keyboard.html">Keyboard Test</a></li>
-          <li><a href="dead-pixel.html">Dead Pixel Fixer</a></li>
+          <li><a href="reaction-time-test.html">Reaction Time</a></li>
+          <li><a href="mouse-polling-rate.html">Mouse Hz Test</a></li>
+          <li><a href="keyboard-tester.html">Keyboard Test</a></li>
+          <li><a href="dead-pixel-fixer.html">Dead Pixel Fixer</a></li>
           <li><a href="speed-test.html">Speed Test</a></li>
-          <li><a href="pass-gen.html">Password Gen</a></li>
-          <li><a href="age.html">Age Calculator</a></li>
-          <li><a href="love-calc.html">Love Calculator</a></li>
-          <li><a href="qr-gen.html">QR Code Gen</a></li>
+          <li><a href="password-generator.html">Password Gen</a></li>
+          <li><a href="age-calculator.html">Age Calculator</a></li>
+          <li><a href="qr-code-generator.html">QR Code Gen</a></li>
           <li><a href="invisible-text.html">Invisible Text</a></li>
-          <li><a href="assignment-maker.html">Assignment Maker</a></li>
+          <li><a href="text-to-handwriting.html">Assignment Maker</a></li>
         </ul>
       </div>
 
       <div class="dir-col">
         <h5>PDF & Dev</h5>
         <ul>
-          <li><a href="pdf-word.html">PDF to Word</a></li>
+          <li><a href="pdf-to-word.html">PDF to Word</a></li>
           <li><a href="pdf-merger.html">PDF Merger</a></li>
-          <li><a href="pdf-light.html">PDF Light Mode</a></li>
-          <li><a href="hq-pdf.html">HQ PDF Tool</a></li>
-          <li><a href="resume.html">Resume Builder</a></li>
-          <li><a href="html-editor.html">HTML Editor</a></li>
-          <li><a href="diff.html">Diff Checker</a></li>
-          <li><a href="ip.html">IP Checker</a></li>
-          <li><a href="link.html">Link Scanner</a></li>
-          <li><a href="morse.html">Morse Code</a></li>
-          <li><a href="glitch.html">Glitch Text</a></li>
+          <li><a href="pdf-light-mode.html">PDF Light Mode</a></li>
+          <li><a href="High-quality-PDF-smart-tool.html">HQ PDF Tool</a></li>
+          <li><a href="CV-Resume-Builder.html">Resume Builder</a></li>
+          <li><a href="diff-checker.html">Diff Checker</a></li>
+          <li><a href="ip-checker.html">IP Checker</a></li>
+          <li><a href="link-scanner.html">Link Scanner</a></li>
+          <li><a href="morse-converter.html">Morse Code</a></li>
+          <li><a href="glitch-text-generator.html">Glitch Text</a></li>
         </ul>
       </div>
     </div>
@@ -570,32 +542,47 @@
         <h4>About Us</h4>
         <p>XIZOAHUB is your one-stop destination for free, high-quality online tools. Built for speed and privacy by Priyanshu.</p>
       </div>
+      
       <div class="info-col">
         <h4>Legal Pages</h4>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
         <a href="disclaimer.html">Disclaimer</a>
       </div>
+      
       <div class="info-col">
         <h4>Connect</h4>
         <div class="social-icons">
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
-          <a href="#"><i class="fab fa-telegram"></i></a>
+          <a href="https://www.instagram.com/xizoa.com_" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@xizoahub" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://github.com/XIZOAHUB" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://t.me/xizoahub" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
         </div>
       </div>
     </div>
     
-    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+    <div class="copyright">© xizoahub toom community</div>
   </div>
 </footer>
 
 <script>
-  // 1. WORKING LOAD MORE LOGIC
+  // 1. LAZY LOAD ANALYTICS
+  setTimeout(() => {
+    const script = document.createElement('script');
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-Q9VNMCCLX2";
+    script.async = true;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q9VNMCCLX2');
+  }, 3500);
+
+  // 2. WORKING LOAD MORE LOGIC
   const loadBtn = document.getElementById('loadBtn');
   const cards = document.querySelectorAll('.tool-card');
-  let itemsToShow = 12; // Start with 12
+  let itemsToShow = 12;
 
   function updateList() {
     cards.forEach((card, index) => {
@@ -610,7 +597,6 @@
       }
     });
 
-    // Hide button if all tools are shown
     if (itemsToShow >= cards.length) {
       loadBtn.style.display = 'none';
     } else {
@@ -619,23 +605,23 @@
   }
 
   loadBtn.addEventListener('click', () => {
-    itemsToShow += 12; // Load 12 more
+    itemsToShow += 12;
     updateList();
   });
 
-  // 2. FILTER LOGIC (Updated to work with Load More)
+  // 3. FILTER LOGIC
   window.filterTag = function(cat, element) {
     document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
     element.classList.add('active');
     
     const input = document.getElementById('search');
-    input.value = ''; // clear search
+    input.value = ''; 
 
     if (cat === 'all') {
-      itemsToShow = 12; // Reset to 12
+      itemsToShow = 12; 
       updateList();
     } else {
-      loadBtn.style.display = 'none'; // Hide load more when filtering
+      loadBtn.style.display = 'none'; 
       cards.forEach(card => {
         if(card.dataset.cat.includes(cat)) {
           card.style.display = 'flex';
@@ -648,7 +634,7 @@
     }
   };
 
-  // 3. SEARCH LOGIC
+  // 4. SEARCH LOGIC
   const search = document.getElementById('search');
   search.addEventListener('keyup', () => {
     let q = search.value.toLowerCase();
@@ -665,7 +651,7 @@
     }
   });
 
-  // 4. SIDEBAR LOGIC
+  // 5. SIDEBAR
   function toggleMenu() {
     document.getElementById('sidebar').classList.toggle('active');
     document.getElementById('overlay').classList.toggle('active');
@@ -673,7 +659,7 @@
   document.getElementById('menuBtn').addEventListener('click', toggleMenu);
   document.getElementById('overlay').addEventListener('click', toggleMenu);
 
-  // 5. HOVER EFFECTS
+  // 6. HOVER EFFECTS
   cards.forEach(card => {
     const icon = card.querySelector('.card-icon');
     const color = icon.style.color; 
@@ -681,7 +667,6 @@
     card.addEventListener('mouseleave', () => card.style.borderColor = 'rgba(255, 255, 255, 0.08)');
   });
   
-  // Init
   updateList();
 </script>
 
