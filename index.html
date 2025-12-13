@@ -2,153 +2,268 @@
 <html lang="en">
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9VNMCCLX2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q9VNMCCLX2');
+  </script>
 
-  gtag('config', 'G-Q9VNMCCLX2');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XIZOA TOOLS HUB | Free Online Tools</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XIZOA TOOLS HUB</title>
+  <meta name="description" content="Access 40+ Free Online Tools: AI Writers, Video Downloaders, PDF Tools, Gaming Tests, Converters & Security Tools. Fast, No Login, No Ads.">
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
 
-<meta name="description" content="Access 40+ Free Online Tools: AI Writers, Video Downloaders, PDF Tools, Gaming Tests, Converters & Security Tools. Fast, No Login, No Ads.">
-
-<link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-<style>
-  :root {
-    --primary: #00f7ff;  /* Cyan */
-    --bg-dark: #0a0f1a;
-    --card-bg: rgba(23, 33, 54, 0.6);
-    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-    --text-main: #e5e5e5;
-    --text-muted: #a0aec0;
-    --nav-bg: rgba(5, 8, 15, 0.95);
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "XIZOA TOOLS HUB",
+        "url": "https://xizoa.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://xizoa.com/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Priyanshu",
+        "url": "https://tools.xizoa.com",
+        "jobTitle": "Full Stack Developer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "XIZOAHUB"
+        }
+      }
+    ]
   }
+  </script>
 
-  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; -webkit-tap-highlight-color: transparent; }
-  
-  body {
-    background-color: var(--bg-dark);
-    background-image: radial-gradient(circle at 15% 50%, rgba(0, 247, 255, 0.08), transparent 25%), 
-                      radial-gradient(circle at 85% 30%, rgba(0, 123, 255, 0.08), transparent 25%);
-    color: var(--text-main);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding-top: 80px;
-  }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  /* --- NAVBAR --- */
-  .navbar {
-    position: fixed; top: 0; left: 0; width: 100%;
-    background: var(--nav-bg); backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; 
-    z-index: 2000;
-  }
-  .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .logo-icon { font-size: 1.8rem; color: #fff; }
-  .logo-text { font-size: 1.8rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1; }
-  .text-white { color: #fff; } .text-cyan { color: var(--primary); }
-  
-  .menu-btn { 
-    font-size: 1.6rem; color: #fff; cursor: pointer; padding: 5px 10px;
-    border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; transition: 0.3s;
-  }
-  .menu-btn:hover { color: var(--primary); border-color: var(--primary); background: rgba(0, 247, 255, 0.1); }
+  <style>
+    :root {
+      --primary: #00f7ff;
+      --bg-dark: #050505;
+      --card-bg: rgba(20, 20, 20, 0.6);
+      --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
+      --nav-bg: rgba(5, 5, 5, 0.8);
+    }
 
-  /* --- SIDEBAR MENU --- */
-  .sidebar {
-    position: fixed; top: 0; right: -300px; width: 280px; height: 100vh;
-    background: #0f172a; border-left: 1px solid var(--primary); 
-    padding: 90px 20px 20px; transition: right 0.3s ease-in-out; 
-    z-index: 1999; box-shadow: -10px 0 30px rgba(0,0,0,0.8); overflow-y: auto;
-  }
-  .sidebar.active { right: 0; }
-  
-  .sidebar h3 { color: var(--primary); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
-  
-  .nav-link {
-    display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 15px; margin-bottom: 8px;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); 
-    color: #ccc; border-radius: 8px; text-decoration: none; transition: 0.2s;
-  }
-  .nav-link:hover { background: var(--primary); color: #000; font-weight: 700; transform: translateX(-5px); }
-  
-  .overlay { 
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-    background: rgba(0,0,0,0.8); z-index: 1998; display: none; backdrop-filter: blur(4px); 
-  }
-  .overlay.active { display: block; }
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+          radial-gradient(circle at 0% 0%, rgba(0, 247, 255, 0.15), transparent 40%), 
+          radial-gradient(circle at 100% 100%, rgba(123, 31, 162, 0.15), transparent 40%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 80px;
+      overflow-x: hidden;
+    }
 
-  /* --- SEARCH & TAGS --- */
-  .search-section { text-align: center; padding: 30px 20px 20px; }
-  .search-container { max-width: 600px; margin: 0 auto; position: relative; }
-  .search-container i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--primary); }
-  #search { width: 100%; background: rgba(13, 20, 36, 0.8); border: 1px solid #2d3748; padding: 16px 20px 16px 50px; font-size: 16px; border-radius: 50px; outline: none; color: #fff; transition: 0.3s; }
+    /* --- NAVBAR --- */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: var(--nav-bg); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; 
+      z-index: 2000; box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    }
+    .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { font-size: 1.8rem; color: var(--primary); filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.6)); }
+    .logo-text { font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; }
+    .text-white { color: #fff; } 
+    .text-cyan { 
+      background: linear-gradient(90deg, #00f7ff, #0088ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .menu-btn { 
+      font-size: 1.5rem; color: #fff; cursor: pointer; padding: 8px 12px;
+      background: rgba(255,255,255,0.05); border-radius: 10px; transition: 0.3s;
+    }
+    .menu-btn:hover { background: rgba(255,255,255,0.1); color: var(--primary); }
 
-  .tag-box { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0 40px; padding: 0 10px; }
-  .tag { padding: 8px 18px; background: rgba(255,255,255,0.03); border: 1px solid #2d3748; color: var(--text-muted); border-radius: 50px; font-size: 13px; cursor: pointer; transition: 0.3s ease; }
-  .tag.active { background: var(--primary); color: #000; font-weight: 600; border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 247, 255, 0.4); }
+    /* --- SIDEBAR --- */
+    .sidebar {
+      position: fixed; top: 0; right: -320px; width: 300px; height: 100vh;
+      background: #0a0a0a; border-left: 1px solid #333; 
+      padding: 100px 25px 30px; transition: cubic-bezier(0.4, 0, 0.2, 1) 0.4s; 
+      z-index: 1999; box-shadow: -20px 0 50px rgba(0,0,0,0.8);
+    }
+    .sidebar.active { right: 0; }
+    .sidebar h3 { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px; }
+    
+    .nav-link {
+      display: flex; align-items: center; gap: 15px; width: 100%; padding: 14px 20px; margin-bottom: 10px;
+      background: rgba(255,255,255,0.03); border-radius: 12px; 
+      color: #e0e0e0; text-decoration: none; transition: 0.3s; font-weight: 500;
+    }
+    .nav-link:hover { background: rgba(0, 247, 255, 0.1); color: var(--primary); transform: translateX(-5px); }
+    
+    .overlay { 
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+      background: rgba(0,0,0,0.6); z-index: 1998; display: none; backdrop-filter: blur(8px);
+    }
+    .overlay.active { display: block; }
 
-  /* --- TOOLS GRID --- */
-  .tools-grid { 
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-    gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px 20px; width: 100%; 
-  }
-  
-  .tool-card { 
-    background: var(--card-bg); border: var(--glass-border); padding: 25px; border-radius: 16px; 
-    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: pointer; text-decoration: none; 
-    display: none; /* Initially Hidden */
-    flex-direction: column; position: relative; overflow: hidden; 
-  }
-  
-  /* ANIMATION */
-  .tool-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 5px 20px rgba(0, 247, 255, 0.15); }
-  .tool-card:active { transform: scale(0.96); background: rgba(0, 247, 255, 0.05); } 
-  
-  .card-icon { font-size: 2rem; margin-bottom: 15px; color: var(--primary); background: rgba(0, 247, 255, 0.1); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; transition: 0.3s; }
-  .tool-card h3 { font-size: 1.1rem; color: #fff; margin-bottom: 5px; font-weight: 600; }
-  .tool-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-  .arrow-icon { position: absolute; bottom: 20px; right: 20px; color: var(--primary); opacity: 0; transform: translateX(-10px); transition: 0.3s; }
-  .tool-card:hover .arrow-icon { opacity: 1; transform: translateX(0); }
+    /* --- SEARCH & HERO --- */
+    .search-section { text-align: center; padding: 50px 20px 30px; position: relative; }
+    .search-section::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 200px; height: 100px; background: var(--primary); filter: blur(120px); opacity: 0.2; pointer-events: none;
+    }
 
-  .load-more-container { text-align: center; margin-bottom: 60px; margin-top: 30px; }
-  .load-btn { background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 12px 35px; border-radius: 30px; font-size: 16px; cursor: pointer; font-weight: 600; }
-  .load-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 25px rgba(0, 247, 255, 0.4); transform: translateY(-2px); }
+    .search-container { max-width: 650px; margin: 0 auto; position: relative; transition: 0.3s; }
+    .search-container:hover { transform: translateY(-2px); }
+    .search-container i { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1.2rem; }
+    
+    #search { 
+      width: 100%; background: rgba(20, 20, 20, 0.8); 
+      border: 1px solid rgba(255,255,255,0.1); 
+      padding: 20px 25px 20px 60px; font-size: 1.1rem; 
+      border-radius: 16px; outline: none; color: #fff; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: 0.3s;
+    }
+    #search:focus { border-color: var(--primary); box-shadow: 0 0 25px rgba(0, 247, 255, 0.2); background: #000; }
 
-  /* --- MEGA FOOTER --- */
-  footer { background: #020305; border-top: 1px solid #1a202c; margin-top: auto; padding: 60px 20px 20px; }
-  .footer-container { max-width: 1200px; margin: 0 auto; }
+    /* --- TAGS --- */
+    .tag-box { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 10px 0 50px; padding: 0 15px; }
+    .tag { 
+      padding: 10px 24px; background: rgba(255,255,255,0.03); 
+      border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); 
+      border-radius: 100px; font-size: 0.9rem; cursor: pointer; transition: 0.3s; font-weight: 500;
+    }
+    .tag:hover { background: rgba(255,255,255,0.08); color: #fff; transform: translateY(-2px); }
+    .tag.active { 
+      background: var(--primary); color: #000; font-weight: 700; 
+      border-color: var(--primary); box-shadow: 0 0 20px rgba(0, 247, 255, 0.4); 
+    }
 
-  /* Part 1: Tools Directory */
-  .footer-heading { color: #fff; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; text-align: center; font-weight: 800; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
-  
-  .tools-directory { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 30px; margin-bottom: 50px; }
-  .dir-col h5 { color: var(--primary); font-size: 0.95rem; margin-bottom: 15px; text-transform: uppercase; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
-  .dir-col ul { list-style: none; padding: 0; }
-  .dir-col li { margin-bottom: 8px; }
-  .dir-col a { color: #8899a6; text-decoration: none; font-size: 0.85rem; }
+    /* --- TOOLS GRID --- */
+    .tools-grid { 
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+      gap: 25px; max-width: 1250px; margin: 0 auto; padding: 0 25px 40px; width: 100%; 
+    }
+    
+    .tool-card { 
+      background: rgba(18, 18, 18, 0.7); 
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08); 
+      padding: 30px 25px; border-radius: 20px; 
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+      cursor: pointer; text-decoration: none; 
+      display: none; 
+      flex-direction: column; position: relative; overflow: hidden; 
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .tool-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    }
 
-  /* Part 2: Info Grid */
-  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; }
-  .info-col h4 { color: #fff; font-size: 1.2rem; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
-  .info-col a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; font-size: 0.95rem; }
-  
-  .social-icons { display: flex; gap: 15px; margin-top: 15px; }
-  .social-icons a { color: #fff; font-size: 1.3rem; }
+    .tool-card:hover { 
+      transform: translateY(-8px); 
+      background: rgba(25, 25, 25, 0.9);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+    }
+    
+    .card-icon { 
+      font-size: 2.2rem; margin-bottom: 20px; 
+      width: 60px; height: 60px; 
+      display: flex; align-items: center; justify-content: center; 
+      border-radius: 16px; transition: 0.4s;
+    }
+    .tool-card:hover .card-icon { transform: scale(1.1) rotate(5deg); }
 
-  .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #666; font-size: 0.85rem; margin-top: 40px; }
+    .tool-card h3 { font-size: 1.2rem; color: #fff; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.3px; }
+    .tool-card p { font-size: 0.9rem; color: #888; line-height: 1.6; }
 
-  @media (max-width: 600px) { .tools-grid { grid-template-columns: 1fr; } .tools-directory { grid-template-columns: 1fr 1fr; } .info-grid { grid-template-columns: 1fr; } }
-</style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- LOAD MORE --- */
+    .load-more-container { text-align: center; margin-bottom: 80px; margin-top: 20px; }
+    .load-btn { 
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); 
+      color: #fff; padding: 15px 40px; border-radius: 50px; 
+      font-size: 1rem; cursor: pointer; font-weight: 600; transition: 0.3s;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .load-btn:hover { 
+      background: var(--primary); color: #000; border-color: var(--primary);
+      box-shadow: 0 0 30px rgba(0, 247, 255, 0.3); transform: scale(1.05); 
+    }
+
+    /* --- MEGA FOOTER (FULL) --- */
+    footer { background: #020202; border-top: 1px solid #1a1a1a; margin-top: auto; padding: 80px 0 20px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* SECTION 1: TOOLS DIRECTORY (4 Columns) */
+    .footer-heading { 
+      color: #fff; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; 
+      margin-bottom: 40px; text-align: center; font-weight: 800; opacity: 0.8;
+    }
+    
+    .tools-directory { 
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+      gap: 40px; margin-bottom: 60px; border-bottom: 1px solid #1a1a1a; padding-bottom: 50px;
+    }
+    
+    .dir-col h5 { 
+      color: var(--primary); font-size: 0.95rem; margin-bottom: 20px; 
+      text-transform: uppercase; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; 
+    }
+    .dir-col ul { list-style: none; padding: 0; }
+    .dir-col li { margin-bottom: 10px; }
+    .dir-col a { color: #777; text-decoration: none; font-size: 0.9rem; transition: 0.3s; display: block; }
+    .dir-col a:hover { color: #fff; padding-left: 5px; text-shadow: 0 0 5px var(--primary); }
+
+    /* SECTION 2: INFO & LEGAL (3 Columns) */
+    .info-grid { 
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 50px; padding-top: 30px; 
+    }
+    .info-col h4 { color: #fff; font-size: 1.1rem; margin-bottom: 25px; font-weight: 700; }
+    .info-col p { color: #777; line-height: 1.6; font-size: 0.9rem; }
+    .info-col a { display: block; color: #888; text-decoration: none; margin-bottom: 10px; font-size: 0.9rem; transition: 0.3s; }
+    .info-col a:hover { color: var(--primary); }
+
+    .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+    .social-icons a { 
+      width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.1rem;
+      transition: 0.3s; text-decoration: none; margin-bottom: 0; display: flex;
+    }
+    .social-icons a:hover { background: var(--primary); color: #000; transform: translateY(-3px); }
+
+    .copyright { text-align: center; padding-top: 50px; border-top: 1px solid #111; color: #555; font-size: 0.85rem; margin-top: 50px; }
+
+    @media (max-width: 768px) {
+      .tools-directory { grid-template-columns: 1fr 1fr; } /* 2 cols on tablet */
+      .info-grid { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: 1fr; padding: 0 15px 40px; } 
+    }
+    @media (max-width: 480px) {
+      .tools-directory { grid-template-columns: 1fr; } /* 1 col on mobile */
+    }
+  </style>
 </head>
 
 <body>
@@ -168,10 +283,12 @@
 <div class="overlay" id="overlay"></div>
 
 <div class="sidebar" id="sidebar">
-  <h3>Important Pages</h3>
+  <h3>Menu</h3>
   <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
   <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
   <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact Us</a>
+  
+  <h3 style="margin-top: 30px;">Legal</h3>
   <a href="privacy.html" class="nav-link"><i class="fas fa-user-shield"></i> Privacy Policy</a>
   <a href="terms.html" class="nav-link"><i class="fas fa-file-contract"></i> Terms of Use</a>
   <a href="disclaimer.html" class="nav-link"><i class="fas fa-exclamation-triangle"></i> Disclaimer</a>
@@ -180,265 +297,264 @@
 <div class="search-section">
   <div class="search-container">
     <i class="fas fa-search"></i>
-    <input type="text" id="search" placeholder="Search for tools... (e.g. YouTube, AI, PDF)">
+    <input type="text" id="search" placeholder="What tool do you need today?">
   </div>
 </div>
 
 <div class="tag-box">
-  <div class="tag active" onclick="filterTag('all', this)">All</div>
-  <div class="tag" onclick="filterTag('social', this)">Social</div>
+  <div class="tag active" onclick="filterTag('all', this)">All Tools</div>
+  <div class="tag" onclick="filterTag('social', this)">Social Media</div>
   <div class="tag" onclick="filterTag('gaming', this)">Gaming</div>
-  <div class="tag" onclick="filterTag('image', this)">Image</div>
-  <div class="tag" onclick="filterTag('pdf', this)">PDF</div>
+  <div class="tag" onclick="filterTag('image', this)">Image Tools</div>
+  <div class="tag" onclick="filterTag('pdf', this)">PDF Tools</div>
   <div class="tag" onclick="filterTag('security', this)">Security</div>
-  <div class="tag" onclick="filterTag('converter', this)">Converter</div>
-  <div class="tag" onclick="filterTag('utility', this)">Utility</div>
+  <div class="tag" onclick="filterTag('utility', this)">Utilities</div>
 </div>
 
 <div class="tools-grid" id="grid">
   
   <a href="YouTube-thumbnail-downloader.html" class="tool-card" data-cat="social image">
-    <div class="card-icon"><i class="fab fa-youtube"></i></div>
+    <div class="card-icon" style="color: #ff0000; background: rgba(255, 0, 0, 0.1);"><i class="fab fa-youtube"></i></div>
     <h3>YT Thumb Downloader</h3>
     <p>Download HD Thumbnails.</p>
   </a>
 
   <a href="insta-video-saver.html" class="tool-card" data-cat="social">
-    <div class="card-icon"><i class="fab fa-instagram"></i></div>
+    <div class="card-icon" style="color: #e1306c; background: rgba(225, 48, 108, 0.1);"><i class="fab fa-instagram"></i></div>
     <h3>Insta Video Saver</h3>
     <p>Download Reels & Videos.</p>
   </a>
 
   <a href="AI-Paraphraser.html" class="tool-card" data-cat="utility converter">
-    <div class="card-icon"><i class="fas fa-robot"></i></div>
+    <div class="card-icon" style="color: #8a2be2; background: rgba(138, 43, 226, 0.1);"><i class="fas fa-robot"></i></div>
     <h3>AI Paraphraser</h3>
     <p>Rewrite text intelligently.</p>
   </a>
 
   <a href="image-compressor.html" class="tool-card" data-cat="image utility">
-    <div class="card-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+    <div class="card-icon" style="color: #ff9800; background: rgba(255, 152, 0, 0.1);"><i class="fas fa-compress-arrows-alt"></i></div>
     <h3>Image Compressor</h3>
     <p>Reduce file size fast.</p>
   </a>
 
   <a href="pdf-to-word.html" class="tool-card" data-cat="pdf converter">
-    <div class="card-icon"><i class="fas fa-file-word"></i></div>
+    <div class="card-icon" style="color: #2b579a; background: rgba(43, 87, 154, 0.1);"><i class="fas fa-file-word"></i></div>
     <h3>PDF to Word</h3>
     <p>Convert to Editable Doc.</p>
   </a>
 
   <a href="speed-test.html" class="tool-card" data-cat="security utility">
-    <div class="card-icon"><i class="fas fa-wifi"></i></div>
+    <div class="card-icon" style="color: #00e676; background: rgba(0, 230, 118, 0.1);"><i class="fas fa-wifi"></i></div>
     <h3>Speed Test</h3>
     <p>Check internet speed.</p>
   </a>
 
   <a href="qr-code-generator.html" class="tool-card" data-cat="utility converter">
-    <div class="card-icon"><i class="fas fa-qrcode"></i></div>
+    <div class="card-icon" style="color: #ffffff; background: rgba(255, 255, 255, 0.1);"><i class="fas fa-qrcode"></i></div>
     <h3>QR Generator</h3>
     <p>Create custom QR Codes.</p>
   </a>
 
   <a href="password-generator.html" class="tool-card" data-cat="security utility">
-    <div class="card-icon"><i class="fas fa-key"></i></div>
+    <div class="card-icon" style="color: #ffd700; background: rgba(255, 215, 0, 0.1);"><i class="fas fa-key"></i></div>
     <h3>Pass Generator</h3>
     <p>Create secure passwords.</p>
   </a>
 
   <a href="mouse-polling-rate.html" class="tool-card" data-cat="gaming utility">
-    <div class="card-icon"><i class="fas fa-mouse"></i></div>
+    <div class="card-icon" style="color: #00ff00; background: rgba(0, 255, 0, 0.1);"><i class="fas fa-mouse"></i></div>
     <h3>Mouse Hz Test</h3>
     <p>Check polling rate.</p>
   </a>
 
   <a href="reaction-time-test.html" class="tool-card" data-cat="gaming utility">
-    <div class="card-icon"><i class="fas fa-bolt"></i></div>
+    <div class="card-icon" style="color: #ffcc00; background: rgba(255, 204, 0, 0.1);"><i class="fas fa-bolt"></i></div>
     <h3>Reaction Test</h3>
     <p>Test gamer reflexes.</p>
   </a>
 
   <a href="invisible-text.html" class="tool-card" data-cat="social utility">
-    <div class="card-icon"><i class="fas fa-ghost"></i></div>
+    <div class="card-icon" style="color: #9e9e9e; background: rgba(158, 158, 158, 0.1);"><i class="fas fa-ghost"></i></div>
     <h3>Invisible Text</h3>
     <p>Send blank messages.</p>
   </a>
 
   <a href="text-to-handwriting.html" class="tool-card" data-cat="converter utility">
-    <div class="card-icon"><i class="fas fa-pen-fancy"></i></div>
+    <div class="card-icon" style="color: #4285f4; background: rgba(66, 133, 244, 0.1);"><i class="fas fa-pen-fancy"></i></div>
     <h3>Assignment Maker</h3>
     <p>Text to Handwriting.</p>
   </a>
 
   <a href="youtubeshorts.html" class="tool-card" data-cat="social image">
-    <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+    <div class="card-icon" style="color: #ff0000; background: rgba(255, 0, 0, 0.1);"><i class="fas fa-mobile-alt"></i></div>
     <h3>Shorts Cover</h3>
     <p>Save YouTube Shorts covers.</p>
   </a>
 
   <a href="tiktok-downloader.html" class="tool-card" data-cat="social">
-    <div class="card-icon"><i class="fab fa-tiktok"></i></div>
+    <div class="card-icon" style="color: #00f2ea; background: rgba(0, 242, 234, 0.1);"><i class="fab fa-tiktok"></i></div>
     <h3>TikTok Downloader</h3>
     <p>No watermark video saver.</p>
   </a>
 
   <a href="hashtag-generator.html" class="tool-card" data-cat="social">
-    <div class="card-icon"><i class="fas fa-hashtag"></i></div>
+    <div class="card-icon" style="color: #c13584; background: rgba(193, 53, 132, 0.1);"><i class="fas fa-hashtag"></i></div>
     <h3>Hashtag Gen</h3>
     <p>Get viral tags for Insta.</p>
   </a>
 
   <a href="social-media-caption.html" class="tool-card" data-cat="social">
-    <div class="card-icon"><i class="fas fa-quote-right"></i></div>
+    <div class="card-icon" style="color: #1da1f2; background: rgba(29, 161, 242, 0.1);"><i class="fas fa-quote-right"></i></div>
     <h3>Caption Generator</h3>
     <p>Creative social captions.</p>
   </a>
 
   <a href="youtube-tag-extractor.html" class="tool-card" data-cat="social">
-    <div class="card-icon"><i class="fas fa-tags"></i></div>
+    <div class="card-icon" style="color: #ff0000; background: rgba(255, 0, 0, 0.1);"><i class="fas fa-tags"></i></div>
     <h3>YT Tag Extractor</h3>
     <p>Spy on video keywords.</p>
   </a>
 
   <a href="blog-title-generator.html" class="tool-card" data-cat="social utility">
-    <div class="card-icon"><i class="fas fa-heading"></i></div>
+    <div class="card-icon" style="color: #f57c00; background: rgba(245, 124, 0, 0.1);"><i class="fas fa-heading"></i></div>
     <h3>Blog Title Gen</h3>
     <p>Catchy headline ideas.</p>
   </a>
   
   <a href="SEO-Meta-Description-Generator.html" class="tool-card" data-cat="social utility">
-    <div class="card-icon"><i class="fas fa-search-plus"></i></div>
+    <div class="card-icon" style="color: #4caf50; background: rgba(76, 175, 80, 0.1);"><i class="fas fa-search-plus"></i></div>
     <h3>SEO Meta Gen</h3>
     <p>Boost SEO ranking.</p>
   </a>
 
   <a href="keywords-finder.html" class="tool-card" data-cat="social utility">
-    <div class="card-icon"><i class="fas fa-search-dollar"></i></div>
+    <div class="card-icon" style="color: #fbc02d; background: rgba(251, 192, 45, 0.1);"><i class="fas fa-search-dollar"></i></div>
     <h3>Keyword Finder</h3>
     <p>Find high volume keywords.</p>
   </a>
 
   <a href="AI-Smart-Email-Writer.html" class="tool-card" data-cat="utility">
-    <div class="card-icon"><i class="fas fa-envelope-open-text"></i></div>
+    <div class="card-icon" style="color: #ea4335; background: rgba(234, 67, 53, 0.1);"><i class="fas fa-envelope-open-text"></i></div>
     <h3>AI Email Writer</h3>
     <p>Write professional emails.</p>
   </a>
 
   <a href="ai-grammar-fixer.html" class="tool-card" data-cat="utility">
-    <div class="card-icon"><i class="fas fa-spell-check"></i></div>
+    <div class="card-icon" style="color: #2979ff; background: rgba(41, 121, 255, 0.1);"><i class="fas fa-spell-check"></i></div>
     <h3>AI Grammar Fixer</h3>
     <p>Correct sentences fast.</p>
   </a>
   
   <a href="ai-text-summarise.html" class="tool-card" data-cat="utility">
-    <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+    <div class="card-icon" style="color: #009688; background: rgba(0, 150, 136, 0.1);"><i class="fas fa-file-alt"></i></div>
     <h3>AI Summarizer</h3>
     <p>Shorten long texts.</p>
   </a>
 
   <a href="keyboard-tester.html" class="tool-card" data-cat="gaming utility">
-    <div class="card-icon"><i class="fas fa-keyboard"></i></div>
+    <div class="card-icon" style="color: #cfd8dc; background: rgba(207, 216, 220, 0.1);"><i class="fas fa-keyboard"></i></div>
     <h3>Keyboard Test</h3>
     <p>Check broken keys.</p>
   </a>
 
   <a href="dead-pixel-fixer.html" class="tool-card" data-cat="utility image">
-    <div class="card-icon"><i class="fas fa-desktop"></i></div>
+    <div class="card-icon" style="color: #d32f2f; background: rgba(211, 47, 47, 0.1);"><i class="fas fa-desktop"></i></div>
     <h3>Dead Pixel Fixer</h3>
     <p>Repair screen pixels.</p>
   </a>
 
   <a href="image-resizer.html" class="tool-card" data-cat="image utility">
-    <div class="card-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+    <div class="card-icon" style="color: #3f51b5; background: rgba(63, 81, 181, 0.1);"><i class="fas fa-expand-arrows-alt"></i></div>
     <h3>Image Resizer</h3>
     <p>Resize width/height.</p>
   </a>
 
   <a href="jpg-to-png.html" class="tool-card" data-cat="image converter">
-    <div class="card-icon"><i class="fas fa-images"></i></div>
+    <div class="card-icon" style="color: #7b1fa2; background: rgba(123, 31, 162, 0.1);"><i class="fas fa-images"></i></div>
     <h3>JPG to PNG</h3>
     <p>Convert format losslessly.</p>
   </a>
 
   <a href="color-picker.html" class="tool-card" data-cat="image utility">
-    <div class="card-icon"><i class="fas fa-palette"></i></div>
+    <div class="card-icon" style="color: #e91e63; background: rgba(233, 30, 99, 0.1);"><i class="fas fa-palette"></i></div>
     <h3>Color Picker</h3>
     <p>Get HEX & RGB codes.</p>
   </a>
 
   <a href="exif-remover.html" class="tool-card" data-cat="image security">
-    <div class="card-icon"><i class="fas fa-file-shield"></i></div>
+    <div class="card-icon" style="color: #4caf50; background: rgba(76, 175, 80, 0.1);"><i class="fas fa-file-shield"></i></div>
     <h3>Exif Remover</h3>
     <p>Clean GPS from photos.</p>
   </a>
 
   <a href="CV-Resume-Builder.html" class="tool-card" data-cat="pdf utility">
-    <div class="card-icon"><i class="fas fa-file-user"></i></div>
+    <div class="card-icon" style="color: #536dfe; background: rgba(83, 109, 254, 0.1);"><i class="fas fa-file-user"></i></div>
     <h3>CV Builder</h3>
     <p>Create Professional Resume.</p>
   </a>
 
   <a href="pdf-merger.html" class="tool-card" data-cat="pdf utility">
-    <div class="card-icon"><i class="fas fa-file-invoice"></i></div>
+    <div class="card-icon" style="color: #ff1744; background: rgba(255, 23, 68, 0.1);"><i class="fas fa-file-invoice"></i></div>
     <h3>PDF Merger</h3>
     <p>Combine multiple PDFs.</p>
   </a>
 
   <a href="pdf-light-mode.html" class="tool-card" data-cat="pdf utility">
-    <div class="card-icon"><i class="fas fa-moon"></i></div>
+    <div class="card-icon" style="color: #ffff00; background: rgba(255, 255, 0, 0.1);"><i class="fas fa-moon"></i></div>
     <h3>PDF Light Mode</h3>
     <p>Invert colors for print.</p>
   </a>
 
   <a href="glitch-text-generator.html" class="tool-card" data-cat="social utility">
-    <div class="card-icon"><i class="fas fa-bug"></i></div>
+    <div class="card-icon" style="color: #00ff00; background: rgba(0, 255, 0, 0.1);"><i class="fas fa-bug"></i></div>
     <h3>Glitch Text</h3>
     <p>Create Zalgo/Hacked text.</p>
   </a>
 
   <a href="diff-checker.html" class="tool-card" data-cat="utility converter">
-    <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+    <div class="card-icon" style="color: #00897b; background: rgba(0, 137, 123, 0.1);"><i class="fas fa-exchange-alt"></i></div>
     <h3>Diff Checker</h3>
     <p>Compare text differences.</p>
   </a>
 
   <a href="ip-checker.html" class="tool-card" data-cat="security utility">
-    <div class="card-icon"><i class="fas fa-globe-asia"></i></div>
+    <div class="card-icon" style="color: #0288d1; background: rgba(2, 136, 209, 0.1);"><i class="fas fa-globe-asia"></i></div>
     <h3>IP Checker</h3>
     <p>Check IP & Location.</p>
   </a>
 
   <a href="link-scanner.html" class="tool-card" data-cat="security utility">
-    <div class="card-icon"><i class="fas fa-shield-virus"></i></div>
+    <div class="card-icon" style="color: #00c853; background: rgba(0, 200, 83, 0.1);"><i class="fas fa-shield-virus"></i></div>
     <h3>Link Scanner</h3>
     <p>Check URLs for virus.</p>
   </a>
 
   <a href="text-to-speech.html" class="tool-card" data-cat="converter utility">
-    <div class="card-icon"><i class="fas fa-microphone-alt"></i></div>
+    <div class="card-icon" style="color: #ff6f00; background: rgba(255, 111, 0, 0.1);"><i class="fas fa-microphone-alt"></i></div>
     <h3>Text to Speech</h3>
     <p>AI Voice Generator.</p>
   </a>
 
   <a href="tone-generator.html" class="tool-card" data-cat="utility">
-    <div class="card-icon"><i class="fas fa-wave-square"></i></div>
+    <div class="card-icon" style="color: #00b0ff; background: rgba(0, 176, 255, 0.1);"><i class="fas fa-wave-square"></i></div>
     <h3>Speaker Cleaner</h3>
     <p>Remove water sound.</p>
   </a>
 
   <a href="morse-converter.html" class="tool-card" data-cat="converter utility">
-    <div class="card-icon"><i class="fas fa-broadcast-tower"></i></div>
+    <div class="card-icon" style="color: #a1887f; background: rgba(161, 136, 127, 0.1);"><i class="fas fa-broadcast-tower"></i></div>
     <h3>Morse Code</h3>
     <p>Text to Morse Audio.</p>
   </a>
 
   <a href="age-calculator.html" class="tool-card" data-cat="utility converter">
-    <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+    <div class="card-icon" style="color: #f06292; background: rgba(240, 98, 146, 0.1);"><i class="fas fa-calendar-alt"></i></div>
     <h3>Age Calculator</h3>
     <p>Exact age finder.</p>
   </a>
   
-   <a href="High-quality-PDF-smart-tool.html" class="tool-card" data-cat="pdf utility">
-    <div class="card-icon"><i class="fas fa-file-pdf"></i></div>
+  <a href="High-quality-PDF-smart-tool.html" class="tool-card" data-cat="pdf utility">
+    <div class="card-icon" style="color: #d50000; background: rgba(213, 0, 0, 0.1);"><i class="fas fa-file-pdf"></i></div>
     <h3>HQ PDF Tool</h3>
     <p>Smart PDF Processing.</p>
   </a>
@@ -453,6 +569,7 @@
   <div class="footer-container">
     
     <div class="footer-heading">XIZOA TOOLS DIRECTORY</div>
+    
     <div class="tools-directory">
       <div class="dir-col">
         <h5>Social & AI</h5>
@@ -502,7 +619,7 @@
     <div class="info-grid">
       <div class="info-col">
         <h4>About Us</h4>
-        <p>XIZOAHUB provides  high-quality, free online tools for developers, gamers, and content creators. Simple, fast, and secure.</p>
+        <p>XIZOAHUB provides high-quality, free online tools for developers, gamers, and content creators. Simple, fast, and secure.</p>
       </div>
       <div class="info-col">
         <h4>Legal Pages</h4>
@@ -514,7 +631,7 @@
         <h4>Connect Us</h4>
         <a href="contact.html">Contact Us</a>
         <div class="social-icons">
-          <a href="https://www.instagram.com/xizoa.com_?igsh=NzJrcW1lOTA0b2dp" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.instagram.com/xizoa.com_" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://www.youtube.com/@xizoahub" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           <a href="https://github.com/XIZOAHUB" aria-label="GitHub"><i class="fab fa-github"></i></a>
           <a href="https://t.me/xizoahub" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
@@ -522,8 +639,11 @@
       </div>
     </div>
 
+    <div class="copyright">
+      © 2025 XIZOA Hub • Designed by <strong>Priyanshu</strong>
+    </div>
+
   </div>
-  <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
 </footer>
 
 <script>
@@ -549,15 +669,15 @@
 
   function updateList() {
     cards.forEach((card, index) => {
-      // Hide or Show based on the current limit (itemsToShow)
       if (index < itemsToShow) {
         card.style.display = 'flex';
+        // Add subtle delay for staggered animation
+        card.style.animationDelay = (index % 12) * 0.05 + 's';
       } else {
         card.style.display = 'none';
       }
     });
 
-    // Toggle Load More Button
     if (itemsToShow >= cards.length) {
       loadBtn.style.display = 'none';
     } else {
@@ -565,16 +685,30 @@
     }
   }
 
-  // Initial Run (Shows 12)
+  // 3. DYNAMIC GLOW EFFECT (Magic Script)
+  cards.forEach(card => {
+    const icon = card.querySelector('.card-icon');
+    const color = icon.style.color; 
+    
+    card.addEventListener('mouseenter', () => {
+      card.style.borderColor = color;
+      card.style.boxShadow = `0 10px 30px -5px ${color.replace(')', ', 0.3)').replace('rgb', 'rgba')}`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+      card.style.boxShadow = 'none';
+    });
+  });
+
   updateList();
 
-  // Load More Event
   loadBtn.addEventListener('click', () => {
     itemsToShow += itemIncrement;
     updateList();
   });
 
-  // 3. SEARCH LOGIC
+  // 4. SEARCH LOGIC
   search.addEventListener('keyup', () => {
     let q = search.value.toLowerCase();
     
@@ -585,17 +719,18 @@
             let desc = card.querySelector('p').innerText.toLowerCase();
             if (title.includes(q) || desc.includes(q)) {
                 card.style.display = 'flex';
+                card.style.animation = 'none';
             } else {
                 card.style.display = 'none';
             }
         });
     } else {
         itemsToShow = 12;
-        updateList(); // Reset to 12 items
+        updateList(); 
     }
   });
 
-  // 4. FILTER LOGIC
+  // 5. FILTER LOGIC
   window.filterTag = function(category, element) {
     tags.forEach(t => t.classList.remove('active'));
     element.classList.add('active');
@@ -605,8 +740,11 @@
       updateList();
       loadBtn.style.display = 'inline-block';
     } else {
-      loadBtn.style.display = 'none'; // Hide load more in filtered view
+      loadBtn.style.display = 'none'; 
       cards.forEach(card => {
+        card.style.animation = 'none'; 
+        setTimeout(() => card.style.animation = 'fadeInUp 0.5s ease forwards', 10); 
+        
         if(card.dataset.cat.includes(category)) {
             card.style.display = 'flex';
         } else {
