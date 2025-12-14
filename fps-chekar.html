@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Live FPS Counter & Screen Hz Tester (Supports 240Hz+)</title>
+    <meta name="description" content="Use the most accurate online FPS Checker. Test your screen refresh rate (Hz), compare 60 vs 144 FPS animations, and monitor frame drops with a live graph. Free tool for gamers (Valorant, BGMI, COD).">
+    <meta name="keywords" content="fps checker, screen hz test, refresh rate checker, 144hz vs 60hz, real time fps graph, monitor hz test, mobile fps counter, display lag test, xizoa tools">
+    <meta name="author" content="Priyanshu - XIZOA Hub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xizoa.com/fps-checker">
+    <link rel="icon" href="https://xizoa.com/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* --- GAMING THEME --- */
+        :root {
+            --bg: #050b14;
+            --card: #0f172a;
+            --neon: #00f7ff;
+            --neon-dim: rgba(0, 247, 255, 0.1);
+            --grid-line: rgba(255, 255, 255, 0.05);
+            --text: #e2e8f0;
+            --border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
+
+        body {
+            background-color: var(--bg); color: var(--text);
+            min-height: 100vh; display: flex; flex-direction: column;
+            overflow-x: hidden;
+            /* Grid Background Pattern */
+            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center; padding: 25px;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, transparent 100%);
+            border-bottom: var(--border); position: relative; z-index: 10;
+        }
+        .brand { 
+            font-family: 'Rajdhani', sans-serif; font-size: 2.2rem; font-weight: 700; 
+            color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--neon);
+        }
+        .brand span { color: var(--neon); }
+
+        /* MAIN DASHBOARD (Responsive Grid) */
+        .dashboard {
+            max-width: 1200px; margin: 30px auto; padding: 20px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+        }
+
+        /* 1. METER CARD */
+        .card {
+            background: var(--card); border: var(--border); border-radius: 16px;
+            padding: 30px; position: relative; overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .card-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+        }
+        .card-title { font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; }
+        
+        /* Floating Button */
+        .pop-out-btn {
+            background: rgba(0, 247, 255, 0.1); border: 1px solid var(--neon); color: var(--neon);
+            padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+            display: flex; align-items: center; gap: 5px; transition: 0.3s;
+        }
+        .pop-out-btn:hover { background: var(--neon); color: #000; }
+
+        /* The Big FPS Number */
+        .fps-display {
+            text-align: center; margin-bottom: 20px;
+        }
+        .fps-num {
+            font-family: 'Rajdhani', sans-serif; font-size: 6rem; font-weight: 700;
+            color: #fff; line-height: 1; text-shadow: 0 0 30px var(--neon);
+        }
+        .fps-unit { font-size: 1.5rem; color: #64748b; font-weight: 600; }
+        
+        .status-badge {
+            display: inline-block; background: rgba(16, 185, 129, 0.2); color: #10b981;
+            padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;
+            margin-top: 10px; border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* Graph Container */
+        .graph-wrapper {
+            width: 100%; height: 150px; position: relative;
+        }
+
+        /* 2. ANIMATION TEST CARD */
+        .ufo-track {
+            background: #050b14; border: 1px solid #334155; border-radius: 8px;
+            height: 60px; position: relative; margin-bottom: 20px; overflow: hidden;
+        }
+        .track-label {
+            position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+            font-size: 0.8rem; color: #64748b; font-weight: 600; z-index: 2;
+        }
+        .ufo {
+            width: 40px; height: 40px; background: var(--neon);
+            position: absolute; top: 10px; left: 0; border-radius: 50%;
+            box-shadow: 0 0 15px var(--neon); z-index: 1;
+        }
+        /* Color variations */
+        .ufo-30 { background: #f59e0b; box-shadow: 0 0 15px #f59e0b; }
+        .ufo-60 { background: #10b981; box-shadow: 0 0 15px #10b981; }
+        .ufo-max { background: #00f7ff; box-shadow: 0 0 15px #00f7ff; }
+
+        /* --- SEO CONTENT SECTION (MASSIVE) --- */
+        .content-section {
+            grid-column: 1 / -1; margin-top: 40px;
+        }
+        .seo-box {
+            background: rgba(255,255,255,0.02); border: var(--border); padding: 40px;
+            border-radius: 16px; margin-bottom: 30px;
+        }
+        .seo-box h2 {
+            font-family: 'Rajdhani', sans-serif; color: #fff; font-size: 1.8rem; margin-bottom: 20px;
+            border-left: 4px solid var(--neon); padding-left: 15px;
+        }
+        .seo-box h3 { color: #e2e8f0; font-size: 1.3rem; margin: 25px 0 10px; }
+        .seo-box p { color: #94a3b8; line-height: 1.8; margin-bottom: 15px; font-size: 1.05rem; }
+        .seo-box ul { margin-left: 20px; color: #94a3b8; margin-bottom: 20px; }
+        .seo-box li { margin-bottom: 8px; }
+        .seo-box strong { color: var(--neon); }
+
+        /* FOOTER */
+        footer {
+            background: #02040a; border-top: var(--border); padding: 50px 20px; margin-top: auto;
+        }
+        .footer-grid {
+            max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;
+        }
+        .f-col h4 { color: #fff; margin-bottom: 20px; font-family: 'Rajdhani', sans-serif; font-size: 1.2rem; }
+        .f-col a { display: block; color: #64748b; text-decoration: none; margin-bottom: 10px; transition: 0.2s; }
+        .f-col a:hover { color: var(--neon); padding-left: 5px; }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 900px) {
+            .dashboard { grid-template-columns: 1fr; }
+            .fps-num { font-size: 4.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand"><i class="fas fa-microchip"></i> XIZOA <span>FPS</span></a>
+    </header>
+
+    <div class="dashboard">
+
+        <div class="card" id="meterCard">
+            <div class="card-header">
+                <div class="card-title">Real-Time Monitor</div>
+                <button class="pop-out-btn" onclick="toggleFloatingMode()">
+                    <i class="fas fa-external-link-alt"></i> Pop-Out Widget
+                </button>
+            </div>
+
+            <div class="fps-display">
+                <div class="fps-num" id="fpsValue">--</div>
+                <div class="fps-unit">Frames Per Second (Hz)</div>
+                <div class="status-badge" id="fpsStatus">Analyzing...</div>
+            </div>
+
+            <div class="graph-wrapper">
+                <canvas id="fpsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Smoothness Comparison</div>
+            </div>
+
+            <p style="color:#64748b; font-size:0.9rem; margin-bottom:20px;">
+                Visual difference between refresh rates on your device.
+            </p>
+
+            <div class="ufo-track">
+                <div class="track-label">30 FPS (Console)</div>
+                <div class="ufo ufo-30" id="ufo30"></div>
+            </div>
+
+            <div class="ufo-track">
+                <div class="track-label">60 FPS (Standard)</div>
+                <div class="ufo ufo-60" id="ufo60"></div>
+            </div>
+
+            <div class="ufo-track">
+                <div class="track-label">Your Max Hz (Gaming)</div>
+                <div class="ufo ufo-max" id="ufoMax"></div>
+            </div>
+
+        </div>
+
+        <section class="content-section">
+            
+            <div class="seo-box">
+                <h2>Why FPS Matters for Gaming?</h2>
+                <p><strong>FPS (Frames Per Second)</strong> determines how smoothly a game or video plays on your screen. The higher the FPS, the smoother the visual experience. In competitive gaming (like Valorant, CS:GO, BGMI), FPS is crucial because it reduces input lag.</p>
+                <p>This tool by Xizoa Hub allows you to check your monitor's <strong>Real Refresh Rate (Hz)</strong> and browser performance instantly. We support detection up to 240Hz and 360Hz monitors.</p>
+            </div>
+
+            <div class="seo-box">
+                <h2>Understanding Hz vs. FPS</h2>
+                <p>Many people confuse these two terms. Let's break it down:</p>
+                <ul>
+                    <li><strong>FPS (Frames Per Second):</strong> This is how many images your GPU (Graphics Card) produces every second.</li>
+                    <li><strong>Hz (Hertz):</strong> This is how many times your Monitor updates the screen every second.</li>
+                </ul>
+                <p><em>Pro Tip:</em> If your PC generates 200 FPS but your monitor is only 60Hz, you will only see 60 frames. You need a high-refresh-rate monitor (144Hz or 240Hz) to see the benefit of high FPS.</p>
+            </div>
+
+            <div class="seo-box">
+                <h2>How to Increase FPS? (Optimization Guide)</h2>
+                <h3>1. Update Graphics Drivers</h3>
+                <p>Always keep your NVIDIA or AMD drivers updated. New updates often contain optimizations for the latest games.</p>
+                
+                <h3>2. Disable V-Sync</h3>
+                <p>Vertical Sync locks your FPS to your monitor's refresh rate. While it stops screen tearing, it increases input lag. Turn it OFF for competitive gaming.</p>
+                
+                <h3>3. Close Background Apps</h3>
+                <p>Browsers like Chrome consume heavy RAM. Use our tool to check if closing tabs improves your system's responsiveness.</p>
+            </div>
+
+            <div class="seo-box">
+                <h2>Input Lag & Latency</h2>
+                <p>Low FPS results in high "Frame Time". If your game runs at 30 FPS, a new frame appears every 33.3ms. At 144 FPS, a new frame appears every 6.9ms. This difference is why pros react faster on high-end PCs.</p>
+            </div>
+
+        </section>
+        </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="f-col">
+                <h4>Xizoa Utilities</h4>
+                <a href="text-to-handwriting.html">Text to Handwriting</a>
+                <a href="image-compressor.html">Image Compressor</a>
+                <a href="pdf-merger.html">PDF Merger</a>
+            </div>
+            <div class="f-col">
+                <h4>Gaming Tools</h4>
+                <a href="fps-checker.html">FPS Checker</a>
+                <a href="aim-trainer.html">Aim Trainer (Coming Soon)</a>
+                <a href="reaction-test.html">Reaction Time Test</a>
+            </div>
+            <div class="f-col">
+                <h4>About</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+        <div style="margin-top:30px; font-size:0.9rem;">© 2025 XIZOA Hub • Optimized for Speed</div>
+    </footer>
+
+    <script>
+        // --- 1. CORE FPS LOGIC ---
+        const fpsElement = document.getElementById('fpsValue');
+        const badge = document.getElementById('fpsStatus');
+        
+        let lastTime = performance.now();
+        let frameCount = 0;
+        let fpsHistory = []; // For Graph
+
+        // --- 2. CHART.JS SETUP (THE GRAPH) ---
+        const ctx = document.getElementById('fpsChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array(20).fill(''), // Empty labels
+                datasets: [{
+                    label: 'Frame Rate',
+                    data: Array(20).fill(0),
+                    borderColor: '#00f7ff',
+                    backgroundColor: 'rgba(0, 247, 255, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4, // Smooth curve
+                    fill: true,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: false, // Performance
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#64748b' }
+                    },
+                    x: { display: false }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        function updateFPS() {
+            const now = performance.now();
+            frameCount++;
+
+            if (now - lastTime >= 1000) {
+                const fps = frameCount;
+                frameCount = 0;
+                lastTime = now;
+
+                // Update Number
+                fpsElement.innerText = fps;
+
+                // Update Status Color & Text
+                if (fps >= 120) {
+                    badge.innerText = "Ultra Smooth (Pro Gaming) 🚀";
+                    badge.style.color = "#00f7ff";
+                    badge.style.background = "rgba(0, 247, 255, 0.1)";
+                    document.documentElement.style.setProperty('--neon', '#00f7ff');
+                } else if (fps >= 60) {
+                    badge.innerText = "Smooth (Standard) ✅";
+                    badge.style.color = "#10b981";
+                    badge.style.background = "rgba(16, 185, 129, 0.2)";
+                    document.documentElement.style.setProperty('--neon', '#10b981');
+                } else {
+                    badge.innerText = "Lag / Stutter Detected ⚠️";
+                    badge.style.color = "#ef4444";
+                    badge.style.background = "rgba(239, 68, 68, 0.2)";
+                    document.documentElement.style.setProperty('--neon', '#ef4444');
+                }
+
+                // Update Graph
+                const data = chart.data.datasets[0].data;
+                data.shift(); // Remove old
+                data.push(fps); // Add new
+                chart.update();
+            }
+
+            requestAnimationFrame(updateFPS);
+        }
+        requestAnimationFrame(updateFPS);
+
+
+        // --- 3. ANIMATION SIMULATION (UFOs) ---
+        const ufo30 = document.getElementById('ufo30');
+        const ufo60 = document.getElementById('ufo60');
+        const ufoMax = document.getElementById('ufoMax');
+        
+        let p30=0, p60=0, pMax=0;
+        let d30=1, d60=1, dMax=1;
+        
+        // 30 FPS Sim
+        setInterval(() => {
+            const maxW = ufo30.parentElement.offsetWidth - 40;
+            p30 += 5 * d30 * 2; // Jumpier
+            if(p30 > maxW || p30 < 0) d30 *= -1;
+            ufo30.style.transform = `translateX(${p30}px)`;
+        }, 1000/30);
+
+        // 60 FPS Sim
+        setInterval(() => {
+            const maxW = ufo60.parentElement.offsetWidth - 40;
+            p60 += 5 * d60;
+            if(p60 > maxW || p60 < 0) d60 *= -1;
+            ufo60.style.transform = `translateX(${p60}px)`;
+        }, 1000/60);
+
+        // Max FPS (Browser Native)
+        function animateMax() {
+            const maxW = ufoMax.parentElement.offsetWidth - 40;
+            pMax += 5 * dMax; 
+            if(pMax > maxW || pMax < 0) dMax *= -1;
+            ufoMax.style.transform = `translateX(${pMax}px)`;
+            requestAnimationFrame(animateMax);
+        }
+        requestAnimationFrame(animateMax);
+
+
+        // --- 4. FLOATING WIDGET LOGIC ---
+        let popupWindow = null;
+
+        function toggleFloatingMode() {
+            // "Browser ke baahar" logic
+            // Web standard doesn't allow drawing outside browser on mobile easily.
+            // On Desktop, we use a Popup.
+            
+            const w = 300;
+            const h = 200;
+            const left = (screen.width/2)-(w/2);
+            const top = (screen.height/2)-(h/2);
+            
+            if(popupWindow && !popupWindow.closed) {
+                popupWindow.focus();
+            } else {
+                // Open minimal popup
+                popupWindow = window.open('', 'FPS Meter', `width=${w},height=${h},top=${top},left=${left}`);
+                
+                // Write content to popup
+                popupWindow.document.write(`
+                    <html>
+                    <head>
+                        <title>Xizoa FPS</title>
+                        <style>
+                            body { background: #050b14; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: sans-serif; overflow: hidden; }
+                            h1 { font-size: 5rem; margin: 0; color: #00f7ff; text-shadow: 0 0 20px #00f7ff; }
+                            p { color: #888; margin: 0; font-size: 0.8rem; }
+                        </style>
+                    </head>
+                    <body>
+                        <h1 id="popFps">--</h1>
+                        <p>Real-Time Hz</p>
+                        <script>
+                            let frames = 0, last = performance.now();
+                            function loop() {
+                                frames++;
+                                const now = performance.now();
+                                if(now - last >= 1000) {
+                                    document.getElementById('popFps').innerText = frames;
+                                    frames = 0;
+                                    last = now;
+                                }
+                                requestAnimationFrame(loop);
+                            }
+                            loop();
+                        <\/script>
+                    </body>
+                    </html>
+                `);
+            }
+        }
+    </script>
+</body>
+</html>
