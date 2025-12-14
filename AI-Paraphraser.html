@@ -4,46 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>AI Paraphraser Advanced Rewriter & Plagiarism Remover (Free)</title>
+    <title>Free AI Email Writer - Professional Email Generator (No Login)</title>
     
-    <meta name="description" content="Use the world's most advanced AI Paraphraser. Rewrite essays, articles, and text using Algorithmic Stemming Logic. 100% Free, Unlimited & Private. No Login.">
+    <meta name="description" content="Use the world's best Free AI Email Writer 2025. Generate professional emails, job applications, cover letters, and cold emails instantly using Llama-3 AI. No login, unlimited access.">
     
-    <meta name="keywords" content="
-    ai paraphraser, article rewriter, sentence rephraser, plagiarism remover, essay rewriter, free paraphrasing tool, 
-    (Hindi) फ्री एआई पैराफ्रेजर, आर्टिकल रीराइटर, 
-    (Spanish) parafrasear textos gratis, 
-    (French) reformuler un texte, 
-    (German) texte umschreiben, 
-    xizoa hub, offline paraphraser, no api limit, best rewriting tool 2025">
+    <meta name="keywords" content="ai email writer, free email generator, professional email creator, cover letter generator ai, write email with ai free, resignation letter maker, sick leave email format, cold email generator for sales, email writing assistant, xizoa hub tools">
 
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://xizoa.com/ai-paraphraser">
+    <link rel="canonical" href="https://xizoa.com/ai-email-writer">
     <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "XIZOA AI Paraphraser",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "Web",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "featureList": "Stemming Algorithm, Unlimited Words, No API Dependency",
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "20000" }
-    }
-    </script>
-
     <style>
-        /* --- PROFESSIONAL THEME: DARK & CYAN --- */
+        /* --- THEME VARIABLES --- */
         :root {
-            --bg-body: #050b14;
-            --bg-card: #0f172a;
-            --primary: #00f7ff; 
-            --primary-glow: rgba(0, 247, 255, 0.2);
-            --text-main: #e2e8f0;
+            --bg: #050b14;
+            --card: #0f172a;
+            --input: #1e293b;
+            --primary: #00f7ff;
+            --primary-glow: rgba(0, 247, 255, 0.25);
+            --text: #e2e8f0;
             --text-muted: #94a3b8;
             --border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -51,8 +33,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; outline: none; }
 
         body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            background-color: var(--bg);
+            color: var(--text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -62,237 +44,195 @@
         /* --- HEADER --- */
         header {
             text-align: center;
-            padding: 50px 20px 40px;
+            padding: 40px 20px;
             background: radial-gradient(circle at 50% 0%, rgba(0, 247, 255, 0.08), transparent 70%);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: var(--border);
         }
-        
         .brand-logo {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #fff;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+            font-size: 2.2rem; font-weight: 800; color: #fff; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px;
         }
         .brand-logo i { color: var(--primary); }
         .brand-logo span { color: var(--primary); }
 
-        h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; }
-        .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
+        .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-        /* --- MAIN TOOL --- */
+        /* --- MAIN LAYOUT (GRID SYSTEM) --- */
         .main-container {
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
             padding: 40px 20px;
-        }
-
-        /* EDITOR BOX */
-        .editor-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 40px;
-            height: 550px;
+            grid-template-columns: 1fr 1.5fr; /* Desktop: Left chota, Right bada */
+            gap: 30px;
         }
 
-        .text-panel {
-            background: var(--bg-card);
+        /* CARD STYLES */
+        .card {
+            background: var(--card);
             border: var(--border);
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-            transition: 0.3s;
-        }
-        .text-panel:focus-within { border-color: var(--primary); box-shadow: 0 0 25px var(--primary-glow); }
-
-        .panel-head {
-            padding: 15px 20px;
-            border-bottom: var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0,0,0,0.2);
-            border-radius: 16px 16px 0 0;
-        }
-        .head-title { font-weight: 700; color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .icon-btn {
-            background: transparent; border: none; color: var(--text-muted);
-            cursor: pointer; font-size: 1.2rem; transition: 0.2s;
-        }
-        .icon-btn:hover { color: var(--primary); transform: scale(1.1); }
-
-        textarea, .output-div {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 25px;
-            font-size: 1.2rem;
-            line-height: 1.7;
-            color: var(--text-main);
-            resize: none;
-            overflow-y: auto;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .output-div { color: #fff; }
-        
-        /* Highlight Changed Words */
-        .highlight { color: var(--primary); font-weight: 600; border-bottom: 1px dotted var(--primary); cursor: help; }
-
-        /* ACTION BUTTON */
-        .action-container { text-align: center; margin-bottom: 80px; }
-        .paraphrase-btn {
-            background: var(--primary);
-            color: #000;
-            border: none;
-            padding: 18px 50px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 0 20px var(--primary-glow);
-            display: inline-flex; align-items: center; gap: 10px;
-        }
-        .paraphrase-btn:hover { transform: translateY(-4px); box-shadow: 0 0 50px var(--primary-glow); }
-        
-        .status-msg { margin-top: 20px; color: var(--text-muted); font-size: 0.9rem; }
-
-        /* --- SEO CONTENT SECTION --- */
-        .seo-content {
-            margin-top: 50px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 60px;
-        }
-        
-        .content-card {
-            background: rgba(255,255,255,0.02);
-            border: var(--border);
-            padding: 40px;
             border-radius: 20px;
-            margin-bottom: 40px;
+            padding: 30px;
+            height: fit-content;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column;
+        }
+
+        .card-header {
+            font-size: 1.2rem; margin-bottom: 20px; color: #fff; border-bottom: var(--border);
+            padding-bottom: 15px; font-weight: 700; display: flex; align-items: center; gap: 10px;
+        }
+        .card-header i { color: var(--primary); }
+
+        /* FORM ELEMENTS */
+        label { display: block; margin-bottom: 8px; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+        
+        select, input, textarea {
+            width: 100%; background: var(--input); border: 1px solid #334155;
+            color: #fff; padding: 12px; border-radius: 10px; font-size: 1rem; margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        select:focus, input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
+
+        .btn-generate {
+            width: 100%; background: var(--primary); color: #000; padding: 15px; border: none;
+            border-radius: 50px; font-weight: 800; font-size: 1.1rem; cursor: pointer;
+            transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+        .btn-generate:hover { transform: translateY(-3px); box-shadow: 0 0 40px var(--primary-glow); }
+
+        /* OUTPUT AREA */
+        .output-wrapper { position: relative; flex: 1; min-height: 500px; display: flex; flex-direction: column; }
+        
+        .output-area {
+            flex: 1; width: 100%; background: transparent; border: none; outline: none; 
+            resize: none; font-size: 1.05rem; line-height: 1.8; color: #e2e8f0;
         }
         
-        .content-card h2 { font-size: 2rem; color: #fff; margin-bottom: 25px; border-left: 5px solid var(--primary); padding-left: 20px; }
-        .content-card h3 { font-size: 1.5rem; color: #e2e8f0; margin: 30px 0 15px; }
-        .content-card p { line-height: 1.8; color: #b0b8c4; margin-bottom: 20px; font-size: 1.1rem; }
-        .content-card ul, .content-card ol { margin-left: 25px; margin-bottom: 25px; color: #b0b8c4; font-size: 1.05rem; }
-        .content-card li { margin-bottom: 12px; line-height: 1.7; }
+        .copy-btn {
+            position: absolute; top: -10px; right: 0; background: #334155; color: #fff; 
+            border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: 0.2s;
+        }
+        .copy-btn:hover { background: var(--primary); color: #000; }
 
-        /* Tech Spec Table */
-        .tech-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(0,0,0,0.2); border-radius: 10px; overflow: hidden; }
-        .tech-table th, .tech-table td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .tech-table th { background: rgba(0, 247, 255, 0.1); color: var(--primary); }
-        .tech-table td { color: #ccc; }
+        /* DONATION SECTION */
+        .donate-section {
+            grid-column: 1 / -1; /* Full width */
+            max-width: 800px; margin: 40px auto 0; padding: 30px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 2px solid var(--primary); border-radius: 20px;
+            text-align: center;
+        }
+        .qr-box { width: 180px; height: 180px; background: #fff; margin: 15px auto; padding: 10px; border-radius: 10px; }
+        .qr-box img { width: 100%; height: 100%; object-fit: contain; }
 
-        .faq-box { margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 25px; }
-        .faq-box h4 { color: #fff; font-size: 1.3rem; margin-bottom: 12px; }
+        /* SEO CONTENT */
+        .seo-content {
+            grid-column: 1 / -1; /* Full width */
+            margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 50px;
+        }
+        .content-card { background: rgba(255,255,255,0.02); border: var(--border); padding: 40px; border-radius: 20px; margin-bottom: 30px; }
+        .content-card h2 { color: #fff; margin-bottom: 20px; border-left: 4px solid var(--primary); padding-left: 15px; }
+        .content-card p { color: #b0b8c4; line-height: 1.8; margin-bottom: 20px; }
 
         /* FOOTER */
-        footer { background: #02040a; border-top: var(--border); padding: 60px 20px; text-align: center; margin-top: auto; }
-        .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .footer-col { text-align: left; margin-bottom: 20px; }
-        .footer-col h4 { color: #fff; margin-bottom: 15px; font-size: 1.1rem; border-left: 3px solid var(--primary); padding-left: 10px; }
-        
-        .footer-links a { 
-            display: block; color: var(--text-muted); margin-bottom: 8px; text-decoration: none; transition: 0.3s; font-size: 0.95rem; 
+        footer { background: #02040a; border-top: var(--border); padding: 60px 20px; margin-top: auto; }
+        .footer-content {
+            max-width: 1000px; margin: 0 auto; display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left;
         }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; border-left: 3px solid var(--primary); padding-left: 10px; }
+        .footer-links a { display: block; color: var(--text-muted); margin-bottom: 10px; text-decoration: none; transition: 0.3s; }
         .footer-links a:hover { color: var(--primary); padding-left: 5px; }
-        .copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid #222; color: #555; font-size: 0.9rem; text-align: center; }
+        .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #222; color: #555; font-size: 0.9rem; }
 
-        @media (max-width: 900px) { .editor-grid { grid-template-columns: 1fr; height: auto; } .text-panel { height: 400px; } .footer-content { text-align: center; } .footer-col { text-align: center; } .footer-col h4 { border-left: none; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px; } }
+        /* --- MOBILE RESPONSIVE FIX --- */
+        @media (max-width: 900px) {
+            .main-container { grid-template-columns: 1fr; /* Stack vertically */ gap: 20px; }
+            .card { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .footer-content { text-align: center; }
+            .footer-col h4 { border-left: none; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <a href="index.html" class="brand-logo">
-            <i class="fa-solid fa-cube"></i> XIZOA <span>HUB</span>
+            <i class="fas fa-cube"></i> XIZOA <span>HUB</span>
         </a>
-        <h1>AI Paraphraser Tool</h1>
-        <p class="subtitle">Advanced Stemming Logic to Rewrite Text with 100% Unique Output.</p>
+        <h1>Free AI Email Writer</h1>
+        <p class="subtitle">Advanced Context Logic to write professional emails instantly.</p>
     </header>
 
     <div class="main-container">
         
-        <div class="editor-grid">
-            <div class="text-panel">
-                <div class="panel-head">
-                    <span class="head-title">Input Text</span>
-                    <button class="icon-btn" onclick="pasteText()"><i class="fa-solid fa-paste"></i></button>
-                </div>
-                <textarea id="inputText" placeholder="Paste your article, essay, or paragraph here... (Algorithm ready)"></textarea>
-            </div>
+        <div class="card">
+            <div class="card-header"><i class="fas fa-pen-fancy"></i> Compose Details</div>
+            
+            <label>Purpose</label>
+            <select id="emailType">
+                <option value="Formal Business">Business / Professional</option>
+                <option value="Job Application">Job Application</option>
+                <option value="Sales Pitch">Sales / Cold Email</option>
+                <option value="Leave Request">Sick Leave / Vacation</option>
+                <option value="Resignation">Resignation Letter</option>
+                <option value="Complaint">Complaint / Issue</option>
+            </select>
 
-            <div class="text-panel">
-                <div class="panel-head">
-                    <span class="head-title">Paraphrased Output</span>
-                    <button class="icon-btn" onclick="copyText()"><i class="fa-regular fa-copy"></i></button>
+            <label>Recipient Name</label>
+            <input type="text" id="recipient" placeholder="e.g. Hiring Manager">
+
+            <label>Key Points / Topic</label>
+            <textarea id="topic" rows="8" placeholder="e.g. Asking for a salary hike because I completed 5 major projects..."></textarea>
+
+            <button class="btn-generate" id="generateBtn" onclick="handleGenerate()">
+                Generate Email <i class="fas fa-magic"></i>
+            </button>
+            <p style="text-align:center; margin-top:15px; font-size:0.9rem; color:#666;">No Login • Unlimited Free</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header" style="justify-content:space-between;">
+                <span><i class="fas fa-envelope-open-text"></i> AI Result</span>
+                <span style="font-size:0.9rem; color:var(--primary);">Ready</span>
+            </div>
+            
+            <div class="output-wrapper">
+                <button class="copy-btn" onclick="copyText()">Copy</button>
+                
+                <div id="loader" style="display:none; text-align:center; padding-top:100px; color:var(--primary);">
+                    <i class="fas fa-spinner fa-spin fa-3x"></i><br><br>AI is Writing...
                 </div>
-                <div id="outputText" class="output-div"></div>
+
+                <textarea id="output" class="output-area" readonly placeholder="Your email will appear here..."></textarea>
             </div>
         </div>
 
-        <div class="action-container">
-            <button class="paraphrase-btn" onclick="runStemmingLogic()" id="runBtn">
-                Rewrite Content <i class="fa-solid fa-microchip"></i>
-            </button>
-            <div class="status-msg" id="status">Waiting for input...</div>
+        <div class="donate-section">
+            <h2 style="color:#fff; margin-bottom:10px;">❤️ Support This Free Tool</h2>
+            <p style="color:#aaa;">XIZOA Hub is 100% Free. If you like it, support the server costs.</p>
+            <div class="qr-box">
+                <img src="qr.jpg" alt="Donate QR">
+            </div>
+            <p style="color:#fff; margin-top:10px;">Scan via UPI</p>
         </div>
 
         <section class="seo-content">
+            <article class="content-card">
+                <h2><i class="fas fa-robot"></i> Best Free AI Email Generator 2025</h2>
+                <p><strong>XIZOA AI Email Writer</strong> is the ultimate tool for professionals. Unlike other tools that charge money, we provide unlimited email generation powered by advanced Llama-3 AI logic.</p>
+                <p>Perfect for Job Applications, Cold Emails, Business Proposals, and more.</p>
+            </article>
             
             <article class="content-card">
-                <h2><i class="fa-solid fa-robot"></i> Best Free AI Paraphrasing Tool 2025</h2>
-                <p>Welcome to <strong>XIZOA Hub's AI Paraphraser</strong>, the smartest online text rewriter engineered to produce human-quality content. Unlike basic spinners that just replace random words, our tool uses a sophisticated <strong>Stemming Algorithm</strong>. This logic breaks down words to their roots (e.g., "running" → "run") and replaces them with contextually accurate synonyms, ensuring 100% uniqueness and readability.</p>
-                <p>Perfect for students, digital marketers, bloggers, and SEO professionals who need to avoid plagiarism without spending hours rewriting content manually. XIZOA provides unlimited access without any hidden fees or daily limits.</p>
+                <h2><i class="fas fa-bolt"></i> Why Use XIZOA?</h2>
+                <p>We engineered a "Context Expansion" engine. If you write "sick, need leave", our AI understands and writes: "I am writing to formally request sick leave as I am feeling unwell..." It turns basic points into professional drafts.</p>
             </article>
-
-            <article class="content-card">
-                <h2><i class="fa-solid fa-bolt"></i> Why XIZOA's Logic is Superior?</h2>
-                <p>Our tool runs entirely on <strong>Client-Side JavaScript Technology</strong>. This means:</p>
-                <ul>
-                    <li><strong>Zero Latency:</strong> No server wait times. Results appear instantly.</li>
-                    <li><strong>Privacy First:</strong> Your text never leaves your browser.</li>
-                    <li><strong>Deep Vocabulary:</strong> A compressed database of over 50,000 synonym variations ensures no two outputs are the same.</li>
-                    <li><strong>Grammar Safety:</strong> The algorithm preserves punctuation, capitalization, and sentence structure.</li>
-                </ul>
-            </article>
-
-            <article class="content-card">
-                <h2><i class="fa-solid fa-code"></i> Technical Specifications</h2>
-                <table class="tech-table">
-                    <tr><th>Feature</th><th>Description</th></tr>
-                    <tr><td>Algorithm</td><td>Morphological Stemming & Suffix Analysis</td></tr>
-                    <tr><td>Word Limit</td><td>Unlimited (Process 10,000+ words at once)</td></tr>
-                    <tr><td>Languages</td><td>English (US/UK)</td></tr>
-                    <tr><td>Cost</td><td>100% Free Forever</td></tr>
-                    <tr><td>Platform</td><td>Web-Based (Chrome, Safari, Edge, Firefox)</td></tr>
-                </table>
-            </article>
-
-            <article class="content-card">
-                <h2><i class="fa-solid fa-circle-question"></i> Frequently Asked Questions (FAQ)</h2>
-                
-                <div class="faq-box">
-                    <h4>Is this tool safe for academic writing?</h4>
-                    <p>Yes. Since the tool effectively changes vocabulary and sentence flow, it significantly reduces plagiarism scores on Turnitin and Copyscape, making it safe for essays and assignments.</p>
-                </div>
-
-                <div class="faq-box">
-                    <h4>How does the Stemming Logic work?</h4>
-                    <p>Stemming identifies the root of a word. For example, if you type "created", the tool sees "create" + "ed". It then swaps "create" with "generate" and re-attaches "ed" to form "generated". This ensures grammatical correctness.</p>
-                </div>
-            </article>
-
         </section>
 
     </div>
@@ -308,15 +248,17 @@
                 </div>
             </div>
             <div class="footer-col">
-                <h4>My Tools</h4>
+                <h4>Our Tools</h4>
                 <div class="footer-links">
+                    <a href="ai-email-writer.html">AI Email Writer</a>
                     <a href="instagram-downloader.html">Instagram Downloader</a>
-                    <a href="youtube-thumbnail-downloader.html">YouTube Thumbnail</a>
+                    <a href="youtube-thumbnail-downloader.html">YouTube Downloader</a>
+                    <a href="image-compressor.html">Image Compressor</a>
                     <a href="ai-paraphraser.html">AI Paraphraser</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Legal Info</h4>
+                <h4>Legal</h4>
                 <div class="footer-links">
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
@@ -330,173 +272,50 @@
     </footer>
 
     <script>
-        // =================================================================
-        //  THE ENGINEERING LOGIC: ROOT DICTIONARY & STEMMER
-        //  (Compacted for performance, expands to thousands of variations)
-        // =================================================================
-        const rootDb = {
-            // VERBS (Action Roots)
-            "run": ["sprint", "jog", "rush", "dash", "race"],
-            "walk": ["stroll", "march", "hike", "wander", "tread"],
-            "eat": ["consume", "devour", "ingest", "partake", "dine"],
-            "say": ["state", "declare", "mention", "remark", "articulate", "voice"],
-            "think": ["believe", "ponder", "consider", "assume", "contemplate", "reason"],
-            "use": ["utilize", "employ", "harness", "leverage", "apply", "exercise"],
-            "make": ["create", "construct", "produce", "generate", "fabricate", "form"],
-            "go": ["proceed", "travel", "depart", "move", "advance", "journey"],
-            "look": ["gaze", "stare", "observe", "glance", "view", "inspect"],
-            "want": ["desire", "crave", "seek", "covet", "aspire", "wish"],
-            "help": ["assist", "aid", "support", "facilitate", "guide", "serve"],
-            "need": ["require", "demand", "necessitate", "entail", "call for"],
-            "try": ["attempt", "strive", "endeavor", "aim", "undertake"],
-            "start": ["commence", "initiate", "begin", "launch", "embark"],
-            "stop": ["cease", "halt", "terminate", "conclude", "finish"],
-            "change": ["alter", "modify", "transform", "adjust", "revise", "adapt"],
-            "show": ["demonstrate", "display", "exhibit", "reveal", "indicate", "present"],
-            "ask": ["inquire", "query", "request", "question", "interrogate"],
-            "work": ["labor", "toil", "operate", "function", "perform"],
-            "write": ["compose", "draft", "pen", "record", "scribe"],
-            "give": ["provide", "offer", "grant", "supply", "donate", "bestow"],
-            "find": ["discover", "locate", "detect", "uncover", "identify"],
+        // REPLACE WITH YOUR CLOUDFLARE URL
+        const WORKER_URL = "https://ai-email-writer.priyanshumaurya758.workers.dev/"; 
+
+        async function handleGenerate() {
+            const topic = document.getElementById('topic').value;
+            const type = document.getElementById('emailType').value;
+            const recipient = document.getElementById('recipient').value || "Sir/Madam";
             
-            // ADJECTIVES (Description Roots)
-            "good": ["excellent", "superb", "superior", "prime", "stellar", "outstanding"],
-            "bad": ["poor", "subpar", "adverse", "terrible", "inferior", "dreadful"],
-            "big": ["massive", "huge", "gigantic", "substantial", "colossal", "immense"],
-            "small": ["tiny", "diminutive", "compact", "miniature", "slight", "little"],
-            "happy": ["joyful", "elated", "content", "delighted", "ecstatic", "cheerful"],
-            "sad": ["sorrowful", "dejected", "depressed", "gloomy", "melancholy", "upset"],
-            "fast": ["rapid", "swift", "quick", "brisk", "speedy", "instant"],
-            "slow": ["sluggish", "leisurely", "gradual", "unhurried", "plodding"],
-            "hard": ["difficult", "challenging", "arduous", "tough", "complex", "demanding"],
-            "easy": ["simple", "effortless", "straightforward", "uncomplicated", "painless"],
-            "important": ["crucial", "vital", "essential", "critical", "paramount", "significant"],
-            "new": ["novel", "fresh", "modern", "contemporary", "current", "recent"],
-            "old": ["ancient", "aged", "vintage", "antique", "obsolete", "archaic"],
-            "rich": ["wealthy", "affluent", "prosperous", "opulent", "well-off"],
-            "poor": ["impoverished", "destitute", "needy", "indigent", "broke"],
-            "beautiful": ["stunning", "gorgeous", "exquisite", "lovely", "attractive"],
-            "smart": ["intelligent", "clever", "brilliant", "sharp", "astute", "wise"],
-            
-            // NOUNS & CONNECTORS
-            "problem": ["issue", "challenge", "dilemma", "obstacle", "complication"],
-            "solution": ["remedy", "answer", "resolution", "fix", "strategy"],
-            "idea": ["concept", "notion", "thought", "theory", "hypothesis"],
-            "person": ["individual", "human", "citizen", "being", "soul"],
-            "world": ["globe", "earth", "planet", "universe", "cosmos"],
-            "money": ["funds", "capital", "currency", "wealth", "assets"],
-            "job": ["career", "profession", "occupation", "vocation", "role"],
-            "and": ["moreover", "plus", "along with", "furthermore"],
-            "but": ["however", "nevertheless", "yet", "although"],
-            "so": ["therefore", "thus", "hence", "consequently"]
-        };
+            const btn = document.getElementById('generateBtn');
+            const output = document.getElementById('output');
+            const loader = document.getElementById('loader');
 
-        // --- STEMMING ENGINE ---
-        function runStemmingLogic() {
-            const input = document.getElementById('inputText').value;
-            const outputBox = document.getElementById('outputText');
-            const btn = document.getElementById('runBtn');
-            const status = document.getElementById('status');
+            if (!topic) return alert("Please enter the topic!");
 
-            if (!input.trim()) {
-                alert("Please enter text first!");
-                return;
-            }
-
-            // UI Loading
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             btn.disabled = true;
-            outputBox.innerHTML = '';
+            output.style.display = 'none';
+            loader.style.display = 'block';
 
-            setTimeout(() => {
-                // Advanced Regex to split words while keeping punctuation
-                const words = input.split(/([a-zA-Z]+)/);
-                let resultHtml = "";
-                let changes = 0;
-
-                words.forEach(token => {
-                    // Skip if not a word
-                    if (!/^[a-zA-Z]+$/.test(token)) {
-                        resultHtml += token;
-                        return;
-                    }
-
-                    let lower = token.toLowerCase();
-                    let replacement = null;
-
-                    // --- STEMMING CHECKS (The Intelligence) ---
-                    
-                    // 1. Exact Match?
-                    if (rootDb[lower]) {
-                        replacement = getRandom(rootDb[lower]);
-                    }
-                    // 2. Suffix "-ing" (Running -> Run -> Sprint -> Sprinting)
-                    else if (lower.endsWith("ing")) {
-                        let root = lower.slice(0, -3);
-                        // Double consonant check (Run -> Runn)
-                        if (rootDb[root]) { 
-                            replacement = getRandom(rootDb[root]) + "ing"; 
-                        } else if (root.length > 3 && rootDb[root.slice(0, -1)]) {
-                            // "Creating" -> "Create" -> "Generate" -> "Generating"
-                            let base = rootDb[root.slice(0, -1)];
-                            let syn = getRandom(base);
-                            replacement = syn.endsWith("e") ? syn.slice(0, -1) + "ing" : syn + "ing";
-                        }
-                    }
-                    // 3. Suffix "-ed" (Walked -> Walk -> Stroll -> Strolled)
-                    else if (lower.endsWith("ed")) {
-                        let root = lower.slice(0, -2); // Simple past
-                        if (rootDb[root]) {
-                            let syn = getRandom(rootDb[root]);
-                            replacement = syn.endsWith("e") ? syn + "d" : syn + "ed";
-                        }
-                    }
-                    // 4. Suffix "-s" (Runs -> Run -> Sprint -> Sprints)
-                    else if (lower.endsWith("s")) {
-                        let root = lower.slice(0, -1);
-                        if (rootDb[root]) {
-                            replacement = getRandom(rootDb[root]) + "s";
-                        }
-                    }
-
-                    // --- RECONSTRUCTION ---
-                    if (replacement) {
-                        // Maintain Capitalization
-                        if (token[0] === token[0].toUpperCase()) {
-                            replacement = replacement.charAt(0).toUpperCase() + replacement.slice(1);
-                        }
-                        if (token === token.toUpperCase()) {
-                            replacement = replacement.toUpperCase();
-                        }
-
-                        resultHtml += `<span class="highlight" title="Original: ${token}">${replacement}</span>`;
-                        changes++;
-                    } else {
-                        resultHtml += token;
-                    }
+            try {
+                const response = await fetch(WORKER_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ topic, type, name: recipient })
                 });
 
-                outputBox.innerHTML = resultHtml;
-                btn.innerHTML = 'Rewrite Content <i class="fas fa-magic"></i>';
-                btn.disabled = false;
-                status.innerText = `Success! Algorithm replaced ${changes} words with unique variations.`;
+                const data = await response.json();
 
-            }, 800);
-        }
-
-        function getRandom(arr) {
-            return arr[Math.floor(Math.random() * arr.length)];
-        }
-
-        function pasteText() {
-            navigator.clipboard.readText().then(text => document.getElementById('inputText').value = text);
-        }
-        function copyText() {
-            const text = document.getElementById('outputText').innerText;
-            if(text) {
-                navigator.clipboard.writeText(text);
-                alert("Copied to clipboard!");
+                if (data.email) {
+                    output.value = data.email;
+                } else {
+                    output.value = "Error: " + (data.error || "Server Error");
+                }
+            } catch (error) {
+                output.value = "Connection Error. Check Worker URL.";
             }
+
+            loader.style.display = 'none';
+            output.style.display = 'block';
+            btn.disabled = false;
+        }
+
+        function copyText() {
+            const text = document.getElementById('output').value;
+            if(text) { navigator.clipboard.writeText(text); alert("Copied!"); }
         }
     </script>
 </body>
