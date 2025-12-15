@@ -10,7 +10,7 @@
       "name": "XIZOA TOOLS HUB",
       "alternateName": ["XIZOA Tools", "XIZOA Hub Premium"],
       "url": "https://xizoa.com/",
-      "description": " Premium Free Tools AI Writers, PDF Tools, Image Editors & Gaming Tests.",
+      "description": "Premium Free Tools AI Writers, PDF Tools, Image Editors & Gaming Tests.",
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://tools.xizoa.com/#tools?q={search_term_string}",
@@ -47,7 +47,7 @@
     {
       "@type": "SoftwareApplication",
       "name": "XIZOA TOOLS HUB",
-      "image": "https://toos.xizoa.com/favicon.ico",
+      "image": "https://tools.xizoa.com/favicon.ico",
       "url": "https://tools.xizoa.com/",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Web",
@@ -70,7 +70,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>XIZOA TOOLS HUB FREE & PREMIUM</title>
-<meta name="description" content="Access 45+ Premium Free Tools: AI Writers, PDF Tools, Image Editors, Gaming Tests & Security Utilities. Fast, Secure & No Login Required.">
+<meta name="description" content="Premium Free Tools: AI Writers, PDF Tools, Image Editors, Gaming Tests & Security Utilities. Fast, Secure & No Login Required.">
 <link rel="canonical" href="https://tools.xizoa.com/">
 <link rel="icon" href="https://tools.xizoa.com/favicon.ico">
 
@@ -108,16 +108,16 @@ html{scroll-behavior: smooth;}
   100% {background-position: 0% 50%;}
 }
 
-/* Base Animation for Elements */
-header, .hero, .section, .load, footer {
+header, .hero, .section, .load, footer, .content-area {
   animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   opacity: 0;
 }
 header { animation-delay: 0s; }
 .hero { animation-delay: 0.2s; }
 #tools { animation-delay: 0.3s; }
-#categories { animation-delay: 0.4s; }
-footer { animation-delay: 0.5s; }
+.content-area { animation-delay: 0.4s; }
+#categories { animation-delay: 0.5s; }
+footer { animation-delay: 0.6s; }
 
 /* --- BACKGROUND --- */
 .bg{position:fixed;inset:0;z-index:-1;
@@ -139,21 +139,17 @@ header{
   border-bottom:1px solid var(--glass-border);
 }
 .nav{max-width:1400px;margin:auto;padding:18px 30px;display:flex;justify-content:space-between;align-items:center}
-
 .logo{display:flex;gap:12px;align-items:center;font-size:1.8rem;font-weight:800;text-decoration:none;color:white; letter-spacing: 1px;}
 .logo i{color:var(--brand);filter: drop-shadow(0 0 15px var(--brand));}
-
 .desktop-menu{display:flex;align-items:center;gap:35px}
 .desktop-menu a{color:#e2e8f0;text-decoration:none;font-size:1rem;font-weight: 600; transition:0.3s; position: relative;}
 .desktop-menu a:hover{color:white; text-shadow: 0 0 10px var(--brand-glow);}
-
 .mobile-toggle{display:none;font-size:1.8rem;color:#fff;cursor:pointer; transition: 0.3s;}
 .mobile-toggle:hover{color: var(--brand); filter: drop-shadow(0 0 10px var(--brand));}
 
 /* --- SIDEBAR --- */
 .sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1900;opacity:0;visibility:hidden;transition:0.4s; backdrop-filter: blur(8px);}
 .sidebar-overlay.active{opacity:1;visibility:visible}
-
 .mobile-sidebar{
   position:fixed;top:0;right:-320px;
   width:300px;height:100vh;
@@ -165,11 +161,9 @@ header{
   box-shadow:-20px 0 50px rgba(0,0,0,0.7);
 }
 .mobile-sidebar.active{right:0}
-
 .sidebar-header{display:flex;justify-content:space-between;align-items:center;padding-bottom: 20px; border-bottom: 1px solid var(--glass-border);}
 .close-btn{font-size:2rem;color:var(--muted);cursor:pointer; transition: 0.3s;}
 .close-btn:hover{color:var(--brand); transform: rotate(90deg);}
-
 .sidebar-links a{display:flex;align-items:center;gap:15px;padding:16px;color:#e2e8f0;text-decoration:none;font-size:1.15rem;border-radius: 12px; transition:0.3s; font-weight: 500;}
 .sidebar-links a:hover{background: rgba(0, 247, 255, 0.1); color:white; border: 1px solid rgba(0,247,255,0.3); box-shadow: 0 0 15px rgba(0,247,255,0.1);}
 .sidebar-links i{width:30px;text-align:center;color:var(--brand);}
@@ -204,13 +198,12 @@ header{
     background: rgba(0,0,0,0.2);
 }
 
-/* --- GRID & CARDS (SPACIOUS) --- */
+/* --- GRID & CARDS (OPTIMIZED 3 Columns) --- */
 .section{max-width:1400px;margin:100px auto;padding:0 30px}
 .section h2{font-size:2.2rem;margin-bottom:30px;color:white; display: flex; align-items: center; gap: 15px; font-weight: 700;}
 .section h2::before { content: ''; display: block; width: 6px; height: 35px; background: var(--brand); border-radius: 4px; box-shadow: 0 0 20px var(--brand); }
 
-/* Increased GAP for airy feel */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:30px}
 
 .tool{
   background: rgba(255, 255, 255, 0.02);
@@ -222,41 +215,37 @@ header{
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display:flex; flex-direction: column; justify-content: center;
   box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+  
+  /* DEFAULT VAR - Overwritten by JS */
+  --accent: #00f7ff; 
 }
 
-/* GLOWING HOVER EFFECT */
-.tool:hover{
-  transform:translateY(-15px) scale(1.02);
-  border-color: rgba(0, 247, 255, 0.6);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px rgba(0, 247, 255, 0.1) inset;
-  background: rgba(0, 247, 255, 0.02);
-}
-
-.tool i{
+/* BRAND COLOR LOGIC */
+.tool i {
     font-size:2.8rem; margin-bottom:20px; display:inline-block; 
-    transition: 0.4s; filter: drop-shadow(0 0 5px rgba(255,255,255,0.1));
+    transition: 0.4s; 
+    color: var(--accent); /* Tool specific color */
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.1));
 }
-.tool:hover i { transform: scale(1.15); filter: drop-shadow(0 0 20px currentColor); }
 
+.tool:hover{
+  transform:translateY(-10px) scale(1.02);
+  background: rgba(255, 255, 255, 0.03);
+  
+  /* Use Brand Color for Border & Glow */
+  border-color: var(--accent);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px var(--accent) inset;
+}
+
+.tool:hover i { transform: scale(1.15); filter: drop-shadow(0 0 20px var(--accent)); }
 .tool h3{font-size:1.3rem;margin-bottom:10px; font-weight: 700; letter-spacing: 0.5px;}
 .tool p{font-size:0.95rem;color:var(--muted); font-weight: 400; line-height: 1.5;}
-
-/* CATEGORY COLORS */
-.tool[data-cat="social"] i{color:#ff4757;}
-.tool[data-cat="ai"] i{color:#c084fc;}
-.tool[data-cat="pdf"] i{color:#fb923c;}
-.tool[data-cat="image"] i{color:#38bdf8;}
-.tool[data-cat="utility"] i{color:#00f7ff;}
-.tool[data-cat="gaming"] i{color:#fb7185;}
-.tool[data-cat="security"] i{color:#4ade80;}
-.tool[data-cat="dev"] i{color:#bd00ff;}
 
 .badge{position:absolute;top:20px;right:20px;font-size:.7rem;font-weight:800;padding:6px 16px;border-radius:30px; letter-spacing: 1px; z-index: 2;}
 .badge.hot{background:#fb7185;color:#050a14; box-shadow: 0 0 15px rgba(251,113,133, 0.6);}
 .badge.new{background:var(--brand);color:#050a14; box-shadow: 0 0 15px var(--brand-glow);}
 
-/* LOAD MORE BUTTON */
-.load { display: flex; justify-content: center; margin: 80px 0 120px;}
+.load { display: flex; justify-content: center; margin: 60px 0 100px;}
 .load button {
     padding: 18px 55px; border-radius: 50px;
     border: 1px solid var(--brand);
@@ -272,7 +261,30 @@ header{
     transform: translateY(-5px);
 }
 
-/* BROWSE CATEGORIES (LINKED) */
+/* --- CONTENT AREA (HUMANIZED) --- */
+.content-wrapper {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.text-block { margin-bottom: 40px; }
+.text-block h3 { font-size: 1.6rem; color: #fff; margin-bottom: 15px; font-weight: 700; display:flex; align-items:center; gap:10px; }
+.text-block h3 i { color: var(--brand); font-size: 1.2rem; }
+.text-block p { color: #cbd5e1; font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; }
+.text-block strong { color: var(--brand); }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 40px 0; }
+.feat-box { background: rgba(0, 0, 0, 0.3); padding: 30px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; }
+.feat-box:hover { border-color: var(--brand); transform: translateY(-5px); background: rgba(0,247,255,0.03); }
+.feat-box i { font-size: 2rem; color: var(--brand); margin-bottom: 15px; }
+.feat-box h4 { font-size: 1.2rem; margin-bottom: 10px; color: white; }
+.feat-box p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
+
+/* BROWSE CATEGORIES */
 .category-box{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:35px}
 .category-card{
   background: var(--glass-bg);
@@ -280,41 +292,25 @@ header{
   border-radius:24px;padding:30px; cursor: pointer;
   transition: 0.3s; position: relative; overflow: hidden;
 }
-.category-card:hover{
-    border-color: var(--brand);
-    transform: translateY(-5px);
-    background: rgba(0,247,255,0.05);
-}
+.category-card:hover{ border-color: var(--brand); transform: translateY(-5px); background: rgba(0,247,255,0.05); }
 .category-card h3{color:var(--brand);margin-bottom:12px; font-size: 1.4rem; font-weight: 700;}
 .category-card p{color:var(--muted);font-size:0.95rem;}
 .category-card i { position: absolute; right: 20px; top: 20px; font-size: 4rem; opacity: 0.05; color: #fff; transform: rotate(-15deg); }
 
-/* MEGA FOOTER (RESTORED & DIVIDED) */
+/* FOOTER */
 footer{
     border-top:1px solid var(--glass-border);
     background: #020305;
     margin-top:120px; padding-top: 80px;
 }
 .footer-container{max-width:1400px;margin:auto;padding:0 30px;}
-
-.footer-top {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px;
-    padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.footer-col h4 {
-    color: #fff; margin-bottom: 25px; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase;
-    border-left: 3px solid var(--brand); padding-left: 15px;
-}
+.footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.footer-col h4 { color: #fff; margin-bottom: 25px; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; border-left: 3px solid var(--brand); padding-left: 15px; }
 .footer-col ul { list-style: none; }
 .footer-col li { margin-bottom: 12px; }
-.footer-col a {
-    color: #94a3b8; text-decoration: none; font-size: 0.95rem; transition: 0.3s; display: block;
-}
+.footer-col a { color: #94a3b8; text-decoration: none; font-size: 0.95rem; transition: 0.3s; display: block; }
 .footer-col a:hover { color: var(--brand); transform: translateX(5px); text-shadow: 0 0 8px rgba(0,247,255,0.4); }
-
-.footer-bottom {
-    padding: 40px 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 30px;
-}
+.footer-bottom { padding: 40px 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 30px; }
 .footer-info p { color: #64748b; font-size: 0.9rem; max-width: 400px; }
 .social-icons { display: flex; gap: 20px; }
 .social-icons a {
@@ -322,24 +318,20 @@ footer{
     display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;
     transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); font-size: 1.2rem;
 }
-.social-icons a:hover {
-    background: var(--brand); color: #000; box-shadow: 0 0 20px var(--brand-glow); transform: translateY(-5px);
-}
+.social-icons a:hover { background: var(--brand); color: #000; box-shadow: 0 0 20px var(--brand-glow); transform: translateY(-5px); }
 
 /* RESPONSIVE */
 @media(max-width:768px){
   .desktop-menu{display:none}
   .mobile-toggle{display:block}
   .nav {padding: 16px 20px;}
-  
   .hero{margin-top: 60px; margin-bottom: 50px;}
   .hero h1{font-size:2.5rem}
-  
-  .grid{grid-template-columns:1fr; gap: 25px;} /* More gap than before */
-  
+  .grid{grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;} /* Optimized Mobile Grid */
   .load { margin: 50px 0 80px; }
-  .load button { padding: 14px 40px; font-size: 0.95rem; min-width: 200px; }
-
+  .content-wrapper { padding: 30px 20px; }
+  .text-block h3 { font-size: 1.3rem; }
+  .features-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 30px; }
   .footer-bottom { flex-direction: column; text-align: center; }
 }
@@ -383,9 +375,8 @@ footer{
 </div>
 
 <section class="hero">
-  <h1><span>XIZOA Hub</span> – Premium Free Tools Platform</h1>
-  <p>Access 45+ powerful utilities. AI Writers, Video Downloaders, PDF Tools & Gaming Tests. Fast, Secure, No Login.</p>
-
+  <h1><span>XIZOAHUB</span> Premium Free Tools Platform</h1>
+  
   <div class="search-box">
     <i class="fas fa-search"></i>
     <input id="searchInput" placeholder="Search tool name (e.g. YouTube, PDF, AI)...">
@@ -432,6 +423,53 @@ footer{
         <p>Calculators, QR Gen, Speed Test.</p>
         <i class="fas fa-tools"></i>
     </div>
+  </div>
+</section>
+
+<section class="section content-area" id="about">
+  <div class="content-wrapper">
+    
+    <h2><i class="fas fa-heart" style="color:var(--brand); font-size:1.5rem;"></i> Built for Creators & Developers</h2>
+    
+    <div class="text-block">
+      <h3>Why did we build XIZOA?</h3>
+      <p>
+        Let's be real—finding simple tools online has become a headache. You search for a "PDF Merger" or an "Image Compressor," and you're bombarded with ads, paywalls, or forced logins just to download your own file. 
+        <strong>We hated that.</strong> So, we built XIZOA Tools Hub.
+      </p>
+      <p>
+        Our mission is simple: <strong>Premium utility, zero friction.</strong> Whether you are a YouTuber needing a quick thumbnail, a developer checking an IP, or a student formatting an assignment, this platform is designed to save your time, not waste it.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feat-box">
+        <i class="fas fa-shield-alt"></i>
+        <h4>100% Privacy Focused</h4>
+        <p>Unlike other sites, we don't store your files. Tools like our Image Compressor and PDF Editor run entirely in your browser. Your data never leaves your device.</p>
+      </div>
+      <div class="feat-box">
+        <i class="fas fa-bolt"></i>
+        <h4>No Login Required</h4>
+        <p>Forget remembering passwords. Access 45+ premium tools instantly. No sign-ups, no email newsletters, and definitely no hidden subscriptions.</p>
+      </div>
+      <div class="feat-box">
+        <i class="fas fa-code"></i>
+        <h4>Developer Friendly</h4>
+        <p>Clean UI, dark mode by default, and tools that actually work. We update our algorithms weekly to ensure compatibility with modern standards.</p>
+      </div>
+    </div>
+
+    <div class="text-block">
+      <h3>Who is this for?</h3>
+      <p>
+        XIZOA is the go-to bookmark for the modern digital creator. If you create content for <strong>Instagram, YouTube, or TikTok</strong>, our social media downloaders and tag generators are optimized to boost your workflow. 
+      </p>
+      <p>
+        For the <strong>Tech Savvy</strong>, our DNS checkers, repository generators, and speed tests give you raw technical data without the fluff. We are constantly adding new tools based on what <em>you</em> ask for.
+      </p>
+    </div>
+
   </div>
 </section>
 
@@ -509,58 +547,58 @@ function toggleSidebar(){
   overlay.classList.toggle('active');
 }
 
-// TOOLS LIST - SORTED BY BEST (Top 40 Optimized)
+// TOOLS LIST - CUSTOM COLORS ADDED PER TOOL BRAND
 const tools=[
-    // TOP TIER (BEST TOOLS FIRST)
-    {name:'YT Thumb Downloader',cat:'social',icon:'fab fa-youtube',url:'YouTube-thumbnail-downloader.html',badge:'hot'},
-    {name:'Insta Video Saver',cat:'social',icon:'fab fa-instagram',url:'insta-video-saver.html'},
-    {name:'AI Paraphraser',cat:'ai',icon:'fas fa-robot',url:'AI-Paraphraser.html', badge:'best'},
-    {name:'PDF to Word',cat:'pdf',icon:'fas fa-file-word',url:'pdf-to-word.html'},
-    {name:'Image Compressor',cat:'image',icon:'fas fa-compress-arrows-alt',url:'image-compressor.html'},
-    {name:'Speed Test',cat:'utility',icon:'fas fa-wifi',url:'speed-test.html'},
-    {name:'Password Generator',cat:'security',icon:'fas fa-key',url:'password-generator.html'},
-    {name:'Age Calculator',cat:'utility',icon:'fas fa-calendar-alt',url:'age-calculator.html'},
+    // TOP TIER
+    {name:'YT Thumb Downloader',cat:'social',icon:'fab fa-youtube',url:'YouTube-thumbnail-downloader.html',badge:'hot', color:'#FF0000'},
+    {name:'Insta Video Saver',cat:'social',icon:'fab fa-instagram',url:'insta-video-saver.html', color:'#E1306C'},
+    {name:'AI Paraphraser',cat:'ai',icon:'fas fa-robot',url:'AI-Paraphraser.html', badge:'best', color:'#a29bfe'},
+    {name:'PDF to Word',cat:'pdf',icon:'fas fa-file-word',url:'pdf-to-word.html', color:'#ff4757'},
+    {name:'Image Compressor',cat:'image',icon:'fas fa-compress-arrows-alt',url:'image-compressor.html', color:'#38bdf8'},
+    {name:'Speed Test',cat:'utility',icon:'fas fa-tachometer-alt',url:'speed-test.html', color:'#00f7ff'},
+    {name:'Password Generator',cat:'security',icon:'fas fa-shield-alt',url:'password-generator.html', color:'#4ade80'},
+    {name:'Age Calculator',cat:'utility',icon:'fas fa-birthday-cake',url:'age-calculator.html', color:'#f1c40f'},
     
     // GAMING & UTILS
-    {name:'FPS & Hz Checker',cat:'gaming',icon:'fas fa-crosshairs',url:'fps-chekar.html', badge:'hot'},
-    {name:'Reaction Test',cat:'gaming',icon:'fas fa-bolt',url:'reaction-time-test.html'},
-    {name:'Mouse Hz Test',cat:'gaming',icon:'fas fa-mouse',url:'mouse-polling-rate.html'},
-    {name:'Keyboard Test',cat:'gaming',icon:'fas fa-keyboard',url:'keyboard-tester.html'},
-    {name:'Gaming Name Style',cat:'gaming',icon:'fas fa-gamepad',url:'gaming.html'},
+    {name:'FPS & Hz Checker',cat:'gaming',icon:'fas fa-crosshairs',url:'fps-chekar.html', badge:'hot', color:'#e74c3c'},
+    {name:'Reaction Test',cat:'gaming',icon:'fas fa-stopwatch',url:'reaction-time-test.html', color:'#fab1a0'},
+    {name:'Mouse Hz Test',cat:'gaming',icon:'fas fa-mouse',url:'mouse-polling-rate.html', color:'#74b9ff'},
+    {name:'Keyboard Test',cat:'gaming',icon:'fas fa-keyboard',url:'keyboard-tester.html', color:'#fdcb6e'},
+    {name:'Gaming Name Style',cat:'gaming',icon:'fas fa-gamepad',url:'gaming.html', color:'#6c5ce7'},
     
     // SOCIAL EXTRAS
-    {name:'TikTok Downloader',cat:'social',icon:'fab fa-tiktok',url:'tiktok-downloader.html'},
-    {name:'Shorts Cover',cat:'social',icon:'fas fa-mobile-alt',url:'youtubeshorts.html'},
-    {name:'Hashtag Gen',cat:'social',icon:'fas fa-hashtag',url:'hashtag-generator.html'},
-    {name:'YT Tag Extractor',cat:'social',icon:'fas fa-tags',url:'youtube-tag-extractor.html'},
-    {name:'Caption Generator',cat:'social',icon:'fas fa-quote-right',url:'social-media-caption.html'},
-    {name:'Invisible Text',cat:'social',icon:'fas fa-ghost',url:'invisible-text.html'},
-    {name:'Glitch Text',cat:'social',icon:'fas fa-bug',url:'glitch-text-generator.html'},
+    {name:'TikTok Downloader',cat:'social',icon:'fab fa-tiktok',url:'tiktok-downloader.html', color:'#ff0050'},
+    {name:'Shorts Cover',cat:'social',icon:'fas fa-mobile-alt',url:'youtubeshorts.html', color:'#ff0000'},
+    {name:'Hashtag Gen',cat:'social',icon:'fas fa-hashtag',url:'hashtag-generator.html', color:'#fd79a8'},
+    {name:'YT Tag Extractor',cat:'social',icon:'fas fa-tags',url:'youtube-tag-extractor.html', color:'#ff7675'},
+    {name:'Caption Generator',cat:'social',icon:'fas fa-quote-right',url:'social-media-caption.html', color:'#55efc4'},
+    {name:'Invisible Text',cat:'social',icon:'fas fa-ghost',url:'invisible-text.html', color:'#dfe6e9'},
+    {name:'Glitch Text',cat:'social',icon:'fas fa-bug',url:'glitch-text-generator.html', color:'#0984e3'},
 
     // AI & WRITING
-    {name:'AI Email Writer',cat:'ai',icon:'fas fa-envelope-open-text',url:'AI-Smart-Email-Writer.html'},
-    {name:'AI Grammar Fixer',cat:'ai',icon:'fas fa-spell-check',url:'ai-grammar-fixer.html'},
-    {name:'AI Summarizer',cat:'ai',icon:'fas fa-file-alt',url:'ai-text-summarise.html'},
-    {name:'Blog Title Gen',cat:'ai',icon:'fas fa-heading',url:'blog-title-generator.html'},
-    {name:'Text to Speech',cat:'ai',icon:'fas fa-microphone-alt',url:'text-to-speech.html'},
+    {name:'AI Email Writer',cat:'ai',icon:'fas fa-envelope-open-text',url:'AI-Smart-Email-Writer.html', color:'#6c5ce7'},
+    {name:'AI Grammar Fixer',cat:'ai',icon:'fas fa-check-double',url:'ai-grammar-fixer.html', color:'#00b894'},
+    {name:'AI Summarizer',cat:'ai',icon:'fas fa-file-alt',url:'ai-text-summarise.html', color:'#fdcb6e'},
+    {name:'Blog Title Gen',cat:'ai',icon:'fas fa-heading',url:'blog-title-generator.html', color:'#ff9f43'},
+    {name:'Text to Speech',cat:'ai',icon:'fas fa-microphone-alt',url:'text-to-speech.html', color:'#e17055'},
     
     // PDF & IMAGE
-    {name:'PDF Merger',cat:'pdf',icon:'fas fa-file-invoice',url:'pdf-merger.html'},
-    {name:'CV Builder',cat:'pdf',icon:'fas fa-file-user',url:'CV-Resume-Builder.html'},
-    {name:'Image Resizer',cat:'image',icon:'fas fa-expand-arrows-alt',url:'image-resizer.html'},
-    {name:'JPG to PNG',cat:'image',icon:'fas fa-images',url:'jpg-to-png.html'},
-    {name:'Color Picker',cat:'image',icon:'fas fa-palette',url:'color-picker.html'},
+    {name:'PDF Merger',cat:'pdf',icon:'fas fa-file-invoice',url:'pdf-merger.html', color:'#d63031'},
+    {name:'CV Builder',cat:'pdf',icon:'fas fa-user-tie',url:'CV-Resume-Builder.html', color:'#0984e3'},
+    {name:'Image Resizer',cat:'image',icon:'fas fa-expand-arrows-alt',url:'image-resizer.html', color:'#00cec9'},
+    {name:'JPG to PNG',cat:'image',icon:'fas fa-images',url:'jpg-to-png.html', color:'#81ecec'},
+    {name:'Color Picker',cat:'image',icon:'fas fa-eye-dropper',url:'color-picker.html', color:'#fd79a8'},
     
     // DEV & SECURITY
-    {name:'Repo Generator',cat:'dev',icon:'fas fa-folder-tree',url:'repo-generator.html'},
-    {name:'IP Checker',cat:'security',icon:'fas fa-globe-asia',url:'ip-checker.html'},
-    {name:'QR Generator',cat:'utility',icon:'fas fa-qrcode',url:'qr-code-generator.html'},
-    {name:'Dead Pixel Fixer',cat:'utility',icon:'fas fa-desktop',url:'dead-pixel-fixer.html'},
-    {name:'Assignment Maker',cat:'utility',icon:'fas fa-pen-fancy',url:'text-to-handwriting.html'},
-    {name:'Morse Code',cat:'utility',icon:'fas fa-broadcast-tower',url:'morse-converter.html'},
-    {name:'Link Scanner',cat:'security',icon:'fas fa-shield-virus',url:'link-scanner.html'},
-    {name:'Exif Remover',cat:'security',icon:'fas fa-file-shield',url:'exif-remover.html'},
-    {name:'Speaker Cleaner',cat:'utility',icon:'fas fa-wave-square',url:'tone-generator.html'}
+    {name:'Repo Generator',cat:'dev',icon:'fab fa-github-alt',url:'repo-generator.html', color:'#fff'},
+    {name:'IP Checker',cat:'security',icon:'fas fa-globe-asia',url:'ip-checker.html', color:'#74b9ff'},
+    {name:'QR Generator',cat:'utility',icon:'fas fa-qrcode',url:'qr-code-generator.html', color:'#ffffff'},
+    {name:'Dead Pixel Fixer',cat:'utility',icon:'fas fa-tv',url:'dead-pixel-fixer.html', color:'#e17055'},
+    {name:'Assignment Maker',cat:'utility',icon:'fas fa-pen-fancy',url:'text-to-handwriting.html', color:'#636e72'},
+    {name:'Morse Code',cat:'utility',icon:'fas fa-broadcast-tower',url:'morse-converter.html', color:'#ffeaa7'},
+    {name:'Link Scanner',cat:'security',icon:'fas fa-shield-virus',url:'link-scanner.html', color:'#27ae60'},
+    {name:'Exif Remover',cat:'security',icon:'fas fa-file-shield',url:'exif-remover.html', color:'#f39c12'},
+    {name:'Speaker Cleaner',cat:'utility',icon:'fas fa-wave-square',url:'tone-generator.html', color:'#74b9ff'}
 ];
 
 const grid=document.getElementById('toolGrid');
@@ -574,14 +612,27 @@ function render(){
  const q=search.value.toLowerCase();
  const list=tools.filter(t=>(activeCat==='all'||t.cat===activeCat)&&t.name.toLowerCase().includes(q));
  
+ if(list.length === 0){
+    grid.innerHTML = `<div style="text-align:center; grid-column: 1/-1; padding: 50px 20px; color: var(--muted);">
+        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></i>
+        <h3>No Tools Found</h3>
+        <p>Try searching for specific keywords like "PDF", "Video", or "AI".</p>
+    </div>`;
+    loadBtn.style.display = 'none';
+    return;
+ }
+
  list.slice(0,visible).forEach((t, index)=>{
   const a=document.createElement('a');
   a.className='tool';
   a.dataset.cat=t.cat;
   a.href=t.url;
-  // Animation delay for smooth staggering
+  // Set custom color for this specific tool
+  a.style.setProperty('--accent', t.color || '#00f7ff'); // Fallback color if missing
+  
+  // Staggered Animation
   a.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.05}s`;
-  a.style.opacity = '0'; // Start invisible for animation
+  a.style.opacity = '0'; 
   
   a.innerHTML=`${t.badge?`<span class=\"badge ${t.badge}\">${t.badge.toUpperCase()}</span>`:''}<i class=\"${t.icon}\"></i><h3>${t.name}</h3><p>${t.cat.toUpperCase()} TOOL</p>`;
   grid.appendChild(a);
@@ -589,16 +640,15 @@ function render(){
  loadBtn.style.display=visible<list.length?'flex':'none';
 }
 
-// Category Filter Logic from Cards
 function filterByCat(cat){
     activeCat = cat;
-    visible = 100; // Show all when filtering by category
+    visible = 100; 
     document.getElementById('tools').scrollIntoView({behavior: 'smooth', block: 'start'});
     render();
 }
 
 loadBtn.onclick=()=>{visible+=12;render();};
-search.oninput=()=>{visible=100; activeCat='all'; render()}; // Auto expand search
+search.oninput=()=>{visible=100; activeCat='all'; render()}; 
 
 document.addEventListener("DOMContentLoaded", () => {
     render();
