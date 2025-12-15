@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Tools — XIZOA</title>
+<meta name="description" content="Browse all XIZOA tools by category. Fast, free, no login required.">
+<link rel="icon" href="https://xizoa.com/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Outfit',sans-serif;background:#000;color:#fff}
+.wrapper{max-width:1200px;margin:auto;padding:60px 20px}
+h1{font-size:2rem;margin-bottom:10px}
+p.desc{color:#94a3b8;margin-bottom:40px}
+h2{margin-top:50px;margin-bottom:15px;font-size:1.4rem;border-bottom:1px solid #111;padding-bottom:8px}
+ul{list-style:none;padding:0}
+li{margin-bottom:10px}
+a.tool-link{color:#cbd5e1;text-decoration:none;display:block;padding:12px 14px;border-radius:10px;background:#0b0b0b}
+a.tool-link:hover{background:#111;color:#00f7ff}
+small{color:#64748b}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<h1>All XIZOA Tools</h1>
+<p class="desc">Browse all XIZOA tools by category. Simple. Fast. No login.</p>
+<div id="tools"></div>
+</div>
+<script>
+const TOOLS = [
+{name:"YT Thumbnail Downloader",desc:"Download YouTube thumbnails",url:"YouTube-thumbnail-downloader.html",cat:"Social"},
+{name:"Instagram Video Saver",desc:"Download reels & videos",url:"insta-video-saver.html",cat:"Social"},
+{name:"TikTok Downloader",desc:"Save videos without watermark",url:"tiktok-downloader.html",cat:"Social"},
+{name:"YouTube Shorts Cover",desc:"Save shorts thumbnails",url:"youtubeshorts.html",cat:"Social"},
+{name:"Hashtag Generator",desc:"Generate viral hashtags",url:"hashtag-generator.html",cat:"Social"},
+{name:"Social Caption Generator",desc:"Create social captions",url:"social-media-caption.html",cat:"Social"},
+{name:"YT Tag Extractor",desc:"Extract video keywords",url:"youtube-tag-extractor.html",cat:"Social"},
+{name:"Blog Title Generator",desc:"Catchy blog titles",url:"blog-title-generator.html",cat:"Social"},
+{name:"SEO Meta Generator",desc:"Generate SEO meta descriptions",url:"SEO-Meta-Description-Generator.html",cat:"Social"},
+{name:"Keyword Finder",desc:"Find high volume keywords",url:"keywords-finder.html",cat:"Social"},
+
+{name:"AI Paraphraser",desc:"Rewrite text intelligently",url:"AI-Paraphraser.html",cat:"AI"},
+{name:"AI Email Writer",desc:"Write professional emails",url:"AI-Smart-Email-Writer.html",cat:"AI"},
+{name:"AI Grammar Fixer",desc:"Fix grammar instantly",url:"ai-grammar-fixer.html",cat:"AI"},
+{name:"AI Text Summarizer",desc:"Summarize long text",url:"ai-text-summarise.html",cat:"AI"},
+{name:"Text to Speech",desc:"Convert text to voice",url:"text-to-speech.html",cat:"AI"},
+
+{name:"Image Compressor",desc:"Reduce image size",url:"image-compressor.html",cat:"Image"},
+{name:"Image Resizer",desc:"Resize images",url:"image-resizer.html",cat:"Image"},
+{name:"JPG to PNG",desc:"Convert image format",url:"jpg-to-png.html",cat:"Image"},
+{name:"Color Picker",desc:"Get HEX & RGB",url:"color-picker.html",cat:"Image"},
+{name:"Exif Remover",desc:"Remove metadata",url:"exif-remover.html",cat:"Image"},
+{name:"Dead Pixel Fixer",desc:"Fix screen pixels",url:"dead-pixel-fixer.html",cat:"Image"},
+
+{name:"PDF to Word",desc:"Convert PDF to DOC",url:"pdf-to-word.html",cat:"PDF"},
+{name:"PDF Merger",desc:"Merge PDF files",url:"pdf-merger.html",cat:"PDF"},
+{name:"PDF Light Mode",desc:"Invert PDF colors",url:"pdf-light-mode.html",cat:"PDF"},
+{name:"High Quality PDF Tool",desc:"Advanced PDF processing",url:"High-quality-PDF-smart-tool.html",cat:"PDF"},
+{name:"CV Resume Builder",desc:"Create professional CV",url:"CV-Resume-Builder.html",cat:"PDF"},
+
+{name:"Speed Test",desc:"Check internet speed",url:"speed-test.html",cat:"Utility"},
+{name:"QR Code Generator",desc:"Generate QR codes",url:"qr-code-generator.html",cat:"Utility"},
+{name:"Password Generator",desc:"Generate secure passwords",url:"password-generator.html",cat:"Utility"},
+{name:"Invisible Text",desc:"Send blank messages",url:"invisible-text.html",cat:"Utility"},
+{name:"Text to Handwriting",desc:"Assignment maker",url:"text-to-handwriting.html",cat:"Utility"},
+{name:"Age Calculator",desc:"Calculate exact age",url:"age-calculator.html",cat:"Utility"},
+{name:"Diff Checker",desc:"Compare text",url:"diff-checker.html",cat:"Utility"},
+{name:"Morse Code Converter",desc:"Text to morse",url:"morse-converter.html",cat:"Utility"},
+
+{name:"Reaction Time Test",desc:"Test reflex speed",url:"reaction-time-test.html",cat:"Gaming"},
+{name:"Mouse Polling Rate",desc:"Check mouse Hz",url:"mouse-polling-rate.html",cat:"Gaming"},
+{name:"Keyboard Tester",desc:"Check keyboard keys",url:"keyboard-tester.html",cat:"Gaming"},
+{name:"FPS & Hz Checker",desc:"FPS & display test",url:"fps-chekar.html",cat:"Gaming"},
+{name:"Gaming Name Style",desc:"Stylish gamer names",url:"gaming.html",cat:"Gaming"},
+
+{name:"IP Checker",desc:"Check IP address",url:"ip-checker.html",cat:"Security"},
+{name:"Link Scanner",desc:"Scan URLs for virus",url:"link-scanner.html",cat:"Security"},
+
+{name:"Repo Structure Generator",desc:"Convert text tree to ZIP",url:"repo-generator.html",cat:"Developer"}
+];
+
+const grouped = {};
+TOOLS.forEach(t=>{ if(!grouped[t.cat]) grouped[t.cat]=[]; grouped[t.cat].push(t); });
+
+const container = document.getElementById('tools');
+Object.keys(grouped).forEach(cat=>{
+  const h2=document.createElement('h2');h2.textContent=cat+' Tools';container.appendChild(h2);
+  const ul=document.createElement('ul');
+  grouped[cat].forEach(t=>{
+    const li=document.createElement('li');
+    li.innerHTML=`<a class=\"tool-link\" href=\"${t.url}\">${t.name}<br><small>${t.desc}</small></a>`;
+    ul.appendChild(li);
+  });
+  container.appendChild(ul);
+});
+</script>
+</body>
+</html>
