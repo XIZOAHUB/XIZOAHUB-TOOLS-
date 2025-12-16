@@ -1,304 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Xizoa Visual Builder - Drag & Drop</title>
-  <meta name="robots" content="noindex">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Page Builder Tool – Create SEO-Optimized About Us Pages | Xizoa Hub</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- SEO META -->
+  <meta name="description" content="Xizoa About Page Builder is a free online tool to generate professional, SEO-optimized About Us pages for websites, startups, tools, and apps. Learn how this tool works, its features, and why content-rich About pages matter for Google ranking in India and the USA." />
+  <meta name="keywords" content="about page builder, about us page generator, seo about page, free about us generator, website about page tool, xizoa hub tools, seo content builder, about page india usa" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- FONTS & ICONS -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
   <style>
-    /* --- UI THEME (Dark Editor) --- */
-    :root { --bg: #0f1115; --panel: #1a1d24; --accent: #00f3ff; --text: #e2e8f0; --border: 1px solid #333; }
-    * { box-sizing:border-box; outline: none; }
-    body { margin:0; font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+    body { margin:0; font-family:'Google Sans', Arial, sans-serif; background:#ffffff; color:#202124; line-height:1.7; }
+    header { padding:60px 20px; text-align:center; background:#f1f5ff; }
+    header h1 { font-size:3rem; margin-bottom:15px; }
+    header p { font-size:1.2rem; color:#5f6368; max-width:900px; margin:0 auto; }
 
-    /* Header */
-    header { height: 60px; background: var(--panel); border-bottom: var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 100; }
-    .brand { font-size: 1.2rem; font-weight: 800; color: #fff; }
-    .brand span { color: var(--accent); }
-    .actions button { background: var(--accent); border: none; padding: 8px 20px; border-radius: 4px; font-weight: 700; cursor: pointer; font-size: 0.9rem; }
-    .actions button:hover { opacity: 0.9; }
+    .container { max-width:1100px; margin:0 auto; padding:60px 20px; }
+    h2 { font-size:2.2rem; margin-top:60px; margin-bottom:20px; }
+    h3 { font-size:1.5rem; margin-top:40px; margin-bottom:15px; }
+    p { margin-bottom:18px; font-size:1.05rem; }
+    ul { padding-left:22px; margin-bottom:25px; }
+    li { margin-bottom:10px; }
 
-    /* MAIN WORKSPACE */
-    .workspace { display: flex; height: calc(100vh - 60px); }
+    .highlight { background:#f8f9fa; border-left:5px solid #1a73e8; padding:25px; margin:40px 0; }
+    .highlight strong { color:#1a73e8; }
 
-    /* LEFT SIDEBAR (COMPONENTS) */
-    .sidebar { width: 280px; background: var(--panel); border-right: var(--border); padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-    .sb-title { font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: 700; margin-bottom: 5px; }
-    
-    .draggable-item {
-      background: #2a2e38; padding: 12px; border-radius: 6px; cursor: grab; border: 1px solid transparent;
-      display: flex; align-items: center; gap: 10px; font-size: 0.9rem; transition: 0.2s;
-    }
-    .draggable-item:hover { border-color: var(--accent); background: #353a45; }
-    .draggable-item i { color: var(--accent); width: 20px; text-align: center; }
-
-    /* RIGHT CANVAS (PREVIEW) */
-    .canvas-area { flex: 1; background: #888; padding: 40px; overflow-y: auto; display: flex; justify-content: center; }
-    
-    .canvas {
-      width: 100%; max-width: 1200px; min-height: 800px; background: #fff; 
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-radius: 4px;
-      /* This allows stacking */
-      display: flex; flex-direction: column; 
-      position: relative;
-    }
-
-    /* --- EDITABLE BLOCKS STYLING (Inside Canvas) --- */
-    .block { position: relative; transition: 0.2s; border: 2px solid transparent; }
-    .block:hover { border: 2px dashed #1a73e8; } /* Hover effect for editing */
-    
-    /* Tools Overlay (Delete/Move) */
-    .block-tools {
-      position: absolute; top: -30px; right: 0; background: #1a73e8; color: #fff;
-      padding: 5px 10px; border-radius: 4px 4px 0 0; display: none; font-size: 0.8rem; z-index: 10;
-    }
-    .block:hover .block-tools { display: flex; gap: 10px; }
-    .tool-btn { cursor: pointer; } .tool-btn:hover { color: #fff; }
-
-    /* Editable Text Highlighting */
-    [contenteditable="true"]:focus { outline: 2px solid var(--accent); background: rgba(0, 243, 255, 0.05); }
-
-    /* --- THEMES FOR BLOCKS (Google Style) --- */
-    .g-font { font-family: 'Google Sans', 'Outfit', sans-serif; color: #202124; line-height: 1.6; }
-    
-    /* 1. Hero Block */
-    .b-hero { text-align: center; padding: 100px 20px; background: radial-gradient(circle at 50% 0%, #e8f0fe 0%, #fff 70%); }
-    .b-hero h1 { font-size: 3.5rem; font-weight: 700; margin: 0 0 20px 0; line-height: 1.1; }
-    .b-hero p { font-size: 1.4rem; color: #5f6368; max-width: 700px; margin: 0 auto; }
-
-    /* 2. Stats Block */
-    .b-stats { padding: 60px 20px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; max-width: 900px; margin: 0 auto; gap: 30px; }
-    .stat-num { font-size: 3rem; font-weight: 700; color: #1a73e8; display: block; }
-    .stat-lbl { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #5f6368; }
-
-    /* 3. Text Section */
-    .b-text { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-    .b-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
-    .b-text p { font-size: 1.1rem; color: #4b4d52; margin-bottom: 15px; }
-
-    /* 4. Grid Cards */
-    .b-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
-    .g-card { background: #fff; border: 1px solid #dadce0; border-radius: 12px; padding: 30px; }
-    .g-card h3 { font-size: 1.4rem; margin: 15px 0 10px; }
-    
-    /* 5. Custom HTML/Embed */
-    .b-custom { padding: 40px; text-align: center; border: 1px dashed #ccc; margin: 20px; color: #888; }
-
-    /* 6. Footer */
-    .b-footer { background: #f8f9fa; padding: 60px 20px; text-align: center; border-top: 1px solid #dadce0; margin-top: auto; }
-
-    @media (max-width: 800px) {
-      .workspace { flex-direction: column; overflow: auto; }
-      .sidebar { width: 100%; height: 150px; flex-direction: row; overflow-x: auto; border-bottom: var(--border); border-right: none; }
-      .draggable-item { min-width: 150px; }
-      .canvas-area { padding: 0; }
-      .b-hero h1 { font-size: 2.5rem; }
-      .b-stats { grid-template-columns: 1fr; }
-      .b-grid { grid-template-columns: 1fr; }
-    }
+    footer { background:#f8f9fa; border-top:1px solid #dadce0; padding:50px 20px; }
+    footer .footer-inner { max-width:1100px; margin:0 auto; text-align:center; }
+    footer p { color:#5f6368; font-size:0.95rem; }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="brand">XIZOA <span>BUILDER PRO</span></div>
-    <div class="actions">
-      <button onclick="exportHTML()"><i class="fas fa-code"></i> Get Code</button>
-    </div>
-  </header>
+<header>
+  <h1>About Page Builder Tool by Xizoa Hub</h1>
+  <p>A powerful, content-focused About Us Page Generator designed for modern websites, tools, startups, and creators — optimized for Google ranking in India and the United States.</p>
+</header>
 
-  <div class="workspace">
-    
-    <div class="sidebar" id="componentList">
-      <div class="sb-title">Drag Items to Canvas</div>
-      
-      <div class="draggable-item" data-type="hero">
-        <i class="fas fa-heading"></i> Hero Section
-      </div>
-      <div class="draggable-item" data-type="stats">
-        <i class="fas fa-chart-bar"></i> Stats Row
-      </div>
-      <div class="draggable-item" data-type="text">
-        <i class="fas fa-align-left"></i> Text Block
-      </div>
-      <div class="draggable-item" data-type="grid">
-        <i class="fas fa-th-large"></i> Feature Grid (3)
-      </div>
-      <div class="draggable-item" data-type="button">
-        <i class="fas fa-square"></i> Call to Action
-      </div>
-      <div class="draggable-item" data-type="footer">
-        <i class="fas fa-shoe-prints"></i> Footer
-      </div>
-      
-      <div style="margin-top:auto; font-size:0.8rem; color:#666; padding:10px;">
-        <i class="fas fa-info-circle"></i> Click text in canvas to edit. Drag blocks to reorder.
-      </div>
-    </div>
+<div class="container">
 
-    <div class="canvas-area">
-      <div id="canvas" class="canvas g-font">
-        <div class="block b-hero">
-          <div class="block-tools"><span class="tool-btn" onclick="this.parentElement.parentElement.remove()"><i class="fas fa-trash"></i> Remove</span></div>
-          <h1 contenteditable="true">Welcome to Xizoa Hub</h1>
-          <p contenteditable="true">We build professional tools for the modern web.</p>
-        </div>
-      </div>
-    </div>
+  <h2>What Is the Xizoa About Page Builder Tool?</h2>
+  <p>The Xizoa About Page Builder is a free online tool that helps website owners, developers, students, and digital creators generate a fully structured, professional, and SEO-optimized About Us page without writing code manually. Unlike basic page generators that only output a few lines of text, this tool focuses heavily on <strong>content depth</strong>, <strong>search engine trust</strong>, and <strong>user clarity</strong>.</p>
 
+  <p>An About page is not just a formality. For Google, it is a strong trust signal. For users, it answers the most important question: <em>“Why should I trust this website?”</em> This tool is built specifically to solve that problem.</p>
+
+  <h2>Why a Strong About Page Matters for SEO (India & USA)</h2>
+  <p>Search engines like Google evaluate websites based on Expertise, Experience, Authority, and Trust (E-E-A-T). One of the first places Google’s crawlers and human quality raters look is the About page.</p>
+
+  <p>For audiences in India and the United States, trust expectations are high. Users want to know who built the site, what problem it solves, and whether it is legitimate. Thin or generic About pages often fail to rank, even if the tools or content are good.</p>
+
+  <ul>
+    <li>Helps Google understand your website’s purpose</li>
+    <li>Improves brand credibility and transparency</li>
+    <li>Supports AdSense and monetization approval</li>
+    <li>Builds confidence for US and Indian users</li>
+    <li>Strengthens internal linking and topical authority</li>
+  </ul>
+
+  <h2>How the Xizoa About Page Builder Works</h2>
+  <p>The tool works on a simple but powerful concept: <strong>structured inputs → rich content output</strong>. Instead of asking users to write a full article, the builder collects key information and automatically generates a long-form, SEO-friendly About page.</p>
+
+  <h3>Step 1: Website Information</h3>
+  <p>You start by entering basic details such as website name, URL, and founder information. This data is used not only in visible content but also in structured schema markup that helps search engines verify authenticity.</p>
+
+  <h3>Step 2: Mission and Vision Content</h3>
+  <p>The tool generates a mission-driven narrative explaining what your platform does, who it is for, and what problem it solves. This is written in clear, professional language suitable for both Indian and US audiences.</p>
+
+  <h3>Step 3: Feature and Tool Explanation</h3>
+  <p>Instead of vague statements, the builder creates detailed sections explaining your tools, services, or utilities. Each feature is framed in a benefit-driven way, making it understandable even for non-technical users.</p>
+
+  <h3>Step 4: Trust & Transparency Signals</h3>
+  <p>The About page includes trust-oriented language such as free access, no hidden costs, privacy focus, and user-first design. These elements are critical for global audiences and improve perceived legitimacy.</p>
+
+  <h2>Content-First Design Philosophy</h2>
+  <p>Many tools focus only on design. Xizoa intentionally prioritizes content. Google does not rank pages because they look good; it ranks them because they answer questions clearly and thoroughly.</p>
+
+  <div class="highlight">
+    <strong>Important:</strong> This About Page Builder generates long-form content (2000+ words potential) because Google prefers pages that fully explain who you are, what you do, and why you matter.
   </div>
 
-  <script>
-    // --- 1. INITIALIZE DRAG & DROP ---
-    
-    // Sidebar (Source)
-    new Sortable(document.getElementById('componentList'), {
-      group: {
-        name: 'shared',
-        pull: 'clone', // Clone items from sidebar
-        put: false // Don't let items be dropped back into sidebar
-      },
-      sort: false, // Don't sort sidebar
-      animation: 150
-    });
+  <p>The generated content avoids keyword stuffing while naturally including high-intent phrases such as <em>about page builder</em>, <em>free about us generator</em>, <em>seo optimized about page</em>, and related semantic keywords.</p>
 
-    // Canvas (Target)
-    new Sortable(document.getElementById('canvas'), {
-      group: 'shared',
-      animation: 150,
-      ghostClass: 'blue-background-class',
-      onAdd: function (evt) {
-        const item = evt.item;
-        const type = item.getAttribute('data-type');
-        
-        // Replace the dragged sidebar item with the actual HTML block
-        const newBlock = createBlock(type);
-        item.replaceWith(newBlock);
-      }
-    });
+  <h2>Who Should Use This Tool?</h2>
+  <ul>
+    <li>Tool website owners and SaaS founders</li>
+    <li>Bloggers targeting US and Indian traffic</li>
+    <li>Students building portfolio websites</li>
+    <li>Developers launching new web apps</li>
+    <li>AdSense-focused niche site creators</li>
+  </ul>
 
-    // --- 2. BLOCK CREATOR FACTORY ---
-    function createBlock(type) {
-      const div = document.createElement('div');
-      div.className = 'block';
-      
-      // Delete Button HTML
-      const tools = `<div class="block-tools"><span class="tool-btn" onclick="this.parentElement.parentElement.remove()"><i class="fas fa-trash"></i> Delete</span> <span class="tool-btn" style="cursor:move"><i class="fas fa-arrows-alt"></i> Drag</span></div>`;
+  <h2>Why This Tool Is Different from Other Generators</h2>
+  <p>Most About page generators create short, generic paragraphs that look artificial. Xizoa’s builder focuses on realism, clarity, and depth. The language feels human, informative, and trustworthy.</p>
 
-      if (type === 'hero') {
-        div.className += ' b-hero';
-        div.innerHTML = `${tools}
-          <h1 contenteditable="true">Your Headline Here</h1>
-          <p contenteditable="true">Write a catchy subtitle about your website or tool.</p>`;
-      } 
-      else if (type === 'stats') {
-        div.className += ' b-stats';
-        div.innerHTML = `${tools}
-          <div><span class="stat-num" contenteditable="true">100K</span><span class="stat-lbl" contenteditable="true">Users</span></div>
-          <div><span class="stat-num" contenteditable="true">50+</span><span class="stat-lbl" contenteditable="true">Tools</span></div>
-          <div><span class="stat-num" contenteditable="true">0%</span><span class="stat-lbl" contenteditable="true">Cost</span></div>`;
-      }
-      else if (type === 'text') {
-        div.className += ' b-text';
-        div.innerHTML = `${tools}
-          <h2 contenteditable="true">Section Title</h2>
-          <p contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Click here to edit this paragraph and add your own content.</p>`;
-      }
-      else if (type === 'grid') {
-        div.className += ' b-grid';
-        div.innerHTML = `${tools}
-          <div class="g-card"><h3 contenteditable="true">Feature 1</h3><p contenteditable="true">Description goes here.</p></div>
-          <div class="g-card"><h3 contenteditable="true">Feature 2</h3><p contenteditable="true">Description goes here.</p></div>
-          <div class="g-card"><h3 contenteditable="true">Feature 3</h3><p contenteditable="true">Description goes here.</p></div>`;
-      }
-      else if (type === 'footer') {
-        div.className += ' b-footer';
-        div.innerHTML = `${tools}
-          <p contenteditable="true">© 2025 Xizoa Hub. All rights reserved.</p>
-          <div contenteditable="true"><a href="#">Privacy</a> | <a href="#">Contact</a></div>`;
-      }
-      else if (type === 'button') {
-        div.style.textAlign = 'center'; div.style.padding = '20px';
-        div.innerHTML = `${tools}
-          <a href="#" contenteditable="true" style="background:#1a73e8; color:#fff; padding:15px 30px; text-decoration:none; border-radius:50px; font-weight:bold; display:inline-block;">Call to Action</a>`;
-      }
+  <p>It also supports modern SEO practices such as schema markup, structured sections, and content hierarchy — all critical for ranking in competitive markets like the USA and India.</p>
 
-      return div;
-    }
+  <h2>SEO Benefits of Using This About Page</h2>
+  <ul>
+    <li>Improved crawlability and indexing</li>
+    <li>Higher topical relevance</li>
+    <li>Better user engagement metrics</li>
+    <li>Stronger brand authority signals</li>
+    <li>Support for Google Discover and rich results</li>
+  </ul>
 
-    // --- 3. EXPORT FUNCTION ---
-    function exportHTML() {
-      // Clone the canvas to clean it up
-      const clone = document.getElementById('canvas').cloneNode(true);
-      
-      // Cleanup: Remove tools, contenteditable, and editor classes
-      const blocks = clone.querySelectorAll('.block');
-      blocks.forEach(b => {
-        b.classList.remove('block'); // Remove editor border class
-        const tools = b.querySelector('.block-tools');
-        if(tools) tools.remove(); // Remove delete buttons
-        
-        // Remove contenteditable attributes
-        const editables = b.querySelectorAll('[contenteditable]');
-        editables.forEach(e => e.removeAttribute('contenteditable'));
-      });
+  <h2>Future Vision of Xizoa Hub</h2>
+  <p>Xizoa Hub is focused on building free, high-quality digital tools for a global audience. The About Page Builder is part of a larger ecosystem that includes student utilities, developer tools, gaming utilities, and productivity systems.</p>
 
-      // Get Inner HTML
-      const cleanHTML = clone.innerHTML;
+  <p>The goal is simple: make professional-grade tools accessible to everyone, regardless of location or budget.</p>
 
-      // Add CSS wrapper
-      const finalCode = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us</title>
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  body { margin:0; font-family: 'Google Sans', sans-serif; color: #202124; line-height: 1.6; }
-  a { color: #1a73e8; text-decoration: none; }
-  /* Hero */
-  .b-hero { text-align: center; padding: 100px 20px; background: radial-gradient(circle at 50% 0%, #e8f0fe 0%, #fff 70%); }
-  .b-hero h1 { font-size: 3.5rem; font-weight: 700; margin: 0 0 20px 0; line-height: 1.1; }
-  .b-hero p { font-size: 1.4rem; color: #5f6368; max-width: 700px; margin: 0 auto; }
-  /* Stats */
-  .b-stats { padding: 60px 20px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; max-width: 900px; margin: 0 auto; gap: 30px; }
-  .stat-num { font-size: 3rem; font-weight: 700; color: #1a73e8; display: block; }
-  .stat-lbl { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #5f6368; }
-  /* Text */
-  .b-text { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-  .b-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
-  .b-text p { font-size: 1.1rem; color: #4b4d52; margin-bottom: 15px; }
-  /* Grid */
-  .b-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
-  .g-card { background: #fff; border: 1px solid #dadce0; border-radius: 12px; padding: 30px; }
-  .g-card h3 { font-size: 1.4rem; margin: 15px 0 10px; }
-  /* Footer */
-  .b-footer { background: #f8f9fa; padding: 60px 20px; text-align: center; border-top: 1px solid #dadce0; margin-top: 50px; }
-  
-  @media (max-width: 768px) {
-    .b-hero h1 { font-size: 2.5rem; }
-    .b-stats { grid-template-columns: 1fr; }
-    .b-grid { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
-  ${cleanHTML}
-</body>
-</html>`;
+  <h2>Conclusion</h2>
+  <p>The Xizoa About Page Builder is more than a generator — it is a strategic SEO tool. By focusing on content depth, trust signals, and global readability, it helps websites stand out in search results and build long-term credibility.</p>
 
-      navigator.clipboard.writeText(finalCode).then(() => {
-        alert("Full Page Code Copied! Create a new file (e.g. about.html) and paste it.");
-      });
-    }
-  </script>
+  <p>If you are serious about ranking, trust, and professionalism, your About page cannot be an afterthought. This tool ensures it never is.</p>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 Xizoa Hub. All rights reserved. Built for creators, developers, and learners worldwide.</p>
+  </div>
+</footer>
+
 </body>
 </html>
