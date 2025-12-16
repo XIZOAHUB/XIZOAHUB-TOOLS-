@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced About Page Generator - Xizoa Style</title>
+  <meta name="robots" content="noindex"> <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    /* --- GENERATOR INTERFACE (Your Dark Theme) --- */
+    :root {
+      --bg: #02060e;
+      --panel: #0b1221;
+      --neon: #00f3ff;
+      --text: #e2e8f0;
+      --border: 1px solid rgba(0, 243, 255, 0.15);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
+
+    body {
+      background-color: var(--bg); color: var(--text);
+      display: flex; flex-direction: column; min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      padding: 15px 30px; border-bottom: var(--border);
+      background: rgba(11, 18, 33, 0.9); backdrop-filter: blur(10px);
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 1.5rem; font-weight: 800; color: #fff; }
+    .logo span { color: var(--neon); }
+    .btn-action {
+      background: var(--neon); color: #000; padding: 10px 20px;
+      border: none; border-radius: 6px; font-weight: 700; cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn-action:hover { box-shadow: 0 0 15px var(--neon); }
+
+    /* Main Grid */
+    .editor-container {
+      display: grid; grid-template-columns: 350px 1fr; height: calc(100vh - 70px);
+    }
+
+    /* Left Sidebar (Inputs) */
+    .controls {
+      background: var(--panel); border-right: var(--border);
+      padding: 20px; overflow-y: auto;
+    }
+    .group-title {
+      font-size: 0.85rem; color: #64748b; font-weight: 700; text-transform: uppercase;
+      margin: 20px 0 10px; border-bottom: 1px solid #1e293b; padding-bottom: 5px;
+    }
+    label { display: block; font-size: 0.9rem; margin-bottom: 5px; color: #aaa; }
+    input, textarea {
+      width: 100%; background: #1e293b; border: 1px solid #334155;
+      color: #fff; padding: 10px; border-radius: 6px; margin-bottom: 15px;
+      font-size: 0.9rem;
+    }
+    textarea { resize: vertical; height: 80px; }
+    input:focus, textarea:focus { border-color: var(--neon); outline: none; }
+
+    /* Right Side (Live Preview) */
+    .preview-window {
+      background: #fff; /* Google pages are white/clean */
+      overflow-y: auto; position: relative;
+    }
+    
+    /* --- THE GENERATED GOOGLE-STYLE CSS (This is what gets exported) --- */
+    .g-container { font-family: 'Google Sans', 'Outfit', sans-serif; color: #202124; line-height: 1.6; }
+    
+    /* Hero */
+    .g-hero {
+      text-align: center; padding: 100px 20px 60px;
+      background: radial-gradient(circle at 50% 0%, #f1f3f4 0%, #fff 70%);
+    }
+    .g-title { font-size: 3.5rem; font-weight: 500; letter-spacing: -1px; margin-bottom: 20px; color: #202124; }
+    .g-subtitle { font-size: 1.5rem; color: #5f6368; max-width: 700px; margin: 0 auto; font-weight: 400; }
+
+    /* Mission Box */
+    .g-mission {
+      max-width: 1000px; margin: 60px auto; padding: 40px;
+      background: #000; color: #fff; border-radius: 24px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .g-mission h2 { font-size: 2rem; margin-bottom: 15px; }
+    .g-mission p { font-size: 1.1rem; opacity: 0.9; }
+    .g-accent { color: var(--neon); font-weight: 700; }
+
+    /* Stats Grid */
+    .g-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      max-width: 1000px; margin: 60px auto; gap: 40px; text-align: center;
+    }
+    .g-stat-num { font-size: 3.5rem; font-weight: 700; color: #1a73e8; display: block; }
+    .g-stat-label { font-size: 1rem; color: #5f6368; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Features / What We Do */
+    .g-section-title { text-align: center; font-size: 2.2rem; margin: 80px 0 40px; font-weight: 500; }
+    .g-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      max-width: 1200px; margin: 0 auto 80px; gap: 30px; padding: 0 20px;
+    }
+    .g-card {
+      background: #fff; border: 1px solid #dadce0; border-radius: 16px; padding: 30px;
+      transition: 0.3s; height: 100%;
+    }
+    .g-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-5px); border-color: #1a73e8; }
+    .g-card-icon { font-size: 2rem; color: #1a73e8; margin-bottom: 20px; }
+    .g-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+    .g-card p { color: #5f6368; }
+
+    /* Founder & Footer */
+    .g-footer { background: #f8f9fa; padding: 60px 20px; text-align: center; border-top: 1px solid #dadce0; }
+    .g-founder img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; }
+    
+    @media (max-width: 900px) {
+      .editor-container { grid-template-columns: 1fr; height: auto; }
+      .preview-window { min-height: 100vh; border-top: 5px solid var(--neon); }
+      .g-title { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">XIZOA <span>BUILDER</span></div>
+    <div>
+      <button class="btn-action" onclick="copyCode()"><i class="fas fa-code"></i> Copy HTML Code</button>
+    </div>
+  </header>
+
+  <div class="editor-container">
+    
+    <div class="controls">
+      
+      <div class="group-title">1. Brand Identity</div>
+      <label>Website Name</label>
+      <input type="text" id="siteName" value="Xizoa Hub" oninput="updatePreview()">
+      
+      <label>Main Headline (Hero)</label>
+      <input type="text" id="heroTitle" value="Empowering Students with Digital Tools" oninput="updatePreview()">
+      
+      <label>Subtitle / Tagline</label>
+      <textarea id="heroSub" oninput="updatePreview()">We build professional, free-to-use tools like FPS Checkers, Handwriting Converters, and more to simplify your digital life.</textarea>
+
+      <div class="group-title">2. The Mission</div>
+      <label>Mission Title</label>
+      <input type="text" id="missionTitle" value="Our Mission" oninput="updatePreview()">
+      <label>Mission Description</label>
+      <textarea id="missionDesc" oninput="updatePreview()">At Xizoa Hub, we believe technology should be accessible to everyone. Our goal is to provide premium-grade utilities without the premium price tag.</textarea>
+
+      <div class="group-title">3. Key Stats</div>
+      <label>Stat 1 (e.g., 50k+ Users)</label>
+      <div style="display:flex; gap:10px;">
+        <input type="text" id="stat1Num" value="50K+" oninput="updatePreview()">
+        <input type="text" id="stat1Label" value="Monthly Users" oninput="updatePreview()">
+      </div>
+      
+      <label>Stat 2 (e.g., 20+ Tools)</label>
+      <div style="display:flex; gap:10px;">
+        <input type="text" id="stat2Num" value="20+" oninput="updatePreview()">
+        <input type="text" id="stat2Label" value="Free Tools" oninput="updatePreview()">
+      </div>
+      
+      <label>Stat 3 (e.g., 100% Free)</label>
+      <div style="display:flex; gap:10px;">
+        <input type="text" id="stat3Num" value="100%" oninput="updatePreview()">
+        <input type="text" id="stat3Label" value="Free to Use" oninput="updatePreview()">
+      </div>
+
+      <div class="group-title">4. What We Do (Cards)</div>
+      
+      <label>Card 1 (Title / Desc)</label>
+      <input type="text" id="card1Title" value="Smart Tools" oninput="updatePreview()">
+      <textarea id="card1Desc" oninput="updatePreview()">From FPS checkers to Image Compressors, we engineer tools that solve real-world problems instantly.</textarea>
+      
+      <label>Card 2 (Title / Desc)</label>
+      <input type="text" id="card2Title" value="In-Depth Articles" oninput="updatePreview()">
+      <textarea id="card2Desc" oninput="updatePreview()">We write comprehensive guides on Gaming, Tech, and Development to keep you ahead of the curve.</textarea>
+      
+      <label>Card 3 (Title / Desc)</label>
+      <input type="text" id="card3Title" value="Student Focused" oninput="updatePreview()">
+      <textarea id="card3Desc" oninput="updatePreview()">Our "Text to Handwriting" and "Repo Generator" tools are specifically designed to help students save time.</textarea>
+
+      <div class="group-title">5. Founder Info</div>
+      <label>Founder Name</label>
+      <input type="text" id="founderName" value="Priyanshu" oninput="updatePreview()">
+      <label>Founded Year</label>
+      <input type="text" id="foundYear" value="2024" oninput="updatePreview()">
+
+    </div>
+
+    <div class="preview-window" id="previewArea">
+      </div>
+
+  </div>
+
+  <script>
+    function updatePreview() {
+      // Get Values
+      const name = document.getElementById('siteName').value;
+      const hTitle = document.getElementById('heroTitle').value;
+      const hSub = document.getElementById('heroSub').value;
+      
+      const mTitle = document.getElementById('missionTitle').value;
+      const mDesc = document.getElementById('missionDesc').value;
+      
+      const s1n = document.getElementById('stat1Num').value;
+      const s1l = document.getElementById('stat1Label').value;
+      const s2n = document.getElementById('stat2Num').value;
+      const s2l = document.getElementById('stat2Label').value;
+      const s3n = document.getElementById('stat3Num').value;
+      const s3l = document.getElementById('stat3Label').value;
+
+      const c1t = document.getElementById('card1Title').value;
+      const c1d = document.getElementById('card1Desc').value;
+      const c2t = document.getElementById('card2Title').value;
+      const c2d = document.getElementById('card2Desc').value;
+      const c3t = document.getElementById('card3Title').value;
+      const c3d = document.getElementById('card3Desc').value;
+
+      const founder = document.getElementById('founderName').value;
+      const year = document.getElementById('foundYear').value;
+
+      // Construct HTML
+      const html = `
+        <div class="g-container">
+          
+          <div class="g-hero">
+             <div class="g-title">${hTitle}</div>
+             <div class="g-subtitle">${hSub}</div>
+          </div>
+
+          <div class="g-stats">
+            <div><span class="g-stat-num">${s1n}</span><span class="g-stat-label">${s1l}</span></div>
+            <div><span class="g-stat-num">${s2n}</span><span class="g-stat-label">${s2l}</span></div>
+            <div><span class="g-stat-num">${s3n}</span><span class="g-stat-label">${s3l}</span></div>
+          </div>
+
+          <div class="g-mission">
+            <h2>${mTitle}</h2>
+            <p>${mDesc}</p>
+          </div>
+
+          <h2 class="g-section-title">What We Build</h2>
+          <div class="g-grid">
+            <div class="g-card">
+               <div class="g-card-icon"><i class="fas fa-tools"></i></div>
+               <h3>${c1t}</h3>
+               <p>${c1d}</p>
+            </div>
+            <div class="g-card">
+               <div class="g-card-icon"><i class="fas fa-book-open"></i></div>
+               <h3>${c2t}</h3>
+               <p>${c2d}</p>
+            </div>
+            <div class="g-card">
+               <div class="g-card-icon"><i class="fas fa-graduation-cap"></i></div>
+               <h3>${c3t}</h3>
+               <p>${c3d}</p>
+            </div>
+          </div>
+
+          <div class="g-footer">
+            <div style="font-size:1.2rem; font-weight:700; color:#202124;">${name}</div>
+            <p style="color:#5f6368; margin-top:10px;">Founded by <strong>${founder}</strong> • Est. ${year}</p>
+            <p style="font-size:0.8rem; color:#aaa; margin-top:20px;">© ${new Date().getFullYear()} ${name}. All rights reserved.</p>
+          </div>
+
+        </div>
+      `;
+
+      document.getElementById('previewArea').innerHTML = html;
+    }
+
+    // Function to Copy Code
+    function copyCode() {
+      // We need to grab the inner HTML of preview Area AND the CSS styles for "g-" classes
+      const content = document.getElementById('previewArea').innerHTML;
+      
+      // Extract specific CSS for the page
+      const styleBlock = `
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap');
+  .g-container { font-family: 'Google Sans', sans-serif; color: #202124; line-height: 1.6; background:#fff; }
+  .g-hero { text-align: center; padding: 100px 20px 60px; background: radial-gradient(circle at 50% 0%, #f1f3f4 0%, #fff 70%); }
+  .g-title { font-size: 3.5rem; font-weight: 500; letter-spacing: -1px; margin-bottom: 20px; color: #202124; }
+  .g-subtitle { font-size: 1.5rem; color: #5f6368; max-width: 700px; margin: 0 auto; font-weight: 400; }
+  .g-mission { max-width: 1000px; margin: 60px auto; padding: 40px; background: #000; color: #fff; border-radius: 24px; text-align: center; }
+  .g-mission h2 { font-size: 2rem; margin-bottom: 15px; }
+  .g-mission p { font-size: 1.1rem; opacity: 0.9; }
+  .g-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 1000px; margin: 60px auto; gap: 40px; text-align: center; }
+  .g-stat-num { font-size: 3.5rem; font-weight: 700; color: #1a73e8; display: block; }
+  .g-stat-label { font-size: 1rem; color: #5f6368; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+  .g-section-title { text-align: center; font-size: 2.2rem; margin: 80px 0 40px; font-weight: 500; }
+  .g-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 1200px; margin: 0 auto 80px; gap: 30px; padding: 0 20px; }
+  .g-card { background: #fff; border: 1px solid #dadce0; border-radius: 16px; padding: 30px; transition: 0.3s; height: 100%; }
+  .g-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-5px); border-color: #1a73e8; }
+  .g-card-icon { font-size: 2rem; color: #1a73e8; margin-bottom: 20px; }
+  .g-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+  .g-card p { color: #5f6368; }
+  .g-footer { background: #f8f9fa; padding: 60px 20px; text-align: center; border-top: 1px solid #dadce0; }
+  @media (max-width: 768px) { .g-title { font-size: 2.5rem; } }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      `;
+      
+      const fullCode = styleBlock + '\n' + content;
+      
+      navigator.clipboard.writeText(fullCode).then(() => {
+        alert("Code Copied! Create a new file 'about.html' and paste this.");
+      });
+    }
+
+    // Initialize
+    updatePreview();
+  </script>
+</body>
+</html>
