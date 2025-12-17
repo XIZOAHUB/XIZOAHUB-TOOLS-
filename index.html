@@ -1,77 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "name": "XIZOA TOOLS ",
-      "alternateName": ["XIZOA Tools", "XIZOA  Premium"],
-      "url": "https://tools.xizoa.com/",
-      "description": "Premium Free Tools AI Writers, PDF Tools, Image Editors & Gaming Tests.",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://tools.xizoa.com/#tools?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@type": "Organization",
-      "name": "XIZOAHUB",
-      "url": "https://tools.xizoa.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://tools.xizoa.com/favicon.ico",
-        "width": 512,
-        "height": 512
-      },
-      "founder": {
-        "@type": "Person",
-        "name": "Priyanshu",
-        "jobTitle": "Full Stack Developer",
-        "url": "https://tools.xizoa.com/",
-        "sameAs": [
-          "https://github.com/XIZOAHUB",
-          "https://instagram.com/xizoa.com_"
-        ]
-      },
-      "sameAs": [
-        "https://github.com/XIZOAHUB",
-        "https://t.me/xizoahub",
-        "https://instagram.com/xizoa.com_",
-        "https://twitter.com/xizoa"
-      ]
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "XIZOA TOOLS ",
-      "image": "https://tools.xizoa.com/favicon.ico",
-      "url": "https://tools.xizoa.com/",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "1250"
-      }
-    }
-  ]
-}
-  </script>
-  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>XIZOA TOOLS  FREE & PREMIUM</title>
-<meta name="description" content="Premium Free Tools: AI Writers, PDF Tools, Image Editors, Gaming Tests & Security Utilities. Fast, Secure & No Login Required.">
-<link rel="canonical" href="https://tools.xizoa.com/">
+<title>XIZOA TOOLS - Premium Free Utilities</title>
+<meta name="description" content="Premium Free Tools: AI Writers, PDF Tools, Image Editors, Gaming Tests & Security Utilities.">
 <link rel="icon" href="https://tools.xizoa.com/favicon.ico">
 
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -80,264 +13,142 @@
 <style>
 :root{
   --brand:#00f7ff;
-  --brand-glow: rgba(0, 247, 255, 0.5);
   --bg-dark:#050a14;
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
   --text:#ffffff;
   --muted:#94a3b8;
-  --sidebar-bg: rgba(5, 10, 20, 0.98);
+  --card-bg: #0b1121;
+  --border: #1e293b;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
 body{background:var(--bg-dark);color:var(--text);line-height:1.6;overflow-x:hidden;}
 html{scroll-behavior: smooth;}
 
-/* --- PREMIUM ANIMATIONS --- */
-@keyframes fadeInUp {
-  from {opacity: 0; transform: translateY(40px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-@keyframes pulseGlow {
-  0% {box-shadow: 0 0 0px var(--brand-glow);}
-  50% {box-shadow: 0 0 20px var(--brand-glow);}
-  100% {box-shadow: 0 0 0px var(--brand-glow);}
-}
-@keyframes gradientText {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-header, .hero, .section, .load, footer, .content-area {
-  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  opacity: 0;
-}
-header { animation-delay: 0s; }
-.hero { animation-delay: 0.2s; }
-#tools { animation-delay: 0.3s; }
-.content-area { animation-delay: 0.4s; }
-#categories { animation-delay: 0.5s; }
-footer { animation-delay: 0.6s; }
-
 /* --- BACKGROUND --- */
-.bg{position:fixed;inset:0;z-index:-1;
-background: radial-gradient(circle at 10% 20%, rgba(0, 247, 255, 0.08) 0%, transparent 40%),
-            radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.08) 0%, transparent 40%),
-            radial-gradient(at center, #050a14 0%, #020408 100%);
-}
-.bg::after {
-  content: ""; position: fixed; inset: 0; z-index: -1;
-  opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  pointer-events: none;
-}
+.bg{position:fixed;inset:0;z-index:-1; background: radial-gradient(circle at 15% 50%, #0f172a 0%, transparent 25%), radial-gradient(circle at 85% 30%, #1e1b4b 0%, transparent 25%); background-color: #020408;}
 
 /* --- HEADER --- */
 header{
   position:sticky;top:0;z-index:1000;
-  background: rgba(5, 10, 20, 0.85);
-  backdrop-filter: blur(20px);
-  border-bottom:1px solid var(--glass-border);
+  background: rgba(5, 10, 20, 0.95);
+  border-bottom:1px solid var(--border);
+  backdrop-filter: blur(10px);
 }
-.nav{max-width:1400px;margin:auto;padding:18px 30px;display:flex;justify-content:space-between;align-items:center}
-.logo{display:flex;gap:12px;align-items:center;font-size:1.8rem;font-weight:800;text-decoration:none;color:white; letter-spacing: 1px;}
-.logo i{color:var(--brand);filter: drop-shadow(0 0 15px var(--brand));}
-.desktop-menu{display:flex;align-items:center;gap:35px}
-.desktop-menu a{color:#e2e8f0;text-decoration:none;font-size:1rem;font-weight: 600; transition:0.3s; position: relative;}
-.desktop-menu a:hover{color:white; text-shadow: 0 0 10px var(--brand-glow);}
-.mobile-toggle{display:none;font-size:1.8rem;color:#fff;cursor:pointer; transition: 0.3s;}
-.mobile-toggle:hover{color: var(--brand); filter: drop-shadow(0 0 10px var(--brand));}
+.nav{max-width:1400px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;gap:10px;align-items:center;font-size:1.5rem;font-weight:800;text-decoration:none;color:white;}
+.logo i{color:var(--brand);}
 
-/* --- SIDEBAR --- */
-.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1900;opacity:0;visibility:hidden;transition:0.4s; backdrop-filter: blur(8px);}
-.sidebar-overlay.active{opacity:1;visibility:visible}
-.mobile-sidebar{
-  position:fixed;top:0;right:-320px;
-  width:300px;height:100vh;
-  background:var(--sidebar-bg);
-  border-left:1px solid var(--glass-border);
-  backdrop-filter: blur(30px);
-  z-index:2000;padding:30px;display:flex;flex-direction:column;gap:30px;
-  transition:0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  box-shadow:-20px 0 50px rgba(0,0,0,0.7);
+.desktop-menu{
+    display:flex; gap:20px; overflow-x: auto; 
+    max-width: 800px; white-space: nowrap; 
+    padding-bottom: 5px;
 }
-.mobile-sidebar.active{right:0}
-.sidebar-header{display:flex;justify-content:space-between;align-items:center;padding-bottom: 20px; border-bottom: 1px solid var(--glass-border);}
-.close-btn{font-size:2rem;color:var(--muted);cursor:pointer; transition: 0.3s;}
-.close-btn:hover{color:var(--brand); transform: rotate(90deg);}
-.sidebar-links a{display:flex;align-items:center;gap:15px;padding:16px;color:#e2e8f0;text-decoration:none;font-size:1.15rem;border-radius: 12px; transition:0.3s; font-weight: 500;}
-.sidebar-links a:hover{background: rgba(0, 247, 255, 0.1); color:white; border: 1px solid rgba(0,247,255,0.3); box-shadow: 0 0 15px rgba(0,247,255,0.1);}
-.sidebar-links i{width:30px;text-align:center;color:var(--brand);}
+.desktop-menu::-webkit-scrollbar { height: 0px; background: transparent; }
+.desktop-menu a{color:#cbd5e1;text-decoration:none;font-size:0.9rem;font-weight:600;transition:0.3s; text-transform: uppercase;}
+.desktop-menu a:hover{color:var(--brand);}
+.mobile-toggle{display:none;font-size:1.5rem;color:#fff;cursor:pointer;}
 
 /* --- HERO --- */
-.hero{max-width:1200px;margin:120px auto 80px;padding:0 24px;text-align:center}
-.hero h1{font-size:3.8rem;margin-bottom:24px;line-height:1.1; font-weight: 800; letter-spacing: -1.5px;}
-.hero h1 span{
-    background: linear-gradient(135deg, #fff 20%, var(--brand) 50%, #fff 80%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientText 6s ease infinite;
-    filter: drop-shadow(0 0 25px rgba(0,247,255,0.4));
-}
-.hero p{color:var(--muted);max-width:850px;margin:auto;font-size:1.25rem; font-weight: 300; letter-spacing: 0.5px;}
+.hero{max-width:1000px;margin:80px auto 50px;padding:0 20px;text-align:center;}
+.hero h1{font-size:3rem;margin-bottom:15px;line-height:1.1; font-weight: 800;}
+.hero h1 span{ color: var(--brand); }
+.hero p{color:var(--muted); font-size:1.1rem;}
 
 /* --- SEARCH --- */
-.search-box{max-width:700px;margin:50px auto 0;position:relative; z-index: 10;}
-.search-box i{position:absolute;left:25px;top:50%;transform:translateY(-50%);color:var(--brand); font-size: 1.3rem; filter: drop-shadow(0 0 5px var(--brand));}
+.search-box{max-width:600px;margin:30px auto;position:relative;}
+.search-box i{position:absolute;left:20px;top:50%;transform:translateY(-50%);color:var(--brand);}
 .search-box input{
-    width:100%;padding:22px 30px 22px 65px;border-radius:60px;
-    background: rgba(255, 255, 255, 0.04);
-    border:1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    color:#fff;outline:none;font-size:1.15rem; transition: 0.4s;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width:100%;padding:15px 20px 15px 50px;border-radius:50px;
+    background: #0f172a; border:1px solid var(--border);
+    color:#fff;outline:none;font-size:1rem; transition: 0.3s;
 }
-.search-box input:focus{
-    border-color:var(--brand); 
-    box-shadow: 0 0 40px rgba(0,247,255,0.15), inset 0 0 20px rgba(0,247,255,0.05);
-    background: rgba(0,0,0,0.2);
-}
+.search-box input:focus{ border-color:var(--brand); }
 
-/* --- GRID & CARDS (OPTIMIZED 3 Columns) --- */
-.section{max-width:1400px;margin:100px auto;padding:0 30px}
-.section h2{font-size:2.2rem;margin-bottom:30px;color:white; display: flex; align-items: center; gap: 15px; font-weight: 700;}
-.section h2::before { content: ''; display: block; width: 6px; height: 35px; background: var(--brand); border-radius: 4px; box-shadow: 0 0 20px var(--brand); }
+/* --- TOOLS GRID --- */
+.section{max-width:1400px;margin:60px auto;padding:0 25px}
+.section h2{font-size:1.8rem;margin-bottom:25px;color:white; border-left: 5px solid var(--brand); padding-left: 15px;}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
 
 .tool{
-  background: rgba(255, 255, 255, 0.02);
-  border:1px solid var(--glass-border);
-  backdrop-filter: blur(20px);
-  border-radius:24px;padding:35px 30px;
-  text-decoration:none;color:var(--text);
-  position:relative;overflow:hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: var(--card-bg); border:1px solid var(--border);
+  border-radius:16px; padding:25px;
+  text-decoration:none; color:var(--text);
+  position:relative; transition: transform 0.2s, border-color 0.2s;
   display:flex; flex-direction: column; justify-content: center;
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-  
-  /* DEFAULT VAR - Overwritten by JS */
-  --accent: #00f7ff; 
+  display: none; /* HIDDEN INITIALLY */
 }
+.tool.visible { display: flex; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 
-/* BRAND COLOR LOGIC */
-.tool i {
-    font-size:2.8rem; margin-bottom:20px; display:inline-block; 
-    transition: 0.4s; 
-    color: var(--accent); /* Tool specific color */
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.1));
+.tool:hover{ transform:translateY(-5px); border-color: var(--accent); }
+.tool i { font-size:2.2rem; margin-bottom:15px; color: var(--accent); }
+.tool h3{font-size:1.1rem;margin-bottom:5px; font-weight: 700;}
+.tool p{font-size:0.8rem;color:var(--muted); text-transform: uppercase;}
+.badge{position:absolute;top:15px;right:15px;font-size:.6rem;font-weight:800;padding:4px 10px;border-radius:20px;background:var(--brand);color:#000;}
+
+.load-btn-container { text-align: center; margin: 40px 0; }
+#loadBtn {
+    padding: 12px 40px; background: transparent; border: 1px solid var(--brand);
+    color: var(--brand); font-weight: 700; border-radius: 50px; cursor: pointer; transition: 0.3s;
 }
+#loadBtn:hover { background: var(--brand); color: #000; }
 
-.tool:hover{
-  transform:translateY(-10px) scale(1.02);
-  background: rgba(255, 255, 255, 0.03);
-  
-  /* Use Brand Color for Border & Glow */
-  border-color: var(--accent);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px var(--accent) inset;
-}
-
-.tool:hover i { transform: scale(1.15); filter: drop-shadow(0 0 20px var(--accent)); }
-.tool h3{font-size:1.3rem;margin-bottom:10px; font-weight: 700; letter-spacing: 0.5px;}
-.tool p{font-size:0.95rem;color:var(--muted); font-weight: 400; line-height: 1.5;}
-
-.badge{position:absolute;top:20px;right:20px;font-size:.7rem;font-weight:800;padding:6px 16px;border-radius:30px; letter-spacing: 1px; z-index: 2;}
-.badge.hot{background:#fb7185;color:#050a14; box-shadow: 0 0 15px rgba(251,113,133, 0.6);}
-.badge.new{background:var(--brand);color:#050a14; box-shadow: 0 0 15px var(--brand-glow);}
-.badge.best{background:#a29bfe;color:#050a14; box-shadow: 0 0 15px rgba(162,155,254,0.6);}
-
-.load { display: flex; justify-content: center; margin: 60px 0 100px;}
-.load button {
-    padding: 18px 55px; border-radius: 50px;
-    border: 1px solid var(--brand);
-    background: rgba(0, 247, 255, 0.05);
-    color: var(--brand); font-weight: 700; font-size: 1rem; letter-spacing: 1px;
-    cursor: pointer; transition: 0.4s;
-    box-shadow: 0 0 20px rgba(0, 247, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-.load button:hover {
-    background: var(--brand); color: #050a14;
-    box-shadow: 0 0 50px var(--brand-glow);
-    transform: translateY(-5px);
-}
-
-/* --- CONTENT AREA (HUMANIZED) --- */
-.content-wrapper {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  padding: 50px;
-  max-width: 1100px;
-  margin: 0 auto;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
-.text-block { margin-bottom: 40px; }
-.text-block h3 { font-size: 1.6rem; color: #fff; margin-bottom: 15px; font-weight: 700; display:flex; align-items:center; gap:10px; }
-.text-block h3 i { color: var(--brand); font-size: 1.2rem; }
-.text-block p { color: #cbd5e1; font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; }
-.text-block strong { color: var(--brand); }
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 40px 0; }
-.feat-box { background: rgba(0, 0, 0, 0.3); padding: 30px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; }
-.feat-box:hover { border-color: var(--brand); transform: translateY(-5px); background: rgba(0,247,255,0.03); }
-.feat-box i { font-size: 2rem; color: var(--brand); margin-bottom: 15px; }
-.feat-box h4 { font-size: 1.2rem; margin-bottom: 10px; color: white; }
-.feat-box p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
-
-/* BROWSE CATEGORIES */
-.category-box{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:35px}
+/* --- CATEGORIES --- */
+.category-box{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:25px}
 .category-card{
-  background: var(--glass-bg);
-  border:1px solid var(--glass-border);
-  border-radius:24px;padding:30px; cursor: pointer;
+  background: linear-gradient(145deg, #13131a, #0b0b0e); 
+  border:1px solid var(--border);
+  border-radius:20px; padding:30px; cursor: pointer;
   transition: 0.3s; position: relative; overflow: hidden;
 }
-.category-card:hover{ border-color: var(--brand); transform: translateY(-5px); background: rgba(0,247,255,0.05); }
-.category-card h3{color:var(--brand);margin-bottom:12px; font-size: 1.4rem; font-weight: 700;}
-.category-card p{color:var(--muted);font-size:0.95rem;}
-.category-card i { position: absolute; right: 20px; top: 20px; font-size: 4rem; opacity: 0.05; color: #fff; transform: rotate(-15deg); }
-
-/* FOOTER */
-footer{
-    border-top:1px solid var(--glass-border);
-    background: #020305;
-    margin-top:120px; padding-top: 80px;
+.category-card:hover{ border-color: var(--brand); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.category-card h3{color:var(--brand); margin-bottom:10px; font-size: 1.3rem; font-weight: 700;}
+.category-card p{color:var(--muted); font-size:0.9rem;}
+.category-card i.bg-icon { 
+    position: absolute; right: 20px; top: 20px; font-size: 4rem; 
+    opacity: 0.05; color: #fff; transform: rotate(-15deg); 
 }
-.footer-container{max-width:1400px;margin:auto;padding:0 30px;}
-.footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.footer-col h4 { color: #fff; margin-bottom: 25px; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; border-left: 3px solid var(--brand); padding-left: 15px; }
-.footer-col ul { list-style: none; }
-.footer-col li { margin-bottom: 12px; }
-.footer-col a { color: #94a3b8; text-decoration: none; font-size: 0.95rem; transition: 0.3s; display: block; }
-.footer-col a:hover { color: var(--brand); transform: translateX(5px); text-shadow: 0 0 8px rgba(0,247,255,0.4); }
-.footer-bottom { padding: 40px 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 30px; }
-.footer-info p { color: #64748b; font-size: 0.9rem; max-width: 400px; }
-.social-icons { display: flex; gap: 20px; }
-.social-icons a {
-    width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.05);
-    display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;
-    transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); font-size: 1.2rem;
-}
-.social-icons a:hover { background: var(--brand); color: #000; box-shadow: 0 0 20px var(--brand-glow); transform: translateY(-5px); }
 
-/* RESPONSIVE */
+/* --- EXPLORE ALL BOX --- */
+.explore-all-box {
+    margin: 60px auto; max-width: 900px; text-align: center;
+    background: linear-gradient(45deg, #0f172a, #1e293b);
+    padding: 50px 20px; border-radius: 20px; border: 1px solid var(--border);
+}
+.explore-all-box h3 { font-size: 2rem; margin-bottom: 10px; }
+.explore-all-box p { color: var(--muted); margin-bottom: 25px; }
+.explore-btn {
+    padding: 15px 40px; background: var(--brand); color: #000;
+    text-decoration: none; font-weight: 800; border-radius: 50px;
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.4); transition: 0.3s;
+}
+.explore-btn:hover { transform: scale(1.05); }
+
+/* --- FOOTER (FIXED ALIGNMENT) --- */
+footer{ border-top:1px solid var(--border); background: #020305; margin-top:80px; padding: 60px 20px 20px; }
+.footer-grid { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer-brand p { font-size: 0.9rem; color: #64748b; margin-top: 10px; max-width: 300px; }
+.footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1rem; }
+.footer-col a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; font-size: 0.9rem; transition:0.2s; }
+.footer-col a:hover { color: var(--brand); }
+.copyright { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #1e293b; color: #475569; font-size: 0.85rem; }
+
+/* --- RESPONSIVE FIXES --- */
 @media(max-width:768px){
   .desktop-menu{display:none}
   .mobile-toggle{display:block}
-  .nav {padding: 16px 20px;}
-  .hero{margin-top: 60px; margin-bottom: 50px;}
-  .hero h1{font-size:2.5rem}
-  .grid{grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;} /* Optimized Mobile Grid */
-  .load { margin: 50px 0 80px; }
-  .content-wrapper { padding: 30px 20px; }
-  .text-block h3 { font-size: 1.3rem; }
-  .features-grid { grid-template-columns: 1fr; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 30px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
+  
+  /* Footer Fix: Left Align on Mobile */
+  .footer-grid { grid-template-columns: 1fr; text-align: left; gap: 40px; }
+  .footer-brand p { margin: 10px 0; max-width: 100%; }
+  
+  /* Tools Grid: 2 Columns on Tablet */
+  .grid{grid-template-columns: 1fr 1fr; gap: 15px;} 
 }
+
 @media(max-width:480px){
-    .footer-top { grid-template-columns: 1fr; }
+  /* Tools Grid: 1 Column on Small Mobile */
+  .grid{grid-template-columns: 1fr;}
 }
 </style>
 </head>
@@ -346,337 +157,241 @@ footer{
 
 <header>
   <div class="nav">
-    <a href="/" class="logo"><i class="fas fa-cube"></i> XIZOA TOOLS</a>
-    
+    <a href="/" class="logo"><i class="fas fa-cube"></i> XIZOA</a>
     <div class="desktop-menu">
-      <a href="#tools">Tools</a>
-      <a href="#categories">Categories</a>
-      <a href="#about">About</a>
-      <span class="search-btn-header" onclick="document.getElementById('searchInput').focus()"><i class="fas fa-search"></i></span>
+      <a href="#" onclick="filterByCat('social')">Social</a>
+      <a href="#" onclick="filterByCat('ai')">AI Tools</a>
+      <a href="#" onclick="filterByCat('pdf')">PDF</a>
+      <a href="#" onclick="filterByCat('gaming')">Gaming</a>
+      <a href="#" onclick="filterByCat('image')">Image</a>
+      <a href="#" onclick="filterByCat('dev')">Dev</a>
+      <a href="#" onclick="filterByCat('security')">Security</a>
+      <a href="#" onclick="filterByCat('music')">Music</a>
+      <a href="#" onclick="filterByCat('utility')">Utils</a>
     </div>
-
-    <div class="mobile-toggle" onclick="toggleSidebar()">
-      <i class="fas fa-bars"></i>
-    </div>
+    <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
   </div>
 </header>
 
-<div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
-<div class="mobile-sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <span class="logo"><i class="fas fa-cube"></i> Menu</span>
-    <i class="fas fa-times close-btn" onclick="toggleSidebar()"></i>
-  </div>
-  <div class="sidebar-links">
-    <a href="#tools" onclick="toggleSidebar()"><i class="fas fa-layer-group"></i> All Tools</a>
-    <a href="#categories" onclick="toggleSidebar()"><i class="fas fa-th-large"></i> Categories</a>
-    <a href="#about" onclick="toggleSidebar()"><i class="fas fa-info-circle"></i> About</a>
-    <a href="#" onclick="toggleSidebar(); document.getElementById('searchInput').focus()"><i class="fas fa-search"></i> Search</a>
-  </div>
-</div>
-
 <section class="hero">
-  <h1><span>XIZOA TOOLS</span> Premium Free Tools Platform</h1>
-  
+  <h1>XIZOA <span>TOOLS</span></h1>
+  <p>Premium Free Utilities. No Ads. No Login.</p>
   <div class="search-box">
     <i class="fas fa-search"></i>
-    <input id="searchInput" placeholder="Search tool name (e.g. YouTube, PDF, AI)...">
+    <input id="searchInput" placeholder="Search tools...">
   </div>
 </section>
 
 <section class="section" id="tools">
-  <h2><i class="fas fa-bolt" style="color:var(--brand); font-size:1.5rem;"></i> Top Picks & Tools</h2>
-  <div class="grid" id="toolGrid"></div>
-</section>
+  <h2>Featured Tools</h2>
+  
+  <div class="grid" id="toolGrid">
+    <a href="YouTube-thumbnail-downloader.html" class="tool visible" data-cat="social" style="--accent:#FF0000">
+        <span class="badge hot">HOT</span><i class="fab fa-youtube"></i><h3>Thumbnail DL</h3><p>SOCIAL</p>
+    </a>
+    <a href="AI-Paraphraser.html" class="tool visible" data-cat="ai" style="--accent:#a29bfe">
+        <i class="fas fa-robot"></i><h3>AI Paraphraser</h3><p>AI TOOL</p>
+    </a>
+    <a href="pdf-merger.html" class="tool visible" data-cat="pdf" style="--accent:#d63031">
+        <i class="fas fa-file-invoice"></i><h3>PDF Merger</h3><p>PDF TOOL</p>
+    </a>
+    <a href="fps-chekar.html" class="tool visible" data-cat="gaming" style="--accent:#e74c3c">
+        <i class="fas fa-crosshairs"></i><h3>FPS Checker</h3><p>GAMING</p>
+    </a>
+    <a href="guitar-tuner.html" class="tool visible" data-cat="music" style="--accent:#ffb703">
+        <i class="fas fa-guitar"></i><h3>Guitar Tuner</h3><p>MUSIC</p>
+    </a>
+    <a href="repo-generator.html" class="tool visible" data-cat="dev" style="--accent:#fff">
+        <i class="fab fa-github-alt"></i><h3>Repo Gen</h3><p>DEV TOOL</p>
+    </a>
+    <a href="speed-test.html" class="tool visible" data-cat="utility" style="--accent:#00f7ff">
+        <i class="fas fa-tachometer-alt"></i><h3>Speed Test</h3><p>UTILITY</p>
+    </a>
+    <a href="image-compressor.html" class="tool visible" data-cat="image" style="--accent:#38bdf8">
+        <i class="fas fa-compress-arrows-alt"></i><h3>Compressor</h3><p>IMAGE</p>
+    </a>
+    <a href="password-generator.html" class="tool visible" data-cat="security" style="--accent:#4ade80">
+        <i class="fas fa-shield-alt"></i><h3>Pass Gen</h3><p>SECURITY</p>
+    </a>
+    <a href="ai-grammar-fixer.html" class="tool visible" data-cat="ai" style="--accent:#00b894">
+        <i class="fas fa-check-double"></i><h3>Grammar Fix</h3><p>AI TOOL</p>
+    </a>
+    <a href="insta-video-saver.html" class="tool visible" data-cat="social" style="--accent:#E1306C">
+        <i class="fab fa-instagram"></i><h3>Insta Saver</h3><p>SOCIAL</p>
+    </a>
+    <a href="pdf-to-word.html" class="tool visible" data-cat="pdf" style="--accent:#ff4757">
+        <i class="fas fa-file-word"></i><h3>PDF to Word</h3><p>PDF TOOL</p>
+    </a>
 
-<div class="load"><button id="loadBtn">Load More Tools</button></div>
+    <a href="about-us-page-generator.html" class="tool" data-cat="dev" style="--accent:#6c5ce7"><i class="fas fa-info-circle"></i><h3>About Us Gen</h3><p>DEV TOOL</p></a>
+    <a href="age-calculator.html" class="tool" data-cat="utility" style="--accent:#f1c40f"><i class="fas fa-birthday-cake"></i><h3>Age Calculator</h3><p>UTILITY</p></a>
+    <a href="AI-Smart-Email-Writer.html" class="tool" data-cat="ai" style="--accent:#6c5ce7"><i class="fas fa-envelope-open-text"></i><h3>Email Writer</h3><p>AI TOOL</p></a>
+    <a href="ai-text-summarise.html" class="tool" data-cat="ai" style="--accent:#fdcb6e"><i class="fas fa-file-alt"></i><h3>AI Summarizer</h3><p>AI TOOL</p></a>
+    <a href="blog-title-generator.html" class="tool" data-cat="ai" style="--accent:#ff9f43"><i class="fas fa-heading"></i><h3>Blog Title Gen</h3><p>AI TOOL</p></a>
+    <a href="color-picker.html" class="tool" data-cat="image" style="--accent:#fd79a8"><i class="fas fa-eye-dropper"></i><h3>Color Picker</h3><p>IMAGE</p></a>
+    <a href="CV-Resume-Builder.html" class="tool" data-cat="pdf" style="--accent:#0984e3"><i class="fas fa-user-tie"></i><h3>Resume Builder</h3><p>PDF TOOL</p></a>
+    <a href="dead-pixel-fixer.html" class="tool" data-cat="utility" style="--accent:#e17055"><i class="fas fa-tv"></i><h3>Dead Pixel Fixer</h3><p>UTILITY</p></a>
+    <a href="diff-checker.html" class="tool" data-cat="dev" style="--accent:#636e72"><i class="fas fa-exchange-alt"></i><h3>Diff Checker</h3><p>DEV TOOL</p></a>
+    <a href="exif-remover.html" class="tool" data-cat="security" style="--accent:#f39c12"><i class="fas fa-file-shield"></i><h3>Exif Remover</h3><p>SECURITY</p></a>
+    <a href="gaming.html" class="tool" data-cat="gaming" style="--accent:#6c5ce7"><i class="fas fa-gamepad"></i><h3>Name Style</h3><p>GAMING</p></a>
+    <a href="guitar-composer.html" class="tool" data-cat="music" style="--accent:#8c52ff"><span class="badge">NEW</span><i class="fas fa-music"></i><h3>Tab Creator</h3><p>STUDIO</p></a>
+    <a href="glitch-text-generator.html" class="tool" data-cat="social" style="--accent:#0984e3"><i class="fas fa-bug"></i><h3>Glitch Text</h3><p>SOCIAL</p></a>
+    <a href="hand-sign-predicter.html" class="tool" data-cat="ai" style="--accent:#fab1a0"><i class="fas fa-hands"></i><h3>Hand Sign AI</h3><p>AI TOOL</p></a>
+    <a href="hashtag-generator.html" class="tool" data-cat="social" style="--accent:#fd79a8"><i class="fas fa-hashtag"></i><h3>Hashtag Gen</h3><p>SOCIAL</p></a>
+    <a href="High-quality-PDF-smart-tool.html" class="tool" data-cat="pdf" style="--accent:#d63031"><i class="fas fa-file-pdf"></i><h3>HQ PDF Tool</h3><p>PDF TOOL</p></a>
+    <a href="image-resizer.html" class="tool" data-cat="image" style="--accent:#00cec9"><i class="fas fa-expand-arrows-alt"></i><h3>Image Resizer</h3><p>IMAGE</p></a>
+    <a href="invisible-text.html" class="tool" data-cat="social" style="--accent:#dfe6e9"><i class="fas fa-ghost"></i><h3>Invisible Text</h3><p>SOCIAL</p></a>
+    <a href="ip-checker.html" class="tool" data-cat="security" style="--accent:#74b9ff"><i class="fas fa-globe-asia"></i><h3>IP Checker</h3><p>SECURITY</p></a>
+    <a href="jpg-to-png.html" class="tool" data-cat="image" style="--accent:#81ecec"><i class="fas fa-images"></i><h3>JPG to PNG</h3><p>IMAGE</p></a>
+    <a href="keyboard-tester.html" class="tool" data-cat="gaming" style="--accent:#fdcb6e"><i class="fas fa-keyboard"></i><h3>Keyboard Test</h3><p>GAMING</p></a>
+    <a href="keywords-finder.html" class="tool" data-cat="dev" style="--accent:#ffeaa7"><i class="fas fa-search-dollar"></i><h3>Keyword Finder</h3><p>DEV TOOL</p></a>
+    <a href="link-scanner.html" class="tool" data-cat="security" style="--accent:#27ae60"><i class="fas fa-shield-virus"></i><h3>Link Scanner</h3><p>SECURITY</p></a>
+    <a href="morse-converter.html" class="tool" data-cat="utility" style="--accent:#ffeaa7"><i class="fas fa-broadcast-tower"></i><h3>Morse Code</h3><p>UTILITY</p></a>
+    <a href="mouse-polling-rate.html" class="tool" data-cat="gaming" style="--accent:#74b9ff"><i class="fas fa-mouse"></i><h3>Polling Rate</h3><p>GAMING</p></a>
+    <a href="pdf-light-mode.html" class="tool" data-cat="pdf" style="--accent:#ecf0f1"><i class="fas fa-eye"></i><h3>PDF Dark Mode</h3><p>PDF TOOL</p></a>
+    <a href="qr-code-generator.html" class="tool" data-cat="utility" style="--accent:#ffffff"><i class="fas fa-qrcode"></i><h3>QR Generator</h3><p>UTILITY</p></a>
+    <a href="reaction-time-test.html" class="tool" data-cat="gaming" style="--accent:#fab1a0"><i class="fas fa-stopwatch"></i><h3>Reaction Time</h3><p>GAMING</p></a>
+    <a href="SEO-Meta-Description-Generator.html" class="tool" data-cat="dev" style="--accent:#00b894"><i class="fas fa-search"></i><h3>SEO Meta Gen</h3><p>DEV TOOL</p></a>
+    <a href="social-media-caption.html" class="tool" data-cat="social" style="--accent:#55efc4"><i class="fas fa-quote-right"></i><h3>Social Caption</h3><p>SOCIAL</p></a>
+    <a href="text-to-handwriting.html" class="tool" data-cat="utility" style="--accent:#636e72"><i class="fas fa-pen-fancy"></i><h3>Handwriting</h3><p>UTILITY</p></a>
+    <a href="text-to-speech.html" class="tool" data-cat="ai" style="--accent:#e17055"><i class="fas fa-microphone-alt"></i><h3>Text to Speech</h3><p>AI TOOL</p></a>
+    <a href="tiktok-downloader.html" class="tool" data-cat="social" style="--accent:#ff0050"><i class="fab fa-tiktok"></i><h3>TikTok Saver</h3><p>SOCIAL</p></a>
+    <a href="tone-generator.html" class="tool" data-cat="utility" style="--accent:#74b9ff"><i class="fas fa-wave-square"></i><h3>Tone Gen</h3><p>UTILITY</p></a>
+    <a href="youtube-tag-extractor.html" class="tool" data-cat="social" style="--accent:#ff7675"><i class="fas fa-tags"></i><h3>Tag Extractor</h3><p>SOCIAL</p></a>
+    <a href="youtubeshorts.html" class="tool" data-cat="social" style="--accent:#ff0000"><i class="fas fa-mobile-alt"></i><h3>Shorts Saver</h3><p>SOCIAL</p></a>
+  </div>
+
+  <div class="load-btn-container">
+      <button id="loadBtn" onclick="loadMoreTools()">Load More Tools</button>
+  </div>
+</section>
 
 <section class="section" id="categories">
-  <h2>Browse by Category</h2>
+  <h2>Explore Categories</h2>
   <div class="category-box">
     <div class="category-card" onclick="filterByCat('social')">
-        <h3>Social Media</h3>
-        <p>YouTube, Instagram, TikTok downloaders & tags.</p>
-        <i class="fas fa-share-alt"></i>
+        <i class="fas fa-share-alt bg-icon"></i><h3>Social Tools</h3><p>Instagram, YouTube, TikTok</p>
     </div>
     <div class="category-card" onclick="filterByCat('ai')">
-        <h3>AI Tools</h3>
-        <p>Writers, summarizers, paraphrasers & bots.</p>
-        <i class="fas fa-robot"></i>
+        <i class="fas fa-robot bg-icon"></i><h3>AI Tools</h3><p>Writers, Fixers, Chatbots</p>
     </div>
     <div class="category-card" onclick="filterByCat('pdf')">
-        <h3>PDF Suite</h3>
-        <p>Merger, Converter, Resume Builder.</p>
-        <i class="fas fa-file-pdf"></i>
-    </div>
-    <div class="category-card" onclick="filterByCat('image')">
-        <h3>Image Tools</h3>
-        <p>Compress, Resize, Convert & Edit.</p>
-        <i class="fas fa-image"></i>
+        <i class="fas fa-file-pdf bg-icon"></i><h3>PDF Suite</h3><p>Merge, Edit, Convert</p>
     </div>
     <div class="category-card" onclick="filterByCat('gaming')">
-        <h3>Gaming</h3>
-        <p>FPS, Hz, Reaction & Input Tests.</p>
-        <i class="fas fa-gamepad"></i>
+        <i class="fas fa-gamepad bg-icon"></i><h3>Gaming</h3><p>FPS, Reaction, Hz</p>
+    </div>
+    <div class="category-card" onclick="filterByCat('image')">
+        <i class="fas fa-image bg-icon"></i><h3>Image Tools</h3><p>Compress, Resize, Edit</p>
+    </div>
+    <div class="category-card" onclick="filterByCat('dev')">
+        <i class="fas fa-code bg-icon"></i><h3>Dev Tools</h3><p>Repo, SEO, Web</p>
+    </div>
+    <div class="category-card" onclick="filterByCat('security')">
+        <i class="fas fa-shield-alt bg-icon"></i><h3>Security</h3><p>IP Check, Password Gen</p>
+    </div>
+    <div class="category-card" onclick="filterByCat('music')">
+        <i class="fas fa-music bg-icon"></i><h3>Music Studio</h3><p>Guitar Tuner, Tabs</p>
     </div>
     <div class="category-card" onclick="filterByCat('utility')">
-        <h3>Utilities</h3>
-        <p>Calculators, QR Gen, Speed Test.</p>
-        <i class="fas fa-tools"></i>
+        <i class="fas fa-tools bg-icon"></i><h3>Utilities</h3><p>General daily use tools</p>
     </div>
   </div>
 </section>
 
-<section class="section content-area" id="about">
-  <div class="content-wrapper">
-    
-    <h2><i class="fas fa-heart" style="color:var(--brand); font-size:1.5rem;"></i> Built for Creators & Developers</h2>
-    
-    <div class="text-block">
-      <h3>WHY DID WE BUILD XIZOA?</h3>
-      <p>
-        Let's be real—finding simple tools online has become a headache. You search for a "PDF Merger" or an "Image Compressor," and you're bombarded with ads, paywalls, or forced logins just to download your own file. 
-        <strong>We hated that.</strong> So, we built XIZOA Tools Hub.
-      </p>
-      <p>
-        Our mission is simple: <strong>Premium utility, zero friction.</strong> Whether you are a YouTuber needing a quick thumbnail, a developer checking an IP, or a student formatting an assignment, this platform is designed to save your time, not waste it.
-      </p>
+<div class="section">
+    <div class="explore-all-box">
+        <h3>Need More Power?</h3>
+        <p>Browse our complete directory of 50+ premium tools for developers and creators.</p>
+        <a href="tools.html" class="explore-btn">Explore All Tools <i class="fas fa-arrow-right"></i></a>
     </div>
-
-    <div class="features-grid">
-      <div class="feat-box">
-        <i class="fas fa-shield-alt"></i>
-        <h4>100% Privacy Focused</h4>
-        <p>Unlike other sites, we don't store your files. Tools like our Image Compressor and PDF Editor run entirely in your browser. Your data never leaves your device.</p>
-      </div>
-      <div class="feat-box">
-        <i class="fas fa-bolt"></i>
-        <h4>No Login Required</h4>
-        <p>Forget remembering passwords. Access 45+ premium tools instantly. No sign-ups, no email newsletters, and definitely no hidden subscriptions.</p>
-      </div>
-      <div class="feat-box">
-        <i class="fas fa-code"></i>
-        <h4>Developer Friendly</h4>
-        <p>Clean UI, dark mode by default, and tools that actually work. We update our algorithms weekly to ensure compatibility with modern standards.</p>
-      </div>
-    </div>
-
-    <div class="text-block">
-      <h3>Who is this for?</h3>
-      <p>
-        XIZOA is the go-to bookmark for the modern digital creator. If you create content for <strong>Instagram, YouTube, or TikTok</strong>, our social media downloaders and tag generators are optimized to boost your workflow. 
-      </p>
-      <p>
-        For the <strong>Tech Savvy</strong>, our DNS checkers, repository generators, and speed tests give you raw technical data without the fluff. We are constantly adding new tools based on what <em>you</em> ask for.
-      </p>
-    </div>
-
-  </div>
-</section>
+</div>
 
 <footer>
-  <div class="footer-container">
-    <div class="footer-top">
-        <div class="footer-col">
-            <h4>Social Media</h4>
-            <ul>
-                <li><a href="YouTube-thumbnail-downloader.html">YT Thumbnail Downloader</a></li>
-                <li><a href="insta-video-saver.html">Insta Video Saver</a></li>
-                <li><a href="tiktok-downloader.html">TikTok Downloader</a></li>
-                <li><a href="youtubeshorts.html">Shorts Cover Saver</a></li>
-                <li><a href="hashtag-generator.html">Hashtag Generator</a></li>
-                <li><a href="social-media-caption.html">Social Caption</a></li>
-                <li><a href="invisible-text.html">Invisible Text</a></li>
-                <li><a href="glitch-text-generator.html">Glitch Text</a></li>
-                <li><a href="youtube-tag-extractor.html">YT Tag Extractor</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4>AI & Text</h4>
-            <ul>
-                <li><a href="AI-Paraphraser.html">AI Paraphraser</a></li>
-                <li><a href="AI-Smart-Email-Writer.html">AI Email Writer</a></li>
-                <li><a href="ai-grammar-fixer.html">Grammar Fixer</a></li>
-                <li><a href="ai-text-summarise.html">AI Summarizer</a></li>
-                <li><a href="blog-title-generator.html">Blog Title Gen</a></li>
-                <li><a href="text-to-speech.html">Text to Speech</a></li>
-                <li><a href="hand-sign-predicter.html">Hand Sign AI</a></li>
-                <li><a href="text-to-handwriting.html">Assignment Maker</a></li>
-                <li><a href="SEO-Meta-Description-Generator.html">SEO Meta Gen</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4>Gaming & Utils</h4>
-            <ul>
-                <li><a href="fps-chekar.html">FPS & Hz Checker</a></li>
-                <li><a href="reaction-time-test.html">Reaction Time Test</a></li>
-                <li><a href="mouse-polling-rate.html">Mouse Polling Rate</a></li>
-                <li><a href="keyboard tester.html">Keyboard Tester</a></li>
-                <li><a href="speed test.html">Internet Speed Test</a></li>
-                <li><a href="age-calculator.html">Age Calculator</a></li>
-                <li><a href="password-generator.html">Password Generator</a></li>
-                <li><a href="tone-generator.html">Speaker Cleaner</a></li>
-                <li><a href="dead-pixel-fixer.html">Dead Pixel Fixer</a></li>
-                <li><a href="morse-converter.html">Morse Code</a></li>
-                <li><a href="qr-code-generator.html">QR Generator</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4>PDF, Image & Dev</h4>
-            <ul>
-                <li><a href="pdf-to-word.html">PDF to Word</a></li>
-                <li><a href="pdf-merger.html">PDF Merger</a></li>
-                <li><a href="CV-Resume-Builder.html">Resume Builder</a></li>
-                <li><a href="High-quality-PDF-smart-tool.html">HQ PDF Tool</a></li>
-                <li><a href="pdf-light-mode.html">PDF Light Mode</a></li>
-                <li><a href="image-compressor.html">Image Compressor</a></li>
-                <li><a href="image-resizer.html">Image Resizer</a></li>
-                <li><a href="jpg-to-png.html">JPG to PNG</a></li>
-                <li><a href="color-picker.html">Color Picker</a></li>
-                <li><a href="repo generator.html">Repo Generator</a></li>
-                <li><a href="ip-checker.html">IP Checker</a></li>
-                <li><a href="link-scanner.html">Link Scanner</a></li>
-                <li><a href="diff-checker.html">Diff Checker</a></li>
-                <li><a href="exif-remover.html">Exif Remover</a></li>
-                <li><a href="keywords-finder.html">Keywords Finder</a></li>
-                <li><a href="about-us-page-generator.html">About Us Gen</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <div class="footer-info">
-            <h3 style="color:white; margin-bottom:10px;">XIZOA HUB</h3>
-            <p>Premium free tools platform built for speed and privacy. No ads, no login, just results.</p>
-        </div>
-        <div class="social-icons">
-            <a href="https://github.com/XIZOAHUB" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://twitter.com/xizoa" target="_blank"><i class="fa-brands fa-x-twitter"></i></a> <a href="https://t.me/xizoahub" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://instagram.com/xizoa.com_" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-    <div style="text-align:center; padding:20px; color:#444; font-size:0.8rem; border-top:1px solid rgba(255,255,255,0.05);">
-        © 2025 XIZOA All rights reserved. <a href="privacy.html" style="color:#666; margin-left:10px;">Privacy</a> <a href="terms.html" style="color:#666; margin-left:10px;">Terms</a>
-    </div>
+  <div class="footer-grid">
+      <div class="footer-brand">
+          <h2>XIZOA</h2>
+          <p>Premium free utility tools for everyone. Fast, Secure, and No Login required.</p>
+      </div>
+      <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="https://github.com/XIZOAHUB">GitHub</a>
+      </div>
+      <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+          <h4>Support</h4>
+          <a href="contact.html">Report Bug</a>
+          <a href="contact.html">Request Tool</a>
+          <a href="#">Donate</a>
+      </div>
   </div>
+  <div class="copyright">© 2025 XIZOA Tools. All Rights Reserved.</div>
 </footer>
 
-
 <script>
-function toggleSidebar(){
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('overlay');
-  sidebar.classList.toggle('active');
-  overlay.classList.toggle('active');
+// --- LOAD MORE LOGIC ---
+let visibleCount = 12; // Initially show 12
+const allTools = document.querySelectorAll('.tool');
+
+function showTools() {
+    let count = 0;
+    allTools.forEach((tool, index) => {
+        // Handle filter state inside load more
+        if(tool.style.display !== 'none' || !tool.dataset.filtered) {
+             if(index < visibleCount) {
+                tool.classList.add('visible');
+                tool.style.display = 'flex';
+            }
+        }
+    });
+    if(visibleCount >= allTools.length) {
+        document.getElementById('loadBtn').style.display = 'none';
+    }
 }
 
-// TOOLS LIST - UPDATED FROM GITHUB IMAGES (ALPHABETICAL ORDER)
-const tools = [
-    {name:'About Us Generator', cat:'dev', icon:'fas fa-info-circle', url:'about-us-page-generator.html', color:'#6c5ce7'},
-    {name:'Age Calculator', cat:'utility', icon:'fas fa-birthday-cake', url:'age-calculator.html', color:'#f1c40f'},
-    {name:'AI Grammar Fixer', cat:'ai', icon:'fas fa-check-double', url:'ai-grammar-fixer.html', color:'#00b894'},
-    {name:'AI Paraphraser', cat:'ai', icon:'fas fa-robot', url:'AI-Paraphraser.html', badge:'best', color:'#a29bfe'},
-    {name:'AI Email Writer', cat:'ai', icon:'fas fa-envelope-open-text', url:'AI-Smart-Email-Writer.html', color:'#6c5ce7'},
-    {name:'AI Summarizer', cat:'ai', icon:'fas fa-file-alt', url:'ai-text-summarise.html', color:'#fdcb6e'},
-    {name:'Blog Title Gen', cat:'ai', icon:'fas fa-heading', url:'blog-title-generator.html', color:'#ff9f43'},
-    {name:'Color Picker', cat:'image', icon:'fas fa-eye-dropper', url:'color-picker.html', color:'#fd79a8'},
-    {name:'CV Resume Builder', cat:'pdf', icon:'fas fa-user-tie', url:'CV-Resume-Builder.html', color:'#0984e3'},
-    {name:'Dead Pixel Fixer', cat:'utility', icon:'fas fa-tv', url:'dead-pixel-fixer.html', color:'#e17055'},
-    {name:'Diff Checker', cat:'dev', icon:'fas fa-exchange-alt', url:'diff-checker.html', color:'#636e72'},
-    {name:'Exif Remover', cat:'security', icon:'fas fa-file-shield', url:'exif-remover.html', color:'#f39c12'},
-    {name:'FPS & Hz Checker', cat:'gaming', icon:'fas fa-crosshairs', url:'fps-chekar.html', badge:'hot', color:'#e74c3c'},
-    {name:'Gaming Name Style', cat:'gaming', icon:'fas fa-gamepad', url:'gaming.html', color:'#6c5ce7'},
-    { name: 'Guitar Tab Creator', cat: 'music', icon: 'fas fa-music', url: 'guitar-composer.html', color: '#8c52ff' },
-    {name:'Glitch Text', cat:'social', icon:'fas fa-bug', url:'glitch-text-generator.html', color:'#0984e3'},
-    {name:'Hand Sign Predictor', cat:'ai', icon:'fas fa-hands', url:'hand-sign-predicter.html', color:'#fab1a0'},
-    {name:'Hashtag Generator', cat:'social', icon:'fas fa-hashtag', url:'hashtag-generator.html', color:'#fd79a8'},
-    {name:'High Quality PDF', cat:'pdf', icon:'fas fa-file-pdf', url:'High-quality-PDF-smart-tool.html', color:'#d63031'},
-    {name:'Image Compressor', cat:'image', icon:'fas fa-compress-arrows-alt', url:'image-compressor.html', color:'#38bdf8'},
-    {name:'Image Resizer', cat:'image', icon:'fas fa-expand-arrows-alt', url:'image-resizer.html', color:'#00cec9'},
-    {name:'Guitar Tuner', cat:'utility', icon:'fas fa-guitar', url:'guitar-tuner.html', color:'#ffb703'},
-    {name:'Insta Video Saver', cat:'social', icon:'fab fa-instagram', url:'insta-video-saver.html', color:'#E1306C'},
-    {name:'Invisible Text', cat:'social', icon:'fas fa-ghost', url:'invisible-text.html', color:'#dfe6e9'},
-    {name:'IP Checker', cat:'security', icon:'fas fa-globe-asia', url:'ip-checker.html', color:'#74b9ff'},
-    {name:'JPG to PNG', cat:'image', icon:'fas fa-images', url:'jpg-to-png.html', color:'#81ecec'},
-    {name:'Keyboard Tester', cat:'gaming', icon:'fas fa-keyboard', url:'keyboard tester.html', color:'#fdcb6e'},
-    {name:'Keywords Finder', cat:'dev', icon:'fas fa-search-dollar', url:'keywords-finder.html', color:'#ffeaa7'},
-    {name:'Link Scanner', cat:'security', icon:'fas fa-shield-virus', url:'link-scanner.html', color:'#27ae60'},
-    {name:'Morse Converter', cat:'utility', icon:'fas fa-broadcast-tower', url:'morse-converter.html', color:'#ffeaa7'},
-    {name:'Mouse Polling Rate', cat:'gaming', icon:'fas fa-mouse', url:'mouse-polling-rate.html', color:'#74b9ff'},
-    {name:'Password Generator', cat:'security', icon:'fas fa-shield-alt', url:'password-generator.html', color:'#4ade80'},
-    {name:'PDF Light Mode', cat:'pdf', icon:'fas fa-eye', url:'pdf-light-mode.html', color:'#ecf0f1'},
-    {name:'PDF Merger', cat:'pdf', icon:'fas fa-file-invoice', url:'pdf-merger.html', color:'#d63031'},
-    {name:'PDF to Word', cat:'pdf', icon:'fas fa-file-word', url:'pdf-to-word.html', color:'#ff4757'},
-    {name:'QR Code Gen', cat:'utility', icon:'fas fa-qrcode', url:'qr-code-generator.html', color:'#ffffff'},
-    {name:'Reaction Time', cat:'gaming', icon:'fas fa-stopwatch', url:'reaction-time-test.html', color:'#fab1a0'},
-    {name:'Repo Generator', cat:'dev', icon:'fab fa-github-alt', url:'repo generator.html', color:'#fff'},
-    {name:'SEO Meta Gen', cat:'dev', icon:'fas fa-search', url:'SEO-Meta-Description-Generator.html', color:'#00b894'},
-    {name:'Social Caption', cat:'social', icon:'fas fa-quote-right', url:'social-media-caption.html', color:'#55efc4'},
-    {name:'Speed Test', cat:'utility', icon:'fas fa-tachometer-alt', url:'speed test.html', color:'#00f7ff'},
-    {name:'Assignment Maker', cat:'utility', icon:'fas fa-pen-fancy', url:'text-to-handwriting.html', color:'#636e72'},
-    {name:'Text to Speech', cat:'ai', icon:'fas fa-microphone-alt', url:'text-to-speech.html', color:'#e17055'},
-    {name:'TikTok Downloader', cat:'social', icon:'fab fa-tiktok', url:'tiktok-downloader.html', color:'#ff0050'},
-    {name:'Tone Generator', cat:'utility', icon:'fas fa-wave-square', url:'tone-generator.html', color:'#74b9ff'},
-    {name:'YT Thumb Downloader', cat:'social', icon:'fab fa-youtube', url:'YouTube-thumbnail-downloader.html', badge:'hot', color:'#FF0000'},
-    {name:'YT Tag Extractor', cat:'social', icon:'fas fa-tags', url:'youtube-tag-extractor.html', color:'#ff7675'},
-    {name:'Shorts Cover Saver', cat:'social', icon:'fas fa-mobile-alt', url:'youtubeshorts.html', color:'#ff0000'}
-];
-
-const grid=document.getElementById('toolGrid');
-const loadBtn=document.getElementById('loadBtn');
-const search=document.getElementById('searchInput');
-let visible=12;
-let activeCat='all';
-
-function render(){
- grid.innerHTML='';
- const q=search.value.toLowerCase();
- const list=tools.filter(t=>(activeCat==='all'||t.cat===activeCat)&&t.name.toLowerCase().includes(q));
- 
- if(list.length === 0){
-    grid.innerHTML = `<div style="text-align:center; grid-column: 1/-1; padding: 50px 20px; color: var(--muted);">
-        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></i>
-        <h3>No Tools Found</h3>
-        <p>Try searching for specific keywords like "PDF", "Video", or "AI".</p>
-    </div>`;
-    loadBtn.style.display = 'none';
-    return;
- }
-
- list.slice(0,visible).forEach((t, index)=>{
-  const a=document.createElement('a');
-  a.className='tool';
-  a.dataset.cat=t.cat;
-  a.href=t.url;
-  // Set custom color for this specific tool
-  a.style.setProperty('--accent', t.color || '#00f7ff'); // Fallback color if missing
-  
-  // Staggered Animation
-  a.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.05}s`;
-  a.style.opacity = '0'; 
-  
-  a.innerHTML=`${t.badge?`<span class=\"badge ${t.badge}\">${t.badge.toUpperCase()}</span>`:''}<i class=\"${t.icon}\"></i><h3>${t.name}</h3><p>${t.cat.toUpperCase()} TOOL</p>`;
-  grid.appendChild(a);
- });
- loadBtn.style.display=visible<list.length?'flex':'none';
+function loadMoreTools() {
+    visibleCount += 12; // Show 12 more
+    showTools();
 }
 
-function filterByCat(cat){
-    activeCat = cat;
-    visible = 100; 
-    document.getElementById('tools').scrollIntoView({behavior: 'smooth', block: 'start'});
-    render();
+// --- FILTER LOGIC ---
+function filterByCat(cat) {
+    allTools.forEach(t => {
+        if(cat === 'all' || t.dataset.cat === cat) {
+            t.classList.add('visible');
+            t.style.display = 'flex';
+            t.removeAttribute('data-filtered');
+        } else {
+            t.style.display = 'none';
+            t.setAttribute('data-filtered', 'true');
+        }
+    });
+    // Hide load button when filtering (showing all in that cat)
+    document.getElementById('loadBtn').style.display = 'none';
+    document.getElementById('tools').scrollIntoView({behavior:'smooth'});
 }
 
-loadBtn.onclick=()=>{visible+=12;render();};
-search.oninput=()=>{visible=100; activeCat='all'; render()}; 
-
-document.addEventListener("DOMContentLoaded", () => {
-    render();
+// --- SEARCH LOGIC ---
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    allTools.forEach(t => {
+        const name = t.querySelector('h3').innerText.toLowerCase();
+        if(name.includes(term)) {
+            t.style.display = 'flex';
+        } else {
+            t.style.display = 'none';
+        }
+    });
+    document.getElementById('loadBtn').style.display = 'none';
 });
 </script>
+
 </body>
-</html>
+  </html>
