@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Online Guitar Tuner & Chords Library - Free Music Tool</title>
-    <meta name="description" content="Tune your acoustic or electric guitar online with our Standard Reference Tuner. Learn basic chords with visual diagrams. Free tool for beginner guitarists.">
-    <meta name="keywords" content="online guitar tuner, standard tuning EADGBE, guitar chords library, guitar tuning reference, guitar for beginners, xizoa music tools">
-    <meta name="author" content="Priyanshu - XIZOA Hub">
+    <title>Pro Guitar Tuner Online (Microphone Supported) - Xizoa Tools</title>
+    <meta name="description" content="Use your microphone to tune your guitar online. Real-time chromatic tuner with visual needle. Supports Standard E Tuning (EADGBE). Free and accurate.">
+    <meta name="keywords" content="microphone guitar tuner, online guitar tuner mic, chromatic tuner online, guitar frequency checker, xizoa music tools">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://tools.xizoa.com/guitar-tuner">
     <link rel="icon" href="https://xizoa.com/favicon.ico">
@@ -16,107 +15,105 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- THEME (Dark Music Studio) --- */
+        /* --- THEME: PRO STUDIO --- */
         :root {
-            --bg: #0f0c15; --panel: #181520; --gold: #ffb703; --cyan: #00f3ff;
-            --text: #e2e8f0; --border: 1px solid rgba(255, 183, 3, 0.2);
+            --bg: #0d0e12;
+            --panel: #16181f;
+            --primary: #ffb703; /* Gold */
+            --success: #00ff9d; /* Green */
+            --danger: #ff4757; /* Red */
+            --text: #e2e8f0;
+            --border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        * { box-sizing:border-box; margin:0; padding:0; font-family: 'Outfit', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
 
-        /* HEADER */
-        header {
-            padding: 20px 5%; border-bottom: var(--border); background: rgba(24, 21, 32, 0.95);
-            position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px);
-            display: flex; justify-content: space-between; align-items: center;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+
+        /* Header */
+        header { padding: 15px 5%; border-bottom: var(--border); background: rgba(22, 24, 31, 0.95); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
         .brand { font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; }
-        .brand span { color: var(--gold); }
+        .brand span { color: var(--primary); }
 
-        /* MAIN LAYOUT */
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        /* MAIN CONTAINER */
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; width: 100%; }
 
-        /* --- TUNER SECTION --- */
-        .tuner-box {
+        /* --- TUNER DISPLAY (METER) --- */
+        .tuner-card {
             background: var(--panel); border: var(--border); border-radius: 20px;
-            padding: 40px; text-align: center; margin-bottom: 50px;
-            box-shadow: 0 0 50px rgba(255, 183, 3, 0.1);
+            padding: 40px 20px; text-align: center; position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
         }
-        .section-title { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #fff; margin-bottom: 10px; }
-        .sub-text { color: #888; margin-bottom: 40px; }
 
-        .strings-grid {
-            display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px;
-            max-width: 600px; margin: 0 auto;
+        .note-display {
+            font-family: 'Orbitron', sans-serif; font-size: 5rem; font-weight: 700;
+            color: #555; margin-bottom: 10px; transition: 0.2s;
         }
-        
+        .note-display.active { color: var(--primary); text-shadow: 0 0 30px var(--primary); }
+        .note-display.tuned { color: var(--success); text-shadow: 0 0 30px var(--success); }
+
+        .status-text { font-size: 1.2rem; color: #888; font-weight: 600; min-height: 30px; margin-bottom: 20px; }
+
+        /* NEEDLE METER */
+        .meter-wrapper {
+            width: 300px; height: 150px; margin: 0 auto 20px; position: relative; overflow: hidden;
+        }
+        .meter-bg {
+            width: 300px; height: 150px; background: radial-gradient(circle at 50% 100%, #2a2d3a 0%, transparent 60%);
+            border-top-left-radius: 150px; border-top-right-radius: 150px;
+            border: 2px solid #333; border-bottom: none;
+        }
+        .needle {
+            width: 4px; height: 140px; background: var(--danger);
+            position: absolute; bottom: 0; left: 50%; transform-origin: bottom center;
+            transform: translateX(-50%) rotate(0deg); /* 0deg is center */
+            transition: transform 0.1s linear, background-color 0.2s;
+            border-radius: 4px; z-index: 10;
+        }
+        .center-mark {
+            position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 10px; height: 20px; background: var(--success); z-index: 5;
+        }
+
+        /* START BUTTON */
+        .btn-mic {
+            background: var(--primary); color: #000; font-size: 1.1rem; font-weight: 800;
+            padding: 15px 40px; border: none; border-radius: 50px; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;
+            box-shadow: 0 0 20px rgba(255, 183, 3, 0.3);
+        }
+        .btn-mic:hover { transform: scale(1.05); }
+        .btn-mic.listening { background: var(--danger); color: #fff; animation: pulse 1.5s infinite; }
+
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.4); } 70% { box-shadow: 0 0 0 20px rgba(255, 71, 87, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); } }
+
+        /* FREQ DISPLAY */
+        .freq-box { margin-top: 20px; color: #666; font-family: monospace; font-size: 1.1rem; }
+        .freq-box span { color: var(--primary); }
+
+        /* --- MANUAL REFERENCE TONES (Bottom) --- */
+        .manual-section { margin-top: 50px; }
+        .strings-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
         .string-btn {
-            background: #252130; border: 2px solid #333; height: 150px; border-radius: 50px;
-            cursor: pointer; position: relative; transition: 0.2s;
-            display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 20px;
+            width: 50px; height: 50px; border-radius: 50%; border: 2px solid #333;
+            background: #1a1d24; color: #fff; font-weight: 700; cursor: pointer;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-size: 0.8rem; transition: 0.2s;
         }
-        .string-btn:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .string-btn.playing { border-color: var(--cyan); box-shadow: 0 0 20px var(--cyan); animation: vibrate 0.1s infinite; }
-        
-        /* String Visuals (Thickness) */
-        .wire { width: 2px; height: 100%; background: #555; position: absolute; top: 0; left: 50%; transform: translateX(-50%); transition: 0.2s; }
-        .string-btn:nth-child(1) .wire { width: 6px; background: #cd7f32; } /* Low E (Bronze) */
-        .string-btn:nth-child(2) .wire { width: 5px; background: #cd7f32; }
-        .string-btn:nth-child(3) .wire { width: 4px; background: #cd7f32; }
-        .string-btn:nth-child(4) .wire { width: 3px; background: #aaa; } /* Silver */
-        .string-btn:nth-child(5) .wire { width: 2px; background: #aaa; }
-        .string-btn:nth-child(6) .wire { width: 1px; background: #aaa; }
+        .string-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .string-btn.playing { background: var(--primary); color: #000; border-color: var(--primary); }
 
-        .note-name { font-weight: 800; font-size: 1.5rem; color: #fff; z-index: 2; text-shadow: 0 0 10px #000; }
-        .note-freq { font-size: 0.7rem; color: #aaa; z-index: 2; }
+        /* SEO Content */
+        .wiki-section { margin-top: 60px; border-top: var(--border); padding-top: 40px; }
+        .wiki-card { background: rgba(255,255,255,0.02); padding: 30px; border-radius: 12px; margin-bottom: 20px; border: var(--border); }
+        .wiki-card h2 { color: #fff; margin-bottom: 15px; font-family: 'Orbitron', sans-serif; }
+        .wiki-card p { color: #94a3b8; line-height: 1.7; margin-bottom: 10px; }
 
-        @keyframes vibrate { 0% { transform: translateX(-1px); } 50% { transform: translateX(1px); } 100% { transform: translateX(-1px); } }
+        footer { text-align: center; padding: 40px; border-top: var(--border); color: #666; margin-top: auto; }
 
-        /* --- CHORDS SECTION --- */
-        .chord-box {
-            background: var(--panel); border: var(--border); border-radius: 20px;
-            padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-        }
-        .chord-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; }
-        .chord-btn {
-            background: #252130; border: 1px solid #333; padding: 15px; border-radius: 10px;
-            color: #fff; font-weight: 700; cursor: pointer; text-align: center; transition: 0.2s;
-        }
-        .chord-btn:hover, .chord-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
-
-        /* Fretboard Visualizer */
-        .fretboard {
-            background: #222; width: 200px; height: 250px; margin: 0 auto;
-            position: relative; border-radius: 5px; border: 4px solid #444;
-            display: flex; flex-direction: column;
-        }
-        .fret { flex: 1; border-bottom: 2px solid #666; position: relative; }
-        .string-line {
-            position: absolute; top: 0; bottom: 0; width: 2px; background: #888;
-        }
-        /* String Positions */
-        .s1 { left: 16%; } .s2 { left: 30%; } .s3 { left: 44%; } 
-        .s4 { left: 58%; } .s5 { left: 72%; } .s6 { left: 86%; }
-
-        .dot {
-            width: 20px; height: 20px; background: var(--cyan); border-radius: 50%;
-            position: absolute; transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px var(--cyan); z-index: 10;
-        }
-        .chord-name-display { text-align: center; font-size: 2rem; color: var(--gold); font-weight: 800; margin-bottom: 10px; }
-
-        /* --- SEO CONTENT --- */
-        .wiki-section { margin-top: 60px; }
-        .wiki-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 40px; margin-bottom: 30px; }
-        .wiki-card h2 { color: #fff; margin-bottom: 20px; font-family: 'Orbitron', sans-serif; }
-        .wiki-card p, .wiki-card li { color: #94a3b8; margin-bottom: 15px; }
-
-        /* FOOTER */
-        footer { background: #05040a; border-top: var(--border); padding: 50px 20px; margin-top: auto; text-align: center; color: #666; }
-
-        @media (max-width: 800px) {
-            .chord-box { grid-template-columns: 1fr; }
-            .strings-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 600px) {
+            .note-display { font-size: 4rem; }
+            .meter-wrapper { width: 260px; height: 130px; }
+            .meter-bg { width: 260px; height: 130px; }
         }
     </style>
 </head>
@@ -124,206 +121,279 @@
 
     <header>
         <a href="index.html" class="brand"><i class="fas fa-guitar"></i> XIZOA <span>TUNER</span></a>
-        <div style="color:#aaa; font-size:0.9rem;">Standard E Tuning</div>
     </header>
 
     <div class="container">
-
-        <div class="tuner-box">
-            <h1 class="section-title">Guitar Reference Tuner</h1>
-            <p class="sub-text">Click a string to play the reference tone. Tune your guitar to match the sound.</p>
+        
+        <div class="tuner-card">
             
-            <div class="strings-grid">
-                <div class="string-btn" onclick="playTone(82.41, this)">
-                    <div class="wire"></div><div class="note-name">E</div><div class="note-freq">Low (82Hz)</div>
-                </div>
-                <div class="string-btn" onclick="playTone(110.00, this)">
-                    <div class="wire"></div><div class="note-name">A</div><div class="note-freq">110Hz</div>
-                </div>
-                <div class="string-btn" onclick="playTone(146.83, this)">
-                    <div class="wire"></div><div class="note-name">D</div><div class="note-freq">146Hz</div>
-                </div>
-                <div class="string-btn" onclick="playTone(196.00, this)">
-                    <div class="wire"></div><div class="note-name">G</div><div class="note-freq">196Hz</div>
-                </div>
-                <div class="string-btn" onclick="playTone(246.94, this)">
-                    <div class="wire"></div><div class="note-name">B</div><div class="note-freq">246Hz</div>
-                </div>
-                <div class="string-btn" onclick="playTone(329.63, this)">
-                    <div class="wire"></div><div class="note-name">E</div><div class="note-freq">High (329Hz)</div>
-                </div>
+            <div class="meter-wrapper">
+                <div class="meter-bg"></div>
+                <div class="center-mark"></div>
+                <div class="needle" id="needle"></div>
             </div>
-            
-            <button onclick="stopAll()" style="margin-top:30px; background:#333; color:#fff; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Stop Sound <i class="fas fa-volume-mute"></i></button>
+
+            <div class="note-display" id="noteDisplay">--</div>
+            <div class="status-text" id="statusText">Click Start to Tune</div>
+
+            <button class="btn-mic" id="startBtn" onclick="toggleTuner()">
+                <i class="fas fa-microphone"></i> Start Tuner
+            </button>
+
+            <div class="freq-box">Frequency: <span id="freqDisplay">0.0</span> Hz</div>
         </div>
 
-        <div class="chord-box">
-            <div>
-                <h2 style="color:#fff; margin-bottom:20px;">Common Chords</h2>
-                <p style="color:#888; margin-bottom:20px;">Select a chord to see finger placement.</p>
-                <div class="chord-list">
-                    <div class="chord-btn active" onclick="showChord('C')">C Maj</div>
-                    <div class="chord-btn" onclick="showChord('G')">G Maj</div>
-                    <div class="chord-btn" onclick="showChord('D')">D Maj</div>
-                    <div class="chord-btn" onclick="showChord('A')">A Maj</div>
-                    <div class="chord-btn" onclick="showChord('E')">E Maj</div>
-                    <div class="chord-btn" onclick="showChord('Am')">A Min</div>
-                    <div class="chord-btn" onclick="showChord('Em')">E Min</div>
-                    <div class="chord-btn" onclick="showChord('Dm')">D Min</div>
-                </div>
-            </div>
-
-            <div style="text-align:center;">
-                <div class="chord-name-display" id="chordName">C Major</div>
-                <div class="fretboard" id="fretBoard">
-                    <div class="string-line s1"></div><div class="string-line s2"></div>
-                    <div class="string-line s3"></div><div class="string-line s4"></div>
-                    <div class="string-line s5"></div><div class="string-line s6"></div>
-                    <div class="fret"></div><div class="fret"></div>
-                    <div class="fret"></div><div class="fret"></div>
-                    </div>
-                <p style="margin-top:15px; font-size:0.9rem; color:#888;">Top is the Nut (Headstock)</p>
+        <div class="manual-section">
+            <h3 style="text-align:center; color:#888; font-size:0.9rem; text-transform:uppercase;">Or Play Reference Tone</h3>
+            <div class="strings-row">
+                <div class="string-btn" onclick="playTone(82.41, this)">E2</div>
+                <div class="string-btn" onclick="playTone(110.00, this)">A2</div>
+                <div class="string-btn" onclick="playTone(146.83, this)">D3</div>
+                <div class="string-btn" onclick="playTone(196.00, this)">G3</div>
+                <div class="string-btn" onclick="playTone(246.94, this)">B3</div>
+                <div class="string-btn" onclick="playTone(329.63, this)">E4</div>
             </div>
         </div>
 
         <section class="wiki-section">
             <div class="wiki-card">
-                <h2>How to Tune Your Guitar?</h2>
-                <p>Tuning is the first skill every guitarist must learn. This tool uses <strong>Standard Tuning (E-A-D-G-B-E)</strong>.</p>
-                <ul>
-                    <li><strong>Step 1:</strong> Click the <strong>Low E</strong> button above. Listen carefully to the tone.</li>
-                    <li><strong>Step 2:</strong> Pluck your guitar's thickest string. Turn the tuning peg until your string's sound matches the tool's sound perfectly.</li>
-                    <li><strong>Step 3:</strong> Repeat for all strings (A, D, G, B, High E).</li>
-                    <li><strong>Tip:</strong> Always tune <em>up</em> to the note. If you are too high, go lower than the note and tighten it back up. This keeps the string stable.</li>
-                </ul>
+                <h2>How to use this Guitar Tuner?</h2>
+                <p>This tool works exactly like a physical clip-on tuner or app. It uses your device's microphone to listen to your guitar string.</p>
+                <ol style="margin-left:20px; color:#94a3b8; margin-bottom:15px;">
+                    <li>Click the yellow <strong>"Start Tuner"</strong> button and allow microphone access.</li>
+                    <li>Pluck a string on your guitar continuously (e.g., Low E).</li>
+                    <li>Watch the needle:
+                        <ul>
+                            <li><strong>Needle Left:</strong> The note is Flat (Too Low). Tighten the string.</li>
+                            <li><strong>Needle Right:</strong> The note is Sharp (Too High). Loosen the string.</li>
+                            <li><strong>Needle Center (Green):</strong> Perfect pitch!</li>
+                        </ul>
+                    </li>
+                </ol>
             </div>
 
             <div class="wiki-card">
-                <h2>Beginner's Guide to Chords</h2>
-                <p>Chords are the building blocks of songs. The chart above shows <strong>Open Chords</strong>, which are played near the headstock.</p>
-                <p><strong>Reading the Diagram:</strong> The vertical lines are strings (Left is Thick E, Right is Thin E). The horizontal spaces are frets. The <span style="color:var(--cyan)">Cyan Dots</span> show where to place your fingers.</p>
-                <h3>3 Chords to Learn First:</h3>
-                <ul>
-                    <li><strong>G Major:</strong> The most popular chord in pop/rock.</li>
-                    <li><strong>C Major:</strong> Used in almost every happy song.</li>
-                    <li><strong>D Major:</strong> Essential for acoustic ballads.</li>
+                <h2>Standard Tuning Frequencies (Hz)</h2>
+                <p>For advanced users, here are the exact frequencies for Standard E Tuning:</p>
+                <ul style="list-style:none; color:#primary;">
+                    <li><strong>E (Low):</strong> 82.41 Hz</li>
+                    <li><strong>A:</strong> 110.00 Hz</li>
+                    <li><strong>D:</strong> 146.83 Hz</li>
+                    <li><strong>G:</strong> 196.00 Hz</li>
+                    <li><strong>B:</strong> 246.94 Hz</li>
+                    <li><strong>E (High):</strong> 329.63 Hz</li>
                 </ul>
-            </div>
-            
-            <div class="wiki-card">
-                <h2>Legal & License Info</h2>
-                <p>This tool and its code are intellectual property of <strong>Xizoa Hub</strong>. The audio tones are generated synthetically using Web Audio API and are royalty-free for use within this application.</p>
-                <p>You may use this tool for personal practice, education, and public performance tuning. Redistribution of the source code without permission is prohibited.</p>
             </div>
         </section>
 
     </div>
 
     <footer>
-        <p>© 2025 Xizoa • Made for Musicians</p>
-        <p style="font-size:0.8rem; margin-top:10px;">
-            <a href="privacy.html" style="color:#666; text-decoration:none;">Privacy</a> | 
-            <a href="terms.html" style="color:#666; text-decoration:none;">Terms</a> | 
-            <a href="contact.html" style="color:#666; text-decoration:none;">Contact</a>
-        </p>
+        <p>© 2025 Xizoa Hub • Engineered by Priyanshu</p>
     </footer>
 
     <script>
-        // --- 1. AUDIO ENGINE (Tone Generator) ---
-        let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        let oscillator = null;
+        // --- CONFIGURATION ---
+        const noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+        let audioContext = null;
+        let analyser = null;
+        let mediaStreamSource = null;
+        let isListening = false;
+        let animationId = null;
 
-        function playTone(freq, btnElement) {
-            // Stop previous
-            stopAll();
+        // UI Elements
+        const noteEl = document.getElementById('noteDisplay');
+        const statusEl = document.getElementById('statusText');
+        const needleEl = document.getElementById('needle');
+        const freqEl = document.getElementById('freqDisplay');
+        const startBtn = document.getElementById('startBtn');
 
-            // UI Update
-            document.querySelectorAll('.string-btn').forEach(b => b.classList.remove('playing'));
-            btnElement.classList.add('playing');
-
-            // Sound Gen
-            oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-
-            oscillator.type = 'triangle'; // Guitar-like wave
-            oscillator.frequency.value = freq;
-            
-            // Envelope (Fade out)
-            gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 4); // 4 sec sustain
-
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            
-            oscillator.start();
-            oscillator.stop(audioCtx.currentTime + 4);
-        }
-
-        function stopAll() {
-            if(oscillator) {
-                try { oscillator.stop(); } catch(e){}
-                oscillator = null;
+        // --- 1. MICROPHONE TUNER LOGIC ---
+        
+        async function toggleTuner() {
+            if (isListening) {
+                stopTuner();
+            } else {
+                startTuner();
             }
-            document.querySelectorAll('.string-btn').forEach(b => b.classList.remove('playing'));
         }
 
-        // --- 2. CHORD VISUALIZER ENGINE ---
-        // Data: [String, Fret] (String 1 is Low E, 6 is High E in visuals logic but lets map correctly)
-        // Visual Logic: String 1 (Left/Thick) to String 6 (Right/Thin)
-        
-        const chords = {
-            'C':  [{s:2, f:3}, {s:3, f:2}, {s:5, f:1}],
-            'G':  [{s:1, f:3}, {s:2, f:2}, {s:5, f:3}, {s:6, f:3}],
-            'D':  [{s:4, f:2}, {s:5, f:3}, {s:6, f:2}],
-            'A':  [{s:3, f:2}, {s:4, f:2}, {s:5, f:2}],
-            'E':  [{s:2, f:2}, {s:3, f:2}, {s:4, f:1}],
-            'Am': [{s:3, f:2}, {s:4, f:2}, {s:5, f:1}],
-            'Em': [{s:2, f:2}, {s:3, f:2}],
-            'Dm': [{s:4, f:2}, {s:5, f:3}, {s:6, f:1}]
-        };
+        async function startTuner() {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                
+                mediaStreamSource = audioContext.createMediaStreamSource(stream);
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 2048;
+                mediaStreamSource.connect(analyser);
 
-        function showChord(name) {
-            // UI Active State
-            document.querySelectorAll('.chord-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
+                isListening = true;
+                startBtn.classList.add('listening');
+                startBtn.innerHTML = '<i class="fas fa-stop"></i> Stop Tuner';
+                statusEl.innerText = "Pluck a string...";
+                
+                updatePitch();
+            } catch (err) {
+                alert("Microphone access denied or not supported. Please allow permission.");
+                console.error(err);
+            }
+        }
+
+        function stopTuner() {
+            isListening = false;
+            startBtn.classList.remove('listening');
+            startBtn.innerHTML = '<i class="fas fa-microphone"></i> Start Tuner';
+            statusEl.innerText = "Tuner Stopped";
+            noteEl.classList.remove('active', 'tuned');
+            noteEl.innerText = "--";
+            needleEl.style.transform = `translateX(-50%) rotate(0deg)`;
             
-            document.getElementById('chordName').innerText = name + (name.includes('m') ? ' Minor' : ' Major');
-
-            // Clear old dots
-            const board = document.getElementById('fretBoard');
-            const oldDots = board.querySelectorAll('.dot');
-            oldDots.forEach(d => d.remove());
-
-            // Place new dots
-            const data = chords[name];
-            data.forEach(pos => {
-                const dot = document.createElement('div');
-                dot.className = 'dot';
-                
-                // Calculate Position
-                // Strings: s1=16%, s2=30%... (defined in CSS)
-                // Frets: 4 frets total, roughly 25% height each, center at 12%, 37%, 62%
-                
-                let top = '12%';
-                if(pos.f === 2) top = '37%';
-                if(pos.f === 3) top = '62%';
-
-                let left = '16%';
-                if(pos.s === 2) left = '30%';
-                if(pos.s === 3) left = '44%';
-                if(pos.s === 4) left = '58%';
-                if(pos.s === 5) left = '72%';
-                if(pos.s === 6) left = '86%';
-
-                dot.style.top = top;
-                dot.style.left = left;
-                
-                board.appendChild(dot);
-            });
+            if (audioContext) audioContext.close();
+            cancelAnimationFrame(animationId);
         }
-        
-        // Load default chord
-        showChord('C');
+
+        // --- THE ALGORITHM (Auto-Correlation) ---
+        function updatePitch() {
+            if (!isListening) return;
+
+            const bufferLength = analyser.fftSize;
+            const buffer = new Float32Array(bufferLength);
+            analyser.getFloatTimeDomainData(buffer);
+
+            const frequency = autoCorrelate(buffer, audioContext.sampleRate);
+
+            if (frequency === -1) {
+                // No sound / too quiet
+                // Keep previous state or reset slightly? Let's just hold or minor reset
+            } else {
+                const note = noteFromPitch(frequency);
+                const noteName = noteStrings[note % 12];
+                
+                // Update UI
+                noteEl.innerText = noteName;
+                freqEl.innerText = Math.round(frequency);
+                noteEl.classList.add('active');
+
+                // Calculate Cents (How far off)
+                const detune = centsOffFromPitch(frequency, note);
+                
+                // Move Needle (-45deg to +45deg)
+                // Detune usually goes -50 to +50 cents
+                let angle = detune * 2; // Amplify movement
+                if (angle > 45) angle = 45;
+                if (angle < -45) angle = -45;
+
+                needleEl.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+
+                // Color Logic
+                if (Math.abs(detune) < 5) {
+                    statusEl.innerText = "PERFECT TUNE! ✅";
+                    statusEl.style.color = "#00ff9d";
+                    needleEl.style.backgroundColor = "#00ff9d";
+                    noteEl.classList.add('tuned');
+                } else if (detune < 0) {
+                    statusEl.innerText = "Too Low (Tighten) 🔼";
+                    statusEl.style.color = "#ff4757";
+                    needleEl.style.backgroundColor = "#ff4757";
+                    noteEl.classList.remove('tuned');
+                } else {
+                    statusEl.innerText = "Too High (Loosen) 🔽";
+                    statusEl.style.color = "#ff4757";
+                    needleEl.style.backgroundColor = "#ff4757";
+                    noteEl.classList.remove('tuned');
+                }
+            }
+
+            animationId = requestAnimationFrame(updatePitch);
+        }
+
+        // Standard Auto-Correlate Function (Industry Standard for Web Tuners)
+        function autoCorrelate(buf, sampleRate) {
+            let SIZE = buf.length;
+            let rms = 0;
+
+            for (let i = 0; i < SIZE; i++) {
+                let val = buf[i];
+                rms += val * val;
+            }
+            rms = Math.sqrt(rms / SIZE);
+            if (rms < 0.01) return -1; // Not enough signal (Silence)
+
+            let r1 = 0, r2 = SIZE - 1, thres = 0.2;
+            for (let i = 0; i < SIZE / 2; i++)
+                if (Math.abs(buf[i]) < thres) { r1 = i; break; }
+            for (let i = 1; i < SIZE / 2; i++)
+                if (Math.abs(buf[SIZE - i]) < thres) { r2 = SIZE - i; break; }
+
+            buf = buf.slice(r1, r2);
+            SIZE = buf.length;
+
+            let c = new Array(SIZE).fill(0);
+            for (let i = 0; i < SIZE; i++)
+                for (let j = 0; j < SIZE - i; j++)
+                    c[i] = c[i] + buf[j] * buf[j + i];
+
+            let d = 0;
+            while (c[d] > c[d + 1]) d++;
+            let maxval = -1, maxpos = -1;
+            for (let i = d; i < SIZE; i++) {
+                if (c[i] > maxval) {
+                    maxval = c[i];
+                    maxpos = i;
+                }
+            }
+            let T0 = maxpos;
+
+            let x1 = c[T0 - 1], x2 = c[T0], x3 = c[T0 + 1];
+            let a = (x1 + x3 - 2 * x2) / 2;
+            let b = (x3 - x1) / 2;
+            if (a) T0 = T0 - b / (2 * a);
+
+            return sampleRate / T0;
+        }
+
+        function noteFromPitch(frequency) {
+            const noteNum = 12 * (Math.log(frequency / 440) / Math.log(2));
+            return Math.round(noteNum) + 69;
+        }
+
+        function centsOffFromPitch(frequency, note) {
+            return Math.floor(1200 * Math.log(frequency / frequencyFromNoteNumber(note)) / Math.log(2));
+        }
+
+        function frequencyFromNoteNumber(note) {
+            return 440 * Math.pow(2, (note - 69) / 12);
+        }
+
+        // --- 2. MANUAL TONE PLAYER (Backup) ---
+        let toneOsc = null;
+        let toneCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playTone(freq, btn) {
+            if (isListening) stopTuner(); // Stop mic if playing tone
+            if (toneOsc) toneOsc.stop();
+
+            document.querySelectorAll('.string-btn').forEach(b => b.classList.remove('playing'));
+            btn.classList.add('playing');
+
+            toneOsc = toneCtx.createOscillator();
+            const gain = toneCtx.createGain();
+            
+            toneOsc.type = 'triangle';
+            toneOsc.frequency.value = freq;
+            gain.gain.value = 0.5;
+            
+            toneOsc.connect(gain);
+            gain.connect(toneCtx.destination);
+            toneOsc.start();
+            
+            // Auto stop after 2s
+            setTimeout(() => {
+                toneOsc.stop();
+                btn.classList.remove('playing');
+            }, 2000);
+        }
     </script>
 </body>
 </html>
