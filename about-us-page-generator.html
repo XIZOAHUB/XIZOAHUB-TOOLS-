@@ -1,88 +1,87 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xizoa About Page Builder (Fixed & Pro Footer)</title>
-    <meta name="description" content="Generate About Us pages with dynamic footers, feature cards, and SEO schema.">
-    <meta name="robots" content="index, follow">
-    
+    <title>About Us Page Generator & Guide | Xizoa Tools</title>
+    <meta name="description" content="Create professional About Us pages instantly. Free tool with Team Grids, Stats, and SEO Schema. Includes detailed guide and templates.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- EDITOR THEME (Dark Mode) --- */
+        /* --- EDITOR UI (Dark Theme) --- */
         :root { --bg: #02060e; --panel: #0b1221; --neon: #00f3ff; --text: #e2e8f0; --border: 1px solid rgba(0, 243, 255, 0.15); }
         * { box-sizing:border-box; margin:0; padding:0; font-family: 'Outfit', sans-serif; }
         body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
 
-        /* HEADER */
         header { padding: 15px 5%; border-bottom: var(--border); background: rgba(11, 18, 33, 0.95); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; }
         .brand { font-size: 1.4rem; font-weight: 800; color: #fff; } .brand span { color: var(--neon); }
-        .btn-copy { background: var(--neon); color: #000; padding: 8px 20px; border-radius: 50px; font-weight: 700; border: none; cursor: pointer; transition:0.3s; }
-        .btn-copy:hover { box-shadow: 0 0 15px var(--neon); transform: scale(1.05); }
+        .btn-copy { background: var(--neon); color: #000; padding: 8px 25px; border-radius: 50px; font-weight: 800; border: none; cursor: pointer; transition:0.3s; }
+        .btn-copy:hover { box-shadow: 0 0 20px var(--neon); transform: scale(1.05); }
 
-        /* LAYOUT */
-        .main-grid { display: grid; grid-template-columns: 400px 1fr; min-height: 100vh; }
-        
-        /* SIDEBAR CONTROLS */
+        /* TOOL LAYOUT */
+        .main-grid { display: grid; grid-template-columns: 400px 1fr; height: 100vh; border-bottom: var(--border); }
         .controls { background: var(--panel); border-right: var(--border); padding: 25px; overflow-y: auto; height: calc(100vh - 60px); }
-        .section-head { color: var(--neon); font-size: 0.85rem; text-transform: uppercase; margin: 30px 0 10px; border-bottom: 1px solid #333; padding-bottom: 5px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
         
-        label { display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 5px; margin-top: 10px; }
-        input, textarea { width: 100%; background: #1a1f2e; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 6px; font-size: 0.9rem; }
-        input:focus, textarea:focus { border-color: var(--neon); outline: none; }
+        .section-head { color: var(--neon); font-size: 0.9rem; text-transform: uppercase; margin: 35px 0 15px; border-bottom: 1px solid #333; padding-bottom: 5px; font-weight: 800; letter-spacing: 1px; }
         
-        /* Dynamic Item Rows */
-        .item-row { background: #151925; padding: 15px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #333; position: relative; }
-        .btn-remove { position: absolute; top: 8px; right: 8px; color: #ff4444; cursor: pointer; background: rgba(255,0,0,0.1); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
-        .btn-add { width: 100%; background: #1a1f2e; border: 1px dashed #555; color: var(--neon); padding: 12px; border-radius: 6px; cursor: pointer; margin-bottom: 10px; transition:0.2s; font-weight: 600; }
-        .btn-add:hover { background: rgba(0,243,255,0.1); border-color: var(--neon); }
-
-        /* PREVIEW AREA */
-        .preview-area { background: #fff; overflow-y: auto; height: calc(100vh - 60px); position: relative; padding-bottom: 50px; }
-
-        /* USER GUIDE & REFERENCE */
-        .ref-section { grid-column: 1 / -1; background: #050b14; border-top: var(--border); padding: 40px 5%; }
-        .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; max-height: 300px; overflow-y: auto; }
-        .icon-box { background: #1a1f2e; border: 1px solid #333; padding: 10px; text-align: center; cursor: pointer; border-radius: 6px; font-size: 0.8rem; color: #aaa; }
-        .icon-box:hover { border-color: var(--neon); color: #fff; }
-
-        /* --- GENERATED PAGE STYLES (Google Style) --- */
-        .g-container { font-family: 'Google Sans', 'Outfit', sans-serif; color: #202124; line-height: 1.6; background: #fff; }
-        .g-hero { text-align: center; padding: 80px 20px 60px; background: radial-gradient(circle at 50% 0%, #f8f9fa 0%, #fff 80%); }
-        .g-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 15px; line-height: 1.2; }
-        .g-sub { font-size: 1.2rem; color: #5f6368; max-width: 700px; margin: 0 auto; }
+        label { display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 5px; margin-top: 15px; font-weight: 600; }
+        input, textarea { width: 100%; background: #1a1f2e; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 8px; font-size: 0.9rem; transition: 0.3s; }
+        input:focus, textarea:focus { border-color: var(--neon); outline: none; background: #23293a; }
         
-        .g-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); max-width: 900px; margin: 40px auto; gap: 20px; text-align: center; padding: 0 20px; }
-        .g-stat-val { font-size: 2.5rem; font-weight: 700; color: #1a73e8; display: block; }
-        .g-stat-lbl { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; color: #5f6368; }
+        /* Add/Remove Buttons */
+        .item-row { background: #151925; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333; position: relative; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { opacity:0; transform: translateY(-10px); } to { opacity:1; transform: translateY(0); } }
+        
+        .btn-remove { position: absolute; top: 10px; right: 10px; color: #ff4444; cursor: pointer; background: rgba(255, 68, 68, 0.1); padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(255, 68, 68, 0.3); }
+        .btn-remove:hover { background: #ff4444; color: #fff; }
 
-        .g-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 1200px; margin: 60px auto; gap: 30px; padding: 0 20px; }
-        .g-card { background: #fff; border: 1px solid #dadce0; border-radius: 16px; padding: 30px; transition: 0.3s; height: 100%; display: flex; flex-direction: column; align-items: flex-start; }
-        .g-card:hover { transform: translateY(-5px); border-color: #1a73e8; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .g-icon { width: 50px; height: 50px; background: #e8f0fe; color: #1a73e8; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; }
-        .g-card h3 { font-size: 1.3rem; margin-bottom: 10px; font-weight: 600; }
-        .g-card p { font-size: 0.95rem; color: #5f6368; line-height: 1.6; }
+        .btn-add { width: 100%; background: transparent; border: 1px dashed var(--neon); color: var(--neon); padding: 12px; border-radius: 8px; cursor: pointer; margin-top: 5px; font-weight: 700; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-add:hover { background: rgba(0, 243, 255, 0.1); }
 
-        .g-custom { max-width: 900px; margin: 60px auto; padding: 40px 20px; background: #f8f9fa; border-radius: 20px; text-align: center; border: 1px solid #e8eaed; }
+        .preview-area { background: #fff; overflow-y: auto; height: calc(100vh - 60px); position: relative; }
 
-        /* PRO FOOTER STYLES */
-        .g-footer { background: #f8f9fa; padding: 60px 20px 30px; border-top: 1px solid #dadce0; margin-top: 80px; }
-        .g-footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; text-align: left; }
-        .g-footer h4 { color: #202124; margin-bottom: 20px; font-size: 1rem; font-weight: 700; text-transform: uppercase; }
-        .g-footer a { display: block; color: #5f6368; text-decoration: none; margin-bottom: 12px; font-size: 0.95rem; transition: 0.2s; }
-        .g-footer a:hover { color: #1a73e8; padding-left: 5px; }
-        .g-brand-desc { color: #5f6368; font-size: 0.9rem; margin-top: 10px; max-width: 300px; }
-        .g-copy { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #dadce0; color: #9aa0a6; font-size: 0.85rem; }
+        /* --- SEO CONTENT SECTION (Bottom) --- */
+        .seo-section { max-width: 1000px; margin: 0 auto; padding: 80px 20px; color: #cbd5e1; }
+        .seo-card { background: #0b1221; padding: 40px; border-radius: 16px; border: 1px solid #1e293b; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .seo-section h1 { font-size: 2.5rem; color: #fff; margin-bottom: 20px; line-height: 1.2; font-weight: 800; }
+        .seo-section h2 { font-size: 2rem; color: #fff; margin-bottom: 20px; font-weight: 700; border-left: 4px solid var(--neon); padding-left: 20px; margin-top: 40px; }
+        .seo-section h3 { font-size: 1.4rem; color: var(--neon); margin: 30px 0 15px; font-weight: 600; }
+        .seo-section p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; color: #94a3b8; }
+        .seo-section ul, .seo-section ol { margin-left: 20px; margin-bottom: 20px; color: #94a3b8; }
+        .seo-section li { margin-bottom: 10px; font-size: 1.05rem; }
+        .seo-section strong { color: #fff; }
+        .seo-section blockquote { background: #1a1f2e; padding: 20px; border-left: 4px solid var(--neon); color: #fff; font-style: italic; margin-bottom: 20px; }
 
-        /* RESPONSIVE */
+        /* Footer */
+        .site-footer { text-align: center; padding: 40px; border-top: var(--border); color: #666; background: #02060e; }
+
+        /* --- PREVIEW GENERATED STYLES --- */
+        .g-container { font-family: 'Google Sans', 'Outfit', sans-serif; color: #374151; line-height: 1.8; background: #fff; }
+        .g-hero { text-align: center; padding: 100px 20px 80px; background: radial-gradient(circle at 50% 0%, #f3f4f6 0%, #fff 70%); border-bottom: 1px solid #e5e7eb; }
+        .g-title { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 20px; color: #111827; line-height: 1.1; }
+        .g-sub { font-size: 1.25rem; color: #6b7280; max-width: 700px; margin: 0 auto; }
+        .g-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; text-align: center; padding: 60px 20px; background: #111827; color: #fff; }
+        .g-stat-val { font-size: 3rem; font-weight: 800; color: #3b82f6; display: block; }
+        .g-content-block { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        .g-content-block h2 { font-size: 2rem; color: #111827; margin-bottom: 25px; border-left: 5px solid #2563eb; padding-left: 20px; }
+        .g-team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+        .g-member { background: #fff; padding: 30px; border-radius: 16px; text-align: center; border: 1px solid #e5e7eb; }
+        .g-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .g-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 30px; text-decoration:none; color:inherit; display:block; transition:0.3s; position: relative; }
+        .g-card:hover { border-color: #3b82f6; transform: translateY(-5px); }
+        .g-link-hint { position: absolute; top: 20px; right: 20px; color: #3b82f6; opacity: 0; transition:0.3s; }
+        .g-card:hover .g-link-hint { opacity: 1; }
+        .g-footer { background: #111827; color: #fff; padding: 70px 20px 30px; }
+        .g-footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; }
+        .g-footer a { display: block; color: #9ca3af; text-decoration: none; margin-bottom: 12px; }
+
         @media (max-width: 900px) {
-            .main-grid { grid-template-columns: 1fr; }
-            .controls { height: auto; border-right: none; border-bottom: var(--border); }
+            .main-grid { grid-template-columns: 1fr; height: auto; }
+            .controls { height: auto; border-right:none; border-bottom: var(--border); }
             .preview-area { height: auto; min-height: 100vh; }
-            .g-footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-            .g-brand-desc { margin: 10px auto; }
+            .g-footer-inner { grid-template-columns: 1fr; text-align: left; }
         }
     </style>
 </head>
@@ -96,96 +95,160 @@
     <div class="main-grid">
         <div class="controls">
             
-            <div class="section-head"><i class="fas fa-globe"></i> Website Info</div>
-            <label>Site Name</label> <input type="text" id="siteName" value="Xizoa Hub" oninput="render()">
-            <label>Hero Title</label> <input type="text" id="heroTitle" value="Tools That Empower You" oninput="render()">
-            <label>Subtitle</label> <textarea id="heroSub" oninput="render()">Professional, free, and secure digital utilities for everyone.</textarea>
+            <div class="section-head"><i class="fas fa-search"></i> SEO Schema (Hidden)</div>
+            <label>Organization Name</label> <input type="text" id="schemaSite" value="Xizoa Hub">
+            <label>Logo URL (Optional)</label> <input type="text" id="schemaLogo" placeholder="https://example.com/logo.png">
+            <label>Description</label> <input type="text" id="schemaDesc" value="Best free online tools platform.">
 
-            <div class="section-head"><i class="fas fa-chart-line"></i> Statistics</div>
+            <div class="section-head"><i class="fas fa-globe"></i> 1. Page Basics</div>
+            <label>Hero Title</label> <input type="text" id="heroTitle" value="About Us" oninput="render()">
+            <label>Subtitle</label> <textarea id="heroSub" oninput="render()">Building the future of digital tools.</textarea>
+
+            <div class="section-head"><i class="fas fa-paragraph"></i> 2. Your Story (Content)</div>
+            <label>Title</label> <input type="text" id="storyTitle" value="Our Story" oninput="render()">
+            <label>Paragraph 1</label> <textarea id="storyP1" style="height:100px;" oninput="render()">Founded in 2025, Xizoa Hub started with a simple mission: to make premium digital tools accessible to everyone.</textarea>
+            <label>Paragraph 2</label> <textarea id="storyP2" style="height:100px;" oninput="render()">We believe in privacy, speed, and accessibility for all creators.</textarea>
+
+            <div class="section-head"><i class="fas fa-chart-bar"></i> 3. Stats Grid</div>
             <div id="statsContainer"></div>
-            <button class="btn-add" onclick="addStat()"><i class="fas fa-plus"></i> Add Statistic</button>
+            <button class="btn-add" onclick="addStat()">+ Add Stat</button>
 
-            <div class="section-head"><i class="fas fa-th-large"></i> Feature Cards</div>
+            <div class="section-head"><i class="fas fa-users"></i> 4. Team Grid</div>
+            <div id="teamContainer"></div>
+            <button class="btn-add" onclick="addMember()">+ Add Member</button>
+
+            <div class="section-head"><i class="fas fa-th"></i> 5. Features/Services</div>
             <div id="featuresContainer"></div>
-            <button class="btn-add" onclick="addFeature()"><i class="fas fa-plus"></i> Add Feature Card</button>
+            <button class="btn-add" onclick="addFeature()">+ Add Card</button>
 
-            <div class="section-head"><i class="fas fa-star"></i> Custom Goal/Quote</div>
-            <label>Title</label> <input type="text" id="custTitle" value="Our Mission" oninput="render()">
-            <label>Content</label> <textarea id="custDesc" style="height:80px;" oninput="render()">To democratize technology by providing premium tools for free.</textarea>
-
-            <div class="section-head"><i class="fas fa-columns"></i> Pro Footer Builder</div>
-            <p style="font-size:0.75rem; color:#888; margin-bottom:10px;">Format: Name | URL (one per line)</p>
-            
-            <label>Footer Column 1 Title</label> <input type="text" id="fCol1Title" value="Our Products" oninput="render()">
-            <label>Col 1 Links</label> 
-            <textarea id="fCol1Links" style="height:100px;" oninput="render()">
-FPS Checker | fps-checker.html
-Repo Gen | repo-generator.html
-Handwriting | text-to-handwriting.html</textarea>
-
-            <label>Footer Column 2 Title</label> <input type="text" id="fCol2Title" value="Company" oninput="render()">
-            <label>Col 2 Links</label> 
-            <textarea id="fCol2Links" style="height:100px;" oninput="render()">
-Contact Us | contact.html
-Privacy Policy | privacy.html
-Terms of Use | terms.html</textarea>
+            <div class="section-head"><i class="fas fa-link"></i> 6. Footer Links</div>
+            <label>Col 1 Links</label> <textarea id="fCol1Links" style="height:80px;" oninput="render()">Tools | tools.html
+Blog | blog.html</textarea>
+            <label>Col 2 Links</label> <textarea id="fCol2Links" style="height:80px;" oninput="render()">Privacy | privacy.html
+Contact | contact.html</textarea>
 
         </div>
 
         <div class="preview-area" id="previewCanvas"></div>
     </div>
 
-    <div class="ref-section">
-        <h3 style="color:#fff; margin-bottom:10px;">Icon Reference (Click to Copy)</h3>
-        <div class="icon-grid" id="iconGrid"></div>
+    <div class="seo-section">
+        
+        <div class="seo-card">
+            <h1>Ultimate Free About Us Page Generator for 2025</h1>
+            <p>Welcome to the <strong>#1 Rated Free About Us Page Generator</strong>. Whether you are a startup founder, a blogger, or a developer, creating a trustworthy "About Us" page is the first step to online success. Xizoa Hub provides you with a robust, AI-powered tool to generate professional, mobile-responsive, and SEO-optimized About Us HTML pages in less than 60 seconds.</p>
+            <p>Why struggle with coding HTML, CSS, and Bootstrap grids when our tool can do it for you? Our generator focuses on <strong>User Experience (UX)</strong> and <strong>Search Engine Optimization (SEO)</strong>, ensuring your page not only looks good but also ranks well on Google.</p>
+        </div>
+
+        <div class="seo-card">
+            <h2>Why is the 'About Us' Page the Most Important Page on Your Website?</h2>
+            <p>Many website owners overlook the About Us page, treating it as an afterthought. However, analytics show that it is often the <strong>second most visited page</strong> on a website after the homepage. Here is why:</p>
+            <ul>
+                <li><strong>Trust Factor:</strong> In an era of online scams, users want to know who is behind the website. A transparent About page builds immediate credibility.</li>
+                <li><strong>Brand Storytelling:</strong> People buy from people. Sharing your journey, struggles, and mission creates an emotional connection with your audience.</li>
+                <li><strong>SEO Benefits:</strong> Google's E-E-A-T (Experience, Expertise, Authoritativeness, and Trustworthiness) guidelines specifically look for clear information about who runs the website. A good About page boosts your overall site ranking.</li>
+                <li><strong>Conversion Rate Optimization (CRO):</strong> A user who trusts you is more likely to buy your product or subscribe to your newsletter.</li>
+            </ul>
+        </div>
+
+        <div class="seo-card">
+            <h2>Step-by-Step Guide: How to Use Xizoa About Us Generator</h2>
+            <p>Our tool is designed for non-coders. Follow these simple steps to generate your dream page:</p>
+            <ol>
+                <li><strong>Enter Basic Info:</strong> Start by filling in your website name and the main "Hero Title" (e.g., "About Our Company").</li>
+                <li><strong>Tell Your Story:</strong> Use the "Our Story" and "Mission" text boxes. Don't be shy—write about how you started and what drives you. Google loves unique content here.</li>
+                <li><strong>Add Social Proof (Stats):</strong> Use the <em>"Stats Grid"</em> section to add numbers like "Years Active", "Happy Clients", or "Projects Completed". Numbers catch the eye.</li>
+                <li><strong>Showcase Your Team:</strong> Use the <em>"Team Grid"</em> to add profiles. Even if it's just you, adding a photo and role makes the site feel human.</li>
+                <li><strong>Link Your Services:</strong> Use the <em>"Feature Cards"</em> to link to your best pages (e.g., Contact, Services, Blog). This improves internal linking structure.</li>
+                <li><strong>Generate & Copy:</strong> Watch the live preview update instantly. Once satisfied, click the <strong>"Copy HTML"</strong> button. The code includes all necessary CSS styles.</li>
+            </ol>
+        </div>
+
+        <div class="seo-card">
+            <h2>Free "About Us" Content Templates (Copy These!)</h2>
+            <p>Stuck on what to write? Use these professional templates in the "Story" section of our tool:</p>
+            
+            <h3>Template 1: For E-Commerce Stores</h3>
+            <blockquote>
+                "Founded in [Year], [Brand Name] began with a simple idea: to provide high-quality [Product] at affordable prices. What started as a small garage project has grown into a global brand serving customers in over [Number] countries. We believe that shopping should be easy, secure, and fun."
+            </blockquote>
+
+            <h3>Template 2: For Bloggers & Influencers</h3>
+            <blockquote>
+                "Hi, I'm [Name]! Welcome to my digital garden. I started [Blog Name] to share my passion for [Niche]. My goal is to educate and inspire readers to [Goal]. Here, you will find unbiased reviews, detailed tutorials, and a community of like-minded enthusiasts."
+            </blockquote>
+        </div>
+
+        <div class="seo-card">
+            <h2>Frequently Asked Questions (FAQs)</h2>
+            
+            <h3>1. Is this About Us Generator truly free?</h3>
+            <p>Yes, absolutely. Xizoa believes in free access to developer tools. There are no hidden fees, no subscriptions, and no watermarks on the generated code.</p>
+
+            <h3>2. Can I use this code on WordPress?</h3>
+            <p>Yes. To use it on WordPress, simply create a new page, select the "Custom HTML" block, and paste the code generated by our tool. It works with Elementor, Gutenberg, and Classic Editor.</p>
+
+            <h3>3. Will this help my Google Ranking?</h3>
+            <p>Indirectly, yes. A well-structured About page increases "Time on Site" and reduces "Bounce Rate". Plus, our built-in Schema Markup gives search engines structured data about your organization.</p>
+        </div>
     </div>
 
+    <footer class="site-footer">
+        <p>© 2025 Xizoa Hub • Free Tools for Creators</p>
+    </footer>
+
     <script>
-        // --- STATE ---
-        let statsData = [{ num: '1M+', lbl: 'Users' }, { num: '100%', lbl: 'Free' }];
-        let featuresData = [
-            { icon: 'fas fa-rocket', title: 'Fast', desc: 'Optimized for speed.' },
-            { icon: 'fas fa-shield-alt', title: 'Secure', desc: 'No data storage.' }
-        ];
+        // --- DATA STATE ---
+        let statsData = [{ num: '100+', lbl: 'Projects' }, { num: '50+', lbl: 'Clients' }];
+        let teamData = [{ name: 'John Doe', role: 'CEO', icon: 'fas fa-user' }];
+        let featuresData = [{ icon: 'fas fa-rocket', title: 'Fast', desc: 'Optimized.', link: '' }];
 
-        // --- ICONS LIST ---
-        const icons = ["fas fa-rocket", "fas fa-code", "fas fa-gamepad", "fas fa-mobile", "fas fa-laptop", "fas fa-wifi", "fas fa-lock", "fas fa-user", "fas fa-home", "fas fa-cog", "fas fa-check", "fas fa-search", "fas fa-envelope", "fas fa-image", "fas fa-video", "fas fa-music", "fas fa-heart", "fas fa-star", "fas fa-bolt", "fas fa-globe", "fas fa-book", "fas fa-pen", "fas fa-folder"];
+        window.onload = function() { renderInputs(); render(); };
 
-        window.onload = function() {
-            renderIconGrid(); renderStatsInputs(); renderFeaturesInputs(); render();
-        };
+        // --- RENDER INPUTS ---
+        function renderInputs() {
+            // Stats
+            document.getElementById('statsContainer').innerHTML = statsData.map((s, i) => `
+                <div class="item-row"><div class="btn-remove" onclick="rem('stats', ${i})">x</div>
+                <label>Number</label><input value="${s.num}" oninput="upd('stats', ${i}, 'num', this.value)">
+                <label>Label</label><input value="${s.lbl}" oninput="upd('stats', ${i}, 'lbl', this.value)"></div>`
+            ).join('');
+            
+            // Team
+            document.getElementById('teamContainer').innerHTML = teamData.map((t, i) => `
+                <div class="item-row"><div class="btn-remove" onclick="rem('team', ${i})">x</div>
+                <label>Name</label><input value="${t.name}" oninput="upd('team', ${i}, 'name', this.value)">
+                <label>Role</label><input value="${t.role}" oninput="upd('team', ${i}, 'role', this.value)">
+                <label>Icon</label><input value="${t.icon}" oninput="upd('team', ${i}, 'icon', this.value)"></div>`
+            ).join('');
 
-        // --- RENDER HELPERS ---
-        function renderIconGrid() {
-            document.getElementById('iconGrid').innerHTML = icons.map(i => 
-                `<div class="icon-box" onclick="copyTxt('${i}')"><i class="${i}"></i>${i}</div>`
+            // Features
+            document.getElementById('featuresContainer').innerHTML = featuresData.map((f, i) => `
+                <div class="item-row"><div class="btn-remove" onclick="rem('feat', ${i})">x</div>
+                <label>Icon</label><input value="${f.icon}" oninput="upd('feat', ${i}, 'icon', this.value)">
+                <label>Title</label><input value="${f.title}" oninput="upd('feat', ${i}, 'title', this.value)">
+                <label>Desc</label><textarea oninput="upd('feat', ${i}, 'desc', this.value)">${f.desc}</textarea>
+                <label style="color:#00f3ff">Link URL</label><input value="${f.link}" oninput="upd('feat', ${i}, 'link', this.value)"></div>`
             ).join('');
         }
-        function copyTxt(t) { navigator.clipboard.writeText(t); alert("Copied: "+t); }
 
-        function renderStatsInputs() {
-            const c = document.getElementById('statsContainer'); c.innerHTML = '';
-            statsData.forEach((s, i) => {
-                c.innerHTML += `<div class="item-row"><div class="btn-remove" onclick="remStat(${i})">Remove</div><label>Value</label><input value="${s.num}" oninput="updStat(${i},'num',this.value)"><label>Label</label><input value="${s.lbl}" oninput="updStat(${i},'lbl',this.value)"></div>`;
-            });
+        // --- LOGIC ---
+        function upd(type, i, key, val) {
+            if(type==='stats') statsData[i][key]=val;
+            if(type==='team') teamData[i][key]=val;
+            if(type==='feat') featuresData[i][key]=val;
+            render();
         }
-        function renderFeaturesInputs() {
-            const c = document.getElementById('featuresContainer'); c.innerHTML = '';
-            featuresData.forEach((f, i) => {
-                c.innerHTML += `<div class="item-row"><div class="btn-remove" onclick="remFeat(${i})">Remove</div><label>Icon Class</label><input value="${f.icon}" oninput="updFeat(${i},'icon',this.value)"><label>Title</label><input value="${f.title}" oninput="updFeat(${i},'title',this.value)"><label>Desc</label><textarea oninput="updFeat(${i},'desc',this.value)">${f.desc}</textarea></div>`;
-            });
+        function rem(type, i) {
+            if(type==='stats') statsData.splice(i,1);
+            if(type==='team') teamData.splice(i,1);
+            if(type==='feat') featuresData.splice(i,1);
+            renderInputs(); render();
         }
+        function addStat() { statsData.push({num:'0', lbl:'New'}); renderInputs(); render(); }
+        function addMember() { teamData.push({name:'Name', role:'Role', icon:'fas fa-user'}); renderInputs(); render(); }
+        function addFeature() { featuresData.push({icon:'fas fa-star', title:'New', desc:'Desc', link:''}); renderInputs(); render(); }
 
-        // --- DATA MANIPULATION ---
-        function updStat(i,k,v) { statsData[i][k] = v; render(); }
-        function addStat() { statsData.push({num:'0', lbl:'New'}); renderStatsInputs(); render(); }
-        function remStat(i) { statsData.splice(i,1); renderStatsInputs(); render(); }
-
-        function updFeat(i,k,v) { featuresData[i][k] = v; render(); }
-        function addFeature() { featuresData.push({icon:'fas fa-star', title:'New', desc:'Details'}); renderFeaturesInputs(); render(); }
-        function remFeat(i) { featuresData.splice(i,1); renderFeaturesInputs(); render(); }
-
-        // --- LINK PARSER ---
         function parseLinks(text) {
             return text.split('\n').map(line => {
                 const parts = line.split('|');
@@ -196,80 +259,47 @@ Terms of Use | terms.html</textarea>
 
         // --- RENDER PREVIEW ---
         function render() {
-            const siteName = document.getElementById('siteName').value;
-            const heroTitle = document.getElementById('heroTitle').value;
-            const heroSub = document.getElementById('heroSub').value;
-            const custTitle = document.getElementById('custTitle').value;
-            const custDesc = document.getElementById('custDesc').value;
+            const title = document.getElementById('heroTitle').value;
+            const sub = document.getElementById('heroSub').value;
+            const sTitle = document.getElementById('storyTitle').value;
+            const sP1 = document.getElementById('storyP1').value;
+            const sP2 = document.getElementById('storyP2').value;
+            const siteName = document.getElementById('schemaSite').value;
             
-            const f1T = document.getElementById('fCol1Title').value;
-            const f1L = parseLinks(document.getElementById('fCol1Links').value);
-            const f2T = document.getElementById('fCol2Title').value;
-            const f2L = parseLinks(document.getElementById('fCol2Links').value);
+            const f1 = parseLinks(document.getElementById('fCol1Links').value);
+            const f2 = parseLinks(document.getElementById('fCol2Links').value);
 
-            let statsHTML = statsData.map(s => `<div><span class="g-stat-val">${s.num}</span><span class="g-stat-lbl">${s.lbl}</span></div>`).join('');
-            let featuresHTML = featuresData.map(f => 
-                `<div class="g-card">
-                    <div class="g-icon"><i class="${f.icon}"></i></div>
-                    <h3>${f.title}</h3>
-                    <p>${f.desc}</p>
-                </div>`
-            ).join('');
+            const statsHTML = statsData.map(s => `<div><span class="g-stat-val">${s.num}</span><span>${s.lbl}</span></div>`).join('');
+            const teamHTML = teamData.map(t => `<div class="g-member"><div class="g-avatar"><i class="${t.icon}"></i></div><h3>${t.name}</h3><p>${t.role}</p></div>`).join('');
+            
+            const featHTML = featuresData.map(f => {
+                const tag = f.link ? 'a' : 'div';
+                const href = f.link ? `href="${f.link}"` : '';
+                const linkIcon = f.link ? `<i class="fas fa-external-link-alt g-link-hint"></i>` : '';
+                return `<${tag} ${href} class="g-card">${linkIcon}<div class="g-icon"><i class="${f.icon}"></i></div><h3>${f.title}</h3><p>${f.desc}</p></${tag}>`;
+            }).join('');
 
-            const html = `
+            document.getElementById('previewCanvas').innerHTML = `
                 <div class="g-container">
-                    <div class="g-hero"><h1 class="g-title">${heroTitle}</h1><p class="g-sub">${heroSub}</p></div>
+                    <div class="g-hero"><h1 class="g-title">${title}</h1><p class="g-sub">${sub}</p></div>
                     <div class="g-stats-grid">${statsHTML}</div>
-                    <div class="g-custom"><h2>${custTitle}</h2><p>${custDesc}</p></div>
-                    <div class="g-features">${featuresHTML}</div>
-                    
+                    <div class="g-content-block"><h2>${sTitle}</h2><p>${sP1}</p><p>${sP2}</p></div>
+                    <div class="g-team-grid">${teamHTML}</div>
+                    <div class="g-features">${featHTML}</div>
                     <footer class="g-footer">
-                        <div class="g-footer-grid">
-                            <div>
-                                <h2 style="margin-bottom:10px;">${siteName}</h2>
-                                <p class="g-brand-desc">Professional tools for the modern web. Built for performance and privacy.</p>
-                            </div>
-                            <div><h4>${f1T}</h4>${f1L}</div>
-                            <div><h4>${f2T}</h4>${f2L}</div>
+                        <div class="g-footer-inner">
+                            <div><h2 style="font-size:1.5rem; margin-bottom:15px; font-weight:800;">${siteName}</h2><p class="g-brand-desc">Built with Xizoa.</p></div>
+                            <div><h4>Links</h4>${f1}</div><div><h4>Legal</h4>${f2}</div>
                         </div>
                         <div class="g-copy">© 2025 ${siteName}. All Rights Reserved.</div>
                     </footer>
-                </div>
-            `;
-            document.getElementById('previewCanvas').innerHTML = html;
+                </div>`;
         }
 
-        // --- EXPORT ---
         function copyFinalCode() {
-            const content = document.getElementById('previewCanvas').innerHTML;
-            const styles = `
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-body { margin:0; }
-.g-container { font-family: 'Google Sans', sans-serif; color: #202124; background:#fff; line-height: 1.6; }
-.g-hero { text-align: center; padding: 100px 20px 60px; background: radial-gradient(circle at 50% 0%, #f8f9fa 0%, #fff 80%); }
-.g-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 15px; color: #202124; line-height:1.2; }
-.g-sub { font-size: 1.25rem; color: #5f6368; max-width: 700px; margin: 0 auto; }
-.g-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); max-width: 900px; margin: 40px auto; gap: 20px; text-align: center; padding: 0 20px; }
-.g-stat-val { font-size: 2.5rem; font-weight: 700; color: #1a73e8; display: block; }
-.g-stat-lbl { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; color: #5f6368; }
-.g-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 1200px; margin: 60px auto; gap: 30px; padding: 0 20px; }
-.g-card { background: #fff; border: 1px solid #dadce0; border-radius: 16px; padding: 30px; transition: 0.3s; height: 100%; }
-.g-card:hover { transform: translateY(-5px); border-color: #1a73e8; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-.g-icon { width: 50px; height: 50px; background: #e8f0fe; color: #1a73e8; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; }
-.g-card h3 { font-size: 1.3rem; margin-bottom: 10px; font-weight: 600; }
-.g-custom { max-width: 900px; margin: 60px auto; padding: 40px 20px; background: #f8f9fa; border-radius: 20px; text-align: center; border: 1px solid #e8eaed; }
-.g-footer { background: #f8f9fa; padding: 60px 20px 30px; border-top: 1px solid #dadce0; margin-top: 80px; }
-.g-footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; text-align: left; }
-.g-footer h4 { color: #202124; margin-bottom: 20px; font-size: 1rem; font-weight: 700; text-transform: uppercase; }
-.g-footer a { display: block; color: #5f6368; text-decoration: none; margin-bottom: 12px; font-size: 0.95rem; transition: 0.2s; }
-.g-footer a:hover { color: #1a73e8; padding-left: 5px; }
-.g-copy { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #dadce0; color: #9aa0a6; font-size: 0.85rem; }
-@media (max-width: 900px) { .g-footer-grid { grid-template-columns: 1fr; text-align: center; } }
-</style>`;
-            
-            navigator.clipboard.writeText(styles + content).then(() => alert("Code Copied! Save as about.html"));
+            const schema = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"${document.getElementById('schemaSite').value}","url":"${window.location.origin}","logo":"${document.getElementById('schemaLogo').value}","description":"${document.getElementById('schemaDesc').value}"}<\/script>`;
+            const styles = `<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>body{margin:0}.g-container{font-family:'Google Sans',sans-serif;color:#374151;line-height:1.8;background:#fff}.g-hero{text-align:center;padding:100px 20px;background:radial-gradient(circle at 50% 0%,#f3f4f6 0%,#fff 70%)}.g-title{font-size:3rem;font-weight:800;margin-bottom:15px;color:#111827}.g-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:30px;text-align:center;padding:60px 20px;background:#111827;color:#fff}.g-stat-val{font-size:3rem;font-weight:800;color:#3b82f6;display:block}.g-content-block{max-width:800px;margin:0 auto;padding:60px 20px}.g-team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;padding:60px 20px;max-width:1000px;margin:0 auto}.g-member{padding:30px;border:1px solid #e5e7eb;border-radius:16px;text-align:center}.g-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;padding:60px 20px;max-width:1200px;margin:0 auto}.g-card{padding:30px;border:1px solid #e5e7eb;border-radius:16px;display:block;text-decoration:none;color:inherit;transition:0.3s;position:relative}.g-card:hover{border-color:#3b82f6;transform:translateY(-5px)}.g-link-hint{position:absolute;top:20px;right:20px;color:#3b82f6;opacity:0;transition:0.3s}.g-card:hover .g-link-hint{opacity:1}.g-icon{font-size:1.5rem;color:#3b82f6;margin-bottom:15px}.g-footer{background:#111827;color:#fff;padding:60px 20px;text-align:center}</style>`;
+            navigator.clipboard.writeText(schema + styles + document.getElementById('previewCanvas').innerHTML).then(() => alert("Code Copied!"));
         }
     </script>
 </body>
