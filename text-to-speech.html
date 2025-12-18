@@ -4,116 +4,160 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Text to Speech Converter - AI Voice Generator (Free)</title>
+  <title>Free AI Text to Speech Converter | Unlimited Voice Generator 2025</title>
   
-  <meta name="description" content="Convert text into natural-sounding speech instantly. Choose from multiple AI voices, adjust speed and pitch. Free online TTS tool for creators with audio download.">
+  <meta name="description" content="Convert text into natural-sounding speech instantly with Xizoa. Choose from multiple AI voices, adjust speed and pitch. Free online TTS tool for YouTube, Reels & Learning.">
   
-  <meta name="keywords" content="text to speech, tts converter, ai voice generator, text reader online, free voiceover tool, download text to speech mp3, narrator voice generator, xizoa tools">
+  <meta name="keywords" content="text to speech, tts converter, ai voice generator, text reader online, free voiceover tool, download text to speech mp3, narrator voice generator, hindi text to speech, instagram reels voiceover">
   
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tools.xizoa.com/text-to-speech.html">
   <meta property="og:title" content="AI Text to Speech - Free Voice Generator">
-  <meta property="og:description" content="Convert text to lifelike speech for videos and reels.">
+  <meta property="og:description" content="Convert text to lifelike speech for videos and reels. Free & Unlimited.">
   <meta property="og:type" content="website">
 
   <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Xizoa Text to Speech Converter",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A free online AI tool to convert text into natural sounding speech with download capabilities.",
+    "featureList": "Multi-language Support, Pitch Control, Speed Adjustment, MP3 Download",
+    "author": {
+      "@type": "Person",
+      "name": "Priyanshu"
+    }
+  }
+  </script>
+
   <style>
-    /* --- THEME: CYBER STUDIO (Purple & Cyan) --- */
+    /* --- THEME: LIGHT & CLEAN (White Background) --- */
     :root {
-      --primary: #8a2be2; /* Studio Purple */
-      --secondary: #00f7ff; /* Neon Cyan */
-      --bg-dark: #0a0a12;
-      --card-bg: rgba(20, 20, 30, 0.9);
-      --glass-border: 1px solid rgba(138, 43, 226, 0.3);
-      --text-main: #e5e5e5;
-      --text-muted: #908ca0;
+      --bg: #ffffff;          /* White Background */
+      --text: #1e293b;        /* Dark Slate Text */
+      --text-muted: #64748b;  /* Muted Text */
+      
+      --card-bg: #ffffff;     /* Card Background */
+      --border: 1px solid #e2e8f0; 
+      
+      --primary: #8a2be2;     /* Keep Purple Accent */
+      --secondary: #0ea5e9;   /* Adjusted Cyan/Blue for better visibility on white */
+      
+      --input-bg: #f8fafc;
+      --shadow: 0 10px 40px rgba(0,0,0,0.08);
     }
 
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
     
     body {
-      background-color: var(--bg-dark);
-      /* Sound Wave Pattern Background */
+      background-color: var(--bg);
+      color: var(--text);
+      /* Subtle Sound Wave Pattern on White */
       background-image: repeating-linear-gradient(90deg, 
-          var(--bg-dark), var(--bg-dark) 10px,
-          rgba(138, 43, 226, 0.05) 10px, rgba(138, 43, 226, 0.05) 20px
+          var(--bg), var(--bg) 10px,
+          rgba(138, 43, 226, 0.03) 10px, rgba(138, 43, 226, 0.03) 20px
       );
-      color: var(--text-main);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
-    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
-    .brand-logo span { color: var(--secondary); text-shadow: 0 0 10px var(--secondary); }
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 50px 20px; 
+        background: linear-gradient(to bottom, #ffffff, #f0f4f8); 
+        border-bottom: var(--border);
+        position: relative; z-index: 2; 
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #0f172a; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); }
     
-    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; color: #0f172a; letter-spacing: -1px; }
     h1 span {
         background: linear-gradient(to right, var(--primary), var(--secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
     
-    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+    .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+    main { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
 
-    /* --- STUDIO BOX --- */
+    /* --- STUDIO BOX (Tool Container) --- */
     .studio-box {
       background: var(--card-bg);
-      border: var(--glass-border);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(138, 43, 226, 0.2);
-      margin-bottom: 30px;
+      border: var(--border);
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 50px;
+      margin-top: 20px;
     }
 
     textarea {
       width: 100%;
-      height: 150px;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 15px;
-      border-radius: 10px;
-      color: #fff;
-      font-size: 1.1rem;
+      height: 180px;
+      background: var(--input-bg);
+      border: 1px solid #cbd5e1;
+      padding: 20px;
+      border-radius: 15px;
+      color: var(--text);
+      font-size: 1.15rem;
       resize: vertical;
       margin-bottom: 25px;
+      transition: 0.3s;
     }
-    textarea:focus { border-color: var(--secondary); box-shadow: 0 0 15px rgba(0, 247, 255, 0.2); }
+    textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(138, 43, 226, 0.1); background: #fff; }
 
     /* Controls Area */
     .controls-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
       margin-bottom: 30px;
-      background: rgba(255,255,255,0.03);
-      padding: 20px;
-      border-radius: 15px;
+      background: #f1f5f9;
+      padding: 25px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
     }
 
-    .control-group label { display: flex; justify-content: space-between; color: var(--text-muted); margin-bottom: 8px; font-size: 0.9rem; }
+    .control-group label { display: flex; justify-content: space-between; color: #475569; margin-bottom: 10px; font-weight: 600; font-size: 0.95rem; }
     
     select {
       width: 100%;
-      background: rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: #fff;
+      border: 1px solid #cbd5e1;
       padding: 12px;
-      border-radius: 8px;
-      color: #fff;
+      border-radius: 10px;
+      color: var(--text);
       cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
     }
+    select:focus { border-color: var(--primary); }
 
     input[type="range"] {
       width: 100%;
       accent-color: var(--primary);
       cursor: pointer;
+      height: 6px;
+      background: #cbd5e1;
+      border-radius: 5px;
     }
 
     /* Action Buttons */
@@ -122,49 +166,64 @@
     button.btn-action {
       flex: 1;
       min-width: 150px;
-      padding: 15px;
-      border-radius: 12px;
+      padding: 18px;
+      border-radius: 50px;
       font-weight: 700;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.1rem;
       transition: 0.3s;
       border: none;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     .btn-play { background: linear-gradient(135deg, var(--primary), #d900ff); color: #fff; }
-    .btn-play:hover { box-shadow: 0 0 20px var(--primary); }
-    .btn-play.speaking { background: #ff0055; animation: pulse 1.5s infinite; }
+    .btn-play:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3); }
+    .btn-play.speaking { background: #ff4757; animation: pulse 1.5s infinite; }
 
-    .btn-download { background: transparent; border: 2px solid var(--secondary); color: var(--secondary); }
-    .btn-download:hover { background: var(--secondary); color: #000; box-shadow: 0 0 20px var(--secondary); }
-    .btn-download.recording { background: #ff0055; border-color: #ff0055; color: #fff; }
+    .btn-download { background: #fff; border: 2px solid var(--primary); color: var(--primary); }
+    .btn-download:hover { background: var(--primary); color: #fff; transform: translateY(-3px); }
+    .btn-download.recording { background: #ff4757; border-color: #ff4757; color: #fff; }
 
-    /* --- SEO CONTENT --- */
-    .seo-content { margin-top: 60px; }
-    .seo-card { background: rgba(20, 20, 30, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
-    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
-    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
-    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
-    .seo-content ul { list-style: none; padding: 0; }
-    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
-    .seo-content li::before { content: '🎙️'; position: absolute; left: 0; }
+    /* --- SEO CONTENT SECTION (MASSIVE ARTICLE) --- */
+    .seo-content { margin-top: 80px; }
+    
+    .seo-card { 
+        background: #fff; 
+        border: 1px solid #e2e8f0; 
+        padding: 50px; 
+        border-radius: 20px; 
+        margin-bottom: 40px; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    
+    .seo-content h2 { font-size: 2rem; color: #0f172a; margin-bottom: 25px; border-left: 5px solid var(--primary); padding-left: 20px; }
+    .seo-content h3 { font-size: 1.5rem; color: var(--primary); margin-top: 35px; margin-bottom: 15px; }
+    .seo-content p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .seo-content ul, .seo-content ol { margin-left: 20px; margin-bottom: 25px; color: #475569; line-height: 1.8; }
+    .seo-content li { margin-bottom: 12px; }
+    .seo-content strong { color: #1e293b; }
 
     /* --- FOOTER --- */
-    footer { background: #05050c; border-top: 1px solid #1a1a2e; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    footer { 
+        background: #0f172a; /* Dark footer as per other tools */
+        border-top: 1px solid #1e293b; 
+        padding: 60px 20px 20px; 
+        margin-top: auto; 
+        color: #94a3b8; 
+    }
     .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
-    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
-    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
-    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
     .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
-    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748b; font-size: 0.85rem; }
 
-    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
-    @media (max-width: 600px) { h1 { font-size: 2rem; } }
+    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.98); } 100% { opacity: 1; transform: scale(1); } }
+    @media (max-width: 600px) { h1 { font-size: 2rem; } .studio-box { padding: 20px; } }
   </style>
 </head>
 <body>
@@ -172,7 +231,7 @@
   <header>
     <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
     <h1>Text to <span>Speech</span></h1>
-    <p class="subtitle">Convert Text into Human-like AI Voice for Videos & Reels</p>
+    <p class="subtitle">Convert Text into Human-like AI Voice for Videos, Reels & Shorts.</p>
   </header>
 
   <main>
@@ -210,32 +269,80 @@
         <button class="btn-action btn-play" id="btnPlay"><i class="fas fa-play"></i> Play Voice</button>
         <button class="btn-action btn-download" id="btnDownload" title="Requires Tab Audio permission"><i class="fas fa-download"></i> Record & Download</button>
       </div>
-      <p style="text-align:center; margin-top:10px; font-size:0.85rem; color:var(--text-muted);">
-        *For download, you will be asked to share "Tab Audio" to capture the voice.
+      <p style="text-align:center; margin-top:15px; font-size:0.9rem; color:var(--text-muted);">
+        <i class="fas fa-info-circle"></i> To download, please allow <strong>"Tab Audio"</strong> sharing when prompted.
       </p>
 
     </div>
 
     <section class="seo-content">
-      <div class="seo-card">
-        <h2>Free AI Voice Generator for Creators</h2>
-        <p>
-          Need a voiceover for your YouTube Short, Instagram Reel, or TikTok? Our **Text to Speech Converter** uses advanced browser-based AI voices to bring your script to life.
-        </p>
-        <p>
-          Apne text ko aawaaz mein badlein. Speed aur Pitch control karke unique voice banayein aur apne videos ke liye use karein.
-        </p>
-      </div>
+      
+      <article class="seo-card">
+        <h2>Free AI Text to Speech Converter for Creators</h2>
+        <p>In the world of digital content, audio quality is just as important as video quality. Whether you are a YouTube creator, an Instagram influencer, a student, or a developer, having access to a high-quality voiceover can make a massive difference. <strong>Xizoa Hub's Text to Speech (TTS) Converter</strong> is a powerful, free online tool that instantly converts written text into lifelike spoken audio.</p>
+        <p>Unlike expensive software that requires heavy downloads or subscriptions, our tool runs entirely in your browser. It utilizes the advanced Web Speech API to access the natural AI voices already installed on your device (Google Voices, Microsoft Voices, Apple System Voices). This ensures privacy, speed, and zero latency.</p>
+      </article>
 
-      <div class="seo-card">
-        <h3>🚀 Features</h3>
+      <article class="seo-card">
+        <h2>Why Use Xizoa Text to Speech?</h2>
+        <p>There are hundreds of TTS tools available, but Xizoa stands out for its simplicity and developer-friendly approach. Here is why you should bookmark this tool:</p>
+        
+        <h3>1. 100% Free & Unlimited</h3>
+        <p>Most AI voice generators limit you to 500 characters or ask for credit cards. Xizoa TTS allows you to convert unlimited text. Write long scripts, stories, or blog posts and listen to them without interruption.</p>
+
+        <h3>2. Adjustable Voice Controls</h3>
+        <p>We give you full control over how the voice sounds. You can tweak:</p>
         <ul>
-          <li><strong>Multiple Voices:</strong> Detects all available voices on your device (male/female, different accents).</li>
-          <li><strong>Custom Control:</strong> Adjust speed (fast/slow) and pitch (deep/high voice).</li>
-          <li><strong>Audio Download:</strong> Record the generated speech and save it as an audio file.</li>
-          <li><strong>Unlimited Use:</strong> No character limits, completely free.</li>
+            <li><strong>Speed (Rate):</strong> Make the voice read faster for TikTok Shorts or slower for educational tutorials.</li>
+            <li><strong>Pitch:</strong> Adjust the deepness or sharpness of the voice. Lower pitch sounds more authoritative, while higher pitch sounds younger or more energetic.</li>
+            <li><strong>Voice Selection:</strong> Choose from Male, Female, and various accents depending on your device's available libraries (Hindi, English US/UK, Spanish, etc.).</li>
         </ul>
-      </div>
+
+        <h3>3. Instant Audio Download</h3>
+        <p>Need the MP3 file? We have integrated a smart recording feature. Simply click "Record & Download", and the tool will capture the generated speech and save it as a high-quality audio file to your device. Perfect for video editing in Premiere Pro, Kinemaster, or CapCut.</p>
+
+        <h3>4. Privacy Focused</h3>
+        <p>Your text is not sent to any external server. The conversion happens locally on your browser. This means your script remains private and secure.</p>
+      </article>
+
+      <article class="seo-card">
+        <h2>Use Cases for Text to Speech</h2>
+        <p>The applications of AI voice generation are endless. Here are some popular ways our users leverage this tool:</p>
+        
+        <h3>For YouTube Automation (Faceless Channels)</h3>
+        <p>Many successful YouTube channels use AI voices for narration. You can write scripts for facts, mysteries, or news, convert them to audio here, and overlay visuals. It saves the cost of hiring a voice-over artist.</p>
+
+        <h3>For Accessibility & Learning</h3>
+        <p>If you have trouble reading long articles or PDFs, simply paste the text here and listen to it. This is excellent for auditory learners or people with visual impairments.</p>
+
+        <h3>For Social Media Marketing</h3>
+        <p>Instagram Reels and TikTok trends often rely on robotic or AI voices for comedic effect or narration. Use this tool to generate consistent audio for your brand.</p>
+      </article>
+
+      <article class="seo-card">
+        <h2>How to Convert Text to Audio?</h2>
+        <ol>
+            <li><strong>Enter Text:</strong> Type or paste your script into the large text box above.</li>
+            <li><strong>Select Voice:</strong> Click the dropdown menu to see available voices. (Note: Voices depend on your OS - Windows, Android, iOS).</li>
+            <li><strong>Tune It:</strong> Use the sliders to adjust Speed and Pitch until it sounds perfect.</li>
+            <li><strong>Play:</strong> Click the "Play Voice" button to preview.</li>
+            <li><strong>Download:</strong> Click "Record & Download". A popup will ask to share the tab audio. Select the current tab, and the audio will be captured and downloaded automatically.</li>
+        </ol>
+      </article>
+
+      <article class="seo-card">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        
+        <h3>Is this tool free for commercial use?</h3>
+        <p>Yes! The tool itself is free. However, the copyright of the specific voice depends on the provider (Google, Microsoft, etc.). Generally, system voices are safe for YouTube monetization.</p>
+
+        <h3>Why do I see different voices on my phone vs laptop?</h3>
+        <p>This tool fetches voices installed on your specific device. Android phones usually have Google voices, while Windows laptops have Microsoft David/Zira. iOS devices will show Siri-based voices.</p>
+
+        <h3>Can I convert Hindi text to speech?</h3>
+        <p>Yes! If your device has a Hindi voice pack installed (like "Google Hindi"), simply type in Hindi, select the Hindi voice from the dropdown, and it will speak perfectly.</p>
+      </article>
+
     </section>
 
   </main>
@@ -252,9 +359,10 @@
       </div>
       <div class="footer-col footer-links">
         <h3>Explore</h3>
-        <a href="index.html"><i class="fas fa-home"></i> Home</a>
-        <a href="tone-generator.html"><i class="fas fa-wave-square"></i> Tone Generator</a>
-        <a href="reaction-time-test.html"><i class="fas fa-bolt"></i> Reflex Test</a>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="youtube-thumbnail-downloader.html">Thumbnail Downloader</a>
+        <a href="contact.html">Contact Us</a>
       </div>
     </div>
     <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
