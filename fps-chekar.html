@@ -1,523 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Live FPS Counter & Hz Tester - Check Monitor Refresh Rate Online (2025)</title>
-  <meta name="description" content="The Ultimate FPS Checker & Hz Tester. Test Screen Refresh Rate, Motion Blur, Ghosting, and Input Lag instantly. Supports 120Hz, 144Hz, 240Hz & 360Hz Gaming Monitors.">
-  <meta name="keywords" content="fps tester, screen hz test, monitor refresh rate checker, ghosting test, motion blur test, input lag test, vsync checker, gsync test, online fps counter, display lag test, 144hz test, 240hz checker, gaming monitor test">
-  <meta name="author" content="Xizoa Hub">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://xizoa.com/fps-checker">
-
-  <meta property="og:title" content="Live FPS Counter & Hz Tester - Xizoa Hub">
-  <meta property="og:description" content="Check Real-time FPS, Hz, and Ghosting instantly. Professional Monitor Test Tool.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://xizoa.com/assets/fps-tool-cover.jpg">
-
-  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Live FPS & Hz Tester",
-    "url": "https://xizoa.com/fps-checker",
-    "applicationCategory": "Utility",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "description": "A comprehensive online tool to test monitor refresh rates, frames per second, and screen ghosting."
-  }
-  </script>
-
-  <style>
-    :root {
-      --primary: #007bff;
-      --primary-hover: #0056b3;
-      --accent-green: #28a745;
-      --accent-red: #dc3545;
-      --text-dark: #1a1a1a;
-      --text-gray: #555555;
-      --bg-white: #ffffff;
-      --bg-light: #f8f9fa;
-      --border: #e9ecef;
-      --shadow: 0 4px 20px rgba(0,0,0,0.05);
-      --container: 1200px;
-    }
-
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    body { 
-      background-color: var(--bg-white); 
-      color: var(--text-dark); 
-      line-height: 1.6;
-      display: flex; flex-direction: column; min-height: 100vh;
-    }
+    <title>Live FPS Counter & Hz Tester - Check Monitor Refresh Rate</title>
+    <meta name="description" content="The Ultimate Gaming FPS Checker. Test Real-time FPS, Screen Refresh Rate (Hz), Ghosting, and Input Lag. Supports 144Hz, 240Hz, 360Hz Monitors. Dark Mode.">
+    <meta name="keywords" content="fps tester, screen hz test, monitor refresh rate checker, ghosting test, motion blur test, online fps counter, display lag test, 144hz test, 240hz checker, gaming monitor test, xizoa tools">
+    <meta name="author" content="Xizoa Hub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xizoa.com/fps-checker">
 
-    /* NAVBAR */
-    nav { 
-      border-bottom: 1px solid var(--border); 
-      padding: 15px 0; 
-      background: rgba(255,255,255,0.95); 
-      position: sticky; top: 0; z-index: 1000; 
-      backdrop-filter: blur(10px);
-    }
-    .nav-box { max-width: var(--container); margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .logo i { color: var(--primary); }
-    .logo span { color: var(--primary); }
+    <meta property="og:title" content="Live FPS Counter & Hz Tester - Xizoa Hub">
+    <meta property="og:description" content="Check Real-time FPS, Hz, and Ghosting instantly. Professional Monitor Test Tool.">
+    <meta property="og:type" content="website">
 
-    /* HEADER */
-    header { 
-      background: linear-gradient(180deg, #fff 0%, #f1f3f5 100%);
-      padding: 60px 20px 40px; 
-      text-align: center; 
-      border-bottom: 1px solid var(--border);
-    }
-    h1 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; color: var(--text-dark); letter-spacing: -1px; line-height: 1.2; }
-    .sub-head { font-size: 1.2rem; color: var(--text-gray); max-width: 800px; margin: 0 auto 30px; }
+    <link rel="icon" href="https://xizoa.com/favicon.ico">
 
-    /* DASHBOARD LAYOUT */
-    .dashboard {
-      max-width: var(--container); margin: 40px auto; padding: 0 20px;
-      display: grid; 
-      grid-template-columns: 1fr 350px; /* Desktop: Main | Sidebar */
-      gap: 30px;
-    }
-
-    /* METER CARD */
-    .meter-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 16px;
-      padding: 50px; text-align: center; box-shadow: var(--shadow);
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      position: relative; overflow: hidden;
-    }
-    .fps-num { font-size: 8rem; font-weight: 900; line-height: 1; color: var(--text-dark); letter-spacing: -3px; }
-    .fps-label { font-size: 1.4rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
-    .status-badge { 
-      margin-top: 25px; padding: 8px 25px; background: #eef2ff; 
-      color: var(--primary); border-radius: 50px; font-weight: 600; font-size: 1rem;
-      border: 1px solid rgba(0, 123, 255, 0.2);
-    }
-    .chart-box { width: 100%; height: 250px; margin-top: 40px; }
-
-    /* SIDEBAR WIDGETS */
-    .sidebar { display: flex; flex-direction: column; gap: 25px; }
-    .widget {
-      background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 30px;
-      box-shadow: var(--shadow); transition: 0.3s;
-    }
-    .widget:hover { transform: translateY(-3px); }
-    .widget h3 { font-size: 1.2rem; margin-bottom: 10px; color: #111; font-weight: 700; }
-    .widget p { font-size: 0.95rem; color: #666; margin-bottom: 20px; line-height: 1.5; }
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    .btn-action {
-      width: 100%; padding: 14px; border: none; border-radius: 8px;
-      background: var(--text-dark); color: #fff; font-weight: 700; font-size: 1rem;
-      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
-      transition: 0.2s;
-    }
-    .btn-action:hover { background: var(--primary); }
-    .btn-action.secondary { background: #fff; color: var(--text-dark); border: 2px solid var(--border); }
-    .btn-action.secondary:hover { border-color: var(--primary); color: var(--primary); background: #fff; }
-
-    /* GHOSTING TEST */
-    .ghosting-area {
-      grid-column: 1 / -1; margin-top: 30px;
-      background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 40px;
-      box-shadow: var(--shadow);
-    }
-    .test-track {
-      background: #000; border-radius: 12px; height: 150px; position: relative; overflow: hidden;
-      display: flex; align-items: center; margin-bottom: 25px;
-    }
-    .ufo {
-      position: absolute; color: #fff; font-size: 2rem; white-space: nowrap; 
-      display: flex; align-items: center; gap: 15px; font-weight: 800;
-    }
-    .controls { display: flex; gap: 20px; align-items: center; font-size: 1rem; color: #444; background: #f8f9fa; padding: 15px; border-radius: 8px; }
-    input[type=range] { flex: 1; cursor: pointer; height: 8px; accent-color: var(--primary); }
-
-    /* MASSIVE SEO CONTENT SECTION */
-    .content-area { 
-      max-width: 1000px; margin: 80px auto; padding: 0 20px; 
-    }
-    .article-box {
-      background: #fff; padding: 0;
-    }
-    .article-box h2 { 
-      font-size: 2.2rem; margin: 50px 0 25px; color: #111; 
-      border-left: 6px solid var(--primary); padding-left: 20px; line-height: 1.3;
-    }
-    .article-box h3 { font-size: 1.6rem; margin: 40px 0 20px; color: #222; font-weight: 700; }
-    .article-box h4 { font-size: 1.3rem; margin: 30px 0 15px; color: #333; }
-    .article-box p { margin-bottom: 20px; color: #555; font-size: 1.05rem; text-align: justify; line-height: 1.8; }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
-    .article-box ul, .article-box ol { margin-bottom: 30px; padding-left: 25px; color: #555; }
-    .article-box li { margin-bottom: 12px; font-size: 1.05rem; }
-
-    .highlight-box {
-      background: #f0f7ff; border: 1px solid #cce5ff; padding: 25px; border-radius: 10px; margin: 30px 0;
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Live FPS & Hz Tester",
+      "url": "https://xizoa.com/fps-checker",
+      "applicationCategory": "Utility",
+      "genre": "Gaming",
+      "operatingSystem": "All",
+      "description": "A professional tool to test gaming monitor refresh rates and frames per second."
     }
+    </script>
 
-    /* FAQ SECTION */
-    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-    .faq-q { font-weight: 700; font-size: 1.15rem; color: #111; margin-bottom: 10px; cursor: pointer; }
-    .faq-a { font-size: 1rem; color: #666; display: block; }
+    <style>
+        /* --- GAMING THEME VARIABLES --- */
+        :root {
+            --bg-dark: #050505; /* SOLID BLACK/DARK */
+            --panel: #111111;   /* SOLID PANEL */
+            --neon-blue: #00f3ff; 
+            --neon-green: #0aff60; 
+            --neon-red: #ff003c;
+            --text-main: #e2e8f0; 
+            --text-muted: #94a3b8;
+            --border: 1px solid #333;
+        }
 
-    /* FOOTER */
-    footer { background: #111; color: #bbb; padding: 80px 0 30px; margin-top: auto; }
-    .footer-container { max-width: var(--container); margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
-    .footer-col h4 { color: #fff; margin-bottom: 25px; font-size: 1.2rem; }
-    .footer-col a { display: block; color: #888; text-decoration: none; margin-bottom: 12px; font-size: 1rem; transition: 0.3s; }
-    .footer-col a:hover { color: var(--primary); padding-left: 5px; }
-    .copy { text-align: center; border-top: 1px solid #333; margin-top: 60px; padding-top: 30px; font-size: 0.95rem; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
 
-    /* HIDDEN & UTILS */
-    #pipVideo { position: fixed; width: 1px; height: 1px; opacity: 0; pointer-events: none; bottom: 0; right: 0; }
-    
-    /* MOBILE RESPONSIVE QUERIES */
-    @media (max-width: 900px) {
-      .dashboard { grid-template-columns: 1fr; margin-top: 20px; }
-      .fps-num { font-size: 5rem; }
-      h1 { font-size: 2.2rem; }
-      .meter-card { padding: 30px; }
-      .content-area h2 { font-size: 1.8rem; }
-      .controls { flex-direction: column; align-items: flex-start; gap: 10px; }
-      input[type=range] { width: 100%; }
-    }
-  </style>
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            min-height: 100vh; 
+            display: flex; flex-direction: column; 
+            overflow-x: hidden; 
+            /* NO PATTERNS OR GRADIENTS HERE */
+        }
+
+        /* --- HEADER --- */
+        header { 
+            padding: 20px 30px; 
+            border-bottom: var(--border); 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: var(--panel); 
+            position: sticky; top: 0; z-index: 100; 
+        }
+        .brand { 
+            font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; 
+            color: #fff; text-decoration: none; 
+        }
+        .brand span { color: var(--neon-blue); }
+        
+        .header-links a {
+            color: var(--text-muted); margin-left: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s;
+        }
+        .header-links a:hover { color: var(--neon-blue); }
+
+        /* --- DASHBOARD GRID --- */
+        .dashboard-container { 
+            max-width: 1400px; margin: 40px auto; width: 100%; padding: 0 20px; 
+            display: grid; 
+            grid-template-columns: 1fr 380px; 
+            gap: 30px; 
+        }
+
+        /* --- METER CARD --- */
+        .meter-card { 
+            background: var(--panel); border: var(--border); border-radius: 20px; 
+            padding: 50px; position: relative; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .fps-big-number { 
+            font-family: 'Orbitron', sans-serif; font-size: 9rem; font-weight: 900; 
+            color: #fff; line-height: 1; text-shadow: 0 0 30px rgba(0, 243, 255, 0.3); 
+        }
+        .fps-label { 
+            font-size: 1.5rem; color: var(--neon-blue); font-family: 'Rajdhani', sans-serif; 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin-top: 10px;
+        }
+        .status-pill { 
+            margin-top: 25px; padding: 10px 25px; border-radius: 50px; 
+            background: #222; border: 1px solid #444; 
+            color: var(--text-muted); font-size: 1rem; font-weight: 500;
+        }
+        .chart-container { width: 100%; height: 250px; margin-top: 50px; }
+
+        /* --- SIDEBAR WIDGETS --- */
+        .sidebar { display: flex; flex-direction: column; gap: 25px; }
+        
+        .widget-card { 
+            background: var(--panel); border: var(--border); border-radius: 16px; padding: 30px; 
+            transition: transform 0.2s;
+        }
+        .widget-card:hover { border-color: var(--neon-blue); }
+        
+        .widget-title { 
+            font-family: 'Rajdhani', sans-serif; font-size: 1.3rem; color: #fff; 
+            margin-bottom: 15px; border-left: 4px solid var(--neon-blue); padding-left: 15px; letter-spacing: 1px;
+        }
+        
+        .btn-float { 
+            width: 100%; padding: 16px; border: none; border-radius: 8px; 
+            background: var(--neon-blue); 
+            color: #000; font-weight: 800; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; 
+            cursor: pointer; transition: 0.3s; text-transform: uppercase; 
+            display: flex; align-items: center; justify-content: center; gap: 10px; 
+        }
+        .btn-float:hover { background: #fff; }
+
+        /* --- GHOSTING TEST --- */
+        .ghosting-section { grid-column: 1 / -1; margin-top: 20px; }
+        .test-container { 
+            background: #000; border: var(--border); border-radius: 16px; padding: 30px; 
+            overflow: hidden; position: relative; height: 180px; display: flex; align-items: center; 
+        }
+        .moving-ufo { 
+            position: absolute; top: 35%; font-family: 'Orbitron', sans-serif; 
+            color: #fff; font-size: 1.8rem; white-space: nowrap; will-change: transform; 
+            display: flex; align-items: center; gap: 15px; 
+        }
+        .speed-control { 
+            margin-top: 15px; display: flex; gap: 15px; align-items: center; 
+            color: var(--text-muted); font-size: 0.95rem; 
+        }
+        input[type=range] { accent-color: var(--neon-green); width: 200px; cursor: pointer; }
+
+        /* --- BUTTONS --- */
+        .btn-download { background: var(--neon-green); color: #000; margin-top: 15px; }
+        .btn-download:hover { background: #fff; }
+
+        /* --- MASSIVE SEO CONTENT SECTION (DARK MODE) --- */
+        .wiki-section { grid-column: 1 / -1; margin-top: 60px; }
+        
+        .wiki-card { 
+            background: var(--panel); border: 1px solid #333; 
+            border-radius: 16px; padding: 50px; margin-bottom: 40px; 
+        }
+        
+        .wiki-card h2 { 
+            font-family: 'Orbitron', sans-serif; color: #fff; margin-bottom: 25px; 
+            font-size: 2rem; border-bottom: 1px solid #333; padding-bottom: 15px;
+        }
+        .wiki-card h3 { 
+            color: var(--neon-blue); margin-top: 35px; margin-bottom: 15px; 
+            font-family: 'Rajdhani', sans-serif; font-size: 1.6rem; font-weight: 700;
+        }
+        .wiki-card h4 {
+            color: #fff; font-size: 1.2rem; margin: 25px 0 10px; font-weight: 600;
+        }
+        .wiki-card p { 
+            line-height: 1.9; color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; 
+        }
+        .wiki-card ul, .wiki-card ol { 
+            margin-left: 25px; color: var(--text-muted); margin-bottom: 25px; 
+        }
+        .wiki-card li { margin-bottom: 10px; font-size: 1.05rem; }
+        .wiki-card strong { color: #fff; font-weight: 600; }
+        
+        .alert-box {
+            background: rgba(0, 243, 255, 0.05); border-left: 4px solid var(--neon-blue);
+            padding: 20px; margin: 30px 0; border-radius: 0 8px 8px 0;
+        }
+
+        /* --- FAQ --- */
+        .faq-item { border-bottom: 1px solid #333; padding: 20px 0; }
+        .faq-q { color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; cursor: pointer; font-family: 'Rajdhani', sans-serif; }
+        .faq-a { color: var(--text-muted); display: block; }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #000; border-top: var(--border); padding: 70px 20px; margin-top: auto; 
+        }
+        .footer-grid {
+            max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;
+        }
+        .f-col h4 { color: #fff; margin-bottom: 20px; font-family: 'Orbitron', sans-serif; }
+        .f-col a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 12px; transition: 0.2s; }
+        .f-col a:hover { color: var(--neon-blue); padding-left: 5px; }
+        
+        .copyright {
+            text-align: center; margin-top: 50px; color: #444; font-size: 0.9rem;
+            border-top: 1px solid #111; padding-top: 30px;
+        }
+        
+        #pipVideo { position: fixed; width: 1px; height: 1px; opacity: 0; pointer-events: none; bottom: 0; right: 0; }
+        #reportCanvas { display: none; }
+
+        @media (max-width: 950px) { 
+            .dashboard-container { grid-template-columns: 1fr; padding: 0 15px; margin-top: 20px; } 
+            .fps-big-number { font-size: 6rem; }
+            .meter-card { padding: 30px; }
+            .wiki-card { padding: 25px; }
+            .wiki-card h2 { font-size: 1.5rem; }
+            header { padding: 15px 20px; }
+            .header-links { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-box">
-      <a href="index.html" class="logo"><i class="fas fa-crosshairs"></i> XIZOA <span>HUB</span></a>
-    </div>
-  </nav>
-
-  <header>
-    <h1>Live FPS Counter & Hz Tester</h1>
-    <p class="sub-head">The professional tool to check your Monitor Refresh Rate, Real-time FPS, and Screen Ghosting. Works on Desktop, Mobile & Tablets.</p>
-  </header>
-
-  <div class="dashboard" id="captureArea">
-    
-    <div class="meter-card">
-      <div class="fps-num" id="fpsDisplay">--</div>
-      <div class="fps-label">Frames Per Second / Hz</div>
-      <div class="status-badge" id="statusText">Initializing Hardware...</div>
-      <div class="chart-box"><canvas id="fpsChart"></canvas></div>
-    </div>
-
-    <div class="sidebar">
-      <div class="widget">
-        <h3><i class="fas fa-layer-group"></i> Floating FPS Widget</h3>
-        <p>Keep an eye on your FPS while gaming or using other apps with our Picture-in-Picture overlay.</p>
-        <button class="btn-action" onclick="togglePiP()">Start Overlay</button>
-        <canvas id="pipCanvas" width="200" height="200" style="display:none;"></canvas>
-        <video id="pipVideo" autoplay muted playsinline></video>
-      </div>
-
-      <div class="widget">
-        <h3><i class="fas fa-file-export"></i> Export Report</h3>
-        <p>Download a verified screenshot of your screen's performance stats for forums or support.</p>
-        <button class="btn-action secondary" id="btnDownload" onclick="downloadReport()">Download PNG</button>
-      </div>
-    </div>
-
-    <div class="ghosting-area">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-        <h3><i class="fas fa-running"></i> Motion Blur & Ghosting Test</h3>
-      </div>
-      <p style="margin-bottom:20px; color:#666;">Look at the moving object below. If you see a trail or blur behind it, your monitor has a slow pixel response time.</p>
-      
-      <div class="test-track">
-        <div class="ufo" id="ufo">
-          <i class="fas fa-rocket" style="color:var(--primary);"></i> 
-          <span>XIZOA HZ TEST</span>
+    <header>
+        <a href="index.html" class="brand"><i class="fas fa-crosshairs"></i> XIZOA <span>HUB</span></a>
+        <div class="header-links">
+            <a href="index.html">Home</a>
+            <a href="#">Tools</a>
+            <a href="#">Contact</a>
         </div>
-      </div>
-      
-      <div class="controls">
-        <span><strong>Speed Control:</strong></span>
-        <input type="range" min="5" max="40" value="15" oninput="updateSpeed(this.value)">
-        <span id="speedVal" style="font-weight:bold; color:var(--primary);">1500 px/s</span>
-      </div>
+    </header>
+
+    <div class="dashboard-container" id="captureArea">
+        
+        <div class="meter-card">
+            <div class="fps-big-number" id="fpsDisplay">--</div>
+            <div class="fps-label">Real-Time Hz</div>
+            <div class="status-pill"><i class="fas fa-circle-notch fa-spin"></i> <span id="statusText"> Initializing...</span></div>
+            <div class="chart-container"><canvas id="fpsChart"></canvas></div>
+        </div>
+
+        <div class="sidebar">
+            
+            <div class="widget-card" style="border-color: var(--neon-blue);">
+                <div class="widget-title">FLOATING APP WIDGET</div>
+                <p style="font-size:0.9rem; color:#aaa; margin-bottom:20px; line-height: 1.5;">
+                    Monitor your screen Hz while gaming or using other apps with PiP Mode.
+                </p>
+                <button class="btn-float" onclick="togglePiP()"><i class="fas fa-clone"></i> Start Overlay</button>
+                <canvas id="pipCanvas" width="200" height="200" style="display:none;"></canvas>
+                <video id="pipVideo" autoplay muted playsinline></video>
+            </div>
+
+            <div class="widget-card">
+                <div class="widget-title">PERFORMANCE REPORT</div>
+                <p style="font-size:0.9rem; color:#aaa; margin-bottom:20px; line-height: 1.5;">
+                    Download a high-quality proof of your screen's performance stats.
+                </p>
+                <button class="btn-float btn-download" onclick="downloadReport()"><i class="fas fa-camera"></i> Save Result</button>
+            </div>
+
+        </div>
+
+        <div class="ghosting-section">
+            <div class="widget-card" style="border:1px solid var(--neon-green);">
+                <div class="widget-title">MOTION BLUR / GHOSTING TEST</div>
+                <p style="color:#aaa; font-size:0.9rem; margin-bottom:15px;">
+                    Look at the rocket. If it leaves a "trail" or looks blurry, your monitor has ghosting issues.
+                </p>
+                
+                <div class="test-container">
+                    <div class="moving-ufo" id="ufo">
+                        <i class="fas fa-rocket" style="color:var(--neon-green); font-size:2.5rem;"></i> 
+                        <span style="letter-spacing:3px; font-weight:700;">XIZOA HZ TEST</span>
+                    </div>
+                </div>
+                
+                <div class="speed-control">
+                    <span><strong>Speed:</strong></span>
+                    <input type="range" min="5" max="30" value="12" oninput="updateSpeed(this.value)">
+                    <span id="speedVal" style="color:var(--neon-green);">1200 px/s</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="wiki-section">
+            
+            <article class="wiki-card">
+                <h2>The Ultimate Guide to FPS, Refresh Rate (Hz), and Monitor Performance</h2>
+                <p>In the high-octane world of PC gaming and content creation, your hardware's performance is the line between victory and defeat. While a powerful Graphics Card (GPU) is essential, your monitor's ability to display those frames is equally critical. Welcome to <strong>Xizoa Hub's Professional FPS Monitor</strong>, the most advanced online utility designed for gamers, developers, and hardware enthusiasts. Whether you are optimizing your PC for high-end gaming or testing your smartphone's display capabilities, accurate data is the first step toward performance.</p>
+                
+                <div class="alert-box">
+                    <strong>Why Use This Tool?</strong> Unlike basic counters, Xizoa FPS offers a complete suite including a <strong>Real-time Hertz (Hz) Tester, Motion Blur Detector, and Picture-in-Picture (PiP) Overlay</strong>. Our algorithm detects micro-stutters that standard browser counters miss.
+                </div>
+
+                <h3>FPS vs. Hz: Understanding the Difference</h3>
+                <p>One of the most common misconceptions in the gaming community is treating FPS (Frames Per Second) and Hz (Hertz) as the same metric. While they work together to produce the image you see, they originate from different sources.</p>
+                
+                <h4>1. What is FPS (Frames Per Second)?</h4>
+                <p>FPS is a measure of performance generated by your <strong>CPU (Processor) and GPU (Graphics Card)</strong>. It represents how many unique images your system can render and output every second.</p>
+                <ul>
+                    <li><strong>Low FPS (< 30):</strong> The video will look choppy, like a slideshow. Unplayable for shooters.</li>
+                    <li><strong>Standard FPS (30-60):</strong> The standard for console gaming and movies. Acceptable for RPGs.</li>
+                    <li><strong>High FPS (60-144+):</strong> The gold standard for PC gaming. Animations are fluid, and inputs feel snappy.</li>
+                </ul>
+
+                <h4>2. What is Hz (Refresh Rate)?</h4>
+                <p>Hz is a hardware limit of your <strong>Monitor or Phone Screen</strong>. It represents how many times per second the screen can physically update the pixels.</p>
+                <ul>
+                    <li><strong>60Hz:</strong> Standard office monitors. Refreshes 60 times a second.</li>
+                    <li><strong>144Hz / 240Hz / 360Hz:</strong> Dedicated Esports monitors designed for CS:GO, Valorant, and Overwatch.</li>
+                </ul>
+
+                <h3>What is Screen Ghosting?</h3>
+                <p>Have you ever moved your mouse quickly or turned your camera in a game, only to see a blurry trail behind objects? This phenomenon is called <strong>Ghosting</strong>. It occurs when the pixels on your LCD/OLED panel cannot change colors fast enough to keep up with the moving image (Pixel Response Time).</p>
+                <p>Use our <strong>Motion Blur Test</strong> above. Slide the speed to maximum. If the UFO looks sharp, your monitor is fast (1ms GtG). If it smears, you have ghosting.</p>
+
+                <h3>Optimization Guide: How to Boost FPS?</h3>
+                <ol>
+                    <li><strong>Enable Hardware Acceleration:</strong> Ensure your browser settings allow GPU usage.</li>
+                    <li><strong>Manage V-Sync:</strong> Turn V-Sync OFF for competitive games to reduce input lag, but turn it ON for story games to stop screen tearing.</li>
+                    <li><strong>Thermal Throttling:</strong> If FPS drops after 10 minutes, clean your PC's dust filters.</li>
+                </ol>
+
+                <h3>Advanced Sync Technologies: G-Sync & FreeSync</h3>
+                <p>Modern gaming monitors come with Variable Refresh Rate (VRR) technologies. Nvidia's G-Sync and AMD's FreeSync allow the monitor to adjust its Hz dynamically to match the GPU's FPS. This eliminates screen tearing without the input lag penalty of V-Sync.</p>
+                <p>To test if your G-Sync is working, run this test. If the FPS fluctuates but the motion remains tear-free, your VRR is active.</p>
+
+                <h3>Mobile Displays: 90Hz and 120Hz ProMotion</h3>
+                <p>Smartphones have evolved. Most flagships now feature high refresh rate screens. However, to save battery, they often throttle down to 60Hz when not touching the screen. Use this tool on your mobile browser to see if your phone maintains 120Hz during static web browsing or scrolling.</p>
+
+                <h3>Frequently Asked Questions (FAQ)</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-q">Does this tool work on Mobile?</div>
+                    <div class="faq-a">Yes! It is fully responsive. You can test if your phone is running at 90Hz or 120Hz (ProMotion/Adaptive Sync).</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-q">My monitor is 144Hz but this shows 60. Why?</div>
+                    <div class="faq-a">Check your OS Display Settings. Also, ensure you are using a DisplayPort cable, as old HDMI cables cap at 60Hz.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Is this tool free?</div>
+                    <div class="faq-a">Yes, Xizoa Hub provides this utility 100% free with no ads.</div>
+                </div>
+            </article>
+
+        </section>
+
     </div>
 
-  </div>
+    <footer>
+        <div class="footer-grid">
+            <div class="f-col">
+                <h4>Xizoa Hub</h4>
+                <p>Xizoa Hub provides cutting-edge online tools for developers, designers, and gamers. Fast, Free, and Secure.</p>
+            </div>
+            <div class="f-col">
+                <h4>Gaming Tools</h4>
+                <a href="fps-checker.html">FPS Checker</a>
+                <a href="aim-trainer.html">Aim Trainer</a>
+                <a href="cps-test.html">CPS Test</a>
+            </div>
+            <div class="f-col">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 Xizoa Hub • Developed by Priyanshu
+        </div>
+    </footer>
 
-  <div class="content-area">
-    <article class="article-box">
-      
-      <h2>The Ultimate Guide to FPS, Refresh Rate, and Monitor Performance</h2>
-      <p>In the digital age, whether you are a competitive gamer, a professional video editor, or just a casual user consuming high-definition content, the smoothness of your display plays a pivotal role in your experience. Two terms dominate this conversation: <strong>FPS (Frames Per Second)</strong> and <strong>Hz (Hertz)</strong>. While often used interchangeably, they refer to distinctly different aspects of your visual pipeline.</p>
-      <p>Welcome to <strong>Xizoa Hub's Live FPS & Hz Tester</strong>. This tool is meticulously designed to push your browser and hardware to their limits, giving you an accurate reading of your screen's capabilities. Unlike basic counters, our utility not only measures frame rates but also helps diagnose common display issues like Ghosting, Motion Blur, and Stuttering.</p>
+    <script>
+        // --- FPS ENGINE ---
+        const fpsEl = document.getElementById('fpsDisplay');
+        const statusTxt = document.getElementById('statusText');
+        let frames = 0, lastTime = performance.now(), fpsValue = 0;
 
-      <h3>FPS vs. Hz: Understanding the Core Difference</h3>
-      <p>To optimize your system, you must first understand what these metrics essentially mean:</p>
-      
-      <h4>1. FPS (Frames Per Second)</h4>
-      <p>FPS is a measure of <strong>Performance</strong>. It is determined by your computer's CPU and GPU (Graphics Processing Unit). It represents how many unique images or "frames" your system can generate and send to the display every second.</p>
-      <ul>
-        <li><strong>30 FPS:</strong> The baseline for console gaming (PS4, Switch) and movies. It feels cinematic but can feel sluggish in fast-paced scenarios.</li>
-        <li><strong>60 FPS:</strong> The gold standard for smooth gameplay. Most standard office monitors and phones run at this rate.</li>
-        <li><strong>120+ FPS:</strong> The territory of high-end PC gaming. Motions appear incredibly fluid, and input latency is significantly reduced.</li>
-      </ul>
+        // Chart Init
+        const ctx = document.getElementById('fpsChart').getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+        gradient.addColorStop(0, 'rgba(0, 243, 255, 0.5)');
+        gradient.addColorStop(1, 'rgba(0, 243, 255, 0)');
 
-      <h4>2. Hz (Refresh Rate)</h4>
-      <p>Hz is a measure of <strong>Hardware Capability</strong>. It represents the number of times per second your monitor physically updates the pixels on the screen. It doesn't matter if your PC is generating 200 FPS; if your monitor is 60Hz, you will only see 60 images per second.</p>
-      <div class="highlight-box">
-        <strong>The Bottleneck Rule:</strong> Your visual experience is always limited by the lower of the two numbers. <br>
-        <em>Example:</em> 300 FPS on a 60Hz Monitor = You see 60 FPS.<br>
-        <em>Example:</em> 60 FPS on a 144Hz Monitor = You see 60 FPS.
-      </div>
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: { labels: Array(30).fill(''), datasets: [{ data: Array(30).fill(60), borderColor: '#00f3ff', backgroundColor: gradient, borderWidth: 2, tension: 0.4, fill: true, pointRadius: 0 }] },
+            options: { responsive: true, maintainAspectRatio: false, animation: false, scales: { x: {display:false}, y: {display:false} }, plugins: {legend:{display:false}} }
+        });
 
-      <h2>Why Screen Refresh Rate Matters in 2025</h2>
-      <p>With the release of next-gen consoles (PS5, Xbox Series X) and powerful GPUs (RTX 40-Series), high refresh rate displays have become mainstream. Here is why upgrading to a high Hz monitor is beneficial:</p>
-      
-      <h3>Competitive Advantage (Gaming)</h3>
-      <p>In shooter games like <em>Valorant, CS:GO, Call of Duty,</em> and <em>Fortnite</em>, seeing your enemy a fraction of a second earlier can be the difference between winning and losing. A 144Hz monitor updates the image more than twice as fast as a 60Hz one, giving you up-to-date visual information and smoother target tracking.</p>
+        function loop() {
+            frames++;
+            const now = performance.now();
+            if (now - lastTime >= 1000) {
+                fpsValue = frames;
+                frames = 0;
+                lastTime = now;
+                
+                fpsEl.innerText = fpsValue;
+                
+                let color = '#ff003c'; 
+                let msg = ' Low Performance';
+                if(fpsValue >= 50) { color = '#00f3ff'; msg = ' Smooth (Optimal)'; }
+                if(fpsValue >= 120) { color = '#0aff60'; msg = ' Pro Gaming (High)'; }
+                
+                fpsEl.style.textShadow = `0 0 40px ${color}`;
+                statusTxt.innerText = msg;
+                statusTxt.style.color = color;
+                
+                // Chart
+                const d = chart.data.datasets[0].data; d.shift(); d.push(fpsValue);
+                chart.data.datasets[0].borderColor = color;
+                chart.update();
 
-      <h3>Reduced Eye Strain</h3>
-      <p>Higher refresh rates reduce the perceived flicker of the screen (even if it's imperceptible to the conscious mind). Scrolling through text, web pages, and social media feeds feels much smoother and easier on the eyes on 90Hz or 120Hz mobile screens compared to standard 60Hz displays.</p>
-
-      <h2>Diagnosing Display Issues: Ghosting & Motion Blur</h2>
-      <p>Even with high FPS and Hz, image quality can suffer due to panel technology. Our tool includes a specific <strong>Ghosting Test</strong> to help you spot this.</p>
-      
-      <h4>What is Ghosting?</h4>
-      <p>Ghosting looks like a faint trail or smear following a moving object. It happens when the pixels on your LCD/OLED panel take too long to switch from one color to another (Pixel Response Time). This is common in VA panels and cheaper IPS monitors.</p>
-      
-      <h4>How to Fix Ghosting?</h4>
-      <ul>
-        <li><strong>Check Overdrive Settings:</strong> Most monitors have an "Overdrive" or "Response Time" setting in their OSD menu. Setting this to "Fast" or "Extreme" can reduce ghosting, though setting it too high might cause "Inverse Ghosting" (bright trails).</li>
-        <li><strong>Enable Backlight Strobing:</strong> Technologies like ULMB (Ultra Low Motion Blur) or DyAc rapidly turn the backlight off and on to hide pixel transitions, drastically clearing up motion.</li>
-      </ul>
-
-      <h2>V-Sync, G-Sync, and FreeSync Explained</h2>
-      <p>Screen Tearing is an ugly visual artifact where the screen shows two different frames at once, creating a horizontal split. Sync technologies aim to solve this.</p>
-      
-      <h4>V-Sync (Vertical Sync)</h4>
-      <p>The oldest method. It forces the GPU to wait for the monitor's refresh cycle before sending a frame. While it eliminates tearing, it introduces significant <strong>Input Lag</strong> and can cause stuttering if FPS drops below the refresh rate.</p>
-      
-      <h4>G-Sync (NVIDIA) & FreeSync (AMD)</h4>
-      <p>These are "Variable Refresh Rate" (VRR) technologies. Instead of the GPU waiting for the monitor, the monitor waits for the GPU. The screen's Hz changes dynamically to match your FPS. This provides a tear-free experience with zero input lag and no stuttering.</p>
-
-      <h2>Mobile Displays: 60Hz vs 90Hz vs 120Hz</h2>
-      <p>Modern smartphones are pushing boundaries. 
-      <br><strong>60Hz:</strong> iPhone 13/14 (Base models), Budget Androids.
-      <br><strong>90Hz:</strong> Pixel A-Series, Mid-range Androids. Smooth scrolling balance.
-      <br><strong>120Hz (ProMotion):</strong> iPhone Pro models, Galaxy S-Series. Ultra-fluid animation.</p>
-      <p>Use this tool on your phone to verify if your device is actually running at 120Hz or if it's throttling down to save battery.</p>
-
-      <h2>Browser vs. Native Performance</h2>
-      <p>It is important to note that this tool runs within your web browser (Chrome, Firefox, Safari). Browsers are generally capped at the monitor's refresh rate due to V-Sync being enabled by default in the browser engine. Therefore, this tool is excellent for testing <strong>Hz (Refresh Rate)</strong> but may not reflect the raw maximum FPS your GPU can achieve in a native game engine.</p>
-      <p>To get the most accurate result, close other tabs, ensure your laptop is plugged in (Performance Mode), and enable "Hardware Acceleration" in your browser settings.</p>
-
-      <h2>Frequently Asked Questions (FAQ)</h2>
-      
-      <div class="faq-item">
-        <div class="faq-q">My monitor is 144Hz but this tool shows 60 FPS. Why?</div>
-        <div class="faq-a">This is the most common issue. First, check your Windows Display Settings > Advanced Display Settings and ensure the Refresh Rate is set to 144Hz. Second, check if you are using an HDMI cable that supports 144Hz (older HDMI cables cap at 60Hz). DisplayPort is recommended.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Does this tool work on mobile?</div>
-        <div class="faq-a">Yes! Xizoa FPS Checker is fully responsive. It works on Android and iOS devices to test 90Hz and 120Hz screens.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Is a higher Hz always better?</div>
-        <div class="faq-a">Diminishing returns apply. The jump from 60Hz to 144Hz is massive. The jump from 144Hz to 240Hz is noticeable but smaller. From 240Hz to 360Hz, only pro players might notice the difference.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">What is the "Floating Widget"?</div>
-        <div class="faq-a">This unique feature uses the Picture-in-Picture API to detach the FPS counter from the browser window. You can place it over other windows to monitor performance while multitasking.</div>
-      </div>
-
-      <br>
-      <p>Optimizing your display setup is the first step towards a better digital experience. Whether you are debugging a stuttering issue or just setting up a new gaming rig, <strong>Xizoa Hub</strong> is here to provide the accurate data you need.</p>
-
-    </article>
-  </div>
-
-  <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <h4>About Xizoa Hub</h4>
-        <p>Xizoa Hub offers free, high-quality online tools for creators, developers, and gamers. Simple, Fast, and Secure.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Tools</h4>
-        <a href="index.html">Home</a>
-        <a href="#">FPS Checker</a>
-        <a href="#">QR Generator</a>
-        <a href="#">Video Downloader</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Contact</a>
-        <a href="#">DMCA</a>
-      </div>
-    </div>
-    <div class="copy">
-      &copy; 2025 Xizoa Hub • Developed by Priyanshu
-    </div>
-  </footer>
-
-  <script>
-    // --- FPS ENGINE ---
-    const fpsEl = document.getElementById('fpsDisplay');
-    const statusTxt = document.getElementById('statusText');
-    let frames = 0, lastTime = performance.now(), fpsValue = 0;
-
-    // Chart Init
-    const ctx = document.getElementById('fpsChart').getContext('2d');
-    const chart = new Chart(ctx, {
-      type: 'line',
-      data: { 
-        labels: Array(40).fill(''), 
-        datasets: [{ 
-          data: Array(40).fill(60), 
-          borderColor: '#007bff', 
-          backgroundColor: 'rgba(0, 123, 255, 0.1)', 
-          borderWidth: 3, 
-          tension: 0.4, 
-          fill: true, 
-          pointRadius: 0 
-        }] 
-      },
-      options: { 
-        responsive: true, 
-        maintainAspectRatio: false, 
-        animation: false, 
-        scales: { x: {display:false}, y: {display:false, min: 0} }, 
-        plugins: {legend:{display:false}} 
-      }
-    });
-
-    function loop() {
-      frames++;
-      const now = performance.now();
-      if (now - lastTime >= 1000) {
-        fpsValue = frames;
-        frames = 0;
-        lastTime = now;
-        
-        fpsEl.innerText = fpsValue;
-        
-        let msg = 'Low Performance';
-        let color = '#dc3545';
-        let bg = '#fff5f5';
-
-        if(fpsValue >= 50) { msg = 'Smooth (Good)'; color = '#28a745'; bg = '#e6fffa'; }
-        if(fpsValue >= 100) { msg = 'Ultra Smooth (Pro)'; color = '#007bff'; bg = '#eef2ff'; }
-        
-        statusTxt.innerText = msg;
-        statusTxt.style.color = color;
-        statusTxt.style.background = bg;
-        statusTxt.style.borderColor = color;
-
-        // Update Chart
-        const d = chart.data.datasets[0].data; d.shift(); d.push(fpsValue);
-        chart.data.datasets[0].borderColor = color;
-        chart.data.datasets[0].backgroundColor = color + '20'; // Add transparency
-        chart.update();
-
-        updatePiPCanvas(fpsValue, color);
-      }
-      requestAnimationFrame(loop);
-    }
-    loop();
-
-    // --- GHOSTING TEST ---
-    const ufo = document.getElementById('ufo');
-    let ufoPos = 0;
-    let ufoSpeed = 15;
-    
-    function updateSpeed(val) {
-      ufoSpeed = parseInt(val);
-      document.getElementById('speedVal').innerText = (val * 100) + " px/s";
-    }
-
-    function animateUfo() {
-      const containerWidth = document.querySelector('.test-track').offsetWidth;
-      ufoPos += ufoSpeed;
-      if(ufoPos > containerWidth) ufoPos = -150;
-      ufo.style.transform = `translateX(${ufoPos}px)`;
-      requestAnimationFrame(animateUfo);
-    }
-    animateUfo();
-
-    // --- PIP WIDGET ---
-    const pipCanvas = document.getElementById('pipCanvas');
-    const pipCtx = pipCanvas.getContext('2d');
-    const pipVideo = document.getElementById('pipVideo');
-
-    function updatePiPCanvas(val, color) {
-      pipCtx.fillStyle = '#ffffff';
-      pipCtx.fillRect(0, 0, 200, 200);
-      
-      pipCtx.lineWidth = 15;
-      pipCtx.strokeStyle = color;
-      pipCtx.strokeRect(0, 0, 200, 200);
-
-      pipCtx.font = '900 80px sans-serif';
-      pipCtx.fillStyle = '#111';
-      pipCtx.textAlign = 'center';
-      pipCtx.textBaseline = 'middle';
-      pipCtx.fillText(val, 100, 85);
-      
-      pipCtx.font = '600 20px sans-serif';
-      pipCtx.fillStyle = '#666';
-      pipCtx.fillText('FPS / Hz', 100, 145);
-    }
-
-    async function togglePiP() {
-      try {
-        if (document.pictureInPictureElement) { await document.exitPictureInPicture(); } 
-        else { 
-          const stream = pipCanvas.captureStream(30); 
-          pipVideo.srcObject = stream; 
-          await pipVideo.play(); 
-          await pipVideo.requestPictureInPicture(); 
+                updatePiPCanvas(fpsValue, color);
+            }
+            requestAnimationFrame(loop);
         }
-      } catch (e) {
-        alert("PiP not supported. Please allow permissions or interact with the page first.");
-      }
-    }
+        loop();
 
-    // --- DOWNLOAD ---
-    function downloadReport() {
-      const btn = document.getElementById('btnDownload');
-      const area = document.getElementById('captureArea');
-      
-      const originalText = btn.innerText;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
-      
-      html2canvas(area, { backgroundColor: '#ffffff', scale: 2 }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'Xizoa-FPS-Report.png';
-        link.href = canvas.toDataURL();
-        link.click();
-        btn.innerHTML = '<i class="fas fa-check"></i> Saved!';
-        setTimeout(() => btn.innerText = originalText, 2000);
-      });
-    }
-  </script>
+        // --- GHOSTING TEST ---
+        const ufo = document.getElementById('ufo');
+        let ufoPos = 0;
+        let ufoSpeed = 12;
+        
+        function updateSpeed(val) {
+            ufoSpeed = parseInt(val);
+            document.getElementById('speedVal').innerText = (val * 100) + " px/s";
+        }
+
+        function animateUfo() {
+            const containerWidth = document.querySelector('.test-container').offsetWidth;
+            ufoPos += ufoSpeed;
+            if(ufoPos > containerWidth) ufoPos = -250;
+            ufo.style.transform = `translateX(${ufoPos}px)`;
+            requestAnimationFrame(animateUfo);
+        }
+        animateUfo();
+
+        // --- PIP WIDGET ---
+        const pipCanvas = document.getElementById('pipCanvas');
+        const pipCtx = pipCanvas.getContext('2d');
+        const pipVideo = document.getElementById('pipVideo');
+
+        function updatePiPCanvas(val, color) {
+            pipCtx.fillStyle = '#0b1221';
+            pipCtx.fillRect(0, 0, 200, 200);
+            
+            pipCtx.lineWidth = 10;
+            pipCtx.strokeStyle = color;
+            pipCtx.strokeRect(0, 0, 200, 200);
+
+            pipCtx.font = 'bold 90px sans-serif';
+            pipCtx.fillStyle = color;
+            pipCtx.textAlign = 'center';
+            pipCtx.textBaseline = 'middle';
+            pipCtx.fillText(val, 100, 90);
+            
+            pipCtx.font = 'bold 20px sans-serif';
+            pipCtx.fillStyle = '#fff';
+            pipCtx.fillText('FPS / Hz', 100, 140);
+        }
+
+        async function togglePiP() {
+            try {
+                if (document.pictureInPictureElement) { await document.exitPictureInPicture(); } 
+                else { 
+                    const stream = pipCanvas.captureStream(30); 
+                    pipVideo.srcObject = stream; 
+                    await pipVideo.play(); 
+                    await pipVideo.requestPictureInPicture(); 
+                }
+            } catch (e) {
+                alert("PiP Mode requires user interaction or is not supported by this browser.");
+            }
+        }
+
+        // --- REPORT DOWNLOAD ---
+        function downloadReport() {
+            const btn = document.querySelector('.btn-download');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            const element = document.querySelector('.meter-card');
+            html2canvas(element, { scale: 2, backgroundColor: '#0b1221' }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Xizoa-FPS-Report.png';
+                link.href = canvas.toDataURL();
+                link.click();
+                btn.innerHTML = '<i class="fas fa-check"></i> Saved!';
+                setTimeout(() => btn.innerHTML = '<i class="fas fa-camera"></i> Save Result', 2000);
+            });
+        }
+    </script>
 </body>
 </html>
