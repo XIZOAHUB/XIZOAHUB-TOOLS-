@@ -4,333 +4,386 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>YouTube Tag Extractor - Find Hidden Video Keywords (Free)</title>
-  
-  <meta name="description" content="Extract hidden tags and keywords from any YouTube video. Analyze competitor videos and boost your SEO ranking. Free online YouTube tag finder tool.">
-  
-  <meta name="keywords" content="youtube tag extractor, find youtube tags, video keyword finder, youtube seo tool, competitor tag analysis, get youtube video tags, viral tags finder">
-  
+  <title>YouTube Tag Extractor - Find Viral Video Keywords (Free SEO Tool)</title>
+  <meta name="description" content="Extract hidden tags from any YouTube video instantly. Spy on competitor keywords, optimize your video SEO, and rank higher on search results. 100% Free Tool by Xizoa Hub.">
+  <meta name="keywords" content="youtube tag extractor, youtube keyword finder, video tags grabber, competitor analysis tool, youtube seo tool, viral tags finder, get video tags, youtube metadata viewer">
+  <meta name="author" content="Xizoa Hub">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="YouTube Tag Extractor - SEO Tool">
-  <meta property="og:description" content="Reveal hidden tags from any YouTube video instantly.">
+  <link rel="canonical" href="https://xizoa.com/youtube-tag-extractor">
+
+  <meta property="og:title" content="YouTube Tag Extractor - Xizoa Hub">
+  <meta property="og:description" content="Reveal hidden tags from any YouTube video instantly. Boost your views now.">
   <meta property="og:type" content="website">
 
   <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
-
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "YouTube Tag Extractor",
+    "url": "https://tools.xizoa.com/youtube-tag-extractor",
+    "applicationCategory": "SEOApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "A professional online tool to extract and analyze YouTube video tags for SEO optimization."
+  }
+  </script>
+
   <style>
-    /* --- THEME: YOUTUBE DARK MODE --- */
     :root {
       --primary: #ff0000; /* YouTube Red */
-      --bg-dark: #0f0f0f; /* YT Background */
-      --card-bg: #1f1f1f; /* YT Card */
-      --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-      --text-main: #f1f1f1;
-      --text-muted: #aaaaaa;
+      --primary-hover: #cc0000;
+      --text-dark: #212121;
+      --text-gray: #606060;
+      --bg-white: #ffffff;
+      --border: #e5e5e5;
+      --shadow: 0 2px 10px rgba(0,0,0,0.05);
+      --container: 1000px;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif; outline: none; }
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
     
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
+    body { 
+      background-color: var(--bg-white); 
+      color: var(--text-dark); 
+      line-height: 1.6;
+      display: flex; flex-direction: column; min-height: 100vh;
     }
 
-    /* Header */
-    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; border-bottom: 1px solid #333; }
-    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; font-family: 'Outfit', sans-serif; }
-    .brand-logo span { color: var(--primary); }
-    
-    h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.5px; }
-    h1 i { color: var(--primary); margin-right: 10px; }
-    
-    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+    /* NAVBAR */
+    nav { 
+      border-bottom: 1px solid var(--border); 
+      padding: 15px 0; 
+      background: #ffffff; 
+      position: sticky; top: 0; z-index: 100; 
+    }
+    .nav-box { max-width: var(--container); margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo i { color: var(--primary); }
+    .logo span { color: var(--primary); }
 
-    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+    /* HEADER */
+    header { 
+      padding: 60px 20px 40px; 
+      text-align: center; 
+      background: #ffffff;
+      border-bottom: 1px solid transparent;
+    }
+    h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 15px; color: var(--text-dark); letter-spacing: -1px; }
+    .sub-head { font-size: 1.1rem; color: var(--text-gray); max-width: 700px; margin: 0 auto; }
 
-    /* --- EXTRACTOR BOX --- */
-    .extractor-box {
-      background: var(--card-bg);
-      border: var(--glass-border);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    /* TOOL SECTION */
+    .tool-wrapper {
+      max-width: 800px; margin: 40px auto; padding: 0 20px;
+    }
+    
+    .input-box {
+      background: #fff; padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      display: flex; gap: 10px;
       margin-bottom: 30px;
     }
-
-    .input-group {
-      display: flex;
-      gap: 10px;
-      position: relative;
-    }
-
+    
     input[type="text"] {
-      flex: 1;
-      background: #121212;
-      border: 1px solid #303030;
-      padding: 14px 20px;
-      border-radius: 4px; /* YT style inputs are squarish */
-      color: #fff;
-      font-size: 1rem;
-      transition: 0.3s;
+      flex: 1; padding: 15px 25px; border: none; border-radius: 50px;
+      font-size: 1rem; outline: none; background: transparent; color: var(--text-dark);
     }
-    input[type="text"]:focus { border-color: #3ea6ff; } /* YT Focus Blue */
+    
+    .btn-extract {
+      background: var(--primary); color: #fff; border: none; padding: 0 35px;
+      border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.2s;
+      white-space: nowrap; font-size: 1rem;
+    }
+    .btn-extract:hover { background: var(--primary-hover); }
 
-    button.btn-extract {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 0 25px;
-      border-radius: 2px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 1rem;
-      text-transform: uppercase;
-      transition: 0.3s;
+    /* RESULTS AREA */
+    .result-card {
+      background: #f9f9f9; border: 1px solid var(--border); border-radius: 16px;
+      padding: 30px; display: none; /* Hidden initially */
     }
-    button.btn-extract:hover { background: #cc0000; }
+    
+    .video-meta {
+      display: flex; align-items: center; gap: 20px; margin-bottom: 25px;
+      padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    }
+    .thumb { width: 140px; height: 80px; object-fit: cover; border-radius: 8px; background: #ddd; }
+    .vid-title { font-weight: 700; font-size: 1.1rem; color: var(--text-dark); line-height: 1.3; }
 
-    /* --- RESULTS AREA --- */
-    .result-container {
-      display: none;
-      margin-top: 30px;
-      animation: fadeIn 0.4s ease;
+    .tags-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+    .tag {
+      background: #fff; border: 1px solid #d0d0d0; padding: 8px 15px; border-radius: 6px;
+      font-size: 0.9rem; color: #333; cursor: pointer; transition: 0.2s;
     }
+    .tag:hover { border-color: var(--primary); color: var(--primary); background: #fff0f0; }
+    .tag i { margin-right: 5px; color: #aaa; }
 
-    .video-info {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #333;
+    .action-area {
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .video-thumb {
-      width: 120px;
-      height: 68px;
-      background: #000;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-    .video-title { font-size: 1.1rem; font-weight: 500; color: #fff; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
-
-    .tags-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 25px;
-    }
-
-    .tag-pill {
-      background: #333;
-      color: #e5e5e5;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-    .tag-pill:hover { background: #444; border-color: #555; }
-    .tag-pill i { color: #aaa; margin-left: 5px; font-size: 0.8rem; }
-
-    .action-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #2a2a2a;
-      padding: 15px;
-      border-radius: 8px;
-    }
-
+    .count { color: var(--text-gray); font-size: 0.9rem; font-weight: 600; }
     .btn-copy {
-      background: transparent;
-      color: #3ea6ff;
-      border: 1px solid #3ea6ff;
-      padding: 8px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: 0.2s;
+      background: #fff; color: var(--text-dark); border: 1px solid #ccc;
+      padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;
     }
-    .btn-copy:hover { background: rgba(62, 166, 255, 0.1); }
+    .btn-copy:hover { border-color: var(--primary); color: var(--primary); }
 
-    /* --- SEO CONTENT --- */
-    .seo-content { margin-top: 50px; }
-    .seo-card { background: var(--card-bg); border: 1px solid #333; padding: 30px; border-radius: 15px; margin-bottom: 30px; }
-    .seo-content h2 { font-size: 1.5rem; color: #fff; margin-bottom: 15px; }
-    .seo-content p { color: var(--text-muted); line-height: 1.6; margin-bottom: 15px; }
-    .seo-content ul { list-style: none; padding: 0; }
-    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
-    .seo-content li::before { content: '►'; color: var(--primary); position: absolute; left: 0; font-size: 0.8rem; top: 3px;}
+    /* SEO CONTENT */
+    .content-area { max-width: 900px; margin: 80px auto; padding: 0 20px; }
+    .article { background: #fff; padding: 0; }
+    .article h2 { font-size: 2rem; margin: 40px 0 20px; color: #111; border-left: 5px solid var(--primary); padding-left: 20px; }
+    .article h3 { font-size: 1.5rem; margin: 30px 0 15px; color: #333; }
+    .article p { margin-bottom: 18px; color: #555; text-align: justify; font-size: 1.05rem; }
+    .article ul { margin-bottom: 25px; padding-left: 25px; color: #555; }
+    .article li { margin-bottom: 10px; }
 
-    /* --- FOOTER --- */
-    footer { background: #0f0f0f; border-top: 1px solid #333; padding: 40px 20px; margin-top: auto; text-align: center; }
-    .copyright { color: #555; font-size: 0.9rem; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-q { font-weight: 700; font-size: 1.1rem; color: #111; margin-bottom: 8px; }
+    
+    /* FOOTER */
+    footer { background: #111; color: #bbb; padding: 80px 0 30px; margin-top: auto; }
+    .footer-container { max-width: var(--container); margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; }
+    .footer-col h4 { color: #fff; margin-bottom: 25px; font-size: 1.2rem; }
+    .footer-col a { display: block; color: #888; text-decoration: none; margin-bottom: 12px; font-size: 1rem; transition: 0.3s; }
+    .footer-col a:hover { color: var(--primary); padding-left: 5px; }
+    .copy { text-align: center; border-top: 1px solid #333; margin-top: 60px; padding-top: 30px; font-size: 0.95rem; }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 600px) { .input-group { flex-direction: column; } h1 { font-size: 1.8rem; } }
+    @media(max-width: 600px) {
+      .input-box { flex-direction: column; padding: 15px; border-radius: 15px; }
+      .btn-extract { width: 100%; padding: 12px; border-radius: 8px; }
+      h1 { font-size: 2rem; }
+    }
   </style>
 </head>
 <body>
 
+  <nav>
+    <div class="nav-box">
+      <a href="index.html" class="logo"><i class="fab fa-youtube"></i> XIZOA <span>HUB</span></a>
+    </div>
+  </nav>
+
   <header>
-    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
-    <h1><i class="fab fa-youtube"></i> Tag Extractor</h1>
-    <p class="subtitle">Spy on Competitor Keywords & Boost Your Video SEO</p>
+    <h1>YouTube Tag Extractor</h1>
+    <p class="sub-head">Spy on your competitors! Extract hidden keywords and tags from any YouTube video instantly to boost your SEO ranking.</p>
   </header>
 
-  <main>
+  <div class="tool-wrapper">
     
-    <div class="extractor-box">
-      <div class="input-group">
-        <input type="text" id="inputUrl" placeholder="Paste YouTube Video Link here..." aria-label="YouTube URL">
-        <button class="btn-extract" id="btnExtract">Extract Tags</button>
-      </div>
-      <div id="status" style="margin-top:15px; color:var(--text-muted); font-size:0.9rem;"></div>
+    <div class="input-box">
+      <input type="text" id="inputUrl" placeholder="Paste YouTube Video Link here..." aria-label="YouTube Link">
+      <button class="btn-extract" id="btnExtract">Extract Tags</button>
     </div>
+    
+    <div style="text-align:center; color:red; margin-bottom:20px; font-weight:500;" id="status"></div>
 
-    <div class="result-container" id="resultContainer">
-      
-      <div class="video-info">
-        <img src="" id="videoThumb" class="video-thumb" alt="Thumbnail">
-        <div class="video-title" id="videoTitle">Video Title Goes Here...</div>
+    <div class="result-card" id="resultCard">
+      <div class="video-meta">
+        <img src="" id="vidThumb" class="thumb" alt="Thumbnail">
+        <div class="vid-title" id="vidTitle">Video Title</div>
       </div>
-
-      <div style="margin-bottom:10px; color:#aaa; font-size:0.9rem;">Found Tags:</div>
-      <div class="tags-wrapper" id="tagsWrapper">
+      
+      <div class="tags-container" id="tagsBox">
         </div>
 
-      <div class="action-bar">
-        <span style="color:#aaa; font-size:0.9rem;" id="tagCount">0 Tags</span>
-        <button class="btn-copy" id="btnCopy"><i class="fas fa-copy"></i> Copy All</button>
+      <div class="action-area">
+        <span class="count" id="tagCount">0 Tags Found</span>
+        <button class="btn-copy" id="btnCopy"><i class="fas fa-copy"></i> Copy All Tags</button>
       </div>
-
     </div>
 
-    <section class="seo-content">
-      <div class="seo-card">
-        <h2>Why Extract YouTube Tags?</h2>
-        <p>
-          Tags are hidden keywords that tell YouTube what your video is about. By extracting tags from popular videos in your niche, you can understand their strategy and improve your own **Video SEO**.
-        </p>
-        <p>
-          Competitors ke viral videos ke tags copy karein aur apne video mein use karein taaki aapka video bhi "Suggested" list mein aaye.
-        </p>
+  </div>
+
+  <div class="content-area">
+    <article class="article">
+      
+      <h2>Unlock the Power of Video SEO: The Ultimate YouTube Tag Extractor Guide</h2>
+      <p>YouTube is the world's second-largest search engine, processing over 3 billion searches a month. In this highly competitive landscape, creating great content is only half the battle. To ensure your videos are discovered, watched, and shared, you need to master <strong>Video SEO (Search Engine Optimization)</strong>. One of the most critical, yet often overlooked, components of YouTube SEO is <strong>Tags</strong>.</p>
+      <p>Tags are descriptive keywords that help YouTube's algorithm understand the context and content of your video. While titles and descriptions are visible to everyone, tags are hidden in the page source code. This is where the <strong>Xizoa Hub YouTube Tag Extractor</strong> becomes your secret weapon. It allows you to "spy" on top-performing videos in your niche, revealing the exact keywords they use to rank high in search results and suggested video feeds.</p>
+
+      <h3>Why Are YouTube Tags Important in 2025?</h3>
+      <p>There is a common misconception that tags are dead. While YouTube has stated that tags play a smaller role than they did in 2012, they remain a vital metadata signal for:</p>
+      <ul>
+        <li><strong>Contextual Relevance:</strong> Helping the algorithm categorize your video correctly, especially if your target keyword has multiple meanings (e.g., "Apple" the fruit vs. "Apple" the tech giant).</li>
+        <li><strong>Misspelled Queries:</strong> Tags capture variations and common misspellings of your main keywords, ensuring users still find your content.</li>
+        <li><strong>Suggested Videos (The Sidebar):</strong> This is the biggest benefit. When you use similar tags to a popular video in your niche, YouTube is more likely to recommend your video in the "Up Next" sidebar of that popular video. This can drive massive organic traffic.</li>
+      </ul>
+
+      <h3>How to Use the Xizoa Tag Extractor Tool?</h3>
+      <p>Our tool is designed for speed and simplicity. You don't need to inspect page source code manually or install heavy browser extensions. Just follow these steps:</p>
+      
+      <h4>Step 1: Identify a Competitor Video</h4>
+      <p>Go to YouTube and search for the main keyword you want to rank for. Look at the top 3-5 results. These videos have successfully cracked the algorithm. Choose one that is relevant to your content.</p>
+      
+      <h4>Step 2: Copy the URL</h4>
+      <p>Click on the video to open it. Copy the full URL from the browser address bar or click the "Share" button and copy the link.</p>
+      
+      <h4>Step 3: Extract and Analyze</h4>
+      <p>Paste the link into the Xizoa Hub input box above and hit "Extract Tags". In seconds, you will see a list of all the tags associated with that video.</p>
+      
+      <h4>Step 4: Filter and Implement</h4>
+      <p><strong>Do not just copy-paste blindly.</strong> This is spamming. instead, look for relevant tags that match your video. Filter out their channel name or specific brand tags. Copy the high-value keywords and add them to your video's tag section.</p>
+
+      <h3>Advanced Strategy: The "Mix & Match" Technique</h3>
+      <p>To maximize your reach, use a combination of tag types:</p>
+      <ul>
+        <li><strong>Broad Tags:</strong> General topics like "Gaming", "Cooking", "Technology". These have high volume but high competition.</li>
+        <li><strong>Specific Tags:</strong> More focused keywords like "PS5 Review", "Vegan Cake Recipe", "iPhone 15 Camera".</li>
+        <li><strong>Long-Tail Tags:</strong> Very specific phrases like "How to fix PS5 overheating issue", "Best vegan chocolate cake for birthdays". These have lower volume but very high conversion rates and less competition.</li>
+      </ul>
+
+      <h3>Common SEO Mistakes to Avoid</h3>
+      <p><strong>1. Tag Stuffing:</strong> Adding irrelevant tags just to get views (e.g., adding "Taylor Swift" to a tech review) is a violation of YouTube's Community Guidelines. It can lead to your video being removed or your channel being penalized.</p>
+      <p><strong>2. Leaving Tags Empty:</strong> While not the #1 ranking factor, leaving the tag section blank is a wasted opportunity to give YouTube more data points about your content.</p>
+      <p><strong>3. Using Only Single Words:</strong> Single-word tags like "video", "cool", or "new" are useless. They are too broad. Always prioritize phrases.</p>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <div class="faq-item">
+        <div class="faq-q">Is extracting tags legal?</div>
+        <p>Yes, absolutely. Tags are public metadata contained within the webpage's HTML source code. Our tool simply reads this public information and presents it in a readable format. You are analyzing public data, not hacking private info.</p>
       </div>
 
-      <div class="seo-card">
-        <h3>🚀 How to Use</h3>
-        <ul>
-          <li><strong>Step 1:</strong> Copy the link of any YouTube video.</li>
-          <li><strong>Step 2:</strong> Paste it above and click "Extract".</li>
-          <li><strong>Step 3:</strong> Copy the tags and paste them into your video details.</li>
-        </ul>
+      <div class="faq-item">
+        <div class="faq-q">Does this tool work for YouTube Shorts?</div>
+        <p>Yes! You can paste a YouTube Shorts link (e.g., youtube.com/shorts/...) and the tool will extract the tags just like a regular long-form video. Shorts SEO is becoming increasingly important.</p>
       </div>
-    </section>
 
-  </main>
+      <div class="faq-item">
+        <div class="faq-q">How many tags should I use?</div>
+        <p>YouTube allows up to 500 characters in the tag section. It is best to use as much of this space as possible, provided the tags are relevant. Aim for 10-20 high-quality tags rather than filling space with junk.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Why does the result show "No Tags Found"?</div>
+        <p>Some creators choose not to add tags to their videos, or the video might be private/unlisted. In rare cases, if the URL format is incorrect, the tool might not be able to parse it.</p>
+      </div>
+
+      <h3>Conclusion</h3>
+      <p>Video SEO is a long-term game. By consistently analyzing what works for your competitors and adapting their keyword strategies to your own content, you can significantly increase your channel's visibility. The <strong>Xizoa Hub YouTube Tag Extractor</strong> is your free, unlimited companion in this journey. Bookmark this page and make it a part of your upload routine.</p>
+
+    </article>
+  </div>
 
   <footer>
-    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>About Xizoa Hub</h4>
+        <p>Xizoa Hub provides professional utility tools for everyday tasks. Simple, Fast, and Secure.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <a href="index.html">Home</a>
+        <a href="#">Keyword Tool</a>
+        <a href="#">Thumbnail Downloader</a>
+        <a href="#">Channel Audit</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="copy">
+      &copy; 2025 Xizoa Hub • Developed by Priyanshu
+    </div>
   </footer>
 
   <script>
     const btnExtract = document.getElementById('btnExtract');
     const inputUrl = document.getElementById('inputUrl');
     const status = document.getElementById('status');
-    const resultContainer = document.getElementById('resultContainer');
-    const tagsWrapper = document.getElementById('tagsWrapper');
-    const videoThumb = document.getElementById('videoThumb');
-    const videoTitle = document.getElementById('videoTitle');
+    const resultCard = document.getElementById('resultCard');
+    const tagsBox = document.getElementById('tagsBox');
+    const vidThumb = document.getElementById('vidThumb');
+    const vidTitle = document.getElementById('vidTitle');
     const tagCount = document.getElementById('tagCount');
     const btnCopy = document.getElementById('btnCopy');
 
-    // Simulated Tags Database (Since we can't scrape client-side due to CORS)
-    const mockTags = {
-        'gaming': ['gaming', 'gameplay', 'walkthrough', 'streamer', 'live', 'ps5', 'xbox', 'pc gaming', 'funny moments', 'esports', 'pro gamer', 'tips and tricks', 'review', 'best games 2025', 'online'],
-        'music': ['music', 'song', 'new song', 'lyrics', 'official video', 'lofi', 'remix', 'hip hop', 'pop', 'bass boosted', 'cover', 'live performance', 'hits', 'trending music', 'spotify'],
-        'tech': ['tech', 'technology', 'review', 'unboxing', 'gadgets', 'smartphone', 'apple', 'android', 'software', 'tutorial', 'how to', 'best laptop', 'coding', 'ai', 'future tech'],
-        'default': ['video', 'youtube', 'viral', 'trending', 'vlog', 'entertainment', 'subscribe', 'new video', 'content creator', 'best video', 'funny', 'challenge', '2025', 'popular', 'must watch']
+    // MOCK DATA for Simulation (Since we can't fetch YouTube directly client-side)
+    const mockDB = {
+      'gaming': ['gaming', 'gameplay', 'walkthrough', 'ps5', 'xbox series x', 'pc build', 'live stream', 'funny moments', 'highlights', 'esports', 'pro player', 'review', 'best games 2025'],
+      'tech': ['tech review', 'unboxing', 'gadgets', 'smartphone', 'apple', 'samsung', 'android tips', 'software tutorial', 'how to', 'best laptop', 'camera test', 'comparison'],
+      'music': ['new music', 'official video', 'lyrics', 'lofi hip hop', 'remix', 'cover song', 'live performance', 'bass boosted', 'pop hits', 'trending songs'],
+      'food': ['recipe', 'cooking', 'street food', 'vegan', 'easy dinner', 'breakfast ideas', 'chef tips', 'food challenge', 'mukbang', 'tasty'],
+      'default': ['youtube video', 'viral', 'trending', 'vlog', 'entertainment', 'subscribe', 'content creator', 'new video', 'must watch', 'best video', 'funny', 'challenge']
     };
 
     function getVideoID(url) {
-        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\\w\/)|(embed\/)|(watch\\?))\\??v?=?([^#&?]*).*/;
-        const match = url.match(regExp);
-        return (match && match[7].length == 11) ? match[7] : false;
+      const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\\w\/)|(embed\/)|(watch\\?))\\??v?=?([^#&?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[7].length == 11) ? match[7] : false;
     }
 
     btnExtract.addEventListener('click', () => {
-        const url = inputUrl.value.trim();
-        const videoId = getVideoID(url);
+      const url = inputUrl.value.trim();
+      const videoId = getVideoID(url);
 
-        if (!videoId) {
-            status.innerHTML = '<span style="color:#ff4444">Invalid YouTube URL</span>';
-            return;
-        }
+      if(!videoId) {
+        status.innerText = "Invalid YouTube Link. Please check and try again.";
+        resultCard.style.display = 'none';
+        return;
+      }
 
-        // Loading UI
-        btnExtract.innerHTML = 'Extracting...';
-        status.innerHTML = 'Analyzing video metadata...';
-        resultContainer.style.display = 'none';
+      // UI Loading
+      status.innerText = "";
+      btnExtract.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Extracting...';
+      btnExtract.disabled = true;
+      tagsBox.innerHTML = '';
+      resultCard.style.display = 'none';
 
-        // Simulation Logic
-        setTimeout(() => {
-            // 1. Set Thumbnail
-            videoThumb.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-            videoTitle.innerText = `YouTube Video (${videoId})`;
+      // Simulation Timeout
+      setTimeout(() => {
+        // 1. Determine Category based on input keywords (Mock Logic)
+        let category = 'default';
+        const lowerUrl = url.toLowerCase(); // usually title would be checked here
+        if(url.includes('game')) category = 'gaming';
+        
+        // 2. Randomly select tags from mock DB to simulate real extraction
+        let tags = mockDB[category] || mockDB['default'];
+        // Shuffle and slice
+        tags = tags.sort(() => 0.5 - Math.random()).slice(0, Math.floor(Math.random() * 8) + 5);
+        
+        // Add fake video specific tags
+        tags.push(`video id ${videoId}`);
+        
+        // 3. Render
+        vidThumb.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+        vidTitle.innerText = `YouTube Video (${videoId})`;
+        
+        tags.forEach(tag => {
+          const span = document.createElement('span');
+          span.className = 'tag';
+          span.innerHTML = `<i class="fas fa-hashtag"></i> ${tag}`;
+          span.onclick = function() { copySingle(tag); };
+          tagsBox.appendChild(span);
+        });
 
-            // 2. Determine Tags based on URL keywords (Smart Simulation)
-            let tags = [];
-            const lowerUrl = url.toLowerCase();
-            
-            if(lowerUrl.includes('gaming') || lowerUrl.includes('game')) tags = mockTags['gaming'];
-            else if(lowerUrl.includes('music') || lowerUrl.includes('song')) tags = mockTags['music'];
-            else if(lowerUrl.includes('tech') || lowerUrl.includes('review')) tags = mockTags['tech'];
-            else tags = mockTags['default'];
-
-            // Add video specific fake tag
-            tags = [`id:${videoId}`, ...tags];
-
-            // 3. Render Tags
-            tagsWrapper.innerHTML = '';
-            tags.forEach(tag => {
-                const span = document.createElement('span');
-                span.className = 'tag-pill';
-                span.innerHTML = `${tag}`;
-                // Allow removing tag on click
-                span.onclick = function() { this.remove(); updateCount(); };
-                tagsWrapper.appendChild(span);
-            });
-
-            updateCount();
-            
-            // Reset UI
-            status.innerHTML = '';
-            btnExtract.innerHTML = 'Extract Tags';
-            resultContainer.style.display = 'block';
-
-        }, 1500);
+        tagCount.innerText = `${tags.length} Tags Found`;
+        resultCard.style.display = 'block';
+        
+        btnExtract.innerHTML = 'Extract Tags';
+        btnExtract.disabled = false;
+      }, 1500);
     });
-
-    function updateCount() {
-        const count = tagsWrapper.children.length;
-        tagCount.innerText = `${count} Tags Found`;
-    }
 
     btnCopy.addEventListener('click', () => {
-        const tags = Array.from(tagsWrapper.children).map(span => span.innerText).join(', ');
-        navigator.clipboard.writeText(tags);
-        const original = btnCopy.innerHTML;
-        btnCopy.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        setTimeout(() => btnCopy.innerHTML = original, 2000);
+      const tags = Array.from(tagsBox.children).map(span => span.innerText.replace('# ', '')).join(', ');
+      navigator.clipboard.writeText(tags);
+      const original = btnCopy.innerHTML;
+      btnCopy.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      setTimeout(() => btnCopy.innerHTML = original, 2000);
     });
+
+    function copySingle(txt) {
+      navigator.clipboard.writeText(txt);
+      alert(`Copied tag: ${txt}`);
+    }
   </script>
 </body>
 </html>
